@@ -1,0 +1,455 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto|Shrikhand&display=swap");
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  height: 100vh;
+  background: linear-gradient(
+      219deg,
+      rgba(246, 246, 246, 0.02) 0%,
+      rgba(246, 246, 246, 0.02) 20%,
+      rgba(225, 225, 225, 0.02) 20%,
+      rgba(225, 225, 225, 0.02) 40%,
+      rgba(136, 136, 136, 0.02) 40%,
+      rgba(136, 136, 136, 0.02) 60%,
+      rgba(216, 216, 216, 0.02) 60%,
+      rgba(216, 216, 216, 0.02) 80%,
+      rgba(35, 35, 35, 0.02) 80%,
+      rgba(35, 35, 35, 0.02) 100%
+    ),
+    linear-gradient(
+      299deg,
+      rgba(213, 213, 213, 0.02) 0%,
+      rgba(213, 213, 213, 0.02) 20%,
+      rgba(150, 150, 150, 0.02) 20%,
+      rgba(150, 150, 150, 0.02) 40%,
+      rgba(161, 161, 161, 0.02) 40%,
+      rgba(161, 161, 161, 0.02) 60%,
+      rgba(186, 186, 186, 0.02) 60%,
+      rgba(186, 186, 186, 0.02) 80%,
+      rgba(28, 28, 28, 0.02) 80%,
+      rgba(28, 28, 28, 0.02) 100%
+    ),
+    linear-gradient(
+      50deg,
+      rgba(157, 157, 157, 0.02) 0%,
+      rgba(157, 157, 157, 0.02) 16.667%,
+      rgba(147, 147, 147, 0.02) 16.667%,
+      rgba(147, 147, 147, 0.02) 33.334%,
+      rgba(42, 42, 42, 0.02) 33.334%,
+      rgba(42, 42, 42, 0.02) 50.001000000000005%,
+      rgba(214, 214, 214, 0.02) 50.001%,
+      rgba(214, 214, 214, 0.02) 66.668%,
+      rgba(34, 34, 34, 0.02) 66.668%,
+      rgba(34, 34, 34, 0.02) 83.33500000000001%,
+      rgba(211, 211, 211, 0.02) 83.335%,
+      rgba(211, 211, 211, 0.02) 100.002%
+    ),
+    linear-gradient(
+      278deg,
+      rgba(79, 79, 79, 0.03) 0%,
+      rgba(79, 79, 79, 0.03) 20%,
+      rgba(217, 217, 217, 0.03) 20%,
+      rgba(217, 217, 217, 0.03) 40%,
+      rgba(5, 5, 5, 0.03) 40%,
+      rgba(5, 5, 5, 0.03) 60%,
+      rgba(200, 200, 200, 0.03) 60%,
+      rgba(200, 200, 200, 0.03) 80%,
+      rgba(125, 125, 125, 0.03) 80%,
+      rgba(125, 125, 125, 0.03) 100%
+    ),
+    linear-gradient(
+      274deg,
+      rgba(235, 235, 235, 0.03) 0%,
+      rgba(235, 235, 235, 0.03) 12.5%,
+      rgba(100, 100, 100, 0.03) 12.5%,
+      rgba(100, 100, 100, 0.03) 25%,
+      rgba(44, 44, 44, 0.03) 25%,
+      rgba(44, 44, 44, 0.03) 37.5%,
+      rgba(228, 228, 228, 0.03) 37.5%,
+      rgba(228, 228, 228, 0.03) 50%,
+      rgba(36, 36, 36, 0.03) 50%,
+      rgba(36, 36, 36, 0.03) 62.5%,
+      rgba(72, 72, 72, 0.03) 62.5%,
+      rgba(72, 72, 72, 0.03) 75%,
+      rgba(30, 30, 30, 0.03) 75%,
+      rgba(30, 30, 30, 0.03) 87.5%,
+      rgba(109, 109, 109, 0.03) 87.5%,
+      rgba(109, 109, 109, 0.03) 100%
+    ),
+    linear-gradient(90deg, hsl(28, 0%, 14%), hsl(28, 0%, 14%));
+  background-attachment: fixed;
+  color: white;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "title"
+    "content";
+
+  justify-items: center;
+
+  h2 {
+    grid-area: title;
+  }
+
+  div {
+    grid-area: content;
+    padding: 2rem;
+    display: flex;
+  }
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+a {
+  text-decoration: none;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+img {
+  width: 100%;
+  height: auto;
+}
+
+.burger {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+
+  &:focus {
+    outline: none;
+  }
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background: rgb(0, 151, 252);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+
+    &:first-child {
+      transform: rotate(0);
+    }
+
+    &:nth-child(2) {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    &:nth-child(3) {
+      transform: rotate(0);
+    }
+  }
+
+  & + .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(0, 151, 252);
+    height: 100vh;
+    text-align: left;
+    padding: 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+    z-index: 9;
+
+    a {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      padding: 2rem 0;
+      font-weight: bold;
+      letter-spacing: 0.5rem;
+      color: rgb(14, 7, 58);
+      text-decoration: none;
+      transition: color 0.3s linear;
+
+      &:hover {
+        color: rgb(58, 35, 207);
+      }
+    }
+  }
+
+  &.active {
+    div {
+      background-color: rgb(14, 7, 58);
+
+      &:first-child {
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+    }
+
+    & + .menu {
+      transform: translateX(0);
+    }
+  }
+}
+
+.shrikhand {
+  font-family: "Shrikhand", cursive;
+}
+
+/* .welcome {
+  height: 100vh;
+  padding: 0 2rem;
+  display: grid;
+  justify-items: center;
+  grid-template-areas:
+    "greeting"
+    "name"
+    "intro";
+}
+
+.name {
+  grid-area: name;
+  font-size: 15vmin;
+  align-self: center;
+}
+
+.greeting {
+  grid-area: greeting;
+  font-size: 5vmin;
+  align-self: end;
+}
+
+.intro {
+  grid-area: intro;
+  font-size: 10vmin;
+  align-self: start;
+} */
+
+.projects {
+  height: 100%;
+  padding: 1.5rem 2.5rem;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: space-between;
+
+  .project {
+    position: relative;
+    word-wrap: break-word;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    width: 30%;
+    min-width: 0;
+    padding: 0;
+
+    $border: 5px;
+    color: #fff;
+    background: #000;
+    background-clip: padding-box;
+    border: solid $border transparent;
+    border-radius: 1em;
+
+    img {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    h3 {
+      font-size: 1.75rem;
+      text-align: center;
+      margin: 0.75rem 0;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-around;
+      padding: 0.5rem 1rem;
+
+      a {
+        color: white;
+        font-size: 1.2rem;
+        padding: 8px 16px;
+        border-radius: 4rem;
+        margin-bottom: 0.5rem;
+        border: none;
+        text-align: center;
+        display: inline-block;
+        user-select: none;
+        background: linear-gradient(to top left, #1c42aa, #43c9ce);
+        &:hover,
+        &:focus,
+        &:active {
+          background: linear-gradient(
+            to top left,
+            darken(#1c42aa, 10%),
+            darken(#43c9ce, 10%)
+          );
+        }
+      }
+    }
+
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      margin: -$border;
+      border-radius: inherit;
+      background: linear-gradient(to bottom, #1c42aa, #43c9ce, #1c42aa);
+    }
+  }
+}
+
+.stacks {
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 2rem;
+  margin: 3rem 0;
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 200px;
+
+    img {
+      width: 100%;
+      max-height: auto;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.contact {
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  a {
+    color: white;
+    font-size: 1rem;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+
+    width: 80px;
+    height: 80px;
+    border: none;
+    border-radius: 50%;
+    &:hover {
+      background-color: rgba(0, 174, 255, 0.555);
+      color: rgb(38, 0, 255);
+    }
+  }
+
+  .iconify {
+    font-size: 2.5rem;
+    margin: 0 auto;
+  }
+}
+
+.back-top {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  bottom: 20px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  color: whitesmoke;
+  background-color: rgb(33, 149, 134);
+  cursor: pointer;
+  box-shadow: 1px 3px 5px 0 rgb(102, 101, 101);
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: rgba(19, 209, 184, 0.8);
+  }
+}
+
+@media (max-width: 800px) {
+  .project {
+    width: 45% !important;
+  }
+
+  .links {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .stacks {
+    flex-direction: column;
+  }
+
+  .menu {
+    width: 100%;
+    a {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .projects {
+    flex-direction: column;
+    .project {
+      width: 100% !important;
+
+      h3 {
+        font-size: 1.5rem;
+      }
+      .links {
+        flex-direction: column;
+
+        a {
+          margin: 1rem 0;
+        }
+      }
+    }
+  }
+}
