@@ -353,6 +353,7 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 40%;
 }
 
 .contact a {
@@ -365,16 +366,20 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
   width: 80px;
   height: 80px;
   border: none;
   border-radius: 50%;
+  -webkit-transition: 0.3s linear;
+  transition: 0.3s linear;
 }
 
 .contact a:hover {
   background-color: rgba(0, 174, 255, 0.555);
-  color: #2600ff;
 }
 
 .contact .iconify {

@@ -365,19 +365,21 @@ img {
 .contact {
   justify-content: space-around;
   align-items: center;
+  width: 40%;
   a {
     color: white;
     font-size: 1rem;
     display: inline-flex;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
     width: 80px;
     height: 80px;
     border: none;
     border-radius: 50%;
+    transition: 0.3s linear;
     &:hover {
       background-color: rgba(0, 174, 255, 0.555);
-      color: rgb(38, 0, 255);
     }
   }
 
