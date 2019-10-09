@@ -114,6 +114,9 @@ section {
 
 h2 {
   font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 h3 {
@@ -233,17 +236,13 @@ img {
   font-family: "Shrikhand", cursive;
 }
 
-/* .welcome {
+.welcome {
   height: 100vh;
   padding: 0 2rem;
   display: grid;
   justify-items: center;
-  grid-template-areas:
-    "greeting"
-    "name"
-    "intro";
 }
-
+/*
 .name {
   grid-area: name;
   font-size: 15vmin;
@@ -293,7 +292,7 @@ img {
     }
 
     h3 {
-      font-size: 1.75rem;
+      font-size: 2rem;
       text-align: center;
       margin: 0.75rem 0;
     }
@@ -305,7 +304,7 @@ img {
 
       a {
         color: white;
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         padding: 8px 16px;
         border-radius: 4rem;
         margin-bottom: 0.5rem;
@@ -379,7 +378,7 @@ img {
     border-radius: 50%;
     transition: 0.3s linear;
     &:hover {
-      background-color: rgba(0, 174, 255, 0.555);
+      background-color: rgba(0, 174, 255, 0.5);
     }
   }
 
