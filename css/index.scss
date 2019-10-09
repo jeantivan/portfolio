@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto|Shrikhand&display=swap");
 
+// Variables
+$pd: 2.5rem; // Padding;
+$lightblue: #43c9ce;
+$blue: #1c42aa;
 *,
 *:after,
 *:before {
@@ -89,9 +93,26 @@ body {
   color: white;
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
+
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "main header";
 }
 
-section {
+main {
+  grid-area: main;
+  width: 100%;
+  padding: $pd;
+}
+
+header {
+  grid-area: header;
+  width: 100%;
+  padding: $pd/2;
+  background: linear-gradient(to bottom);
+}
+/* section {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: auto 1fr;
@@ -110,7 +131,7 @@ section {
     padding: 2rem;
     display: flex;
   }
-}
+} */
 
 h2 {
   font-size: 3rem;
@@ -312,14 +333,14 @@ img {
         text-align: center;
         display: inline-block;
         user-select: none;
-        background: linear-gradient(to top left, #1c42aa, #43c9ce);
+        background: linear-gradient(to top left, $blue, $lightblue);
         &:hover,
         &:focus,
         &:active {
           background: linear-gradient(
             to top left,
-            darken(#1c42aa, 10%),
-            darken(#43c9ce, 10%)
+            darken($blue, 10%),
+            darken($lightblue, 10%)
           );
         }
       }
@@ -335,7 +356,7 @@ img {
       z-index: -1;
       margin: -$border;
       border-radius: inherit;
-      background: linear-gradient(to bottom, #1c42aa, #43c9ce, #1c42aa);
+      background: linear-gradient(to bottom, $blue, $lightblue, $blue);
     }
   }
 }
@@ -401,14 +422,14 @@ img {
   border: none;
   outline: none;
   color: whitesmoke;
-  background-color: #1c42aa;
+  background-color: $blue;
   cursor: pointer;
   box-shadow: 0px 0px 2px 0 rgb(102, 101, 101);
   transition: all 0.2s;
 
   &:hover,
   &:focus {
-    background-color: darken(#1c42aa, 10%);
+    background-color: darken($blue, 10%);
     box-shadow: 0 0 5px 0 rgb(102, 101, 101);
   }
 }
