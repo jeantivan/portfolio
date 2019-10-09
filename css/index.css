@@ -348,7 +348,6 @@ img {
 }
 
 .contact {
-  width: 100%;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
@@ -392,20 +391,22 @@ img {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  font-size: 18px;
+  font-size: 1.75rem;
   border: none;
   outline: none;
   color: whitesmoke;
-  background-color: #219586;
+  background-color: #1c42aa;
   cursor: pointer;
-  -webkit-box-shadow: 1px 3px 5px 0 #666565;
-          box-shadow: 1px 3px 5px 0 #666565;
+  -webkit-box-shadow: 0px 0px 2px 0 #666565;
+          box-shadow: 0px 0px 2px 0 #666565;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 
-.back-top:hover {
-  background-color: rgba(19, 209, 184, 0.8);
+.back-top:hover, .back-top:focus {
+  background-color: #15317e;
+  -webkit-box-shadow: 0 0 5px 0 #666565;
+          box-shadow: 0 0 5px 0 #666565;
 }
 
 @media (max-width: 800px) {
