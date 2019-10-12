@@ -14,7 +14,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(
       219deg,
       rgba(246, 246, 246, 0.02) 0%,
@@ -274,7 +274,7 @@ img {
   body {
     display: grid !important;
     grid-template-columns: 100%;
-    grid-template-rows: 20% auto;
+    grid-template-rows: 15% auto;
   }
 
   header {
@@ -285,11 +285,11 @@ img {
     padding: $spacing;
 
     display: grid;
-    grid-template-columns: 70% 30%;
-    grid-template-rows: 25% 20% 55%;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 35% 25% 40%;
 
     img {
-      width: 50%;
+      width: 100%;
       grid-area: 1 / 2 / 3 / 3;
       border-width: 2px;
     }
@@ -297,13 +297,13 @@ img {
     h2 {
       grid-area: 1 / 1 / 2 / 2;
       font-size: 1.8rem;
-      //margin-bottom: $spacing/2;
+      margin-bottom: $spacing/2;
     }
 
     h3 {
       grid-area: 2 / 1 / 3 / 2;
       font-size: 1.5rem;
-      //margin-bottom: $spacing/2;
+      margin-bottom: $spacing/2;
     }
 
     .contact {
@@ -313,8 +313,9 @@ img {
       font-size: 1rem !important;
       a {
         margin-right: $spacing;
-        padding: $spacing/3;
-        font-size: 1rem;
+        padding: $spacing/2;
+        font-size: 1.5rem;
+        border-width: 2px;
       }
     }
   }
