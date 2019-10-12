@@ -236,10 +236,11 @@ img {
     display: grid !important;
     -ms-grid-columns: 100%;
         grid-template-columns: 100%;
-    -ms-grid-rows: 10% auto;
-        grid-template-rows: 10% auto;
+    -ms-grid-rows: 30% 70%;
+        grid-template-rows: 30% 70%;
   }
   header {
+    height: 100%;
     position: static;
     width: 100%;
     -ms-grid-row: 1;

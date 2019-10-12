@@ -274,10 +274,11 @@ img {
   body {
     display: grid !important;
     grid-template-columns: 100%;
-    grid-template-rows: 10% auto;
+    grid-template-rows: 30% 70%;
   }
 
   header {
+    height: 100%;
     position: static;
     width: 100%;
     grid-area: 1 / 1 / 2 / 2;
