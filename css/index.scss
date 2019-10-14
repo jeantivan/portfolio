@@ -100,7 +100,7 @@ body {
 
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 15% auto;
+  grid-template-rows: 1fr auto;
 }
 
 header {
@@ -112,7 +112,7 @@ header {
 
   display: grid;
   grid-template-columns: 80% 20%;
-  grid-template-rows: 35% 25% 40%;
+  grid-template-rows: repeat(2, 1fr) 50%;
 
   img {
     width: 100%;
@@ -136,7 +136,7 @@ header {
 
   .contact {
     justify-content: flex-start;
-    grid-area: 3 / 1 / 4 / 3;
+    grid-area: 3 / 1 / 4 / 2;
 
     font-size: 1rem !important;
     a {
@@ -343,13 +343,17 @@ img {
     }
 
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
 
     img,
     h2,
     h3 {
       margin-bottom: $spacing;
+    }
+
+    .contact {
+      justify-content: space-between;
     }
   }
 }

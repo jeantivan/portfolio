@@ -22,8 +22,8 @@ body {
   display: grid;
   -ms-grid-columns: 100%;
       grid-template-columns: 100%;
-  -ms-grid-rows: 15% auto;
-      grid-template-rows: 15% auto;
+  -ms-grid-rows: 1fr auto;
+      grid-template-rows: 1fr auto;
 }
 
 header {
@@ -41,8 +41,8 @@ header {
   display: grid;
   -ms-grid-columns: 80% 20%;
       grid-template-columns: 80% 20%;
-  -ms-grid-rows: 35% 25% 40%;
-      grid-template-rows: 35% 25% 40%;
+  -ms-grid-rows: (1fr)[2] 50%;
+      grid-template-rows: repeat(2, 1fr) 50%;
 }
 
 header img {
@@ -84,8 +84,8 @@ header .contact {
   -ms-grid-row: 3;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-area: 3 / 1 / 4 / 3;
+  -ms-grid-column-span: 1;
+  grid-area: 3 / 1 / 4 / 2;
   font-size: 1rem !important;
 }
 
@@ -334,12 +334,17 @@ img {
     font-size: 2rem;
   }
   header h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   header img,
   header h2,
   header h3 {
     margin-bottom: 2rem;
+  }
+  header .contact {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }
 /*# sourceMappingURL=index.css.map */
