@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto|Shrikhand&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 *,
 *:after,
 *:before {
@@ -136,10 +136,6 @@ a:focus, a:active {
 img {
   width: 100%;
   height: auto;
-}
-
-.shrikhand {
-  font-family: "Shrikhand", cursive;
 }
 
 .projects {
