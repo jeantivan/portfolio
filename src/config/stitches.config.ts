@@ -16,7 +16,7 @@ export const {
       ...sandDark,
       ...orange,
       primary: orange.orange9,
-      bg: sandDark.sand2,
+      bg: sandDark.sand3,
     },
     fonts: {
       mont: "'Montserrat', sans-serif",
