@@ -22,4 +22,9 @@ export const {
       mont: "'Montserrat', sans-serif",
     },
   },
+  media: {
+    sm: "(min-width: 640px)",
+    md: "(min-width: 767px)",
+    lg: "(min-width: 1200px)",
+  },
 });
