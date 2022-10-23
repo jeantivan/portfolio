@@ -1,11 +1,13 @@
-import IconButton from "@components/IconButton";
-import Navbar from "@components/Navbar";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import { styled } from "@config/stitches.config";
 import { HamburgerMenuIcon, LayersIcon } from "@radix-ui/react-icons";
 import {
   Root as DialogRoot,
   Trigger as DialogTrigger,
 } from "@radix-ui/react-dialog";
+import IconButton from "@components/IconButton";
+import Navbar from "@components/Navbar";
 
 const Container = styled("header", {
   display: "flex",
@@ -18,8 +20,18 @@ const Container = styled("header", {
 });
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+
+  const router = useRouter();
+
+  router.events.on("routeChangeComplete", () => {
+    if (open) {
+      setOpen(false);
+    }
+  });
+
   return (
-    <DialogRoot>
+    <DialogRoot open={open} onOpenChange={setOpen}>
       <Container>
         <DialogTrigger asChild>
           <IconButton>
