@@ -45,9 +45,10 @@ const Content = styled("div", {
 
 const Link = styled("a", {
   all: "unset",
-  fontSize: 40,
+  fontSize: 48,
   fontWeight: 700,
-  margin: "24px 0",
+  margin: "20px 0",
+  fontFamily: "$mont",
 
   "&:first-letter": {
     color: "$orange9",
