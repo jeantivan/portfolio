@@ -6,7 +6,8 @@ import {
   EnvelopeClosedIcon,
 } from "@radix-ui/react-icons";
 
-const Flex = styled("div", {
+const Flex = styled("footer", {
+  gridArea: "footer",
   display: "flex",
 });
 
@@ -14,9 +15,9 @@ const SocialLinks = () => {
   return (
     <Flex
       css={{
-        marginTop: "auto",
+        padding: 16,
         justifyContent: "center",
-        [`& ${IconButton}:not(:last-child)`]: { marginRight: 16 },
+        [`& ${IconButton}`]: { margin: "0 16px" },
       }}
     >
       <IconButton
