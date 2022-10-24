@@ -11,7 +11,7 @@ const globalStyles = globalCss({
     backgroundColor: "$bg",
     color: "$orange1",
   },
-  "*": { boxSizing: "border-box" },
+  "*": { boxSizing: "border-box", overflowX: "hidden" },
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
