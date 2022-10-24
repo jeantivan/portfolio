@@ -11,7 +11,7 @@ const IconButton = styled("button", {
   borderRadius: 6,
   cursor: "pointer",
 
-  "&:hover": {
+  "&:hover, &:focus": {
     borderColor: "$orange9",
   },
 
