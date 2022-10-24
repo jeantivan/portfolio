@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { styled } from "@config/stitches.config";
 import { HamburgerMenuIcon, LayersIcon } from "@radix-ui/react-icons";
@@ -21,14 +21,17 @@ const Container = styled("header", {
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-
   const router = useRouter();
 
-  router.events.on("routeChangeComplete", () => {
-    if (open) {
-      setOpen(false);
-    }
-  });
+  useEffect(() => {
+    const closeDialogOnRouteChange = () => {
+      if (open) {
+        setOpen(false);
+      }
+    };
+    router.events.on("routeChangeComplete", closeDialogOnRouteChange);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <DialogRoot open={open} onOpenChange={setOpen}>
