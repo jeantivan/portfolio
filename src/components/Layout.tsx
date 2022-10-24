@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
-import Header from "./Header";
 import { styled } from "@config/stitches.config";
+import Header from "@components/Header";
+import SocialLinks from "@components/SocialLinks";
 
 const Container = styled("div", {
   backgroundImage: `radial-gradient(circle at 90% 10%, $sand1, $sand2 80%)`,
@@ -10,17 +11,18 @@ const Container = styled("div", {
   overflowX: "hidden",
   display: "grid",
   gridTemplateColumns: "1f",
-  gridTemplateRows: "min-content 1fr",
+  gridTemplateRows: "min-content 1fr min-content",
   gridTemplateAreas: `
     "header"
-    "main"`,
+    "main"
+    "footer"`,
 });
 
 const Main = styled("main", {
+  gridArea: "main",
   display: "flex",
   justifyContent: "center",
-  padding: 32,
-  gridArea: "main",
+  //"@md": { padding: 32 },
 });
 
 const Layout = ({ children }: { children: ReactNode }) => {
@@ -28,6 +30,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <Container>
       <Header />
       <Main>{children}</Main>
+      <SocialLinks />
     </Container>
   );
 };
