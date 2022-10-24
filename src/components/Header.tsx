@@ -25,13 +25,16 @@ const Header = () => {
 
   useEffect(() => {
     const closeDialogOnRouteChange = () => {
-      if (open) {
-        setOpen(false);
-      }
+      setOpen(false);
     };
-    router.events.on("routeChangeComplete", closeDialogOnRouteChange);
+    router.events.on("routeChangeStart", closeDialogOnRouteChange);
+
+    return () => {
+      router.events.off("routeChangeStart", closeDialogOnRouteChange);
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [router]);
 
   return (
     <DialogRoot open={open} onOpenChange={setOpen}>
