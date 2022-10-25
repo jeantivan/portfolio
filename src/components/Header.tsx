@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { styled } from "@config/stitches.config";
-import { HamburgerMenuIcon, LayersIcon } from "@radix-ui/react-icons";
+import { HamburgerMenuIcon, GearIcon } from "@radix-ui/react-icons";
 import {
   Root as DialogRoot,
   Trigger as DialogTrigger,
 } from "@radix-ui/react-dialog";
+import {
+  Root as MenuRoot,
+  Trigger as MenuTrigger,
+} from "@radix-ui/react-popover";
 import IconButton from "@components/IconButton";
 import Navbar from "@components/Navbar";
+import Menu from "@components/Menu";
 
 const Container = styled("header", {
   display: "flex",
   justifyContent: "space-between",
   padding: 18,
   gridArea: "header",
-  "@md": {
-    display: "none",
-  },
 });
 
 const Header = () => {
@@ -38,18 +40,35 @@ const Header = () => {
 
   return (
     <DialogRoot open={open} onOpenChange={setOpen}>
-      <Container>
-        <DialogTrigger asChild>
-          <IconButton>
-            <HamburgerMenuIcon />
-          </IconButton>
-        </DialogTrigger>
+      <MenuRoot>
+        <Container>
+          <DialogTrigger asChild>
+            <IconButton
+              css={{
+                marginRight: "auto",
+                "@md": {
+                  display: "none",
+                },
+              }}
+            >
+              <HamburgerMenuIcon />
+            </IconButton>
+          </DialogTrigger>
 
-        <IconButton>
-          <LayersIcon />
-        </IconButton>
-      </Container>
-      <Navbar />
+          <MenuTrigger asChild>
+            <IconButton
+              css={{
+                marginLeft: "auto",
+                "&[data-state='open']": { borderColor: "$primary" },
+              }}
+            >
+              <GearIcon />
+            </IconButton>
+          </MenuTrigger>
+        </Container>
+        <Navbar />
+        <Menu />
+      </MenuRoot>
     </DialogRoot>
   );
 };
