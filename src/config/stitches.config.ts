@@ -1,5 +1,5 @@
 import { createStitches } from "@stitches/react";
-import { sandDark, orange } from "@radix-ui/colors";
+import { sandDark, orange, blue, grass, amber, purple } from "@radix-ui/colors";
 
 export const {
   styled,
@@ -15,6 +15,10 @@ export const {
     colors: {
       ...sandDark,
       ...orange,
+      ...blue,
+      ...grass,
+      ...amber,
+      ...purple,
       primary: orange.orange9,
       bg: sandDark.sand3,
     },
