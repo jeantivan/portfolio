@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { globalCss } from "@config/stitches.config";
 import Layout from "@components/Layout";
+import SettingsProvider from "@components/Settings";
 
 const globalStyles = globalCss({
   "html, body": {
@@ -17,9 +18,11 @@ const globalStyles = globalCss({
 function MyApp({ Component, pageProps }: AppProps) {
   globalStyles();
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <SettingsProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SettingsProvider>
   );
 }
 
