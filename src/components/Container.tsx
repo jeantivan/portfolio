@@ -9,7 +9,7 @@ const Container = styled("div", {
   paddingRight: 24,
   paddingTop: 32,
   paddingBottom: 32,
-  zIndex: 1,
+  //zIndex: 1,
 
   width: "100%",
   "@md": {
