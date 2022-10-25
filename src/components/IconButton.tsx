@@ -7,12 +7,12 @@ const IconButton = styled("button", {
   alignItems: "center",
   padding: 6,
   border: "1px solid $sand5",
-  color: "$orange9",
+  color: "$primary",
   borderRadius: 6,
   cursor: "pointer",
 
-  "&:hover, &:focus": {
-    borderColor: "$orange9",
+  "&:hover": {
+    borderColor: "$primary",
   },
 
   "& svg": {

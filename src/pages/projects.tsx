@@ -22,7 +22,7 @@ const Span = styled("span", {
     left: 0,
     height: 6,
     width: "50%",
-    backgroundColor: "$orange9",
+    backgroundColor: "$primary",
     clipPath: "polygon(0 0, 100% 0%, 80% 100%, 0% 100%)",
     transform: "translate(0, 12px)",
   },

@@ -20,7 +20,7 @@ const Container = styled("div", {
   borderRadius: 6,
 
   "&:hover": {
-    borderColor: "$orange9",
+    borderColor: "$primary",
   },
 
   variants: {

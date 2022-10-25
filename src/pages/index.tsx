@@ -27,7 +27,7 @@ const Word = styled("span", {
   display: "inline-block",
   marginRight: 16,
   "&:first-letter": {
-    color: "$orange9",
+    color: "$primary",
   },
 
   "@md": { marginRight: 24 },
@@ -52,9 +52,9 @@ const Link = styled("a", {
   justifyContent: "space-between",
   alignItems: "center",
   padding: "12px 24px",
-  border: "1px solid $orange9",
+  border: "1px solid $primary",
   backgroundColor: "transparent",
-  color: "$orange9",
+  color: "$primary",
   borderRadius: 9000,
   cursor: "pointer",
   textTransform: "uppercase",
@@ -66,7 +66,7 @@ const Link = styled("a", {
 
   "&:hover": {
     color: "$sand12",
-    backgroundColor: "$orange9",
+    backgroundColor: "$primary",
     "& svg": {
       transform: "translateX(4px)",
     },
@@ -94,10 +94,24 @@ const LinesWrapper = styled("span", {
   pointerEvents: "none",
   overflow: "hidden",
 });
+
+const Line = styled("span", {
+  backgroundColor: "$primary",
+  height: 2,
+  position: "fixed",
+});
 const Lines = () => {
   return (
     <LinesWrapper aria-hidden="true">
-      <svg
+      <Line
+        css={{
+          width: "100%",
+          top: "50%",
+          left: 0,
+        }}
+      />
+
+      {/* <svg
         width="100%"
         height="100%"
         viewBox="0 0 390 844"
@@ -107,7 +121,7 @@ const Lines = () => {
         <line x1="70" y1="-20" x2="1500" y2="250" stroke="#F76808" />
         <line x1="-1000" y1="393" x2="3000" y2="393" stroke="#F76808" />
         <line x1="-1000" y1="550" x2="150" y2="900" stroke="#F76808" />
-      </svg>
+      </svg> */}
       {/* <svg
         viewBox="0 0 1280 832"
         fill="none"
