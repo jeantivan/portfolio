@@ -51,7 +51,7 @@ const Link = styled("a", {
   fontFamily: "$mont",
 
   "&:first-letter": {
-    color: "$orange9",
+    color: "$primary",
   },
 });
 
@@ -63,31 +63,29 @@ const NavLinks = styled("div", {
 
 const Navbar = () => {
   return (
-    <DialogPrimitive.Portal>
-      <Container>
-        <Header>
-          <DialogPrimitive.Close asChild>
-            <IconButton>
-              <Cross1Icon />
-            </IconButton>
-          </DialogPrimitive.Close>
-        </Header>
-        <Content>
-          <NavLinks>
-            <NextLink href="/" passHref>
-              <Link>About</Link>
-            </NextLink>
-            <NextLink href="/projects" passHref>
-              <Link>Projects</Link>
-            </NextLink>
-            <NextLink href="/skills" passHref>
-              <Link>Skills</Link>
-            </NextLink>
-          </NavLinks>
-          <SocialLinks />
-        </Content>
-      </Container>
-    </DialogPrimitive.Portal>
+    <Container>
+      <Header>
+        <DialogPrimitive.Close asChild>
+          <IconButton>
+            <Cross1Icon />
+          </IconButton>
+        </DialogPrimitive.Close>
+      </Header>
+      <Content>
+        <NavLinks>
+          <NextLink href="/" passHref>
+            <Link>About</Link>
+          </NextLink>
+          <NextLink href="/projects" passHref>
+            <Link>Projects</Link>
+          </NextLink>
+          <NextLink href="/skills" passHref>
+            <Link>Skills</Link>
+          </NextLink>
+        </NavLinks>
+        <SocialLinks />
+      </Content>
+    </Container>
   );
 };
 
