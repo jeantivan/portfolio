@@ -9,10 +9,8 @@ const Arrow = styled(Popover.Arrow, {
 });
 const MenuContent = styled(Popover.Content, {
   zIndex: 100,
-
   maxWidth: 354,
-  minWidth: "100%",
-  width: "100%",
+  width: "calc(100vw - 36px)",
   background: "$sand5",
   padding: 14,
   borderRadius: 6,
