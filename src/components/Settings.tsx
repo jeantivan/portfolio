@@ -5,11 +5,9 @@ import {
   TColors,
   TPrimaryColorThemes,
 } from "@src/types";
-import { COLOR_MODE_KEY, PRIMARY_COLOR_KEY } from "@src/constants";
+import { COLORS, COLOR_MODE_KEY, PRIMARY_COLOR_KEY } from "@src/constants";
 import { createColorModeTheme, createPrimaryColorTheme } from "@src/utils";
 import { setCookie } from "cookies-next";
-
-const colors = ["orange", "blue", "grass", "amber", "purple"] as const;
 
 export type TSettings = {
   primaryColor: TColors;
@@ -20,7 +18,7 @@ export type TSettings = {
 
 const SettingsCxt = createContext<TSettings | null>(null);
 
-const PrimaryColorModeThemes: TPrimaryColorThemes = colors.reduce(
+const PrimaryColorModeThemes: TPrimaryColorThemes = COLORS.reduce(
   (acc, curr) => ((acc[curr] = createPrimaryColorTheme(curr)), acc),
   {} as TPrimaryColorThemes
 );
