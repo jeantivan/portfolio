@@ -5,15 +5,20 @@ import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useSettings } from "@components/Settings";
 
 const Arrow = styled(Popover.Arrow, {
-  fill: "$sand5",
+  fill: "$menu",
 });
+
 const MenuContent = styled(Popover.Content, {
   zIndex: 100,
   maxWidth: 354,
   width: "calc(100vw - 36px)",
-  background: "$sand5",
+  background: "$menu",
   padding: 14,
   borderRadius: 6,
+  boxShadow: "$shadow",
+  //margin: 12,
+
+  color: "$text",
 });
 
 const MenuSection = styled("div", {
@@ -44,12 +49,13 @@ const MenuRadioItem = styled(RadioGroupPrimitive.Item, {
   background: "$sand3",
   padding: 10,
   border: "1px solid $sand7",
-  color: "white",
+  color: "$text",
 
   "&:first-child": {
     borderTopLeftRadius: 4,
     borderBottomLeftRadius: 4,
   },
+
   "&:last-child": {
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4,
@@ -121,7 +127,7 @@ const Menu = () => {
             </RightSlot>
             Dark
           </MenuRadioItem>
-          <MenuRadioItem value="light" disabled>
+          <MenuRadioItem value="light">
             <RightSlot>
               <SunIcon />
             </RightSlot>
