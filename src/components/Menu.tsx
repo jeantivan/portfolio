@@ -95,17 +95,26 @@ const RightSlot = styled("span", {
 const colors = ["orange", "blue", "grass", "amber", "purple"] as const;
 
 const Menu = () => {
-  const { primaryColor, setPrimaryColor } = useSettings()!;
+  const { primaryColor, colorMode, changePrimaryColor, changeColorMode } =
+    useSettings()!;
 
   const handlePrimaryColorChange = (color: typeof primaryColor) => {
-    setPrimaryColor(color);
+    changePrimaryColor(color);
+  };
+
+  const handleColorModeChange = (mode: typeof colorMode) => {
+    changeColorMode(mode);
   };
 
   return (
     <MenuContent sideOffset={14} align="end">
       <MenuSection>
         <TitleSection>Color mode</TitleSection>
-        <MenuRadioGroup name="color-mode" defaultValue="dark">
+        <MenuRadioGroup
+          name="color-mode"
+          value={colorMode}
+          onValueChange={handleColorModeChange}
+        >
           <MenuRadioItem value="dark">
             <RightSlot>
               <MoonIcon />
