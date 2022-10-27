@@ -15,7 +15,7 @@ const globalStyles = globalCss({
     fontFamily:
       "-apple-system, BlinkMacSystemFont, Inter, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
   },
-  "*": { boxSizing: "border-box", overflowX: "hidden" },
+  "*": { boxSizing: "border-box" },
 });
 
 function MyApp({ Component, pageProps, color, mode }: AppProps & AppOwnProps) {
