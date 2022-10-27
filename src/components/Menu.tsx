@@ -3,6 +3,7 @@ import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { styled } from "@config/stitches.config";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useSettings } from "@components/Settings";
+import { COLORS } from "@src/constants";
 
 const Arrow = styled(Popover.Arrow, {
   fill: "$menu",
@@ -95,8 +96,6 @@ const RightSlot = styled("span", {
   marginRight: 14,
 });
 
-const colors = ["orange", "blue", "grass", "amber", "purple"] as const;
-
 const Menu = () => {
   const { primaryColor, colorMode, changePrimaryColor, changeColorMode } =
     useSettings()!;
@@ -139,7 +138,7 @@ const Menu = () => {
           value={primaryColor}
           onValueChange={handlePrimaryColorChange}
         >
-          {colors.map((color) => (
+          {COLORS.map((color) => (
             <MenuRadioItem value={color} key={color}>
               <Span
                 aria-label={color}
