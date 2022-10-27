@@ -1,4 +1,4 @@
-import { gray } from "@radix-ui/colors";
+import { sand, sandDark } from "@radix-ui/colors";
 import { createTheme } from "@config/stitches.config";
 import { TColorMode, TColors } from "@src/types";
 
@@ -14,18 +14,25 @@ export const createColorModeTheme = (mode: TColorMode) => {
   if (mode === "light") {
     return createTheme({
       colors: {
-        ...gray,
+        ...sand,
 
-        background: "$gray1",
-        text: "$gray12",
+        bg: "$sand2",
+        text: "$sand12",
+        textSecondary: "$sand11",
+        menu: "white",
       },
     });
   }
 
   return createTheme({
     colors: {
-      background: "$gray2",
-      text: "white",
+      ...sandDark,
+
+      bg: "$sand2",
+      text: "$sand12",
+      textSecondary: "$sand11",
+
+      menu: "$sand3",
     },
   });
 };
