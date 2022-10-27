@@ -16,8 +16,6 @@ const MenuContent = styled(Popover.Content, {
   padding: 14,
   borderRadius: 6,
   boxShadow: "$shadow",
-  //margin: 12,
-
   color: "$text",
 });
 
@@ -61,7 +59,7 @@ const MenuRadioItem = styled(RadioGroupPrimitive.Item, {
     borderBottomRightRadius: 4,
   },
 
-  "&:hover": {
+  "&:hover:not(:disabled)": {
     backgroundColor: "$sand4",
   },
 
@@ -70,7 +68,7 @@ const MenuRadioItem = styled(RadioGroupPrimitive.Item, {
   },
 
   "&[data-state=checked]": {
-    backgroundColor: "$sand2",
+    backgroundColor: "$sand5",
     borderColor: "$primary",
     color: "$primary",
   },
@@ -95,7 +93,6 @@ const Span = styled("span", {
 const RightSlot = styled("span", {
   display: "inline-flex",
   marginRight: 14,
-  "[data-highlighted] > &": { color: "$primary" },
 });
 
 const colors = ["orange", "blue", "grass", "amber", "purple"] as const;
