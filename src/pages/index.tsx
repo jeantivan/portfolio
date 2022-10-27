@@ -11,6 +11,7 @@ const Title = styled("h1", {
   fontSize: 80,
   margin: 0,
   marginBottom: 16,
+  color: "$text",
 });
 
 const SubHeading = styled("h2", {
@@ -18,6 +19,7 @@ const SubHeading = styled("h2", {
   fontSize: 24,
   margin: 0,
   marginBottom: 24,
+  color: "$text",
   "@md": {
     fontSize: 24,
   },
