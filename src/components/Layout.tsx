@@ -10,7 +10,7 @@ const Container = styled("div", {
   minHeight: "100vh",
   overflowX: "hidden",
   display: "grid",
-  gridTemplateColumns: "1f",
+  gridTemplateColumns: "1fr",
   gridTemplateRows: "min-content 1fr min-content",
   gridTemplateAreas: `
     "header"
