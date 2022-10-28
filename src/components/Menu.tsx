@@ -109,7 +109,7 @@ const Menu = () => {
   };
 
   return (
-    <MenuContent sideOffset={14} align="end">
+    <MenuContent sideOffset={14}>
       <MenuSection>
         <TitleSection>Color mode</TitleSection>
         <MenuRadioGroup
