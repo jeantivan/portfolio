@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import NextLink from "next/link";
 import { styled } from "@config/stitches.config";
 import { HamburgerMenuIcon, GearIcon } from "@radix-ui/react-icons";
 import {
@@ -13,12 +14,48 @@ import {
 import IconButton from "@components/IconButton";
 import Navbar from "@components/Navbar";
 import Menu from "@components/Menu";
+import Container from "@components/Container";
 
-const Container = styled("header", {
+const StyledHeader = styled("header", {
   display: "flex",
-  justifyContent: "space-between",
-  padding: 18,
+
   gridArea: "header",
+});
+
+const Nav = styled("nav", {
+  display: "none",
+  marginRight: "auto",
+
+  "@lg": { display: "flex" },
+});
+
+const Link = styled("a", {
+  all: "unset",
+  fontFamily: "$mont",
+  fontWeight: 500,
+  color: "$text",
+  padding: "6px 26px",
+  border: "1px solid $sand5",
+  borderRadius: 6,
+  userSelect: "none",
+
+  "&:not(:last-child)": {
+    marginRight: 16,
+  },
+
+  "&:hover": {
+    borderColor: "$primary",
+    color: "$primary",
+  },
+
+  variants: {
+    active: {
+      true: {
+        borderColor: "$primary",
+        color: "$primary",
+      },
+    },
+  },
 });
 
 const Header = () => {
@@ -29,6 +66,7 @@ const Header = () => {
     const closeDialogOnRouteChange = () => {
       setOpen(false);
     };
+
     router.events.on("routeChangeStart", closeDialogOnRouteChange);
 
     return () => {
@@ -41,33 +79,49 @@ const Header = () => {
   return (
     <DialogRoot open={open} onOpenChange={setOpen}>
       <MenuRoot>
-        <Container>
-          <DialogTrigger asChild>
-            <IconButton
-              css={{
-                marginRight: "auto",
-                "@md": {
-                  display: "none",
-                },
-              }}
-            >
-              <HamburgerMenuIcon />
-            </IconButton>
-          </DialogTrigger>
+        <StyledHeader>
+          <Container
+            css={{ display: "flex", paddingTop: 18, paddingBottom: 18 }}
+          >
+            <DialogTrigger asChild>
+              <IconButton
+                css={{
+                  marginRight: "auto",
+                  "@lg": {
+                    display: "none",
+                  },
+                }}
+              >
+                <HamburgerMenuIcon />
+              </IconButton>
+            </DialogTrigger>
+            <Nav>
+              <NextLink href="/" passHref>
+                <Link active={router.pathname === "/"}>About</Link>
+              </NextLink>
 
-          <MenuTrigger asChild>
-            <IconButton
-              css={{
-                marginLeft: "auto",
-                "&[data-state='open']": { borderColor: "$primary" },
-              }}
-            >
-              <GearIcon />
-            </IconButton>
-          </MenuTrigger>
-        </Container>
-        <Navbar />
-        <Menu />
+              <NextLink passHref href="/projects">
+                <Link active={router.pathname === "/projects"}>Projects</Link>
+              </NextLink>
+              <NextLink passHref href="/skills">
+                <Link active={router.pathname === "/skills"}>Skills</Link>
+              </NextLink>
+            </Nav>
+
+            <MenuTrigger asChild>
+              <IconButton
+                css={{
+                  marginLeft: "auto",
+                  "&[data-state='open']": { borderColor: "$primary" },
+                }}
+              >
+                <GearIcon />
+              </IconButton>
+            </MenuTrigger>
+          </Container>
+          <Navbar />
+          <Menu />
+        </StyledHeader>
       </MenuRoot>
     </DialogRoot>
   );
