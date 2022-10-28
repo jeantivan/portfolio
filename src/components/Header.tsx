@@ -38,6 +38,7 @@ const Link = styled("a", {
   border: "1px solid $sand5",
   borderRadius: 6,
   userSelect: "none",
+  cursor: "pointer",
 
   "&:not(:last-child)": {
     marginRight: 16,
