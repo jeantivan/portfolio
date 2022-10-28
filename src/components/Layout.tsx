@@ -6,7 +6,7 @@ import SocialLinks from "@components/SocialLinks";
 const Container = styled("div", {
   backgroundImage: `radial-gradient(circle at 90% 10%, $sand1, $sand2 80%)`,
   backgroundRepeat: "no-repeat",
-  minWidth: "100vw",
+  minWidth: "100%",
   minHeight: "100vh",
   overflowX: "hidden",
   display: "grid",
