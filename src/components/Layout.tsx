@@ -4,6 +4,7 @@ import Header from "@components/Header";
 import SocialLinks from "@components/SocialLinks";
 
 const Container = styled("div", {
+  backgroundColor: "$bg",
   backgroundImage: `radial-gradient(circle at 90% 10%, $sand1, $sand2 80%)`,
   backgroundRepeat: "no-repeat",
   minWidth: "100%",
