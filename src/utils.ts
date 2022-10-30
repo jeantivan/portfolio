@@ -6,6 +6,7 @@ export const createPrimaryColorTheme = (color: TColors) => {
   return createTheme({
     colors: {
       primary: `$${color}9`,
+      primaryHover: `$${color}10`,
     },
   });
 };
