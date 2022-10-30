@@ -10,6 +10,7 @@ import Skill from "@components/Skill";
 
 const Title = styled("h1", {
   fontFamily: "$mont",
+  color: "$text",
   fontWeight: 700,
   fontSize: 72,
   margin: 0,
@@ -19,13 +20,14 @@ const Title = styled("h1", {
 
 const SubHeading = styled("h2", {
   fontFamily: "$mont",
+  color: "$text",
   fontSize: 20,
   fontWeight: 700,
 });
 
 const Text = styled("p", {
   fontWeight: 400,
-  color: "$sand11",
+  color: "$textSecondary",
   fontSize: 16,
   lineHeight: 2,
   margin: 0,
