@@ -55,6 +55,7 @@ const Card = styled("article", {
   gridColumn: "span 6",
   display: "flex",
   flexDirection: "column",
+  height: "100%",
 
   padding: 8,
   borderRadius: 6,
@@ -106,7 +107,7 @@ const CardDescription = styled("p", {
 });
 
 const CardFooter = styled("footer", {
-  flex: 1,
+  marginTop: "auto",
   display: "flex",
 });
 
@@ -120,6 +121,10 @@ const Button = styled("button", {
   background: "$primary",
   borderRadius: 6,
   marginRight: 8,
+
+  "&:hover": {
+    backgroundColor: "$primaryHover",
+  },
 });
 
 const Projects: NextPage = () => {
