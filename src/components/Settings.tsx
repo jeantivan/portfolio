@@ -8,6 +8,7 @@ import {
 import { COLORS, COLOR_MODE_KEY, PRIMARY_COLOR_KEY } from "@src/constants";
 import { createColorModeTheme, createPrimaryColorTheme } from "@src/utils";
 import { setCookie } from "cookies-next";
+import { styled } from "@src/config/stitches.config";
 
 export type TSettings = {
   primaryColor: TColors;
@@ -36,6 +37,13 @@ type SettingsProps = {
   color: TColors;
 };
 
+const Transition = styled("div", {
+  "& *": {
+    transition:
+      "color 150ms ease, border-color 150ms ease, background-color 150ms ease",
+  },
+});
+
 const Settings = ({ children, mode, color }: SettingsProps) => {
   const [colorMode, setColorMode] = useState<TColorMode>(mode);
   const [primaryColor, setPrimaryColor] = useState<TColors>(color);
@@ -55,8 +63,13 @@ const Settings = ({ children, mode, color }: SettingsProps) => {
     <SettingsCxt.Provider
       value={{ colorMode, primaryColor, changeColorMode, changePrimaryColor }}
     >
-      <div className={ColorModeThemes[colorMode]}>
+      {/* <div className={ColorModeThemes[colorMode]}>
         <div className={PrimaryColorModeThemes[primaryColor]}>{children}</div>
+      </div> */}
+      <div
+        className={`${ColorModeThemes[colorMode]} ${PrimaryColorModeThemes[primaryColor]}`}
+      >
+        <Transition>{children}</Transition>
       </div>
     </SettingsCxt.Provider>
   );
