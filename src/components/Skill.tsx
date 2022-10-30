@@ -18,6 +18,7 @@ const Container = styled("div", {
   alignItems: "center",
   border: "1px solid $sand3",
   borderRadius: 6,
+  color: "$text",
 
   "&:hover": {
     borderColor: "$primary",
