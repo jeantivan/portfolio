@@ -1,28 +1,31 @@
-import { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import { GridIcon, ListBulletIcon } from "@radix-ui/react-icons";
 import { styled } from "@config/stitches.config";
 import Container from "@components/Container";
-import IconButton from "@components/IconButton";
 import Skill from "@components/Skill";
+
+const Grid = styled("div", {
+  paddingTop: 32,
+  display: "grid",
+  gridTemplateColumns: "repeat(6, 1fr)",
+  gridGap: "16px 16px",
+});
+
+const Content = styled("div", {
+  gridColumn: "span 6",
+
+  "@lg": {
+    gridColumn: "span 3",
+  },
+});
 
 const Title = styled("h1", {
   fontFamily: "$mont",
   color: "$text",
   fontWeight: 700,
-  fontSize: 72,
+  fontSize: 56,
   margin: 0,
-  marginBottom: 24,
-  paddingBottom: 12,
-});
-
-const SubHeading = styled("h2", {
-  fontFamily: "$mont",
-  color: "$text",
-  fontSize: 20,
-  fontWeight: 700,
+  marginBottom: 16,
 });
 
 const Text = styled("p", {
@@ -37,38 +40,31 @@ const Text = styled("p", {
   },
 });
 
-const Span = styled("span", {
-  position: "relative",
-
-  "&:after": {
-    content: "''",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    height: 6,
-    width: "50%",
-    backgroundColor: "$primary",
-    clipPath: "polygon(0 0, 100% 0%, 80% 100%, 0% 100%)",
-    transform: "translate(0, 12px)",
-  },
-});
-
-const Flex = styled("div", {
-  display: "flex",
-});
+const Span = styled("span", {});
 
 const SkillList = styled("div", {
+  position: "relative",
+  gridColumn: "span 6",
   display: "grid",
-  gridGap: "16px 16px",
-  gridTemplateColumns: "repeat(2, 1fr)",
-  gridTemplateRows: "repeat(3, min-content)",
+  gridTemplateColumns: "repeat(4, 64px)",
+  gridTemplateRows: "repeat(auto-fill, 64px)",
+  gap: "16px 16px",
+  gridTemplateAreas: `
+    "react react javascript typescript"
+    "react react next react-spring"
+  "material-ui tailwindcss css html"
+`,
+  placeContent: "center",
+  zIndex: 0,
 
-  variants: {
-    list: {
-      true: {
-        gridTemplateColumns: "1fr",
-      },
-    },
+  "@lg": {
+    gridColumn: "span 3",
+    gridTemplateAreas: `
+      "typescript javascript next ."
+      "react-spring react react ."
+      ". react react material-ui"
+      ". tailwindcss css html"
+    `,
   },
 });
 
@@ -82,63 +78,89 @@ const skills = [
     image: "/images/skills/typescript.svg",
   },
   {
-    name: "React.js",
+    name: "React",
     image: "/images/skills/react.svg",
   },
   {
-    name: "Next.js",
+    name: "Next",
     image: "/images/skills/nextjs.svg",
   },
   {
-    name: "HTML 5",
+    name: "HTML",
     image: "/images/skills/html-5.svg",
   },
   {
     name: "CSS",
     image: "/images/skills/css-3.svg",
   },
+  {
+    name: "Material UI",
+    image: "/images/skills/material-ui.svg",
+  },
+  {
+    name: "TailwindCSS",
+    image: "/images/skills/tailwindcss.svg",
+  },
+  {
+    name: "React Spring",
+    image: "/images/skills/react-spring.svg",
+  },
 ];
 
 const Skills: NextPage = () => {
-  const [list, setList] = useState(true);
-
-  const toggleList = () => {
-    setList(!list);
-  };
-
   return (
     <Container>
       <Head>
         <title>Skills | JeanTivan</title>
       </Head>
-      <Flex css={{ flexDirection: "column", marginBottom: 24 }}>
-        <Title>
-          <Span>Skills</Span>
-        </Title>
-        <Text>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis esse
-          hic dolorum, minus tenetur vitae!
-        </Text>
-      </Flex>
-      <Flex
-        css={{
-          flex: 1,
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 24,
-        }}
-      >
-        <SubHeading>Tech skills</SubHeading>
-        <IconButton onClick={toggleList}>
-          {list ? <GridIcon /> : <ListBulletIcon />}
-        </IconButton>
-      </Flex>
+      <Grid>
+        <Content>
+          <Title>
+            How I build a <Span css={{ color: "$primary" }}>website?</Span>
+          </Title>
+          <Text>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
+            adipisci fugit ab nemo et soluta hic ipsa velit inventore totam
+            eveniet aperiam esse laudantium, dolorem cupiditate officiis, minus
+            ad aliquam!
+          </Text>
+        </Content>
 
-      <SkillList list={list}>
-        {skills.map((skill) => (
-          <Skill key={skill.name} {...skill} list={list} />
-        ))}
-      </SkillList>
+        <SkillList>
+          {skills.map((skill) => (
+            <Skill key={skill.name} {...skill} />
+          ))}
+
+          <Span
+            css={{
+              gridColumn: "1 / 5",
+              gridRow: "1 / 5",
+              width: "100%",
+              height: "100%",
+              display: "block",
+              color: "$primary",
+              zIndex: -1,
+              transform: "translate(25%, -15%)",
+              "& svg": {
+                stroke: "$primary",
+              },
+            }}
+          >
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 264 304"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.36414 77.1547L132 2.3094L261.636 77.1547V226.845L132 301.691L2.36414 226.845V77.1547Z"
+                strokeWidth="4"
+              />
+            </svg>
+          </Span>
+        </SkillList>
+      </Grid>
     </Container>
   );
 };
