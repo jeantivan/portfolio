@@ -1,5 +1,6 @@
 import NextImage from "next/image";
 import { styled, keyframes } from "@config/stitches.config";
+import Card from "@components/Card";
 
 const spin = keyframes({
   "0%": {
@@ -21,14 +22,7 @@ const Name = styled("span", {
   fontWeight: "500",
 });
 
-const Container = styled("div", {
-  borderRadius: 6,
-  backgroundColor: "$menu",
-  boxShadow: "0px 2px 6px rgba(0,0,0,0.1)",
-  width: "100%",
-  height: "100%",
-  zIndex: 1,
-  transition: "all 150ms ease-in",
+const Container = styled(Card, {
   padding: 10,
   display: "flex",
   flexDirection: "column",
