@@ -49,7 +49,7 @@ const Link = styled("a", {
   fontWeight: 700,
   margin: "20px 0",
   fontFamily: "$mont",
-
+  color: "$text",
   "&:first-letter": {
     color: "$primary",
   },
