@@ -1,251 +1,204 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import NextLink from "next/link";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { styled, keyframes } from "@config/stitches.config";
+import { MixIcon, PaperPlaneIcon, RocketIcon } from "@radix-ui/react-icons";
+import { styled } from "@config/stitches.config";
 import Container from "@components/Container";
+import Card from "@src/components/Card";
 
+const Span = styled("span", {});
 const Grid = styled("div", {
-  paddingTop: 32,
-  paddingBottom: 32,
   display: "grid",
   alignItems: "center",
   gridTemplateColumns: "repeat(6, 1fr)",
-  gridColumnGap: "16px",
+  gridGap: "24px 16px",
+  zIndex: 0,
 });
 
 const Content = styled("div", {
-  gridColumn: "span 5",
-});
-
-const Title = styled("h1", {
-  fontFamily: "$mont",
-  fontWeight: 700,
-  fontSize: 72,
-  margin: 0,
-  marginBottom: 16,
-  color: "$text",
-});
-
-const SubHeading = styled("h2", {
-  fontFamily: "$mont",
-  fontSize: 24,
-  margin: 0,
-  marginBottom: 24,
-  color: "$text",
-  "@md": {
-    fontSize: 32,
+  gridColumn: "span 6",
+  "@lg": {
+    gridColumn: "span 4",
   },
 });
 
-const Word = styled("span", {
+const Title = styled("div", {
+  marginBottom: 24,
+});
+
+const Text = styled("p", {
+  margin: 0,
+  color: "$text",
+  fontSize: 16,
+  lineHeight: 1.8,
+
+  variants: {
+    heading: {
+      true: {
+        fontFamily: "$mont",
+        fontWeight: 700,
+        lineHeight: 1.25,
+      },
+    },
+  },
+});
+
+const word = {
   display: "inline-block",
   marginRight: 16,
   "&:first-letter": {
     color: "$primary",
   },
-
   "@md": { marginRight: 16 },
-});
+};
 
-const Text = styled("p", {
-  fontWeight: 400,
-  color: "$sand11",
-  fontSize: 16,
-  lineHeight: 2,
-  margin: 0,
-  marginBottom: 40,
+const Links = styled("div", {
+  gridColumn: "span 6",
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  gridTemplateRows: "repeat(2, 125px)",
+  gridTemplateAreas: `
+    "projects projects"
+    "skills contact"
+  `,
+  gridGap: "16px 16px",
 
-  "@md": {
-    fontSize: 18,
+  "@lg": {
+    gridColumn: "span 2",
   },
 });
 
-const stroke = keyframes({
-  "0%": {
-    strokeDashoffset: 500,
-  },
-  "100%": {
-    strokeDashoffset: 0,
-  },
-});
-
-const Svg = styled("svg", {
-  fill: "transparent",
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  stroke: "$primary",
-  strokeWidth: 2,
-  strokeDasharray: 500,
-  strokeDashoffset: 500,
-  animationDuration: "4s",
-  animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-  animationFillMode: "forwards",
-});
-
-const Link = styled("a", {
-  all: "unset",
-  display: "inline-flex",
-  justifyGrid: "space-between",
-  alignItems: "center",
-  padding: "12px 24px",
-  position: "relative",
-  //border: "1px solid $primary",
-  backgroundColor: "transparent",
-  color: "$primary",
-
-  borderRadius: 8,
-  cursor: "pointer",
-  textTransform: "uppercase",
-  fontSize: 18,
-  fontWeight: 700,
-  letterSpacing: 2,
-  transition: "all 150ms ease",
+const Link = styled(Card, {
+  textDecoration: "none",
+  padding: "18px 24px",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "space-between",
+  flexDirection: "column",
 
   "&:hover": {
-    color: "$sand12",
-    //backgroundColor: "$primary",
-    "& .arrow-icon": {
-      transform: "translateX(4px)",
-    },
-  },
-
-  "& .arrow-icon": {
-    marginLeft: 16,
-    width: 20,
-    height: 20,
-    fill: "currentColor",
-  },
-
-  [`&:hover ${Svg}`]: {
-    animationName: stroke,
+    boxShadow: `0px 0px 16px $colors$primary`,
+    transform: "scale(1.05)",
   },
 });
 
-const Flex = styled("div", {
-  display: "flex",
+const Icon = styled("span", {
+  color: "$primary",
+  width: 32,
+  height: 32,
+  display: "inline-flex",
+  "& svg": {
+    width: "100%",
+    height: "100%",
+  },
 });
-
-const LinesWrapper = styled("span", {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  zIndex: -1,
-  pointerEvents: "none",
-  overflow: "hidden",
-});
-
-const Line = styled("span", {
-  backgroundColor: "$primary",
-  height: 2,
-  position: "fixed",
-});
-const Lines = () => {
-  return (
-    <LinesWrapper aria-hidden="true">
-      <Line
-        css={{
-          width: "100%",
-          top: "50%",
-          left: 0,
-        }}
-      />
-
-      {/* <svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 390 844"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <line x1="70" y1="-20" x2="1500" y2="250" stroke="#F76808" />
-        <line x1="-1000" y1="393" x2="3000" y2="393" stroke="#F76808" />
-        <line x1="-1000" y1="550" x2="150" y2="900" stroke="#F76808" />
-      </svg> */}
-      {/* <svg
-        viewBox="0 0 1280 832"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M626 0.5L1282.5 409.5H2.5L626 831" stroke="#F76808" />
-      </svg> */}
-    </LinesWrapper>
-  );
-};
 
 const Home: NextPage = () => {
   return (
-    <Container>
+    <Container css={{ display: "flex", alignItems: "center" }}>
       <Head>
         <title>Home | JeanTivan</title>
         <meta name="description" content="Generated by create next app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Grid>
-        <Content style={{ gridColumn: "span 5" }}>
-          <Title
+        <Content>
+          <Title>
+            <Text
+              as="h1"
+              heading
+              css={{ fontSize: 56, "@lg": { fontSize: 64 } }}
+            >
+              Jean Paul Tivan
+            </Text>
+            <Text
+              as="h2"
+              css={{ fontSize: 28, "@lg": { fontSize: 32 } }}
+              heading
+            >
+              <Span css={word}>Frontend</Span>
+              <Span css={word}>Developer</Span>
+            </Text>
+          </Title>
+          <Text
             css={{
+              color: "$textSecondary",
               "@md": {
-                width: "80%",
+                fontSize: 18,
               },
             }}
           >
-            Jean Paul Tivan
-          </Title>
-          <SubHeading>
-            <Word>Frontend</Word>
-            <Word>Developer</Word>
-          </SubHeading>
-          <Text>
             Vestibulum rhoncus non dolor eget finibus. Vestibulum quis dolor
             nibh. Sed tempus orci eget orci euismod fringilla. Sed varius est
             leo, vitae sagittis diam efficitur sed. Vivamus risus ante,
             sollicitudin at dapibus eget, egestas ac nulla. Aliquam at neque
             non.
           </Text>
-          <Flex css={{ justifyContent: "flex-end" }}>
-            <NextLink href="/projects" passHref>
-              <Link>
-                Projects <ArrowRightIcon className="arrow-icon" />
-                <Svg
-                  className="svg-responsive"
-                  //viewBox="0 0 320 60"
-                  width="100%"
-                  height="100%"
-                  xmlns="http://www.w3.org/2000/svg"
-                  preserveAspectRatio="none"
-                >
-                  <rect
-                    className="shape"
-                    width="100%"
-                    height="100%"
-                    rx="8"
-                    ry="8"
-                  />
-                </Svg>
-              </Link>
-            </NextLink>
-          </Flex>
         </Content>
-      </Grid>
 
-      <Lines />
+        <Links>
+          <NextLink href="/projects" passHref legacyBehavior>
+            <Link as="a" css={{ gridArea: "projects" }}>
+              <Icon>
+                <RocketIcon />
+              </Icon>
+              <Text as="h3" heading css={{ fontSize: 20 }}>
+                Projects
+              </Text>
+            </Link>
+          </NextLink>
+
+          <NextLink href="/skills" passHref legacyBehavior>
+            <Link as="a" css={{ gridArea: "skills" }}>
+              <Icon>
+                <MixIcon />
+              </Icon>
+              <Text as="h3" heading css={{ fontSize: 20 }}>
+                Skills
+              </Text>
+            </Link>
+          </NextLink>
+          <NextLink href="/contact" passHref legacyBehavior>
+            <Link as="a" css={{ gridArea: "contact" }}>
+              <Icon>
+                <PaperPlaneIcon />
+              </Icon>
+              <Text as="h3" heading css={{ fontSize: 20 }}>
+                Contact
+              </Text>
+            </Link>
+          </NextLink>
+
+          <Span
+            css={{
+              gridColumn: "1 / 3",
+              gridRow: "1 / 3",
+              width: "100%",
+              height: "100%",
+              maxWidth: 280,
+              maxHeight: 280,
+              display: "block",
+              color: "$primary",
+              zIndex: -1,
+              transform: "translate(50%, 10%)",
+              "& svg": {
+                stroke: "$primary",
+              },
+            }}
+          >
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 280 280"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="140" cy="140" r="136" strokeWidth="4" />
+            </svg>
+          </Span>
+        </Links>
+      </Grid>
     </Container>
   );
 };
-<svg
-  width="288"
-  height="26"
-  viewBox="0 0 288 26"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path d="M0.5 0.5H287.5V25.5H0.5V0.5Z" stroke="black" />
-</svg>;
-
 export default Home;
