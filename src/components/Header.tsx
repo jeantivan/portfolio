@@ -107,6 +107,9 @@ const Header = () => {
               <NextLink passHref href="/skills">
                 <Link active={router.pathname === "/skills"}>Skills</Link>
               </NextLink>
+              <NextLink passHref href="/contact">
+                <Link active={router.pathname === "/contact"}>Contact</Link>
+              </NextLink>
             </Nav>
 
             <MenuTrigger asChild>

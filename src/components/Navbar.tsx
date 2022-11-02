@@ -82,6 +82,9 @@ const Navbar = () => {
           <NextLink href="/skills" passHref>
             <Link>Skills</Link>
           </NextLink>
+          <NextLink href="/contact" passHref>
+            <Link>Contact</Link>
+          </NextLink>
         </NavLinks>
         <SocialLinks />
       </Content>
