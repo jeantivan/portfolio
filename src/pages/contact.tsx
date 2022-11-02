@@ -22,6 +22,7 @@ const Content = styled("div", {
 
 const Flex = styled("div", {
   display: "flex",
+  flexWrap: "wrap",
 });
 
 const Title = styled("div", {
@@ -45,7 +46,7 @@ const Text = styled("p", {
   },
 });
 
-const Link = styled("a", {
+const Button = styled("button", {
   all: "unset",
   padding: "12px 20px",
   display: "inline-flex",
@@ -63,6 +64,61 @@ const Link = styled("a", {
 
   "&:hover": {
     background: "$primaryHover",
+  },
+});
+
+const InputContainer = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+});
+
+const Label = styled("label", {
+  color: "$text",
+  fontFamily: "$mont",
+  fontWeight: 700,
+  marginBottom: 8,
+  display: "block",
+});
+
+const Input = styled("input", {
+  all: "unset",
+  flex: 1,
+  padding: "12px 20px",
+  background: "$sand3",
+  borderRadius: 4,
+  borderColor: "1px solid $sand7",
+  color: "$text",
+
+  "&:hover": {
+    background: "$sand4",
+  },
+
+  "&:focus": {
+    outline: "1px solid $primary",
+  },
+
+  "&:invalid": {
+    outline: "1px solid red",
+  },
+});
+
+const Form = styled("form", {
+  display: "grid",
+  gridGap: "16px",
+  gridTemplateAreas: `
+    "name"
+    "email"
+    "message"
+    "button"
+  `,
+  marginBottom: 64,
+
+  "@md": {
+    gridTemplateAreas: `
+    "name email"
+    "message message"
+    "button button"
+  `,
   },
 });
 
@@ -87,20 +143,22 @@ const Contact: NextPage = () => {
             You can contact me through
           </Text>
           <Flex css={{ width: "50%", margin: "16px 0" }}>
-            <Link
+            <Button
+              as="a"
               css={{ flex: 1 }}
               href="https://www.linkedin.com/in/jean-tivan/"
               title="Let's connect ;)"
             >
               LinkedIn
-            </Link>
-            <Link
+            </Button>
+            <Button
+              as="a"
               css={{ flex: 1 }}
               href="mailto:jptivan53@gmail.com"
               title="Send me an Email! :D"
             >
               Email
-            </Link>
+            </Button>
             {/* <Link css={{ flex: 1 }}>UpWork</Link> */}
           </Flex>
           <Text
@@ -108,6 +166,26 @@ const Contact: NextPage = () => {
           >
             Or you can leave me a brief message so I can get back to you
           </Text>
+          <Form>
+            <InputContainer css={{ gridArea: "name" }}>
+              <Label htmlFor="name">Full name</Label>
+              <Input name="name" id="name" />
+            </InputContainer>
+            <InputContainer css={{ gridArea: "email" }}>
+              <Label htmlFor="email">Email</Label>
+              <Input name="email" id="email" type="email" />
+            </InputContainer>
+            <InputContainer css={{ gridArea: "message" }}>
+              <Label htmlFor="message">Message</Label>
+              <Input
+                as="textarea"
+                name="message"
+                id="message"
+                css={{ minHeight: 200 }}
+              ></Input>
+            </InputContainer>
+            <Button css={{ gridArea: "button" }}>Enviar</Button>
+          </Form>
         </Content>
       </Grid>
     </Container>
