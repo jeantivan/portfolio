@@ -169,11 +169,17 @@ const Contact: NextPage = () => {
           <Form>
             <InputContainer css={{ gridArea: "name" }}>
               <Label htmlFor="name">Full name</Label>
-              <Input name="name" id="name" />
+              <Input name="name" id="name" placeholder="John Doe" required />
             </InputContainer>
             <InputContainer css={{ gridArea: "email" }}>
               <Label htmlFor="email">Email</Label>
-              <Input name="email" id="email" type="email" />
+              <Input
+                name="email"
+                id="email"
+                type="email"
+                placeholder="johndoe@example.com"
+                required
+              />
             </InputContainer>
             <InputContainer css={{ gridArea: "message" }}>
               <Label htmlFor="message">Message</Label>
@@ -182,6 +188,10 @@ const Contact: NextPage = () => {
                 name="message"
                 id="message"
                 css={{ minHeight: 200 }}
+                placeholder="Your message goes here..."
+                required
+                minLength={5}
+                maxLength={256}
               ></Input>
             </InputContainer>
             <Button css={{ gridArea: "button" }}>Enviar</Button>
