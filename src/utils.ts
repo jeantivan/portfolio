@@ -7,6 +7,7 @@ export const createPrimaryColorTheme = (color: TColors) => {
     colors: {
       primary: `$${color}9`,
       primaryHover: `$${color}10`,
+      contrastText: color === "amber" ? "black" : "white",
     },
   });
 };
