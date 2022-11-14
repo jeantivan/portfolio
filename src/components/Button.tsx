@@ -13,8 +13,6 @@ const Button = styled("button", {
   transition: "all 0.150s ease-out",
 
   "&:hover": {
-    //background: "linear-gradient(to right, $primary, $primaryLight)",
-    transform: "scale(1.05)",
     boxShadow: "0px 0px 12px $colors$primaryDark",
   },
 });
