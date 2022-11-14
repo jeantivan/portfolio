@@ -6,7 +6,8 @@ export const createPrimaryColorTheme = (color: TColors) => {
   return createTheme({
     colors: {
       primary: `$${color}9`,
-      primaryHover: `$${color}10`,
+      primaryDark: `$${color}11`,
+      primaryLight: `$${color}8`,
       contrastText: color === "amber" ? "black" : "white",
     },
   });
@@ -33,7 +34,6 @@ export const createColorModeTheme = (mode: TColorMode) => {
       bg: "$sand2",
       text: "$sand12",
       textSecondary: "$sand11",
-
       menu: "$sand3",
     },
   });
