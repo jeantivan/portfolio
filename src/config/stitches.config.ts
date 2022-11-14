@@ -18,6 +18,16 @@ export const {
       ...grass,
       ...amber,
       ...purple,
+
+      // Variables del tema
+      primary: `$orange9`,
+      primaryDark: `$orange11`,
+      primaryLight: `$orange8`,
+      contrastText: "white",
+      bg: "$sand2",
+      text: "$sand12",
+      textSecondary: "$sand11",
+      menu: "$sand3",
     },
     fonts: {
       mont: "'Montserrat', sans-serif",
