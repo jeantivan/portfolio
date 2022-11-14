@@ -5,8 +5,9 @@ import SocialLinks from "@components/SocialLinks";
 
 const Container = styled("div", {
   backgroundColor: "$bg",
-  backgroundImage: `radial-gradient(circle at 90% 10%, $sand1, $sand2 80%)`,
+  backgroundImage: `radial-gradient(circle at 15% 50%, $sand4, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 30%, $sand4, rgba(255, 255, 255, 0) 25%)`,
   backgroundRepeat: "no-repeat",
+  backgroundAttachment: "fixed",
   minWidth: "100%",
   minHeight: "100vh",
   overflowX: "hidden",
