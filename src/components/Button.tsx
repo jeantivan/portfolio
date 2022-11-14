@@ -6,12 +6,16 @@ const Button = styled("button", {
   justifyContent: "center",
   alignItems: "center",
   padding: "8px 20px",
-  background: "$primary",
+  background: "linear-gradient(to right, $primaryDark,$primary)",
   color: "$contrastText",
   borderRadius: 6,
+  cursor: "pointer",
+  transition: "all 0.150s ease-out",
 
   "&:hover": {
-    backgroundColor: "$primaryHover",
+    //background: "linear-gradient(to right, $primary, $primaryLight)",
+    transform: "scale(1.05)",
+    boxShadow: "0px 0px 12px $colors$primaryDark",
   },
 });
 
