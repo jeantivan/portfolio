@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Container from "@components/Container";
 import { styled } from "@config/stitches.config";
+import Container from "@components/Container";
+import Button from "@components/Button";
 
 const Span = styled("span", {});
 const Grid = styled("div", {
@@ -43,27 +44,6 @@ const Text = styled("p", {
         lineHeight: 1.25,
       },
     },
-  },
-});
-
-const Button = styled("button", {
-  all: "unset",
-  padding: "12px 20px",
-  display: "inline-flex",
-  borderRadius: 6,
-  background: "$primary",
-  justifyContent: "center",
-  textTransform: "uppercase",
-  fontWeight: 700,
-  cursor: "pointer",
-  userSelect: "none",
-
-  "&:not(:last-child)": {
-    marginRight: 16,
-  },
-
-  "&:hover": {
-    background: "$primaryHover",
   },
 });
 
@@ -145,7 +125,7 @@ const Contact: NextPage = () => {
           <Flex css={{ width: "50%", margin: "16px 0" }}>
             <Button
               as="a"
-              css={{ flex: 1 }}
+              css={{ flex: 1, marginRight: 16 }}
               href="https://www.linkedin.com/in/jean-tivan/"
               title="Let's connect ;)"
             >
