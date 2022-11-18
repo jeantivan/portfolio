@@ -114,12 +114,9 @@ const Featured = (props: any) => {
           "& :not(:last-child)": { marginRight: 16 },
         }}
       >
-        <Button>Ver más</Button>
+        <Button>Live</Button>
         <IconButton>
           <GitHubLogoIcon />
-        </IconButton>
-        <IconButton>
-          <ExternalLinkIcon />
         </IconButton>
       </Flex>
     </Container>
