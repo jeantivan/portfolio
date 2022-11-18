@@ -5,7 +5,7 @@ const Button = styled("button", {
   display: "inline-flex",
   justifyContent: "center",
   alignItems: "center",
-  padding: "8px 20px",
+  padding: "8px 24px",
   background: "linear-gradient(to right, $primaryDark,$primary)",
   color: "$contrastText",
   borderRadius: 6,
