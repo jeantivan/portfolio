@@ -14,10 +14,11 @@ type PageProps = {
 };
 
 const SkillPage: NextPage<PageProps> = ({ skill, projects }) => {
+  const title = `Projects with: ${skill.name} | Jean Tivan`;
   return (
     <Container css={{ paddingTop: 32, paddingBottom: 32 }}>
       <Head>
-        <title>Projects with: {skill.name} | Jean Tivan</title>
+        <title>{title}</title>
       </Head>
       <Text heading css={{ fontSize: 40 }}>
         Projects created using:{" "}
