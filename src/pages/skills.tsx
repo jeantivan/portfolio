@@ -1,8 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { Provider as TooltipProvider } from "@radix-ui/react-tooltip";
 import { styled } from "@config/stitches.config";
 import Container from "@components/Container";
 import Skill from "@components/Skill";
+import { MAIN_SKILLS } from "@src/constants";
 
 const Grid = styled("div", {
   paddingTop: 32,
@@ -68,45 +70,6 @@ const SkillList = styled("div", {
   },
 });
 
-const skills = [
-  {
-    name: "Javascript",
-    image: "/images/skills/javascript.svg",
-  },
-  {
-    name: "Typescript",
-    image: "/images/skills/typescript.svg",
-  },
-  {
-    name: "React",
-    image: "/images/skills/react.svg",
-  },
-  {
-    name: "Next",
-    image: "/images/skills/nextjs.svg",
-  },
-  {
-    name: "HTML",
-    image: "/images/skills/html-5.svg",
-  },
-  {
-    name: "CSS",
-    image: "/images/skills/css-3.svg",
-  },
-  {
-    name: "Material UI",
-    image: "/images/skills/material-ui.svg",
-  },
-  {
-    name: "TailwindCSS",
-    image: "/images/skills/tailwindcss.svg",
-  },
-  {
-    name: "React Spring",
-    image: "/images/skills/react-spring.svg",
-  },
-];
-
 const Skills: NextPage = () => {
   return (
     <Container>
@@ -127,9 +90,11 @@ const Skills: NextPage = () => {
         </Content>
 
         <SkillList>
-          {skills.map((skill) => (
-            <Skill key={skill.name} {...skill} />
-          ))}
+          <TooltipProvider delayDuration={150}>
+            {MAIN_SKILLS.map((skill) => (
+              <Skill key={skill.name} {...skill} />
+            ))}
+          </TooltipProvider>
 
           <Span
             css={{
