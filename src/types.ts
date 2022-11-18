@@ -18,3 +18,23 @@ export type TPrimaryColorThemes = ObjectFromList<
 export type TColorModeThemes = {
   [K in TColorMode]: ReturnType<typeof createTheme>;
 };
+
+export type TSkill = {
+  name: string;
+  slug: string;
+  image: string;
+};
+
+export type TProject = {
+  id?: string;
+  slug: string;
+  name: string;
+  githubLink: string;
+  liveLink: string;
+  skills: TSkill[];
+  type: "featured" | "small" | "code-challenge";
+  finishDate: Date | string;
+  description: string;
+  coverImage?: string;
+  code?: string;
+};
