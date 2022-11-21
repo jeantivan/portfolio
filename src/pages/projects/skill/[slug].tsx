@@ -13,7 +13,7 @@ type PageProps = {
   projects: TProject[];
 };
 
-const SkillPage: NextPage<PageProps> = ({ skill, projects }) => {
+const ProjectsBySkill: NextPage<PageProps> = ({ skill, projects }) => {
   const title = `Projects with: ${skill.name} | Jean Tivan`;
   return (
     <Container css={{ paddingTop: 32, paddingBottom: 32 }}>
@@ -53,4 +53,4 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   };
 };
 
-export default SkillPage;
+export default ProjectsBySkill;
