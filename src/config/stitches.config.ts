@@ -30,7 +30,7 @@ export const {
       menu: "$sand3",
     },
     fonts: {
-      mont: "'Montserrat', sans-serif",
+      mont: "'Montserrat', system-ui, sans-serif",
     },
     shadows: {
       shadow: "0px 2px 4px rgba(0,0,0,0.1)",
