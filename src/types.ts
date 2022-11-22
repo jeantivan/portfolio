@@ -25,6 +25,11 @@ export type TSkill = {
   image: string;
 };
 
+export type TProjectType = {
+  slug: "featured" | "small" | "code-challenge";
+  type: "Featured" | "Small" | "Code Challenge";
+};
+
 export type TProject = {
   id?: string;
   slug: string;
@@ -32,7 +37,7 @@ export type TProject = {
   githubLink: string;
   liveLink: string;
   skills: TSkill[];
-  type: "featured" | "small" | "code-challenge";
+  type: TProjectType;
   finishDate: Date | string;
   description: string;
   coverImage?: string;
