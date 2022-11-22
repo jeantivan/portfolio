@@ -57,9 +57,9 @@ export const PROJECT_EXAMPLE: TProject = {
   githubLink: "https://github.com/jeantivan/real-estate-web",
   liveLink: "https://real-estate-web.vercel.app/",
   skills: [MAIN_SKILLS[0], MAIN_SKILLS[2], MAIN_SKILLS[3]],
-  type: "featured",
+  type: { slug: "featured", type: "Featured" },
   finishDate: "21/01/2022",
-  coverImage: "/public/images/projects/example/Home.png",
+  coverImage: "/images/projects/example/Home.png",
   description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
           voluptates amet autem, perspiciatis, voluptatibus, reprehenderit
           eveniet cumque officiis inventore reiciendis animi id optio quod.
