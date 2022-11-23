@@ -122,7 +122,7 @@ const Contact: NextPage = () => {
           <Text css={{ color: "$textSecondary", fontSize: 20 }}>
             You can contact me through
           </Text>
-          <Flex css={{ width: "50%", margin: "16px 0" }}>
+          <Flex css={{ margin: "16px 0" }}>
             <Button
               as="a"
               css={{ flex: 1, marginRight: 16 }}
@@ -174,7 +174,7 @@ const Contact: NextPage = () => {
                 maxLength={256}
               ></Input>
             </InputContainer>
-            <Button css={{ gridArea: "button" }}>Enviar</Button>
+            <Button css={{ gridArea: "button" }}>Send message</Button>
           </Form>
         </Content>
       </Grid>
