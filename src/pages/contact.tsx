@@ -3,6 +3,8 @@ import Head from "next/head";
 import { styled } from "@config/stitches.config";
 import Container from "@components/Container";
 import Button from "@components/Button";
+import Text from "@components/Text";
+import Flex from "@components/Flex";
 
 const Span = styled("span", {});
 const Grid = styled("div", {
@@ -21,30 +23,8 @@ const Content = styled("div", {
   },
 });
 
-const Flex = styled("div", {
-  display: "flex",
-  flexWrap: "wrap",
-});
-
 const Title = styled("div", {
   marginBottom: 16,
-});
-
-const Text = styled("p", {
-  margin: 0,
-  color: "$text",
-  fontSize: 16,
-  lineHeight: 1.8,
-
-  variants: {
-    heading: {
-      true: {
-        fontFamily: "$mont",
-        fontWeight: 700,
-        lineHeight: 1.25,
-      },
-    },
-  },
 });
 
 const InputContainer = styled("div", {
@@ -119,7 +99,7 @@ const Contact: NextPage = () => {
               How you can <Span css={{ color: "$primary" }}>contact me?</Span>
             </Text>
           </Title>
-          <Text css={{ color: "$textSecondary", fontSize: 20 }}>
+          <Text secondary css={{ fontSize: 20 }}>
             You can contact me through
           </Text>
           <Flex css={{ margin: "16px 0" }}>
@@ -139,7 +119,6 @@ const Contact: NextPage = () => {
             >
               Email
             </Button>
-            {/* <Link css={{ flex: 1 }}>UpWork</Link> */}
           </Flex>
           <Text
             css={{ color: "$textSecondary", fontSize: 20, marginBottom: 16 }}
