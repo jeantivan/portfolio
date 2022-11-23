@@ -19,7 +19,7 @@ import IconButton from "@components/IconButton";
 import Navbar from "@components/Navbar";
 import Menu from "@components/Menu";
 import Container from "@components/Container";
-import Button from "@components/Button";
+import DownloadCV from "@components/DownloadCV";
 
 const StyledHeader = styled("header", {
   display: "flex",
@@ -118,15 +118,12 @@ const Header = () => {
               <NextLink passHref href="/contact">
                 <Link active={router.pathname === "/contact"}>Contact</Link>
               </NextLink>
-              <Button css={{ marginLeft: "auto", "& svg": { marginRight: 8 } }}>
-                <DownloadIcon /> Download CV
-              </Button>
             </Nav>
-
+            <DownloadCV />
             <MenuTrigger asChild>
               <IconButton
                 css={{
-                  marginLeft: "auto",
+                  marginLeft: 16,
                   "&[data-state='open']": { borderColor: "$primary" },
                 }}
               >
