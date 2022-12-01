@@ -43,3 +43,9 @@ export type TProject = {
   coverImage?: string;
   code?: string;
 };
+
+export type TContactFormValues = {
+  fullName: string;
+  email: string;
+  message: string;
+};
