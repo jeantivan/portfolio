@@ -1,40 +1,8 @@
+import { useForm, Controller } from "react-hook-form";
 import { styled } from "@config/stitches.config";
 import Button from "@components/Button";
-
-const InputContainer = styled("div", {
-  display: "flex",
-  flexDirection: "column",
-});
-
-const Label = styled("label", {
-  color: "$text",
-  fontFamily: "$mont",
-  fontWeight: 700,
-  marginBottom: 8,
-  display: "block",
-});
-
-const Input = styled("input", {
-  all: "unset",
-  flex: 1,
-  padding: "12px 20px",
-  background: "$sand3",
-  borderRadius: 4,
-  borderColor: "1px solid $sand7",
-  color: "$text",
-
-  "&:hover": {
-    background: "$sand4",
-  },
-
-  "&:focus": {
-    outline: "1px solid $primary",
-  },
-
-  "&:invalid": {
-    outline: "1px solid red",
-  },
-});
+import Input from "@components/Input";
+import { TContactFormValues } from "@src/types";
 
 const Form = styled("form", {
   display: "grid",
@@ -57,36 +25,44 @@ const Form = styled("form", {
 });
 
 const ContactForm = () => {
+  const { control, handleSubmit } = useForm<TContactFormValues>();
+
+  const onSubmit = (data: TContactFormValues) => console.log(data);
   return (
-    <Form>
-      <InputContainer css={{ gridArea: "name" }}>
-        <Label htmlFor="name">Full name</Label>
-        <Input name="name" id="name" placeholder="John Doe" required />
-      </InputContainer>
-      <InputContainer css={{ gridArea: "email" }}>
-        <Label htmlFor="email">Email</Label>
-        <Input
-          name="email"
-          id="email"
-          type="email"
-          placeholder="johndoe@example.com"
-          required
-        />
-      </InputContainer>
-      <InputContainer css={{ gridArea: "message" }}>
-        <Label htmlFor="message">Message</Label>
-        <Input
-          as="textarea"
-          name="message"
-          id="message"
-          css={{ minHeight: 200 }}
-          placeholder="Your message goes here..."
-          required
-          minLength={5}
-          maxLength={256}
-        ></Input>
-      </InputContainer>
-      <Button css={{ gridArea: "button" }}>Send message</Button>
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="fullName"
+        control={control}
+        rules={{ required: true }}
+        render={({ field }) => (
+          <Input label="Full name" css={{ gridArea: "name" }} {...field} />
+        )}
+      />
+
+      <Controller
+        name="email"
+        control={control}
+        rules={{ required: true }}
+        render={({ field }) => (
+          <Input label="Email" css={{ gridArea: "email" }} {...field} />
+        )}
+      />
+      <Controller
+        name="message"
+        control={control}
+        rules={{ required: true }}
+        render={({ field }) => (
+          <Input
+            textarea
+            label="Message"
+            css={{ gridArea: "message", minHeight: 200 }}
+            {...field}
+          />
+        )}
+      />
+      <Button type="submit" css={{ gridArea: "button" }}>
+        Send message
+      </Button>
     </Form>
   );
 };
