@@ -21,43 +21,6 @@ import { TProject, TProjectType } from "@src/types";
 const Span = styled("span", {});
 const Div = styled("div", {});
 
-const Display = styled("div", {
-  marginBottom: 16,
-  display: "grid",
-  gridTemplateColumns: "repeat(5, 1fr)",
-  gridTemplateRows: "1fr min-content",
-  gridTemplateAreas: `
-    "gallery gallery gallery gallery gallery"
-    "prev . dots . next";   
-  `,
-  gridGap: "12px 0",
-
-  "@lg": {
-    //width: "70%",
-  },
-});
-
-const Dot = styled("div", {
-  width: 6,
-  height: 6,
-  borderRadius: 9999,
-  background: "$sand9",
-
-  "&:not(:last-child)": {
-    marginRight: 8,
-  },
-
-  variants: {
-    active: {
-      true: {
-        width: 8,
-        height: 8,
-        background: "$primary",
-      },
-    },
-  },
-});
-
 const Skill = styled("div", {
   fontSize: 12,
   color: "$primary",
@@ -89,50 +52,6 @@ const Link = styled("a", {
     },
   },
 });
-
-const Gallery = () => (
-  <Display>
-    <Div
-      css={{
-        gridArea: "gallery",
-        width: "100%",
-        position: "relative",
-        height: 0,
-        paddingTop: "61.78%",
-        overflow: "hidden",
-        borderRadius: 6,
-      }}
-    >
-      <Div
-        css={{
-          background: "$sand9",
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-        }}
-      ></Div>
-    </Div>
-    <IconButton css={{ gridArea: "prev", color: "$textSecondary" }}>
-      <ArrowLeftIcon />
-    </IconButton>
-    <Div
-      css={{
-        gridArea: "dots",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {dots.map((dot) => (
-        <Dot key={dot} active={dot === 3} />
-      ))}
-    </Div>
-    <IconButton css={{ gridArea: "next", color: "$textSecondary" }}>
-      <ArrowRightIcon />
-    </IconButton>
-  </Display>
-);
 
 const Breadcrumbs = ({
   projectType,
@@ -172,8 +91,6 @@ const Breadcrumbs = ({
   );
 };
 
-const dots = [1, 2, 3, 4, 5];
-
 type PageProps = {
   project: TProject;
 };
@@ -201,17 +118,27 @@ const ProjectPage: NextPage<PageProps> = ({ project }) => {
           {project.name}
         </Text>
       </Div>
+
+      <Div css={{ marginBottom: 32 }}>
+        <Text secondary css={{ lineHeight: 1.6 }}>
+          {project.description}
+        </Text>
+      </Div>
       <Div
         css={{
-          marginBottom: 16,
+          marginBottom: 32,
         }}
       >
-        <Flex css={{ justifyContent: "space-around" }}>
+        <Div
+          css={{
+            display: "grid",
+            gridColumnGap: "10%",
+            gridTemplateColumns: "repeat(2, 1fr)",
+          }}
+        >
           <Button
             css={{
-              maxWidth: 300,
-              flex: 1,
-              marginRight: 8,
+              width: "100%",
               "& svg": { marginRight: 12 },
             }}
             as="a"
@@ -222,7 +149,7 @@ const ProjectPage: NextPage<PageProps> = ({ project }) => {
             <GitHubLogoIcon /> Github
           </Button>
           <Button
-            css={{ maxWidth: 300, flex: 1, "& svg": { marginRight: 12 } }}
+            css={{ width: "100%", "& svg": { marginRight: 12 } }}
             as="a"
             href={project.liveLink}
             target="_blank"
@@ -230,12 +157,7 @@ const ProjectPage: NextPage<PageProps> = ({ project }) => {
           >
             <GlobeIcon /> Preview
           </Button>
-        </Flex>
-      </Div>
-      <Div css={{ marginBottom: 16 }}>
-        <Text secondary css={{ lineHeight: 1.6 }}>
-          {project.description}
-        </Text>
+        </Div>
       </Div>
       <Div css={{ marginBottom: 16 }}>
         <Div css={{ marginLeft: "auto", marginRight: "auto", width: "80%" }}>
