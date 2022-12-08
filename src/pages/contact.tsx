@@ -12,15 +12,15 @@ const Grid = styled("div", {
   paddingTop: 32,
   display: "grid",
   alignItems: "center",
-  gridTemplateColumns: "repeat(6, 1fr)",
+  gridTemplateColumns: "repeat(8, 1fr)",
   gridGap: "24px 16px",
   zIndex: 0,
 });
 
 const Content = styled("div", {
-  gridColumn: "span 6",
+  gridColumn: "span 8",
   "@lg": {
-    gridColumn: "span 4",
+    gridColumn: "2 / span 6",
   },
 });
 
@@ -45,10 +45,10 @@ const Contact: NextPage = () => {
               How you can <Span css={{ color: "$primary" }}>contact me?</Span>
             </Text>
           </Title>
-          <Text secondary css={{ fontSize: 20 }}>
+          <Text secondary css={{ fontSize: 20, marginBottom: 16 }}>
             You can contact me through
           </Text>
-          <Flex css={{ margin: "16px 0" }}>
+          <Flex css={{ marginBottom: 40 }}>
             <Button
               as="a"
               css={{ flex: 1, marginRight: 16 }}
