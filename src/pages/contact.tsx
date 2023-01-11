@@ -5,7 +5,6 @@ import Container from "@components/Container";
 import Button from "@components/Button";
 import Text from "@components/Text";
 import Flex from "@components/Flex";
-import ContactForm from "@components/ContactForm";
 
 const Span = styled("span", {});
 const Grid = styled("div", {
@@ -19,13 +18,19 @@ const Grid = styled("div", {
 
 const Content = styled("div", {
   gridColumn: "span 8",
-  "@lg": {
-    gridColumn: "2 / span 6",
-  },
 });
 
 const Title = styled("div", {
   marginBottom: 16,
+});
+
+const Link = styled("a", {
+  textDecoration: "none",
+  color: "$primary",
+
+  "&:hover": {
+    textDecoration: "underline",
+  },
 });
 
 const Contact: NextPage = () => {
@@ -40,38 +45,52 @@ const Contact: NextPage = () => {
             <Text
               as="h1"
               heading
-              css={{ fontSize: 48, "@lg": { fontSize: 64 } }}
+              css={{ fontSize: 48, "@lg": { fontSize: 56 } }}
             >
-              How you can <Span css={{ color: "$primary" }}>contact me?</Span>
+              Do you want to{" "}
+              <Span css={{ color: "$primary" }}>work with me?</Span>
             </Text>
           </Title>
-          <Text secondary css={{ fontSize: 20, marginBottom: 16 }}>
-            You can contact me through
-          </Text>
-          <Flex css={{ marginBottom: 40 }}>
-            <Button
-              as="a"
-              css={{ flex: 1, marginRight: 16 }}
+          <Text
+            secondary
+            css={{ fontSize: 22, marginBottom: 32, lineHeight: 1.6 }}
+          >
+            Currently, I am looking for a new exciting experience, so if you are
+            looking for someone who is passionate and eager to learn and grow,
+            please do not hesitate to contact me through{" "}
+            <Link
               href="https://www.linkedin.com/in/jean-tivan/"
               title="Let's connect ;)"
             >
               LinkedIn
-            </Button>
-            <Button
-              as="a"
-              css={{ flex: 1 }}
+            </Link>{" "}
+            or you can send me an email at{" "}
+            <Link
               href="mailto:jptivan53@gmail.com"
               title="Send me an Email! :D"
             >
-              Email
+              jptivan52@gmail.com
+            </Link>
+          </Text>
+        </Content>
+        <Content
+          css={{ gridColumn: "span 8", "@md": { gridColumn: "2 / span 6" } }}
+        >
+          <Text
+            as="h2"
+            heading
+            css={{ marginBottom: 24, fontSize: 24, "@lg": { fontSize: 32 } }}
+          >
+            Get a copy of my curriculum vitae
+          </Text>
+          <Flex css={{ marginBottom: 40 }}>
+            <Button disabled css={{ flex: 1, marginRight: 16 }}>
+              English
+            </Button>
+            <Button disabled css={{ flex: 1 }}>
+              Spanish
             </Button>
           </Flex>
-          <Text
-            css={{ color: "$textSecondary", fontSize: 20, marginBottom: 16 }}
-          >
-            Or you can leave me a brief message so I can get back to you
-          </Text>
-          <ContactForm />
         </Content>
       </Grid>
     </Container>
