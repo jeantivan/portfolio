@@ -33,10 +33,13 @@ const ContactForm = () => {
       <Controller
         name="fullName"
         control={control}
-        rules={{ required: true }}
-        render={({ field }) => (
-          <Input label="Full name" css={{ gridArea: "name" }} {...field} />
-        )}
+        rules={{ required: true, minLength: 3 }}
+        render={({ field }) => {
+          console.log(field);
+          return (
+            <Input label="Full name" css={{ gridArea: "name" }} {...field} />
+          );
+        }}
       />
 
       <Controller
