@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
 import { styled } from "@config/stitches.config";
-import {
-  HamburgerMenuIcon,
-  GearIcon,
-  DownloadIcon,
-} from "@radix-ui/react-icons";
+import { HamburgerMenuIcon, GearIcon } from "@radix-ui/react-icons";
 import {
   Root as DialogRoot,
   Trigger as DialogTrigger,
@@ -19,7 +15,6 @@ import IconButton from "@components/IconButton";
 import Navbar from "@components/Navbar";
 import Menu from "@components/Menu";
 import Container from "@components/Container";
-import DownloadCV from "@components/DownloadCV";
 
 const StyledHeader = styled("header", {
   display: "flex",
@@ -119,7 +114,6 @@ const Header = () => {
                 <Link active={router.pathname === "/contact"}>Contact</Link>
               </NextLink>
             </Nav>
-            <DownloadCV />
             <MenuTrigger asChild>
               <IconButton
                 css={{
