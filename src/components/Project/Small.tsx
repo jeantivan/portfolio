@@ -4,6 +4,8 @@ import BaseCard from "@components/Card";
 import Text from "@components/Text";
 import IconButton from "@components/IconButton";
 import Button from "@components/Button";
+import Link from "next/link";
+import { TProject } from "@src/types";
 
 const Flex = styled("div", {
   display: "flex",
@@ -20,19 +22,26 @@ const Card = styled(BaseCard, {
     gridColumn: "span 3",
   },
 });
-const Small = (props: any) => {
+const Small = (props: TProject) => {
+  const { name, description, slug, githubLink } = props;
+
   return (
     <Card as="article">
       <Text as="h4" heading css={{ fontSize: 18, marginBottom: 8 }}>
-        Project title, it can be a large title
+        {name}
       </Text>
       <Text secondary css={{ fontSize: 14, marginBottom: 16 }}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-        laudantium cum exercitationem.
+        {description.slice(0, 140)}...
       </Text>
       <Flex css={{ justifyContent: "flex-end" }}>
-        <Button css={{ marginRight: 16 }}>Ver más</Button>
-        <IconButton>
+        <Link
+          legacyBehavior
+          href={`/projects/?project=project-example`}
+          as={`/project/project-example`}
+        >
+          <Button css={{ marginRight: 16 }}>Details</Button>
+        </Link>
+        <IconButton as="a" href={githubLink}>
           <GitHubLogoIcon />
         </IconButton>
       </Flex>
