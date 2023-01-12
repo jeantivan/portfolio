@@ -1,11 +1,13 @@
 import Image from "next/image";
 import { styled } from "@config/stitches.config";
-import { GitHubLogoIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Text from "@components/Text";
 import Button from "@components/Button";
 import IconButton from "@components/IconButton";
+import Link from "next/link";
 
 import projectImage from "@src/assets/images/project-example.png";
+import { TProject } from "@src/types";
 
 const Flex = styled("div", {
   display: "flex",
@@ -28,10 +30,10 @@ const Container = styled("article", {
     gridTemplateColumns: "repeat(2, 1fr)",
     gridTemplateRows: "repeat(4, min-content)",
     gridTemplateAreas: `
-     "image title"
-    "image description"
-    "image tags"
-    "image links"
+      "image title"
+      "image description"
+      "image tags"
+      "image links"
   `,
   },
 });
@@ -59,7 +61,20 @@ const Tag = styled("span", {
   },
 });
 
-const Featured = (props: any) => {
+const Featured = (props: TProject) => {
+  const {
+    name,
+    slug,
+    description: fullDescription,
+    githubLink,
+    skills: allSkills,
+  } = props;
+
+  const description =
+    fullDescription.length > 200
+      ? fullDescription.slice(0, 200)
+      : fullDescription;
+  const skills = allSkills.slice(0, 3);
   return (
     <Container>
       <ImageWrapper>
@@ -76,7 +91,7 @@ const Featured = (props: any) => {
         </div>
       </ImageWrapper>
       <Text as="h2" heading css={{ gridArea: "title", fontSize: 32 }}>
-        Project title, it can be a large title.
+        {name}
       </Text>
       <Text
         secondary
@@ -88,9 +103,7 @@ const Featured = (props: any) => {
           },
         }}
       >
-        Vitae blandit dignissim lorem commodo amet in. Sed gravida ac est vitae
-        vitae, viverra. Sed pulvinar tellus ut maecenas sit suspendisse euismod
-        blandit. Sit nunc viverra aliquam sem amet, lorem et fames.
+        {description}
       </Text>
       <Flex
         css={{
@@ -102,9 +115,9 @@ const Featured = (props: any) => {
           },
         }}
       >
-        <Tag>React</Tag>
-        <Tag>Javascript</Tag>
-        <Tag>Material UI</Tag>
+        {skills.map((skill) => (
+          <Tag key={skill.slug}>{skill.name}</Tag>
+        ))}
       </Flex>
       <Flex
         css={{
@@ -114,8 +127,15 @@ const Featured = (props: any) => {
           "& :not(:last-child)": { marginRight: 16 },
         }}
       >
-        <Button>Live</Button>
-        <IconButton>
+        <Link
+          legacyBehavior
+          href={`/projects/?project=${slug}`}
+          as={`/project/${slug}`}
+          passHref
+        >
+          <Button as="a">Details</Button>
+        </Link>
+        <IconButton as="a" href={githubLink}>
           <GitHubLogoIcon />
         </IconButton>
       </Flex>
