@@ -1,7 +1,10 @@
+import { TProject } from "@src/types";
 import Featured from "./Featured";
 import Small from "./Small";
 
-const Project = (props: any) => {
+type ProjectProps = TProject & { featured?: boolean };
+
+const Project = (props: ProjectProps) => {
   const { featured } = props;
 
   if (featured) {
