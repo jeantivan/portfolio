@@ -120,13 +120,13 @@ const ProjectPage: NextPage<PageProps> = ({ project }) => {
       </Div>
 
       <Div css={{ marginBottom: 32 }}>
-        <Text secondary css={{ lineHeight: 1.6 }}>
+        <Text secondary css={{ lineHeight: 1.6, fontSize: 18 }}>
           {project.description}
         </Text>
       </Div>
       <Div
         css={{
-          marginBottom: 32,
+          marginBottom: 40,
         }}
       >
         <Div
@@ -159,7 +159,7 @@ const ProjectPage: NextPage<PageProps> = ({ project }) => {
           </Button>
         </Div>
       </Div>
-      <Div css={{ marginBottom: 16 }}>
+      <Div css={{ marginBottom: 40 }}>
         <Div css={{ marginLeft: "auto", marginRight: "auto", width: "80%" }}>
           <Div
             css={{
