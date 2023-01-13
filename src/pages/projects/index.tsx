@@ -4,6 +4,8 @@ import { styled } from "@config/stitches.config";
 import Container from "@components/Container";
 import Project from "@components/Project";
 
+import { PROJECT_EXAMPLE } from "@src/constants";
+
 const Span = styled("span", {});
 
 const Grid = styled("div", {
@@ -68,9 +70,9 @@ const Projects: NextPage = () => {
       </Grid>
 
       <section>
-        <Project featured />
-        <Project featured />
-        <Project featured />
+        <Project featured {...PROJECT_EXAMPLE} />
+        <Project featured {...PROJECT_EXAMPLE} />
+        <Project featured {...PROJECT_EXAMPLE} />
       </section>
       <Grid>
         <Text
@@ -90,10 +92,10 @@ const Projects: NextPage = () => {
           ullamcorper. Dignissim molestie cras scelerisque augue et tellus
           varius vitae.
         </Text>
-        <Project />
-        <Project />
-        <Project />
-        <Project />
+        <Project {...PROJECT_EXAMPLE} />
+        <Project {...PROJECT_EXAMPLE} />
+        <Project {...PROJECT_EXAMPLE} />
+        <Project {...PROJECT_EXAMPLE} />
       </Grid>
     </Container>
   );
