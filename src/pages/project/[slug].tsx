@@ -1,10 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import NextLink from "next/link";
-import Image from "next/image";
 import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
   ChevronRightIcon,
   GitHubLogoIcon,
   GlobeIcon,
@@ -12,11 +9,12 @@ import {
 import { styled } from "@config/stitches.config";
 import Container from "@components/Container";
 import Text from "@components/Text";
-import IconButton from "@components/IconButton";
+// import IconButton from "@components/IconButton";
 import Button from "@components/Button";
 import Flex from "@components/Flex";
 import { PROJECT_EXAMPLE } from "@src/constants";
 import { TProject, TProjectType } from "@src/types";
+import CoverImage from "@src/components/CoverImage";
 
 const Span = styled("span", {});
 const Div = styled("div", {});
@@ -161,38 +159,13 @@ const ProjectPage: NextPage<PageProps> = ({ project }) => {
       </Div>
       <Div css={{ marginBottom: 40 }}>
         <Div css={{ marginLeft: "auto", marginRight: "auto", width: "80%" }}>
-          <Div
-            css={{
-              width: "100%",
-              position: "relative",
-              height: 0,
-              paddingTop: "75%",
-              overflow: "hidden",
-              borderRadius: 6,
-            }}
-          >
-            <Div
-              css={{
-                background: "$sand9",
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <Div
-                css={{ position: "relative", width: "100%", height: "100%" }}
-              >
-                {project.coverImage && (
-                  <Image
-                    layout="fill"
-                    src={project.coverImage}
-                    alt={`Image from: ${project.name}`}
-                  />
-                )}
-              </Div>
-            </Div>
-          </Div>
+          {project.coverImage && (
+            <CoverImage
+              layout="fill"
+              src={project.coverImage}
+              alt={`Image from: ${project.name}`}
+            />
+          )}
         </Div>
       </Div>
 
