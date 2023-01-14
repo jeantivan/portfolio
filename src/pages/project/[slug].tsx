@@ -12,26 +12,13 @@ import Text from "@components/Text";
 // import IconButton from "@components/IconButton";
 import Button from "@components/Button";
 import Flex from "@components/Flex";
+import CoverImage from "@src/components/CoverImage";
+import Tag from "@src/components/Tag";
 import { PROJECT_EXAMPLE } from "@src/constants";
 import { TProject, TProjectType } from "@src/types";
-import CoverImage from "@src/components/CoverImage";
 
 const Span = styled("span", {});
 const Div = styled("div", {});
-
-const Skill = styled("div", {
-  fontSize: 12,
-  color: "$primary",
-  borderRadius: 999,
-  border: "1px solid $primary",
-  padding: "6px 20px",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  marginTop: 12,
-
-  "&:not(:last-child)": { marginRight: 12 },
-});
 
 const Link = styled("a", {
   all: "unset",
@@ -170,12 +157,12 @@ const ProjectPage: NextPage<PageProps> = ({ project }) => {
       </Div>
 
       <Div>
-        <Text heading secondary css={{ fontSize: 14 }}>
+        <Text heading secondary css={{ fontSize: 14, marginBottom: 12 }}>
           Tech used
         </Text>
         <Flex css={{ flexFlow: "row wrap", width: "100%" }}>
           {project.skills.map((skill) => (
-            <Skill key={skill.slug}>{skill.name}</Skill>
+            <Tag key={skill.slug}>{skill.name}</Tag>
           ))}
         </Flex>
         <Text
