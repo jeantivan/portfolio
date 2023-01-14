@@ -8,6 +8,7 @@ import Link from "next/link";
 
 import projectImage from "@src/assets/images/project-example.png";
 import { TProject } from "@src/types";
+import Tag from "../Tag";
 
 const Flex = styled("div", {
   display: "flex",
@@ -47,18 +48,6 @@ const ImageWrapper = styled("div", {
   position: "relative",
   overflow: "hidden",
   background: "$sand7",
-});
-
-const Tag = styled("span", {
-  fontSize: 10,
-  color: "$primary",
-  padding: "6px 24px",
-  border: "1px solid $primary",
-  borderRadius: 9999,
-
-  "&:not(:last-child)": {
-    marginRight: 16,
-  },
 });
 
 const Featured = (props: TProject) => {
