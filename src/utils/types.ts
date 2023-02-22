@@ -1,4 +1,4 @@
-import { COLORS } from "@src/constants";
+import { COLORS } from "@src/utils/constants";
 
 import { createTheme } from "@config/stitches.config";
 

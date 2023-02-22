@@ -1,6 +1,6 @@
 import { sand, sandDark } from "@radix-ui/colors";
 import { createTheme } from "@config/stitches.config";
-import { TColorMode, TColors } from "@src/types";
+import { TColorMode, TColors } from "./types";
 
 export const createPrimaryColorTheme = (color: TColors) => {
   return createTheme({
