@@ -1,14 +1,14 @@
 import { ReactNode, useState, createContext, useContext } from "react";
+import { setCookie } from "cookies-next";
+import { styled } from "@config/stitches.config";
 import {
   TColorMode,
   TColorModeThemes,
   TColors,
   TPrimaryColorThemes,
-} from "@src/types";
-import { COLORS, COLOR_MODE_KEY, PRIMARY_COLOR_KEY } from "@src/constants";
-import { createColorModeTheme, createPrimaryColorTheme } from "@src/utils";
-import { setCookie } from "cookies-next";
-import { styled } from "@src/config/stitches.config";
+} from "@utils/types";
+import { COLORS, COLOR_MODE_KEY, PRIMARY_COLOR_KEY } from "@utils/constants";
+import { createColorModeTheme, createPrimaryColorTheme } from "@utils/helpers";
 
 export type TSettings = {
   primaryColor: TColors;
