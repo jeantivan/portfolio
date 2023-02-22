@@ -3,10 +3,8 @@ import { getCookie, setCookie, hasCookie } from "cookies-next";
 import { globalCss } from "@config/stitches.config";
 import Layout from "@components/Layout";
 import Settings from "@components/Settings";
-import { TColorMode, TColors } from "@src/types";
-import { COLOR_MODE_KEY, PRIMARY_COLOR_KEY } from "@src/constants";
-
-type AppOwnProps = { color: TColors; mode: TColorMode };
+import { TColorMode, TColors } from "@utils/types";
+import { COLOR_MODE_KEY, PRIMARY_COLOR_KEY } from "@utils/constants";
 
 const globalStyles = globalCss({
   "html, body": {
@@ -18,6 +16,7 @@ const globalStyles = globalCss({
   "*": { boxSizing: "border-box" },
 });
 
+type AppOwnProps = { color: TColors; mode: TColorMode };
 function MyApp({ Component, pageProps, color, mode }: AppProps & AppOwnProps) {
   globalStyles();
   return (
