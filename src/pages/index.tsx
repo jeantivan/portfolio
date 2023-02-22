@@ -2,9 +2,11 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import NextLink from "next/link";
 import { MixIcon, PaperPlaneIcon, RocketIcon } from "@radix-ui/react-icons";
+
 import { styled } from "@config/stitches.config";
+
 import Container from "@components/Container";
-import Card from "@src/components/Card";
+import Card from "@components/Card";
 
 const Span = styled("span", {});
 const Grid = styled("div", {
