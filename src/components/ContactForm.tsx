@@ -2,7 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import { styled } from "@config/stitches.config";
 import Button from "@components/Button";
 import Input from "@components/Input";
-import { TContactFormValues } from "@src/types";
+import { TContactFormValues } from "@utils/types";
 
 const Form = styled("form", {
   display: "grid",
