@@ -1,9 +1,12 @@
 import * as Popover from "@radix-ui/react-popover";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { styled } from "@config/stitches.config";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+
+import { styled } from "@config/stitches.config";
+
 import { useSettings } from "@components/Settings";
-import { COLORS } from "@src/constants";
+
+import { COLORS } from "@utils/constants";
 
 const Arrow = styled(Popover.Arrow, {
   fill: "$menu",

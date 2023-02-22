@@ -6,16 +6,19 @@ import {
   GitHubLogoIcon,
   GlobeIcon,
 } from "@radix-ui/react-icons";
+
 import { styled } from "@config/stitches.config";
+
 import Container from "@components/Container";
 import Text from "@components/Text";
 // import IconButton from "@components/IconButton";
 import Button from "@components/Button";
 import Flex from "@components/Flex";
-import CoverImage from "@src/components/CoverImage";
-import Tag from "@src/components/Tag";
-import { PROJECT_EXAMPLE } from "@src/constants";
-import { TProject, TProjectType } from "@src/types";
+import CoverImage from "@components/CoverImage";
+import Tag from "@components/Tag";
+
+import { PROJECT_EXAMPLE } from "@utils/constants";
+import { TProject, TProjectType } from "@utils/types";
 
 const Span = styled("span", {});
 const Div = styled("div", {});

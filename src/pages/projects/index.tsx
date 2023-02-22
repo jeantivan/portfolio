@@ -1,10 +1,12 @@
 import Head from "next/head";
 import type { NextPage } from "next";
+
 import { styled } from "@config/stitches.config";
+
 import Container from "@components/Container";
 import Project from "@components/Project";
 
-import { PROJECT_EXAMPLE } from "@src/constants";
+import { PROJECT_EXAMPLE } from "@utils/constants";
 
 const Span = styled("span", {});
 

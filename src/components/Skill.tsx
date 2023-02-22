@@ -2,9 +2,11 @@ import { ReactNode } from "react";
 import NextImage from "next/image";
 import Link from "next/link";
 import * as Tooltip from "@radix-ui/react-tooltip";
+
 import { styled, keyframes } from "@config/stitches.config";
+
 import Card from "@components/Card";
-import { TSkill } from "@src/types";
+import { TSkill } from "@utils/types";
 
 const spin = keyframes({
   "0%": {

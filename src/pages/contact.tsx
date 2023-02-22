@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { styled } from "@config/stitches.config";
+
 import Container from "@components/Container";
 import Button from "@components/Button";
 import Text from "@components/Text";

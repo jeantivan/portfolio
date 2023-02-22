@@ -1,14 +1,14 @@
 import Image from "next/image";
-import { styled } from "@config/stitches.config";
+import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { styled } from "@config/stitches.config";
 import Text from "@components/Text";
 import Button from "@components/Button";
 import IconButton from "@components/IconButton";
-import Link from "next/link";
+import Tag from "@components/Tag";
 
-import projectImage from "@src/assets/images/project-example.png";
-import { TProject } from "@src/types";
-import Tag from "../Tag";
+import projectImage from "@assets/images/project-example.png";
+import { TProject } from "@utils/types";
 
 const Flex = styled("div", {
   display: "flex",

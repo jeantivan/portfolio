@@ -1,13 +1,18 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Provider as TooltipProvider } from "@radix-ui/react-tooltip";
+
 import { styled } from "@config/stitches.config";
+
 import Container from "@components/Container";
 import Skill from "@components/Skill";
-import { MAIN_SKILLS } from "@src/constants";
+import Text from "@components/Text";
+
+import { MAIN_SKILLS } from "@utils/constants";
 
 const Grid = styled("div", {
-  paddingTop: 32,
+  marginTop: 32,
+  marginBottom: 32,
   display: "grid",
   gridTemplateColumns: "repeat(6, 1fr)",
   gridGap: "16px 16px",
@@ -28,18 +33,6 @@ const Title = styled("h1", {
   fontSize: 56,
   margin: 0,
   marginBottom: 16,
-});
-
-const Text = styled("p", {
-  fontWeight: 400,
-  color: "$textSecondary",
-  fontSize: 16,
-  lineHeight: 2,
-  margin: 0,
-
-  "@md": {
-    fontSize: 18,
-  },
 });
 
 const Span = styled("span", {});
@@ -70,6 +63,15 @@ const SkillList = styled("div", {
   },
 });
 
+const List = styled("ul", {
+  listStyleType: "none",
+});
+
+const Item = styled("li", {
+  marginBottom: 16,
+  position: "relative",
+});
+
 const Skills: NextPage = () => {
   return (
     <Container>
@@ -81,7 +83,17 @@ const Skills: NextPage = () => {
           <Title>
             How I build a <Span css={{ color: "$primary" }}>website?</Span>
           </Title>
-          <Text>
+          <Text
+            secondary
+            css={{
+              lineHeight: 2,
+              margin: 0,
+
+              "@md": {
+                fontSize: 18,
+              },
+            }}
+          >
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
             adipisci fugit ab nemo et soluta hic ipsa velit inventore totam
             eveniet aperiam esse laudantium, dolorem cupiditate officiis, minus
@@ -126,6 +138,43 @@ const Skills: NextPage = () => {
           </Span>
         </SkillList>
       </Grid>
+      <div>
+        <Text css={{ fontSize: 18, marginBottom: 24 }}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut earum ad
+          fuga ipsum!{" "}
+          <Span css={{ color: "$primary" }}>
+            Soluta molestias blanditiis ratione
+          </Span>
+          , vel aliquam exercitationem.
+        </Text>
+        <List>
+          <Item>
+            <Text heading css={{ fontSize: 20 }}>
+              Skill 1
+            </Text>
+          </Item>
+          <Item>
+            <Text heading css={{ fontSize: 20 }}>
+              Skill 1
+            </Text>
+          </Item>
+          <Item>
+            <Text heading css={{ fontSize: 20 }}>
+              Skill 1
+            </Text>
+          </Item>
+          <Item>
+            <Text heading css={{ fontSize: 20 }}>
+              Skill 1
+            </Text>
+          </Item>
+          <Item>
+            <Text heading css={{ fontSize: 20 }}>
+              Skill 1
+            </Text>
+          </Item>
+        </List>
+      </div>
     </Container>
   );
 };

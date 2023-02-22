@@ -1,7 +1,8 @@
-import { TProject } from "@src/types";
-import ProjectDetails from "../ProjectDetails";
 import Featured from "./Featured";
 import Small from "./Small";
+
+import ProjectDetails from "@components/ProjectDetails";
+import { TProject } from "@utils/types";
 
 type ProjectProps = TProject & { featured?: boolean };
 

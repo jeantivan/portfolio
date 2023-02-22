@@ -1,10 +1,12 @@
-import { styled } from "@config/stitches.config";
-import IconButton from "./IconButton";
 import {
   GitHubLogoIcon,
   LinkedInLogoIcon,
   EnvelopeClosedIcon,
 } from "@radix-ui/react-icons";
+
+import { styled } from "@config/stitches.config";
+
+import IconButton from "@components/IconButton";
 
 const Flex = styled("footer", {
   gridArea: "footer",

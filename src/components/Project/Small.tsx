@@ -1,11 +1,14 @@
-import { styled } from "@config/stitches.config";
+import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+
+import { styled } from "@config/stitches.config";
+
 import BaseCard from "@components/Card";
 import Text from "@components/Text";
 import IconButton from "@components/IconButton";
 import Button from "@components/Button";
-import Link from "next/link";
-import { TProject } from "@src/types";
+
+import { TProject } from "@utils/types";
 
 const Flex = styled("div", {
   display: "flex",
@@ -22,6 +25,7 @@ const Card = styled(BaseCard, {
     gridColumn: "span 3",
   },
 });
+
 const Small = (props: TProject) => {
   const { name, description, slug, githubLink } = props;
 

@@ -1,9 +1,11 @@
-import SocialLinks from "@components/SocialLinks";
-import IconButton from "@components/IconButton";
-import { styled, keyframes } from "@config/stitches.config";
+import NextLink from "next/link";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Cross1Icon } from "@radix-ui/react-icons";
-import NextLink from "next/link";
+
+import { styled, keyframes } from "@config/stitches.config";
+
+import SocialLinks from "@components/SocialLinks";
+import IconButton from "@components/IconButton";
 
 const navShow = keyframes({
   "0%": { transform: "translateX(-100%)" },
