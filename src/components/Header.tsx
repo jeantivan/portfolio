@@ -30,7 +30,7 @@ const Nav = styled("nav", {
   "@lg": { display: "flex" },
 });
 
-const Link = styled("a", {
+const Link = styled(NextLink, {
   all: "unset",
   display: "inline-flex",
   alignItems: "center",
@@ -100,19 +100,18 @@ const Header = () => {
               </IconButton>
             </DialogTrigger>
             <Nav>
-              <NextLink href="/" passHref>
-                <Link active={router.pathname === "/"}>About</Link>
-              </NextLink>
-
-              <NextLink passHref href="/projects">
-                <Link active={router.pathname === "/projects"}>Projects</Link>
-              </NextLink>
-              <NextLink passHref href="/skills">
-                <Link active={router.pathname === "/skills"}>Skills</Link>
-              </NextLink>
-              <NextLink passHref href="/contact">
-                <Link active={router.pathname === "/contact"}>Contact</Link>
-              </NextLink>
+              <Link href="/" active={router.pathname === "/"}>
+                About
+              </Link>
+              <Link href="/projects" active={router.pathname === "/projects"}>
+                Projects
+              </Link>
+              <Link href="/skills" active={router.pathname === "/skills"}>
+                Skills
+              </Link>
+              <Link href="/contact" active={router.pathname === "/contact"}>
+                Contact
+              </Link>
             </Nav>
             <MenuTrigger asChild>
               <IconButton

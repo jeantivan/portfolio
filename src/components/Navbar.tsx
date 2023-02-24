@@ -45,7 +45,7 @@ const Content = styled("div", {
   height: "calc(100% - 70px)",
 });
 
-const Link = styled("a", {
+const Link = styled(NextLink, {
   all: "unset",
   fontSize: 48,
   fontWeight: 700,
@@ -75,18 +75,10 @@ const Navbar = () => {
       </Header>
       <Content>
         <NavLinks>
-          <NextLink href="/" passHref>
-            <Link>About</Link>
-          </NextLink>
-          <NextLink href="/projects" passHref>
-            <Link>Projects</Link>
-          </NextLink>
-          <NextLink href="/skills" passHref>
-            <Link>Skills</Link>
-          </NextLink>
-          <NextLink href="/contact" passHref>
-            <Link>Contact</Link>
-          </NextLink>
+          <Link href="/">About</Link>
+          <Link href="/projects">Projects</Link>
+          <Link href="/skills">Skills</Link>
+          <Link href="/contact">Contact</Link>
         </NavLinks>
         <SocialLinks />
       </Content>
