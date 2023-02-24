@@ -1,5 +1,16 @@
+import { Inter, Montserrat } from "next/font/google";
 import { createStitches } from "@stitches/react";
 import { orange, indigo, grass, amber, purple } from "@radix-ui/colors";
+
+// Fuentes optimizadas usandos next/font
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--inter",
+});
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--montserrat",
+});
 
 export const {
   styled,
@@ -30,7 +41,8 @@ export const {
       menu: "$sand3",
     },
     fonts: {
-      mont: "'Montserrat', system-ui, sans-serif",
+      mont: montserrat.style.fontFamily,
+      inter: inter.style.fontFamily,
     },
     shadows: {
       shadow: "0px 2px 4px rgba(0,0,0,0.1)",

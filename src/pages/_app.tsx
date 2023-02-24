@@ -1,19 +1,21 @@
 import App, { AppContext, AppInitialProps, AppProps } from "next/app";
 import { getCookie, setCookie, hasCookie } from "cookies-next";
+
 import { globalCss } from "@config/stitches.config";
+
 import Layout from "@components/Layout";
 import Settings from "@components/Settings";
+
 import { TColorMode, TColors } from "@utils/types";
 import { COLOR_MODE_KEY, PRIMARY_COLOR_KEY } from "@utils/constants";
 
 const globalStyles = globalCss({
+  "*": { boxSizing: "border-box" },
   "html, body": {
     padding: "0",
     margin: "0",
-    fontFamily:
-      "-apple-system, BlinkMacSystemFont, Inter, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
+    fontFamily: "$inter",
   },
-  "*": { boxSizing: "border-box" },
 });
 
 type AppOwnProps = { color: TColors; mode: TColorMode };
