@@ -1,7 +1,7 @@
+import "@styles/global.css";
+
 import App, { AppContext, AppInitialProps, AppProps } from "next/app";
 import { getCookie, setCookie, hasCookie } from "cookies-next";
-
-import { globalCss } from "@config/stitches.config";
 
 import Layout from "@components/Layout";
 import Settings from "@components/Settings";
@@ -9,18 +9,8 @@ import Settings from "@components/Settings";
 import { TColorMode, TColors } from "@utils/types";
 import { COLOR_MODE_KEY, PRIMARY_COLOR_KEY } from "@utils/constants";
 
-const globalStyles = globalCss({
-  "*": { boxSizing: "border-box" },
-  "html, body": {
-    padding: "0",
-    margin: "0",
-    fontFamily: "$inter",
-  },
-});
-
 type AppOwnProps = { color: TColors; mode: TColorMode };
 function MyApp({ Component, pageProps, color, mode }: AppProps & AppOwnProps) {
-  globalStyles();
   return (
     <Settings color={color} mode={mode}>
       <Layout>
