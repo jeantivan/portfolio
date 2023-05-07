@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "@radix-ui/colors/goldDark.css";
+@import "@radix-ui/colors/limeDark.css";
+
 body {
   font-family: var(--space-grotesk);
 }
