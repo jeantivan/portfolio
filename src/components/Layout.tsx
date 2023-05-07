@@ -3,6 +3,13 @@ import { styled } from "@config/stitches.config";
 import Header from "@components/Header";
 import SocialLinks from "@components/SocialLinks";
 
+import { Space_Grotesk } from "next/font/google";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--space-grotesk",
+});
+
 const Container = styled("div", {
   backgroundColor: "$bg",
   backgroundImage: `radial-gradient(circle at 15% 50%, $sand4, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 30%, $sand4, rgba(255, 255, 255, 0) 25%)`,
@@ -29,11 +36,13 @@ const Main = styled("main", {
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <Container>
-      <Header />
-      <Main>{children}</Main>
-      <SocialLinks />
-    </Container>
+    <div className={spaceGrotesk.className}>
+      <Container>
+        <Header />
+        <Main>{children}</Main>
+        <SocialLinks />
+      </Container>
+    </div>
   );
 };
 
