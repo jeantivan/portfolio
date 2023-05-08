@@ -2,8 +2,10 @@ import { COLORS } from "./constants";
 
 import { createTheme } from "@config/stitches.config";
 
-export type TColors = typeof COLORS[number];
+export type TColors = (typeof COLORS)[number];
 export type TColorMode = "dark" | "light";
+
+export type TSizes = "large" | "medium" | "small";
 
 // Answer of https://stackoverflow.com/questions/67941433/convert-array-of-strings-to-object-keys-in-typescript
 type ObjectFromList<T extends ReadonlyArray<string>, V = string> = {
