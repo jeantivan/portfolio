@@ -1,8 +1,8 @@
-import { Inter, Montserrat } from "next/font/google";
+import { Inter, Montserrat, Space_Grotesk } from "next/font/google";
 import { createStitches } from "@stitches/react";
 import { orange, indigo, grass, amber, purple } from "@radix-ui/colors";
 
-// Fuentes optimizadas usandos next/font
+// Fuentes optimizadas usando next/font
 const inter = Inter({
   subsets: ["latin"],
   variable: "--inter",
@@ -10,6 +10,11 @@ const inter = Inter({
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--montserrat",
+});
+
+export const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--space-grotesk",
 });
 
 export const {
@@ -41,7 +46,8 @@ export const {
       menu: "$sand3",
     },
     fonts: {
-      mont: montserrat.style.fontFamily,
+      space_grotesk: "var(--space-grotesk)",
+      mont: `var(--montserrat)`,
       inter: inter.style.fontFamily,
     },
     shadows: {
