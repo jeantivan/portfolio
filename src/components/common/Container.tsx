@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import cx from "classnames";
 type ContainerProps = {
   children: ReactNode;
-  className: string;
+  className?: string;
 };
 function Container({ children, className, ...rest }: ContainerProps) {
   return (
