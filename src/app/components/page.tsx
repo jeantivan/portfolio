@@ -6,6 +6,7 @@ import IconButton from "@components/common/IconButton";
 import Input from "@components/common/Input";
 import Text from "@components/common/Text";
 import Container from "@components/common/Container";
+import Navbar from "@components/Navbar";
 
 export const metadata = {
   title: "Common components | JeanTivan.dev",
@@ -18,6 +19,9 @@ function CommonComponents() {
       <h1 className="text-primary-9 text-4xl text-center mb-12">
         Common Components
       </h1>
+      <div className="mb-12">
+        <Navbar />
+      </div>
       <div className="my-12">
         <Container className="h-32 ">
           <div className="bg-gold-7 flex-1 h-full"></div>
@@ -69,6 +73,8 @@ function CommonComponents() {
         <Button size="large" className="mx-3">
           Large
         </Button>
+      </div>
+      <div className="w-2/3 mx-auto mb-12">
         <IconButton label="Label de ejemplo" size="small" className="mx-3">
           <BookmarkIcon />
         </IconButton>
@@ -76,6 +82,32 @@ function CommonComponents() {
           <BookmarkIcon />
         </IconButton>
         <IconButton label="Label de ejemplo" size="large" className="mx-3">
+          <BookmarkIcon />
+        </IconButton>
+        <IconButton
+          label="Label de ejemplo"
+          size="medium"
+          variant="outlined"
+          color="secondary"
+          className="mx-3"
+        >
+          <BookmarkIcon />
+        </IconButton>
+        <IconButton
+          label="Label de ejemplo"
+          size="medium"
+          variant="outlined"
+          color="primary"
+          className="mx-3"
+        >
+          <BookmarkIcon />
+        </IconButton>
+        <IconButton
+          label="Label de ejemplo"
+          size="medium"
+          color="secondary"
+          className="mx-3"
+        >
           <BookmarkIcon />
         </IconButton>
       </div>
