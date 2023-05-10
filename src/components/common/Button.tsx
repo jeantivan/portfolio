@@ -30,7 +30,7 @@ function Button({
         buttonSizes[size],
         "uppercase inline-flex justify-center items-center line-none",
         "bg-transparent text-primary-9 border border-primary-7 rounded-sm",
-        "hover:bg-primary-9 hover:primary-9 hover:text-primary-1",
+        "hover:bg-primary-9 hover:text-primary-1",
         "transition duration-75",
         className
       )}
