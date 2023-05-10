@@ -8,7 +8,7 @@ function Container({ children, className, ...rest }: ContainerProps) {
   return (
     <div
       {...rest}
-      className={cx("w-full mx-auto px-2 lg:w-[1024px]", className)}
+      className={cx("w-full mx-auto px-4 lg:w-[1024px]", className)}
     >
       {children}
     </div>
