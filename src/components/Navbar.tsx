@@ -1,89 +1,56 @@
-import NextLink from "next/link";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { Cross1Icon } from "@radix-ui/react-icons";
+import cx from "classnames";
+import Link from "next/link";
 
-import { styled, keyframes } from "@config/stitches.config";
+import Container from "./common/Container";
+import MobileNav from "./MobileNav";
 
-import SocialLinks from "@components/SocialLinks";
-import IconButton from "@components/IconButton";
-
-const navShow = keyframes({
-  "0%": { transform: "translateX(-100%)" },
-  "100%": { transform: "translate(0)" },
-});
-
-const Header = styled("header", {
-  display: "flex",
-  justifyContent: "space-between",
-  padding: 18,
-  gridArea: "header",
-  "@md": {
-    display: "none",
-  },
-});
-
-const Container = styled(DialogPrimitive.Content, {
-  width: "100%",
-  height: "100vh",
-  position: "fixed",
-  inset: 0,
-  backgroundColor: "$sand5",
-  zIndex: 100,
-
-  background: `$sand4 radial-gradient(circle at 10% 90%, $sand2, $sand4 70%, $sand4) no-repeat`,
-  "@media (prefers-reduced-motion: no-preference)": {
-    animation: `${navShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
-  },
-  "&:focus": { outline: "none" },
-});
-
-const Content = styled("div", {
-  padding: 32,
-  display: "flex",
-  flexFlow: "column wrap",
-  justifyContent: "center",
-  height: "calc(100% - 70px)",
-});
-
-const Link = styled(NextLink, {
-  all: "unset",
-  fontSize: 48,
-  fontWeight: 700,
-  margin: "20px 0",
-  fontFamily: "$mont",
-  color: "$text",
-  "&:first-letter": {
-    color: "$primary",
-  },
-});
-
-const NavLinks = styled("div", {
-  margin: "auto auto",
-  display: "flex",
-  flexDirection: "column",
-});
-
-const Navbar = () => {
+function Navbar() {
   return (
-    <Container>
-      <Header>
-        <DialogPrimitive.Close asChild>
-          <IconButton>
-            <Cross1Icon />
-          </IconButton>
-        </DialogPrimitive.Close>
-      </Header>
-      <Content>
-        <NavLinks>
-          <Link href="/">About</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/skills">Skills</Link>
-          <Link href="/contact">Contact</Link>
-        </NavLinks>
-        <SocialLinks />
-      </Content>
-    </Container>
+    <header className="w-full sticky top-0 bg-gold-2">
+      <Container>
+        <div className="py-2 flex items-center">
+          <div className="flex-1 md:flex-initial text-3xl md:text-2xl text-gold-12">
+            <Link href="/">
+              JeanTivan
+              <span className="text-primary-9">.</span>
+              dev
+            </Link>
+          </div>
+          <nav className="hidden md:flex text-gold-11 flex-1 justify-center gap-8">
+            <Link
+              href="/"
+              className={cx(
+                "uppercase py-2 px-6",
+                "border-b border-transparent hover:border-primary-9"
+              )}
+            >
+              About
+            </Link>
+            <Link
+              href="/projects"
+              className={cx(
+                "uppercase py-2 px-6",
+                "border-b border-transparent hover:border-primary-9"
+              )}
+            >
+              Projects
+            </Link>
+            <Link
+              href="/contact"
+              className={cx(
+                "uppercase py-2 px-6",
+                "border-b border-transparent hover:border-primary-9"
+              )}
+            >
+              Contact
+            </Link>
+          </nav>
+          <MobileNav />
+          {/* TODO: MENU con las opciones de i18n y darkmode (deshabilitadas) */}
+        </div>
+      </Container>
+    </header>
   );
-};
+}
 
 export default Navbar;
