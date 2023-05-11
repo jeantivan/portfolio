@@ -4,6 +4,8 @@
 
 @import "@radix-ui/colors/goldDark.css";
 @import "@radix-ui/colors/limeDark.css";
+@import "@radix-ui/colors/gold.css";
+@import "@radix-ui/colors/lime.css";
 
 body {
   font-family: var(--space-grotesk);
