@@ -40,7 +40,6 @@ module.exports = {
           12: "var(--gold12)",
         },
       },
-
       fontFamily: {
         sans: ["var(--space-grotesk)"],
       },
