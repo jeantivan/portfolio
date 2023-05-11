@@ -17,7 +17,7 @@ function Input({ label, name, error, textarea, ...rest }: InputProps) {
       <label
         className={cx(
           "capitalize mb-1",
-          error ? "text-red-600" : "dark:text-gold-11"
+          error ? "text-red-600" : "text-gold-11"
         )}
         htmlFor={name}
       >
