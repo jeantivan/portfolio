@@ -7,6 +7,16 @@
 @import "@radix-ui/colors/gold.css";
 @import "@radix-ui/colors/lime.css";
 
+@layer base {
+  :root {
+    --bg-navbar: rgba(253, 253, 252, 0.8);
+  }
+
+  .dark-theme {
+    --bg-navbar: rgba(23, 22, 19, 0.8);
+  }
+}
+
 body {
   font-family: var(--space-grotesk);
 }
