@@ -1,135 +1,42 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import NextLink from "next/link";
-import { styled } from "@config/stitches.config";
-import { HamburgerMenuIcon, GearIcon } from "@radix-ui/react-icons";
-import {
-  Root as DialogRoot,
-  Trigger as DialogTrigger,
-} from "@radix-ui/react-dialog";
-import {
-  Root as MenuRoot,
-  Trigger as MenuTrigger,
-} from "@radix-ui/react-popover";
-import IconButton from "@components/IconButton";
-import Navbar from "@components/Navbar";
-import Menu from "@components/Menu";
-import Container from "@components/Container";
+"use client";
+import { useState, useContext, createContext } from "react";
+import cx from "classnames";
 
-const StyledHeader = styled("header", {
-  display: "flex",
+import Container from "./common/Container";
+import DesktopNav from "./DesktopNav";
+import MobileNav from "./MobileNav";
 
-  gridArea: "header",
+const IsExpandedContext = createContext({
+  isExpanded: false,
+  toggle: () => {},
 });
 
-const Nav = styled("nav", {
-  display: "none",
-  width: "100%",
-  marginRight: 16,
+export const useIsExpanded = () => useContext(IsExpandedContext);
 
-  "@lg": { display: "flex" },
-});
+function Header() {
+  const [isExpanded, setIsExpanded] = useState(false);
 
-const Link = styled(NextLink, {
-  all: "unset",
-  display: "inline-flex",
-  alignItems: "center",
-  fontFamily: "$mont",
-  fontWeight: 500,
-  color: "$text",
-  padding: "6px 26px",
-  border: "1px solid $sand5",
-  borderRadius: 6,
-  userSelect: "none",
-  cursor: "pointer",
-
-  "&:not(:last-child)": {
-    marginRight: 16,
-  },
-
-  "&:hover": {
-    borderColor: "$primary",
-    color: "$primary",
-  },
-
-  variants: {
-    active: {
-      true: {
-        borderColor: "$primary",
-        color: "$primary",
-      },
-    },
-  },
-});
-
-const Header = () => {
-  const [open, setOpen] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    const closeDialogOnRouteChange = () => {
-      setOpen(false);
-    };
-
-    router.events.on("routeChangeStart", closeDialogOnRouteChange);
-
-    return () => {
-      router.events.off("routeChangeStart", closeDialogOnRouteChange);
-    };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router]);
+  const toggle = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   return (
-    <DialogRoot open={open} onOpenChange={setOpen}>
-      <MenuRoot>
-        <StyledHeader>
-          <Container
-            css={{ display: "flex", paddingTop: 18, paddingBottom: 18 }}
-          >
-            <DialogTrigger asChild>
-              <IconButton
-                css={{
-                  marginRight: "auto",
-                  "@lg": {
-                    display: "none",
-                  },
-                }}
-              >
-                <HamburgerMenuIcon />
-              </IconButton>
-            </DialogTrigger>
-            <Nav>
-              <Link href="/" active={router.pathname === "/"}>
-                About
-              </Link>
-              <Link href="/projects" active={router.pathname === "/projects"}>
-                Projects
-              </Link>
-              <Link href="/skills" active={router.pathname === "/skills"}>
-                Skills
-              </Link>
-              <Link href="/contact" active={router.pathname === "/contact"}>
-                Contact
-              </Link>
-            </Nav>
-            <MenuTrigger asChild>
-              <IconButton
-                css={{
-                  marginLeft: 16,
-                  "&[data-state='open']": { borderColor: "$primary" },
-                }}
-              >
-                <GearIcon />
-              </IconButton>
-            </MenuTrigger>
-          </Container>
-          <Navbar />
-          <Menu />
-        </StyledHeader>
-      </MenuRoot>
-    </DialogRoot>
+    <IsExpandedContext.Provider value={{ isExpanded, toggle }}>
+      <header
+        className={cx(
+          "w-full backdrop-blur-sm fixed top-0 z-10 transition duration-75",
+          {
+            "bg-[--bg-navbar]": !isExpanded,
+            "bg-gold-2": isExpanded,
+          }
+        )}
+      >
+        <Container>
+          <DesktopNav />
+          <MobileNav />
+        </Container>
+      </header>
+    </IsExpandedContext.Provider>
   );
-};
-
+}
 export default Header;
