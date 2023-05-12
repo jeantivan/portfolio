@@ -1,7 +1,94 @@
 import React from "react";
 
-function HomePage() {
-  return <div>New Home page</div>;
+import Container from "@components/common/Container";
+import Text from "@components/common/Text";
+import Button from "@components/common/Button";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
+
+export const metadata = {
+  title: "About | JeanTivan.dev",
+  description:
+    "Welcome to my portfolio, my name is Jean Tivan a self-taught frontend developer passionate for react and next.js",
+};
+
+function Home() {
+  return (
+    <Container className="my-8 md:my-16">
+      <section className="md:text-center mb-14">
+        <div className="mb-6 md:mb-8">
+          <Text variant="body2" color="secondary">
+            Hi, my name is
+          </Text>
+          <Text Component="h1" variant="main" className="uppercase mb-2">
+            Jean Tivan
+          </Text>
+          <Text
+            Component="h2"
+            variant="subheading"
+            color="primary"
+            weight="bold"
+            className="uppercase tracking-widest"
+          >
+            Frontend Developer
+          </Text>
+        </div>
+        <div className="mb-6 md:mb-8">
+          <Text
+            variant="body2"
+            weight="light"
+            color="secondary"
+            className="text-justify"
+          >
+            Lorem ipsum dolor sit amet consectetur. Eget sed sed quam faucibus
+            mi in nisl. Ut odio venenatis nunc tristique. Nunc pellentesque
+            neque magna mauris. Bibendum egestas a leo massa elementum netus
+            fringilla. Diam viverra augue mattis nibh lorem lorem maecenas
+            porta. Interdum pulvinar ultrices tincidunt nisi eleifend hendrerit.
+          </Text>
+        </div>
+        <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 w-full md:px-10">
+          <Button as="link" href="/contact" className="w-full md:w-1/3">
+            {"Let's work together!"}
+          </Button>
+          <Button
+            as="link"
+            href="/projects"
+            variant="text"
+            className="w-full md:w-1/3"
+          >
+            My Projects <ArrowRightIcon className="w-5 h-5 fill-current" />
+          </Button>
+        </div>
+      </section>
+      <section className="mb-20 md:mb-32">
+        <Text Component="h3" variant="title" className="mb-5">
+          Why should you hire me<span className="text-primary-9">?</span>
+        </Text>
+        <Text color="secondary" className="text-justify mb-5">
+          Lorem ipsum dolor sit amet consectetur. Eget sed sed quam faucibus mi
+          in nisl. Ut odio venenatis nunc tristique. Nunc pellentesque neque
+          magna mauris. Bibendum egestas a leo massa elementum netus fringilla.
+          Diam viverra augue mattis nibh lorem lorem maecenas porta. Interdum
+          pulvinar ultrices tincidunt nisi eleifend hendrerit.
+        </Text>
+        <ul className="list-none grid gap-4 grid-cols-2 md:grid-cols-3 pl-5">
+          <li className="text-lg text-gold-12">React.js</li>
+          <li className="text-lg text-gold-12">Next.js</li>
+          <li className="text-lg text-gold-12">Typescript</li>
+          <li className="text-lg text-gold-12">TailwindCSS</li>
+          <li className="text-lg text-gold-12">Framer motion</li>
+          <li className="text-lg text-gold-12">Prisma ORM</li>
+        </ul>
+      </section>
+      <section className="flex flex-col justify-center items-center gap-5 md:flex-row md:gap-10">
+        <Text variant="subheading" weight="medium">
+          Get a copy of my resume<span className="text-primary-9">.</span>
+        </Text>
+        <ArrowRightIcon className="text-gold-11 w-7 h-7 rotate-90 md:rotate-0" />
+        <Button size="large">Download resume</Button>
+      </section>
+    </Container>
+  );
 }
 
-export default HomePage;
+export default Home;
