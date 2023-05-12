@@ -1,77 +1,77 @@
-"use client";
-import { ReactNode } from "react";
+import { ComponentProps } from "react";
 import Link from "next/link";
-import cx from "classnames";
+import { usePathname } from "next/navigation";
 
-import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Root as Separator } from "@radix-ui/react-separator";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 import IconButton from "./common/IconButton";
-import Container from "./common/Container";
+import Logo from "./Logo";
+// import DarkMode from "./DarkMode";
+// import I18n from "./I18n";
 
-const Content = ({ children }: { children: ReactNode }) => (
-  <DialogPrimitive.Portal>
-    <DialogPrimitive.Overlay />
-    <DialogPrimitive.Content
-      className={cx(
-        "w-full h-screen bg-gold-2 focus:outline-none",
-        "fixed top-0 left-0",
-        "data-[state=open]:animate-contentShow"
-      )}
+import { useIsExpanded } from "./Header";
+
+type NavLinkProps = ComponentProps<typeof Link> & { isActive?: boolean };
+function NavLink({ href, isActive, ...props }: NavLinkProps) {
+  return (
+    <Link
+      className="text-2xl text-gold-12 w-full inline-flex justify-center relative z-0"
+      href={href}
+      {...props}
     >
-      {children}
-    </DialogPrimitive.Content>
-  </DialogPrimitive.Portal>
-);
+      <span className="py-1.5 px-3 z-10 bg-gold-2">{props.children}</span>
+      {isActive && (
+        <span className="absolute w-full h-px bg-primary-9 top-1/2 -translate-y-1/2 z-[5]"></span>
+      )}
+    </Link>
+  );
+}
+
+function Nav() {
+  const pathname = usePathname();
+
+  return (
+    <div className="w-full pb-6">
+      <Separator
+        orientation="horizontal"
+        decorative
+        className="bg-gold-3 w-full h-px mb-4"
+      />
+      <nav className="flex flex-col w-full gap-4">
+        <NavLink href="/" isActive={pathname === "/"}>
+          About
+        </NavLink>
+        <NavLink href="/projects" isActive={pathname === "/projects"}>
+          Projects
+        </NavLink>
+        <NavLink href="/contact" isActive={pathname === "/contact"}>
+          Contact
+        </NavLink>
+      </nav>
+    </div>
+  );
+}
 
 function MobileNav() {
+  const { isExpanded, toggle } = useIsExpanded();
+
   return (
-    <DialogPrimitive.Root>
-      <DialogPrimitive.Trigger asChild>
-        <IconButton label="Abrir navbar" variant="text" color="secondary">
-          <HamburgerMenuIcon />
+    <div className="md:hidden">
+      <div className="flex items-center py-2">
+        <Logo />
+        <IconButton
+          label={isExpanded ? "Cerrar nav" : "Abrir navbar"}
+          variant="text"
+          color={isExpanded ? "primary" : "secondary"}
+          onClick={toggle}
+          data-state={isExpanded ? "open" : "closed"}
+        >
+          {isExpanded ? <Cross1Icon /> : <HamburgerMenuIcon />}
         </IconButton>
-      </DialogPrimitive.Trigger>
-      <Content>
-        <Container className="h-full flex flex-col">
-          <header className="py-2 flex items-center justify-end">
-            <DialogPrimitive.Close>
-              <IconButton label="Cerrar navbar" color="secondary">
-                <Cross1Icon />
-              </IconButton>
-            </DialogPrimitive.Close>
-          </header>
-          <nav className="flex flex-col justify-center items-center gap-y-20 mt-32">
-            <Link
-              href="/"
-              className="text-6xl text-gold-11 border-b py-4 border-primary-9"
-            >
-              About
-            </Link>
-            <Link
-              href="/projects"
-              className="text-6xl text-gold-11 border-b border-transparent py-4"
-            >
-              Projects
-            </Link>
-            <Link
-              href="/contact"
-              className="text-6xl text-gold-11 border-b border-transparent py-4"
-            >
-              Contact
-            </Link>
-          </nav>
-          <footer className="mt-auto mb-8">
-            <div className="w-full flex justify-center">
-              <div className="text-2xl text-primary-9 py-4 px-6 border-r">
-                EN
-              </div>
-              <div className="text-2xl text-gold-11 py-4 px-6">ES</div>
-            </div>
-          </footer>
-        </Container>
-      </Content>
-    </DialogPrimitive.Root>
+      </div>
+      {isExpanded && <Nav />}
+    </div>
   );
 }
 
