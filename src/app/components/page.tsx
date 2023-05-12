@@ -6,7 +6,7 @@ import IconButton from "@components/common/IconButton";
 import Input from "@components/common/Input";
 import Text from "@components/common/Text";
 import Container from "@components/common/Container";
-import Navbar from "@components/Navbar";
+import Header from "@components/Header";
 
 export const metadata = {
   title: "Common components | JeanTivan.dev",
@@ -20,7 +20,7 @@ function CommonComponents() {
         Common Components
       </h1>
       <div className="mb-12">
-        <Navbar />
+        <Header />
       </div>
       <div className="my-12">
         <Container className="h-32 ">
@@ -40,12 +40,12 @@ function CommonComponents() {
         </div>
         <div className="mb-6 mx-3">
           <Text variant="heading">
-            <strong>Sub Heading:</strong> Other small projects.
+            <strong>Heading:</strong> Other small projects.
           </Text>
         </div>
         <div className="mb-6 mx-3">
           <Text variant="subheading" color="primary" className="uppercase">
-            <strong>Heading:</strong> Projects.
+            <strong>SubHeading:</strong> Projects.
           </Text>
         </div>
         <div className="mb-6 mx-3">
@@ -72,6 +72,14 @@ function CommonComponents() {
         </Button>
         <Button size="large" className="mx-3">
           Large
+        </Button>
+        <Button
+          as="externalLink"
+          href="https://es.react.dev/learn"
+          className="mx-3"
+          variant="text"
+        >
+          External Link
         </Button>
       </div>
       <div className="w-2/3 mx-auto mb-12">
@@ -106,6 +114,14 @@ function CommonComponents() {
           label="Label de ejemplo"
           size="medium"
           color="secondary"
+          className="mx-3"
+        >
+          <BookmarkIcon />
+        </IconButton>
+        <IconButton
+          label="Label de ejemplo"
+          size="medium"
+          color="primary"
           className="mx-3"
         >
           <BookmarkIcon />
