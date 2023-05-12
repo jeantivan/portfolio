@@ -1,7 +1,7 @@
 import "@styles/global.css";
 import { Space_Grotesk } from "next/font/google";
 
-import Navbar from "@components/Navbar";
+import Header from "@components/Header";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -16,12 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${spaceGrotesk.className} dark dark-theme dark:bg-gold-1 bg-gold-1`}
-      >
-        <div className="dark:bg-gold-1 bg-gold-1">
-          <Navbar />
-          {children}
+      <body className={`${spaceGrotesk.className} dark-theme bg-gold-1`}>
+        <div className="bg-gold-1">
+          <Header />
+          <main className="pt-[57px]">{children}</main>
         </div>
       </body>
     </html>
