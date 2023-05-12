@@ -1,9 +1,8 @@
-import { ReactNode } from "react";
+import { ComponentProps } from "react";
 import cx from "classnames";
-type ContainerProps = {
-  children: ReactNode;
-  className?: string;
-};
+
+type ContainerProps = ComponentProps<"div">;
+
 function Container({ children, className, ...rest }: ContainerProps) {
   return (
     <div
