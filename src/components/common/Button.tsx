@@ -56,7 +56,7 @@ function Button({
     variantClassNames[variant],
     sizeClassNames[size],
     "inline-flex justify-center items-center gap-3",
-    "tracking-wider uppercase font-medium line-none",
+    "tracking-wider uppercase font-medium line-none text-center",
     "border rounded-sm",
     "transition duration-75",
     className
