@@ -74,7 +74,7 @@ function CommonComponents() {
           Large
         </Button>
         <Button
-          as="externalLink"
+          as="a"
           href="https://es.react.dev/learn"
           className="mx-3"
           variant="text"
@@ -82,7 +82,7 @@ function CommonComponents() {
           External Link
         </Button>
       </div>
-      <div className="w-2/3 mx-auto mb-12">
+      <div className="w-full flex items-center justify-center mx-auto mb-12">
         <IconButton label="Label de ejemplo" size="small" className="mx-3">
           <BookmarkIcon />
         </IconButton>
@@ -123,6 +123,16 @@ function CommonComponents() {
           size="medium"
           color="primary"
           className="mx-3"
+        >
+          <BookmarkIcon />
+        </IconButton>
+        <IconButton
+          label="Label de ejemplo"
+          size="medium"
+          color="primary"
+          className="mx-3"
+          as="a"
+          href="https://es.react.dev/learn"
         >
           <BookmarkIcon />
         </IconButton>
