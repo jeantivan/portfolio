@@ -21,7 +21,9 @@ const Tooltip = ({
   return (
     <TooltipPrimitive.Provider delayDuration={delayDuration}>
       <TooltipPrimitive.Root>
-        <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
+        <TooltipPrimitive.Trigger asChild>
+          <span>{children}</span>
+        </TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal forceMount={forceMount}>
           <TooltipPrimitive.Content
             className="select-none rounded shadow-md text-gold-1 bg-gold-12 py-2 px-3 origin-[--radix-tooltip-content-transform-origin]"
