@@ -29,7 +29,7 @@ const variantClassNames: Record<Variant, string> = {
 
 const colorClassNames: Record<Color, string> = {
   default:
-    "border-gold-12 text-gold-12 hover:bg-neutral-100/5 data-[state=open]:bg-neutral-100/75",
+    "border-gold-12 text-gold-12 hover:bg-neutral-100/20 data-[state=open]:bg-neutral-100/5",
   primary:
     "border-primary-7 hover:border-primary-8 hover:bg-primary-4 active:bg-primary-5 text-primary-9 data-[state=open]:bg-primary-5",
   secondary:
