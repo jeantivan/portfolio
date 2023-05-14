@@ -1,8 +1,9 @@
-"use client";
-import { ComponentProps } from "react";
-import AccesibleIcon from "./AccesibleIcon";
+import { forwardRef } from "react";
 
 import cx from "classnames";
+import AccesibleIcon from "./AccesibleIcon";
+
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from "@utils/types";
 
 // Estilos
 type Size = "large" | "medium" | "small";
@@ -35,43 +36,42 @@ const colorClassNames: Record<Color, string> = {
     "border-gold-7 hover:border-gold-8 hover:bg-gold-4 active:bg-gold-5 text-gold-9 data-[state=open]:bg-gold-5",
 };
 
-// Polimorfismo ->
+type IconButtonProps<C extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<
+    C,
+    {
+      color?: Color;
+      size?: Size;
+      variant?: Variant;
+      label: string;
+      iconClassName?: string;
+    }
+  >;
 
-// Props bases
-type IconButtonBaseProps = {
-  label: string;
-  variant?: Variant;
-  color?: Color;
-  size?: Size;
-  iconClassName?: string;
-};
+type IconButtonComponent = <C extends React.ElementType = "button">(
+  props: IconButtonProps<C>
+) => React.ReactElement | null;
 
-// Como un boton simple
-type ButtonAsButton = IconButtonBaseProps &
-  Omit<ComponentProps<"button">, keyof IconButtonBaseProps> & {
-    as?: "button";
-  };
+const IconButton: IconButtonComponent = forwardRef(function ForwardIconButton<
+  C extends React.ElementType = "button"
+>(props: IconButtonProps<C>, ref?: PolymorphicRef<C>) {
+  const {
+    as,
+    children,
+    className,
+    label,
+    iconClassName,
+    size = "medium",
+    variant = "text",
+    color = "default",
+    ...rest
+  } = props;
 
-// Como un link externo <a>
-type ButtonAsExternalLink = IconButtonBaseProps &
-  Omit<ComponentProps<"a">, keyof IconButtonBaseProps> & {
-    as: "externalLink";
-  };
+  const Component = as || "button";
 
-type IconButtonProps = ButtonAsButton | ButtonAsExternalLink;
-
-function IconButton({
-  label,
-  className,
-  iconClassName,
-  size = "medium",
-  variant = "text",
-  color = "default",
-  ...props
-}: IconButtonProps) {
   // Todas las classNames juntas
   const classNames = cx(
-    "inline-flex justify-center align-center",
+    "inline-flex justify-center align-center outline-none",
     buttonSizes[size],
     variantClassNames[variant],
     colorClassNames[color],
@@ -79,35 +79,16 @@ function IconButton({
     className
   );
 
-  if (props.as === "externalLink") {
-    let { as, ...rest } = props;
-
-    return (
-      <a
-        className={classNames}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...rest}
-      >
-        <AccesibleIcon
-          label={label}
-          className={cx(iconSizes[size], iconClassName)}
-        >
-          {props.children}
-        </AccesibleIcon>
-      </a>
-    );
-  }
   return (
-    <button className={classNames} {...props}>
+    <Component {...rest} className={classNames} ref={ref}>
       <AccesibleIcon
         label={label}
-        className={cx(iconSizes[size], iconClassName)}
+        className={cx(iconClassName, iconSizes[size])}
       >
-        {props.children}
+        {children}
       </AccesibleIcon>
-    </button>
+    </Component>
   );
-}
+});
 
 export default IconButton;

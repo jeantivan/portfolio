@@ -1,6 +1,7 @@
+import { forwardRef } from "react";
 import cx from "classnames";
-import { ComponentProps, ReactNode } from "react";
-import Link, { LinkProps } from "next/link";
+
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from "@utils/types";
 
 // Estilos
 type Variant = "outlined" | "text";
@@ -17,41 +18,33 @@ const sizeClassNames: Record<Size, string> = {
   large: "px-12 py-3 text-xl",
 };
 
-// Polimorfismo del Botón
-// Fuente: https://dev.to/frehner/polymorphic-button-component-in-typescript-c28
-type ButtonBaseProps = {
-  children: ReactNode;
-  className?: string;
-  variant?: Variant;
-  size?: Size;
-};
+type ButtonProps<C extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<
+    C,
+    {
+      size?: Size;
+      variant?: Variant;
+    }
+  >;
 
-// Si es un botón normal
-type ButtonAsButton = ButtonBaseProps &
-  Omit<ComponentProps<"button">, keyof ButtonBaseProps> & {
-    as?: "button";
-  };
+type ButtonComponent = <C extends React.ElementType = "button">(
+  props: ButtonProps<C>
+) => React.ReactElement | null;
 
-// Si es un Link de next
-type ButtonAsLink = ButtonBaseProps &
-  Omit<LinkProps, keyof ButtonBaseProps> & {
-    as: "link";
-  };
+const Button: ButtonComponent = forwardRef(function ForwardButton<
+  C extends React.ElementType = "button"
+>(props: ButtonProps<C>, ref?: PolymorphicRef<C>) {
+  const {
+    as,
+    children,
+    className,
+    size = "medium",
+    variant = "outlined",
+    ...rest
+  } = props;
 
-// Si es un Link externo <a>
-type ButtonAsExternalLink = ButtonBaseProps &
-  Omit<ComponentProps<"a">, keyof ButtonBaseProps> & {
-    as: "externalLink";
-  };
+  const Component = as || "button";
 
-type ButtonProps = ButtonAsButton | ButtonAsLink | ButtonAsExternalLink;
-
-function Button({
-  size = "medium",
-  variant = "outlined",
-  className,
-  ...props
-}: ButtonProps) {
   const classNames = cx(
     variantClassNames[variant],
     sizeClassNames[size],
@@ -62,39 +55,11 @@ function Button({
     className
   );
 
-  // Link de next
-  if (props.as === "link") {
-    let { as, ...rest } = props;
-
-    return (
-      <Link className={classNames} {...rest}>
-        {props.children}
-      </Link>
-    );
-  }
-
-  // Link externo
-  if (props.as === "externalLink") {
-    let { as, ...rest } = props;
-
-    return (
-      <a
-        className={classNames}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...rest}
-      >
-        {props.children}
-      </a>
-    );
-  }
-
-  // Botón común y corriente
   return (
-    <button className={classNames} type="button" {...props}>
-      {props.children}
-    </button>
+    <Component className={classNames} ref={ref} {...rest}>
+      {children}
+    </Component>
   );
-}
+});
 
 export default Button;
