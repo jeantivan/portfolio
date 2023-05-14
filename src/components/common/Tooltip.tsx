@@ -8,7 +8,7 @@ type TooltipProps = TooltipPrimitive.TooltipContentProps & {
   forceMount?: boolean;
 };
 
-const ToolTip = ({
+const Tooltip = ({
   className,
   content,
   delayDuration = 350,
@@ -38,4 +38,4 @@ const ToolTip = ({
   );
 };
 
-export { ToolTip, type TooltipProps };
+export { Tooltip, type TooltipProps };
