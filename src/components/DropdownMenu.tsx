@@ -6,6 +6,8 @@ import { CheckIcon } from "@radix-ui/react-icons";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
+const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 
 const itemClassName = cx(
   "px-3 flex items-center gap-2 select-none cursor-pointer outline-none",
@@ -91,6 +93,8 @@ const DropdownMenuContent = ({
 export {
   DropdownMenu,
   DropdownMenuTrigger,
+  DropdownMenuGroup,
+  DropdownMenuRadioGroup,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuCheckboxItem,
