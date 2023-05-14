@@ -26,7 +26,7 @@ const Tooltip = ({
         </TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal forceMount={forceMount}>
           <TooltipPrimitive.Content
-            className="select-none rounded shadow-md text-gold-1 bg-gold-12 py-2 px-3 origin-[--radix-tooltip-content-transform-origin]"
+            className="select-none z-[999] rounded-sm shadow-md text-gold-1 bg-gold-12 py-2 px-3 origin-[--radix-tooltip-content-transform-origin]"
             sideOffset={sideOffset}
             align="center"
             {...rest}
