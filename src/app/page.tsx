@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 import Container from "@components/common/Container";
 import Text from "@components/common/Text";
@@ -15,11 +15,11 @@ function Home() {
   return (
     <Container className="my-8 md:my-16">
       <section className="md:text-center mb-14">
-        <div className="mb-6 md:mb-8">
+        <div className="mb-4 md:mb-5">
           <Text variant="body2" color="secondary">
             Hi, my name is
           </Text>
-          <Text Component="h1" variant="main" className="uppercase mb-2">
+          <Text Component="h1" variant="main" className="uppercase mb-1">
             Jean Tivan
           </Text>
           <Text
@@ -32,7 +32,7 @@ function Home() {
             Frontend Developer
           </Text>
         </div>
-        <div className="mb-6 md:mb-8">
+        <div className="mb-7 md:mb-9">
           <Text
             variant="body2"
             weight="light"
@@ -47,11 +47,11 @@ function Home() {
           </Text>
         </div>
         <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 w-full md:px-10">
-          <Button as="link" href="/contact" className="w-full md:w-1/3">
+          <Button as={Link} href="/contact" className="w-full md:w-1/3">
             {"Let's work together!"}
           </Button>
           <Button
-            as="link"
+            as={Link}
             href="/projects"
             variant="text"
             className="w-full md:w-1/3"
@@ -64,7 +64,7 @@ function Home() {
         <Text Component="h3" variant="title" className="mb-5">
           Why should you hire me<span className="text-primary-9">?</span>
         </Text>
-        <Text color="secondary" className="text-justify mb-5">
+        <Text color="secondary" variant="body2" className="text-justify mb-7">
           Lorem ipsum dolor sit amet consectetur. Eget sed sed quam faucibus mi
           in nisl. Ut odio venenatis nunc tristique. Nunc pellentesque neque
           magna mauris. Bibendum egestas a leo massa elementum netus fringilla.
