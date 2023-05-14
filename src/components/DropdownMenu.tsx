@@ -72,13 +72,15 @@ const DropdownMenuRadioItem = ({
 
 const DropdownMenuContent = ({
   className,
+  sideOffset = 3,
   ...rest
 }: DropdownMenuPrimitive.DropdownMenuContentProps) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
+      sideOffset={sideOffset}
       {...rest}
       className={cx(
-        "bg-gold-3 text-gold-12 text-lg z-50 min-w-[9rem] overflow-hidden",
+        "bg-gold-2 text-gold-12 text-lg z-50 min-w-[9rem] overflow-hidden",
         "border border-gold-4 rounded-md",
         "py-1.5",
         className
