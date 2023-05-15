@@ -1,12 +1,27 @@
 import React from "react";
-import { BookmarkIcon } from "@radix-ui/react-icons";
+import {
+  BookmarkIcon,
+  MixerHorizontalIcon,
+  ArchiveIcon,
+} from "@radix-ui/react-icons";
 
 import Button from "@components/common/Button";
 import IconButton from "@components/common/IconButton";
 import Input from "@components/common/Input";
 import Text from "@components/common/Text";
 import Container from "@components/common/Container";
-import Header from "@components/Header";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuItem,
+  DropdownMenuContent,
+} from "@components/common/DropdownMenu";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@components/common/Popover";
+import { Tooltip } from "@components/common/Tooltip";
 
 export const metadata = {
   title: "Common components | JeanTivan.dev",
@@ -19,15 +34,12 @@ function CommonComponents() {
       <h1 className="text-primary-9 text-4xl text-center mb-12">
         Common Components
       </h1>
-      <div className="mb-12">
-        <Header />
-      </div>
       <div className="my-12">
         <Container className="h-32 ">
           <div className="bg-gold-7 flex-1 h-full"></div>
         </Container>
       </div>
-      <div className="w-11/12 mx-auto mb-12">
+      <Container className="mb-12">
         <div className="mb-6 mx-3">
           <Text variant="main">
             <strong>Main:</strong> Jean Tivan
@@ -62,34 +74,23 @@ function CommonComponents() {
             cupiditate fugit maiores doloremque voluptates!
           </Text>
         </div>
-      </div>
-      <div className="w-2/3 mx-auto mb-12">
-        <Button size="small" className="mx-3">
-          Small
-        </Button>
-        <Button size="medium" className="mx-3">
-          Medium
-        </Button>
-        <Button size="large" className="mx-3">
-          Large
-        </Button>
-        <Button
-          as="a"
-          href="https://es.react.dev/learn"
-          className="mx-3"
-          variant="text"
-        >
+      </Container>
+      <Container className="flex flex-wrap gap-3 mb-12">
+        <Button size="small">Small</Button>
+        <Button size="medium">Medium</Button>
+        <Button size="large">Large</Button>
+        <Button as="a" href="https://es.react.dev/learn" variant="text">
           External Link
         </Button>
-      </div>
-      <div className="w-full flex items-center justify-center mx-auto mb-12">
-        <IconButton label="Label de ejemplo" size="small" className="mx-3">
+      </Container>
+      <Container className="flex flex-wrap items-center justify-center gap-3 mb-12">
+        <IconButton label="Label de ejemplo" size="small">
           <BookmarkIcon />
         </IconButton>
-        <IconButton label="Label de ejemplo" size="medium" className="mx-3">
+        <IconButton label="Label de ejemplo" size="medium">
           <BookmarkIcon />
         </IconButton>
-        <IconButton label="Label de ejemplo" size="large" className="mx-3">
+        <IconButton label="Label de ejemplo" size="large">
           <BookmarkIcon />
         </IconButton>
         <IconButton
@@ -97,7 +98,6 @@ function CommonComponents() {
           size="medium"
           variant="outlined"
           color="secondary"
-          className="mx-3"
         >
           <BookmarkIcon />
         </IconButton>
@@ -106,45 +106,33 @@ function CommonComponents() {
           size="medium"
           variant="outlined"
           color="primary"
-          className="mx-3"
         >
           <BookmarkIcon />
         </IconButton>
-        <IconButton
-          label="Label de ejemplo"
-          size="medium"
-          color="secondary"
-          className="mx-3"
-        >
+        <IconButton label="Label de ejemplo" size="medium" color="secondary">
           <BookmarkIcon />
         </IconButton>
-        <IconButton
-          label="Label de ejemplo"
-          size="medium"
-          color="primary"
-          className="mx-3"
-        >
+        <IconButton label="Label de ejemplo" size="medium" color="primary">
           <BookmarkIcon />
         </IconButton>
         <IconButton
           label="Label de ejemplo"
           size="medium"
           color="primary"
-          className="mx-3"
           as="a"
           href="https://es.react.dev/learn"
         >
           <BookmarkIcon />
         </IconButton>
-      </div>
-      <div className="w-2/3 mx-auto flex mb-12">
-        <div className="w-1/3 mx-3">
+      </Container>
+      <Container className="mb-12 flex flex-wrap gap-3">
+        <div className="flex-auto w-1/3">
           <Input label="Full name" name="fullName" placeholder="John doe..." />
         </div>
-        <div className="w-1/3 mx-3">
+        <div className="flex-auto w-1/3">
           <Input label="Full name" name="fullName" placeholder="John doe..." />
         </div>
-        <div className="w-1/3 mx-3">
+        <div className="flex-auto w-1/3">
           <Input
             label="Full name"
             name="fullName"
@@ -152,9 +140,9 @@ function CommonComponents() {
             error={"Ups! Mensaje de error"}
           />
         </div>
-      </div>
-      <div className="w-2/3 mx-auto flex mb-12">
-        <div className="h-52 mx-3 w-full">
+      </Container>
+      <Container className="mb-12">
+        <div className="w-full">
           <Input
             label="Message"
             name="message"
@@ -162,7 +150,52 @@ function CommonComponents() {
             textarea
           />
         </div>
-      </div>
+      </Container>
+      <Container className="flex justify-center gap-8 mx-auto mb-12">
+        <div>
+          <Text className="mb-3">Dropdown Menu</Text>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <IconButton variant="outlined" label="Abrir menu">
+                <MixerHorizontalIcon />
+              </IconButton>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>Menu Item</DropdownMenuItem>
+              <DropdownMenuItem>Menu Item</DropdownMenuItem>
+              <DropdownMenuItem>Menu Item</DropdownMenuItem>
+              <DropdownMenuItem>Menu Item</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <div>
+          <Text className="mb-3">Popover</Text>
+          <Popover>
+            <PopoverTrigger asChild>
+              <IconButton
+                label="Abrir popover"
+                color="primary"
+                variant="outlined"
+              >
+                <ArchiveIcon />
+              </IconButton>
+            </PopoverTrigger>
+            <PopoverContent className="p-2">
+              <Input
+                label="Search term"
+                name="search"
+                placeholder="search..."
+              />
+            </PopoverContent>
+          </Popover>
+        </div>
+        <div>
+          <Text>Tooltip</Text>
+          <Text variant="body2" color="primary">
+            Show tooltip <Tooltip content="Hi I'm a tooltip!">here!</Tooltip>
+          </Text>
+        </div>
+      </Container>
     </div>
   );
 }
