@@ -13,9 +13,9 @@ const variantClassNames: Record<Variant, string> = {
   text: "border-transparent text-primary-9 border-transparent hover:bg-primary-4 hover:border-primary-4 hover:text-primary-10",
 };
 const sizeClassNames: Record<Size, string> = {
-  small: "px-6 py-1 text-sm",
-  medium: "px-8 py-2 text-base",
-  large: "px-12 py-3 text-xl",
+  small: "px-6 py-1.5 text-sm h-8",
+  medium: "px-8 py-3 text-base h-10",
+  large: "px-12 py-4 text-lg h-12",
 };
 
 type ButtonProps<C extends React.ElementType> =
@@ -49,7 +49,7 @@ const Button: ButtonComponent = forwardRef(function ForwardButton<
     variantClassNames[variant],
     sizeClassNames[size],
     "inline-flex justify-center items-center gap-3",
-    "tracking-wider uppercase font-medium line-none text-center",
+    "tracking-wider uppercase font-medium leading-none text-center",
     "border rounded-sm",
     "transition duration-75",
     className
