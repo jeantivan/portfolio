@@ -3,6 +3,10 @@ import Link from "next/link";
 import cx from "classnames";
 
 import Logo from "./Logo";
+import IconButton from "./common/IconButton";
+import { GlobeIcon, MoonIcon } from "@radix-ui/react-icons";
+import { Tooltip } from "./common/Tooltip";
+// import SelectDarkMode from "./DropdownMenu";
 
 function NavLink(props: ComponentProps<typeof Link>) {
   return (
@@ -27,6 +31,23 @@ function DesktopNav() {
         <NavLink href="/projects">Projects</NavLink>
         <NavLink href="/contact">Contact</NavLink>
       </nav>
+      <div className="flex gap-2 -mr-2.5">
+        {/* TODO: Agregas los dropdown menu para cada elemento */}
+        <Tooltip content="Select color scheme">
+          <IconButton
+            label="Select color scheme"
+            color="secondary"
+            icon={MoonIcon}
+          />
+        </Tooltip>
+        <Tooltip content="Select language">
+          <IconButton
+            label="Select language"
+            color="secondary"
+            icon={GlobeIcon}
+          />
+        </Tooltip>
+      </div>
     </div>
   );
 }
