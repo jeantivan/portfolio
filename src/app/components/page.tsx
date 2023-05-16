@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BookmarkIcon,
   MixerHorizontalIcon,
@@ -75,55 +74,82 @@ function CommonComponents() {
           </Text>
         </div>
       </Container>
-      <Container className="flex flex-wrap gap-3 mb-12">
+      <Container className="flex gap-3 items-center mb-12">
         <Button size="small">Small</Button>
         <Button size="medium">Medium</Button>
         <Button size="large">Large</Button>
-        <Button as="a" href="https://es.react.dev/learn" variant="text">
-          External Link
+        <Button
+          as="a"
+          size="small"
+          href="https://es.react.dev/learn"
+          variant="text"
+        >
+          As Link
+        </Button>
+        <Button
+          as="a"
+          size="medium"
+          href="https://es.react.dev/learn"
+          variant="text"
+        >
+          As Link
+        </Button>
+        <Button
+          as="a"
+          size="large"
+          href="https://es.react.dev/learn"
+          variant="text"
+        >
+          As Link
         </Button>
       </Container>
-      <Container className="flex flex-wrap items-center justify-center gap-3 mb-12">
-        <IconButton label="Label de ejemplo" size="small">
-          <BookmarkIcon />
-        </IconButton>
-        <IconButton label="Label de ejemplo" size="medium">
-          <BookmarkIcon />
-        </IconButton>
-        <IconButton label="Label de ejemplo" size="large">
-          <BookmarkIcon />
-        </IconButton>
+      <Container className="flex gap-3 items-center mb-12">
+        <IconButton label="Label de ejemplo" size="small" icon={BookmarkIcon} />
         <IconButton
           label="Label de ejemplo"
+          size="medium"
+          icon={BookmarkIcon}
+        />
+        <IconButton label="Label de ejemplo" size="large" icon={BookmarkIcon} />
+        <IconButton
+          label="Label de ejemplo"
+          icon={BookmarkIcon}
+          size="small"
+          variant="outlined"
+          color="secondary"
+        />
+        <IconButton
+          label="Label de ejemplo"
+          icon={BookmarkIcon}
           size="medium"
           variant="outlined"
           color="secondary"
-        >
-          <BookmarkIcon />
-        </IconButton>
+        />
         <IconButton
           label="Label de ejemplo"
-          size="medium"
+          icon={BookmarkIcon}
+          size="large"
           variant="outlined"
-          color="primary"
-        >
-          <BookmarkIcon />
-        </IconButton>
-        <IconButton label="Label de ejemplo" size="medium" color="secondary">
-          <BookmarkIcon />
-        </IconButton>
-        <IconButton label="Label de ejemplo" size="medium" color="primary">
-          <BookmarkIcon />
-        </IconButton>
+          color="secondary"
+        />
         <IconButton
           label="Label de ejemplo"
+          icon={BookmarkIcon}
+          size="small"
+          color="primary"
+        />
+        <IconButton
+          label="Label de ejemplo"
+          icon={BookmarkIcon}
           size="medium"
           color="primary"
-          as="a"
-          href="https://es.react.dev/learn"
-        >
-          <BookmarkIcon />
-        </IconButton>
+        />
+        <IconButton
+          label="Label de ejemplo"
+          icon={BookmarkIcon}
+          size="large"
+          color="primary"
+        />
       </Container>
       <Container className="mb-12 flex flex-wrap gap-3">
         <div className="flex-auto w-1/3">
@@ -156,9 +182,11 @@ function CommonComponents() {
           <Text className="mb-3">Dropdown Menu</Text>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <IconButton variant="outlined" label="Abrir menu">
-                <MixerHorizontalIcon />
-              </IconButton>
+              <IconButton
+                variant="outlined"
+                label="Abrir menu"
+                icon={MixerHorizontalIcon}
+              />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem>Menu Item</DropdownMenuItem>
@@ -176,9 +204,8 @@ function CommonComponents() {
                 label="Abrir popover"
                 color="primary"
                 variant="outlined"
-              >
-                <ArchiveIcon />
-              </IconButton>
+                icon={ArchiveIcon}
+              />
             </PopoverTrigger>
             <PopoverContent className="p-2">
               <Input
