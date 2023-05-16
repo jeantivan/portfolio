@@ -11,19 +11,13 @@ type Variant = "text" | "outlined";
 type Color = "primary" | "secondary" | "default";
 
 const buttonSizes: Record<Size, string> = {
-  small: "p-2",
-  medium: "p-2.5",
-  large: "p-3",
-};
-
-const iconSizes: Record<Size, string> = {
-  small: "[&>svg]:w-3.5 [&>svg]:h-3.5",
-  medium: "[&>svg]:w-5 [&>svg]:h-5",
-  large: "[&>svg]:w-6 [&>svg]:h-6",
+  small: "p-2 w-8 h-8",
+  medium: "p-2.5 w-10 h-10",
+  large: "p-3 w-12 h-12",
 };
 
 const variantClassNames: Record<Variant, string> = {
-  text: "bg-transparent border-0",
+  text: "bg-transparent border-transparent",
   outlined: "border",
 };
 
@@ -44,6 +38,7 @@ type IconButtonProps<C extends React.ElementType> =
       size?: Size;
       variant?: Variant;
       label: string;
+      icon: C;
       iconClassName?: string;
     }
   >;
@@ -59,11 +54,12 @@ const IconButton: IconButtonComponent = forwardRef(function ForwardIconButton<
     as,
     children,
     className,
-    label,
-    iconClassName,
     size = "medium",
     variant = "text",
     color = "default",
+    label,
+    icon,
+    iconClassName,
     ...rest
   } = props;
 
@@ -81,12 +77,7 @@ const IconButton: IconButtonComponent = forwardRef(function ForwardIconButton<
 
   return (
     <Component {...rest} className={classNames} ref={ref}>
-      <AccesibleIcon
-        label={label}
-        className={cx(iconClassName, iconSizes[size])}
-      >
-        {children}
-      </AccesibleIcon>
+      <AccesibleIcon icon={icon} label={label} iconClassName={className} />
     </Component>
   );
 });
