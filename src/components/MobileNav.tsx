@@ -66,9 +66,8 @@ function MobileNav() {
           color={isExpanded ? "primary" : "secondary"}
           onClick={toggle}
           data-state={isExpanded ? "open" : "closed"}
-        >
-          {isExpanded ? <Cross1Icon /> : <HamburgerMenuIcon />}
-        </IconButton>
+          icon={isExpanded ? Cross1Icon : HamburgerMenuIcon}
+        />
       </div>
       {isExpanded && <Nav />}
     </div>
