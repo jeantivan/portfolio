@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -12,7 +12,9 @@ import Logo from "./Logo";
 
 import { useIsExpanded } from "./Header";
 
-type NavLinkProps = ComponentProps<typeof Link> & { isActive?: boolean };
+type NavLinkProps = ComponentPropsWithoutRef<typeof Link> & {
+  isActive?: boolean;
+};
 function NavLink({ href, isActive, ...props }: NavLinkProps) {
   return (
     <Link
