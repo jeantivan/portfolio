@@ -55,7 +55,7 @@ function getTextVariant(variant: Variants) {
   return variantClasses[variant];
 }
 
-type TextProps = {
+export type TextProps = {
   children: ReactNode;
   variant?: Variants;
   color?: Colors;
