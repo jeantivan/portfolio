@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-
 import cx from "classnames";
 import AccesibleIcon from "./AccesibleIcon";
 
@@ -30,6 +29,15 @@ const colorClassNames: Record<Color, string> = {
     "border-gold-7 hover:border-gold-8 hover:bg-gold-4 active:bg-gold-5 text-gold-9 data-[state=open]:bg-gold-5",
 };
 
+// Del código fuente de @radix-ui
+type RadixIconProps = React.SVGAttributes<SVGElement> & {
+  children?: never;
+  color?: string;
+};
+type IconProps = React.ForwardRefExoticComponent<
+  RadixIconProps & React.RefAttributes<SVGSVGElement>
+>;
+
 type IconButtonProps<C extends React.ElementType> =
   PolymorphicComponentPropsWithRef<
     C,
@@ -38,7 +46,7 @@ type IconButtonProps<C extends React.ElementType> =
       size?: Size;
       variant?: Variant;
       label: string;
-      icon: C;
+      icon: IconProps;
       iconClassName?: string;
     }
   >;
