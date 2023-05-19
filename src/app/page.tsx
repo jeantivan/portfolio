@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
+import Heading from "@components/Heading";
 import Container from "@components/common/Container";
 import Text from "@components/common/Text";
 import Button from "@components/common/Button";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 export const metadata = {
   title: "About | JeanTivan.dev",
@@ -61,9 +62,13 @@ function Home() {
         </div>
       </section>
       <section className="mb-20 md:mb-32">
-        <Text Component="h3" variant="title" className="mb-5">
-          Why should you hire me<span className="text-primary-9">?</span>
-        </Text>
+        <Heading
+          text="Why should you hire me?"
+          Component="h3"
+          variant="title"
+          className="mb-5"
+        />
+
         <Text color="secondary" variant="body2" className="text-justify mb-7">
           Lorem ipsum dolor sit amet consectetur. Eget sed sed quam faucibus mi
           in nisl. Ut odio venenatis nunc tristique. Nunc pellentesque neque
@@ -81,9 +86,7 @@ function Home() {
         </ul>
       </section>
       <section className="flex flex-col justify-center items-center gap-5 md:flex-row md:gap-10">
-        <Text variant="subheading" weight="medium">
-          Get a copy of my resume<span className="text-primary-9">.</span>
-        </Text>
+        <Heading text="Get a copy of my resume." weight="medium" />
         <ArrowRightIcon className="text-gold-11 w-7 h-7 rotate-90 md:rotate-0" />
         <Button size="large">Download resume</Button>
       </section>

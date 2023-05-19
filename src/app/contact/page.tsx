@@ -1,3 +1,5 @@
+import Heading from "@components/Heading";
+
 import Button from "@components/common/Button";
 import Container from "@components/common/Container";
 import Text from "@components/common/Text";
@@ -12,11 +14,13 @@ function Contact() {
   return (
     <Container className="my-8 md:my-16">
       <section className="mb-16 md:mb-20">
-        <Text Component="h1" variant="title" className="uppercase mb-6 md:mb-8">
-          Let<span className="text-primary-9">{"'"}</span>s connect and work
-          together
-          <span className="text-primary-9">!</span>
-        </Text>
+        <Heading
+          text="Let's connect & work together"
+          Component="h1"
+          variant="title"
+          className="uppercase mb-6 md:mb-8"
+        />
+
         <Text variant="body2" color="secondary" className="mb-14">
           Lorem ipsum dolor sit amet consectetur. Pharetra a in aliquet
           malesuada. Id interdum cursus mi in. Lorem ipsum dolor sit amet
