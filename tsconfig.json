@@ -16,7 +16,8 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "@/": ["./*"],
+      "@/*": ["./*"],
+      "@/sanity/*": ["./src/sanity/*"],
       "@/assets/*": ["./src/assets/*"],
       "@/config/*": ["./src/config/*"],
       "@/components/*": ["./src/components/*"],
