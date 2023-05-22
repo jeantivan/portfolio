@@ -1,9 +1,9 @@
-import Heading from "@components/Heading";
+import Heading from "@/components/Heading";
 
-import Button from "@components/common/Button";
-import Container from "@components/common/Container";
-import Text from "@components/common/Text";
-import Input from "@components/common/Input";
+import Button from "@/components/common/Button";
+import Container from "@/components/common/Container";
+import Text from "@/components/common/Text";
+import Input from "@/components/common/Input";
 
 export const metadata = {
   title: "Contact | JeanTivan.dev",

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 
-import Heading from "@components/Heading";
-import Container from "@components/common/Container";
-import Text from "@components/common/Text";
-import Button from "@components/common/Button";
+import Heading from "@/components/Heading";
+import Container from "@/components/common/Container";
+import Text from "@/components/common/Text";
+import Button from "@/components/common/Button";
 
 export const metadata = {
   title: "About | JeanTivan.dev",

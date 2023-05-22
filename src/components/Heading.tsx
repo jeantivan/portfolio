@@ -1,7 +1,7 @@
 import Text from "./common/Text";
 import type { TextProps } from "./common/Text";
 
-import { splitEspecialChar, EspecialCharRgx } from "@utils/splitEspecialChar";
+import { splitEspecialChar, EspecialCharRgx } from "@/utils/splitEspecialChar";
 
 type HeadingProps = Omit<TextProps, "children" | "variant"> & {
   text: string;

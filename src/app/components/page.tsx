@@ -4,23 +4,23 @@ import {
   ArchiveIcon,
 } from "@radix-ui/react-icons";
 
-import Button from "@components/common/Button";
-import IconButton from "@components/common/IconButton";
-import Input from "@components/common/Input";
-import Text from "@components/common/Text";
-import Container from "@components/common/Container";
+import Button from "@/components/common/Button";
+import IconButton from "@/components/common/IconButton";
+import Input from "@/components/common/Input";
+import Text from "@/components/common/Text";
+import Container from "@/components/common/Container";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuItem,
   DropdownMenuContent,
-} from "@components/common/DropdownMenu";
+} from "@/components/common/DropdownMenu";
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from "@components/common/Popover";
-import { Tooltip } from "@components/common/Tooltip";
+} from "@/components/common/Popover";
+import { Tooltip } from "@/components/common/Tooltip";
 
 export const metadata = {
   title: "Common components | JeanTivan.dev",

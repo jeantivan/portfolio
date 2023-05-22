@@ -7,7 +7,7 @@ import IconButton from "./common/IconButton";
 import Button from "./common/Button";
 
 // Imagen de ejemplo
-import chat_me from "@assets/images/chat-me.png";
+import chat_me from "@/assets/images/chat-me.png";
 
 const SetAside = () => (
   <>

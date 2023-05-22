@@ -1,15 +1,15 @@
 "use client";
 import { notFound } from "next/navigation";
-import Text from "@components/common/Text";
-import Container from "@components/common/Container";
-import Button from "@components/common/Button";
-import Card from "@components/common/Card";
+import Text from "@/components/common/Text";
+import Container from "@/components/common/Container";
+import Button from "@/components/common/Button";
+import Card from "@/components/common/Card";
 
 // Imagen de ejemplo
-import chat_me from "@assets/images/chat-me.png";
-import ProjectImage from "@components/ProjectImage";
+import chat_me from "@/assets/images/chat-me.png";
+import ProjectImage from "@/components/ProjectImage";
 import { FrameIcon } from "@radix-ui/react-icons";
-import Heading from "@components/Heading";
+import Heading from "@/components/Heading";
 
 const getProjects = () => [
   {
