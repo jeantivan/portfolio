@@ -1,50 +1,63 @@
-import { ComponentProps } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import cx from "classnames";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 import Logo from "./Logo";
 import IconButton from "./common/IconButton";
-import { GlobeIcon, MoonIcon } from "@radix-ui/react-icons";
 import { Tooltip } from "./common/Tooltip";
-// import SelectDarkMode from "./DropdownMenu";
 
-function NavLink(props: ComponentProps<typeof Link>) {
+type NavLinkProps = ComponentPropsWithoutRef<typeof Link> & {
+  isActive?: boolean;
+};
+function NavLink({ href, isActive, ...props }: NavLinkProps) {
   return (
     <Link
       {...props}
+      href={href}
       className={cx(
-        "uppercase py-2 px-6",
-        "border-b border-transparent hover:border-primary-9"
+        "uppercase py-2 px-4 ",
+        "relative z-0",
+        isActive
+          ? "text-gold-12 hover:text-gold-12"
+          : "text-gold-10 hover:text-gold-11"
       )}
     >
-      {props.children}
+      <span className="px-2 bg-inherit">{props.children}</span>
+      {isActive && (
+        <span className="absolute w-full h-px bg-primary-10 bottom-0 left-0 -translate-y-1/2 z-[5]"></span>
+      )}
     </Link>
   );
 }
 
 function DesktopNav() {
+  const pathname = usePathname();
+
   return (
     <div className="hidden md:flex items-center py-2">
       <Logo />
-      <nav className="hidden md:flex text-gold-11 flex-1 justify-center gap-8">
-        <NavLink href="/">About</NavLink>
-        <NavLink href="/projects">Projects</NavLink>
-        <NavLink href="/contact">Contact</NavLink>
+      <nav className="hidden md:flex flex-1 justify-center gap-8">
+        <NavLink href="/" isActive={pathname === "/"}>
+          About
+        </NavLink>
+        <NavLink href="/projects" isActive={pathname === "/projects"}>
+          Projects
+        </NavLink>
+        <NavLink href="/contact" isActive={pathname === "/contact"}>
+          Contact
+        </NavLink>
       </nav>
       <div className="flex gap-2 -mr-2.5">
-        {/* TODO: Agregas los dropdown menu para cada elemento */}
-        <Tooltip content="Select color scheme">
+        <Tooltip content="Visit my github">
           <IconButton
-            label="Select color scheme"
+            label="Visit my github"
             color="secondary"
-            icon={MoonIcon}
-          />
-        </Tooltip>
-        <Tooltip content="Select language">
-          <IconButton
-            label="Select language"
-            color="secondary"
-            icon={GlobeIcon}
+            icon={GitHubLogoIcon}
+            as="a"
+            href="https://github.com/jeantivan"
           />
         </Tooltip>
       </div>
