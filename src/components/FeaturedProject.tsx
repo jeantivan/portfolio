@@ -35,6 +35,7 @@ const SetAside = () => (
           variant="outlined"
           color="secondary"
           size="small"
+          as="a"
         />
         <Button color="primary" variant="outlined" size="small">
           View more
