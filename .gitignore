@@ -35,6 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
-# Antiguas paginas del proyecto
-/src/pages_legacy/
+# Variables de entorno
+.env
+.env.local
