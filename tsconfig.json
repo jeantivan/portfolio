@@ -17,11 +17,11 @@
     "baseUrl": "./",
     "paths": {
       "@/": ["./*"],
-      "@assets/*": ["./src/assets/*"],
-      "@config/*": ["./src/config/*"],
-      "@components/*": ["./src/components/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@/assets/*": ["./src/assets/*"],
+      "@/config/*": ["./src/config/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/utils/*": ["./src/utils/*"]
     },
     "plugins": [
       {
