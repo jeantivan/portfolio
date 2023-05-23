@@ -8,7 +8,7 @@ import schema from "@/sanity/schema";
 
 // Configuración para sanity.io
 export default defineConfig({
-  basePath: "/studio",
+  basePath: "/admin",
   projectId,
   dataset,
   apiVersion,
