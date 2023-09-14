@@ -7,7 +7,8 @@ import IconButton from "./common/IconButton";
 import Button from "./common/Button";
 
 // Imagen de ejemplo
-import chat_me from "@/assets/images/chat-me.png";
+import chat_me from "@/assets/images/chat-me.jpg";
+import Link from "next/link";
 
 const SetAside = () => (
   <>
@@ -48,53 +49,21 @@ const SetAside = () => (
 type FeaturedProjectProps = {};
 function FeaturedProject(props: FeaturedProjectProps) {
   return (
-    <Card as="article" className="overflow-hidden relative z-0">
-      <main className="flex flex-wrap">
-        <div className="w-full max-w-[410px] max-h-[230px] aspect-video bg-gray-400">
-          <Image
-            alt="Imagen de prueba"
-            width={410}
-            height={230}
-            style={{ objectFit: "contain" }}
-            src={chat_me}
-          />
+    <Card
+      as="article"
+      className="relative border border-primary-7 aspect-video"
+    >
+      <Link href="#">
+        <div className="w-full bg-gray-400 absolute inset-0 overflow-hidden rounded">
+          <Image alt="Imagen de prueba" fill src={chat_me} />
         </div>
-        <div className="flex-1 flex flex-col p-4">
-          <header className="mb-2 md:mb-4">
-            <Text variant="subheading" weight="medium">
-              Example project name.
-            </Text>
-          </header>
-          <Text
-            color="secondary"
-            className="mb-6 line-clamp-2 md:line-clamp-none"
-          >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus
-            quod ab dolores nulla, sapiente quam.
-          </Text>
-          <div className="w-full justify-between flex mt-auto">
-            <div className="flex gap-4">
-              <IconButton
-                label="Link to project source code"
-                icon={GitHubLogoIcon}
-                variant="outlined"
-                color="secondary"
-                size="small"
-              />
-              <IconButton
-                label="Link to project source code"
-                icon={ExternalLinkIcon}
-                variant="outlined"
-                color="secondary"
-                size="small"
-              />
-            </div>
-            <Button color="primary" variant="outlined" size="small">
-              View more
-            </Button>
+        <header className="absolute inset-0 flex items-end py-2 px-4 bg-gradient-to-t from-neutral-950/70 from-5% via-neutral-950/10 via-15%">
+          <div className="flex items-center gap-2">
+            <span className="w-4 h-1 rounded-full bg-primary-9" />
+            <Text variant="body2">Example project name.</Text>
           </div>
-        </div>
-      </main>
+        </header>
+      </Link>
     </Card>
   );
 }

@@ -2,7 +2,10 @@ import { forwardRef } from "react";
 import cx from "classnames";
 import AccesibleIcon from "./AccesibleIcon";
 
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from "@utils/types";
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+} from "@/utils/types";
 
 // Estilos
 type Size = "large" | "medium" | "small";
@@ -10,9 +13,9 @@ type Variant = "text" | "outlined";
 type Color = "primary" | "secondary" | "default";
 
 const buttonSizes: Record<Size, string> = {
-  small: "p-2 w-8 h-8",
-  medium: "p-2.5 w-10 h-10",
-  large: "p-3 w-12 h-12",
+  small: "p-1.5 w-7 h-7",
+  medium: "p-2 w-9 h-9",
+  large: "p-2.5 w-10 h-10",
 };
 
 const variantClassNames: Record<Variant, string> = {
@@ -22,11 +25,11 @@ const variantClassNames: Record<Variant, string> = {
 
 const colorClassNames: Record<Color, string> = {
   default:
-    "border-gold-12 text-gold-12 hover:bg-neutral-100/20 data-[state=open]:bg-neutral-100/5",
+    "border-background-7 text-background-12 hover:bg-neutral-100/20 data-[state=open]:bg-neutral-100/5",
   primary:
     "border-primary-7 hover:border-primary-8 hover:bg-primary-4 active:bg-primary-5 text-primary-9 data-[state=open]:bg-primary-5",
   secondary:
-    "border-gold-7 hover:border-gold-8 hover:bg-gold-4 active:bg-gold-5 text-gold-9 data-[state=open]:bg-gold-5",
+    "border-background-7 hover:border-background-8 hover:bg-background-4 active:bg-background-5 text-background-9 data-[state=open]:bg-background-5",
 };
 
 // Del código fuente de @radix-ui

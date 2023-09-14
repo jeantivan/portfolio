@@ -20,8 +20,8 @@ type Variants =
 
 const colorClasses = {
   primary: "text-primary-9",
-  secondary: "text-gold-11",
-  default: "text-gold-12",
+  secondary: "text-background-11",
+  default: "text-background-12",
   error: "text-red-600",
   danger: "text-yellow-600",
   success: "text-green-600",

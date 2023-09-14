@@ -9,7 +9,7 @@ import Button from "@/components/common/Button";
 export const metadata = {
   title: "About | JeanTivan.dev",
   description:
-    "Welcome to my portfolio, my name is Jean Tivan a self-taught frontend developer passionate for react and next.js",
+    "Welcome to my portfolio, my name is Jean Tivan a self-taught frontend developer passionate for react and next.js"
 };
 
 function Home() {
@@ -17,9 +17,6 @@ function Home() {
     <Container className="my-8 md:my-16">
       <section className="md:text-center mb-14">
         <div className="mb-4 md:mb-5">
-          <Text variant="body2" color="secondary">
-            Hi, my name is
-          </Text>
           <Text Component="h1" variant="main" className="uppercase mb-1">
             Jean Tivan
           </Text>
@@ -48,15 +45,15 @@ function Home() {
           </Text>
         </div>
         <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 w-full md:px-10">
-          <Button as={Link} href="/contact" className="w-full md:w-1/3">
-            {"Let's work together!"}
-          </Button>
           <Button
             as={Link}
-            href="/projects"
+            href="/contact"
             variant="text"
             className="w-full md:w-1/3"
           >
+            {"Let's work together!"}
+          </Button>
+          <Button as={Link} href="/projects" className="w-full md:w-1/3">
             My Projects <ArrowRightIcon className="w-5 h-5 fill-current" />
           </Button>
         </div>

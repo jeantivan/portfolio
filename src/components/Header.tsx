@@ -5,6 +5,7 @@ import cx from "classnames";
 import Container from "./common/Container";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
+import { mc } from "@/utils/helpers";
 
 const IsExpandedContext = createContext({
   isExpanded: false,
@@ -23,12 +24,9 @@ function Header() {
   return (
     <IsExpandedContext.Provider value={{ isExpanded, toggle }}>
       <header
-        className={cx(
+        className={mc(
           "w-full backdrop-blur-sm fixed top-0 z-10 transition duration-75",
-          {
-            "bg-[--bg-navbar]": !isExpanded,
-            "bg-gold-2": isExpanded,
-          }
+          "bg-background-1"
         )}
       >
         <Container>

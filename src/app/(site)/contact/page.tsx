@@ -13,32 +13,36 @@ export const metadata = {
 function Contact() {
   return (
     <Container className="my-8 md:my-16">
-      <section className="mb-16 md:mb-20">
+      <section className="">
         <Heading
           text="Let's connect & work together"
           Component="h1"
           variant="title"
-          className="uppercase mb-6 md:mb-8"
+          className="uppercase mb-4 text-center"
         />
 
-        <Text variant="body2" color="secondary" className="mb-14">
+        <Text variant="subtitle" color="secondary" className="mb-6 text-center">
           Lorem ipsum dolor sit amet consectetur. Pharetra a in aliquet
-          malesuada. Id interdum cursus mi in. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Possimus, quas?
+          malesuada. Id interdum cursus mi in.
         </Text>
-        <div className="flex flex-wrap gap-4">
-          <Button color="primary" variant="outlined" className="flex-1">
+        <Heading
+          text="jptivan52@gmail.com"
+          variant="heading"
+          className="mb-8 text-center"
+        />
+        <Text variant="body1" color="secondary" className="text-center">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo
+          reprehenderit{" "}
+          <a className="text-primary-9 hover:underline" href="">
             Linkedin
-          </Button>
-          <Button color="primary" variant="outlined" className="flex-1">
-            Email
-          </Button>
-          <Button color="primary" variant="outlined" className="flex-1">
+          </a>{" "}
+          or{" "}
+          <a className="text-primary-9 hover:underline" href="">
             Upwork
-          </Button>
-        </div>
+          </a>
+        </Text>
       </section>
-      <section>
+      {/* <section>
         <Text Component="h2" variant="body2" className="uppercase mb-6">
           Also you can sent me a message using the next form
         </Text>
@@ -71,7 +75,7 @@ function Contact() {
             <Button className="w-full">Send message</Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </Container>
   );
 }

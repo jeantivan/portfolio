@@ -1,5 +1,7 @@
 /** 
- * Expresion Regular 'matchea' cualquier caracter expecial
+ * Expresión Regular para encontrar cualquier carácter especial
+ * en un cadena de texto
+ * 
  * Ejemplo: 
  * 
  * RegExp source: https://regexr.com/2riab
@@ -9,9 +11,6 @@
 */
 
 export const EspecialCharRgx = /[^\w \xC0-\xFF]+/g;
-
-const exampleStr =
-  "...Cadena, con varios carácteres. ¡Es para probar! ¿Funcionará? lo veremos ahorita.@as#%&/()";
 
 // str: string, rgx?: RegExp = EspecialCharRgx
 export const splitEspecialChar = (

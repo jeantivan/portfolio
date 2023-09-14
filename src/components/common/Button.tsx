@@ -1,7 +1,10 @@
 import { forwardRef } from "react";
 import cx from "classnames";
 
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from "@utils/types";
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+} from "@/utils/types";
 
 // Estilos
 type Variant = "outlined" | "text";

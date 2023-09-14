@@ -7,7 +7,7 @@ import Heading from "@/components/Heading";
 
 export const metadata = {
   title: "Projects | JeanTivan.dev",
-  description: "Collection of projects that I've built",
+  description: "Collection of projects that I've built"
 };
 
 function Projects() {
@@ -28,7 +28,7 @@ function Projects() {
             purus.
           </Text>
         </div>
-        <div className="grid gap-4 grid-cols-1">
+        <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
           <FeaturedProject />
           <FeaturedProject />
           <FeaturedProject />
