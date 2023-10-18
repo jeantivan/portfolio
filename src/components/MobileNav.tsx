@@ -18,13 +18,15 @@ type NavLinkProps = ComponentPropsWithoutRef<typeof Link> & {
 function NavLink({ href, isActive, ...props }: NavLinkProps) {
   return (
     <Link
-      className="text-2xl text-gold-12 w-full inline-flex justify-center relative z-0"
+      className="text-2xl text-background-12 w-full inline-flex justify-center relative z-10"
       href={href}
       {...props}
     >
-      <span className="py-1.5 px-3 z-10 bg-gold-2">{props.children}</span>
+      <span className="py-1.5 px-3 z-30 bg-background-1 relative">
+        {props.children}
+      </span>
       {isActive && (
-        <span className="absolute w-full h-px bg-primary-9 top-1/2 -translate-y-1/2 z-[5]"></span>
+        <span className="absolute w-full h-px bg-primary-9 top-1/2 -translate-y-1/2 z-20"></span>
       )}
     </Link>
   );
@@ -38,7 +40,7 @@ function Nav() {
       <Separator
         orientation="horizontal"
         decorative
-        className="bg-gold-3 w-full h-px mb-4"
+        className="bg-background-3 w-full h-px mb-4"
       />
       <nav className="flex flex-col w-full gap-4">
         <NavLink href="/" isActive={pathname === "/"}>
@@ -63,10 +65,10 @@ function MobileNav() {
       <div className="flex items-center py-2">
         <Logo />
         <IconButton
-          label={isExpanded ? "Cerrar nav" : "Abrir navbar"}
           variant="text"
-          color={isExpanded ? "primary" : "secondary"}
           onClick={toggle}
+          label={isExpanded ? "Cerrar nav" : "Abrir navbar"}
+          color={isExpanded ? "primary" : "secondary"}
           data-state={isExpanded ? "open" : "closed"}
           icon={isExpanded ? Cross1Icon : HamburgerMenuIcon}
         />
