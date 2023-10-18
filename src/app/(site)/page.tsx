@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 
-import Heading from "@/components/Heading";
 import Container from "@/components/common/Container";
 import Text from "@/components/common/Text";
 import Button from "@/components/common/Button";
+
+import Heading from "@/components/Heading";
+import FeaturedProject from "@/src/components/FeaturedProject";
 
 export const metadata = {
   title: "About | JeanTivan.dev",
@@ -56,6 +58,28 @@ function Home() {
           <Button as={Link} href="/projects" className="w-full md:w-1/3">
             My Projects <ArrowRightIcon className="w-5 h-5 fill-current" />
           </Button>
+        </div>
+      </section>
+      <section className="mb-20 md:mb-32">
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="border border-primary-6 rounded flex-1 p-6 md:p-12 flex flex-col">
+            <Heading
+              text="The latest projects that I've build."
+              Component="h3"
+              variant="title"
+              className="flex-1 mb-20 md:mb-12"
+            />
+            <div className="flex justify-end flex-none">
+              <Button as={Link} href="/projects">
+                See all the projects{" "}
+                <ArrowRightIcon className="w-5 h-5 fill-current" />
+              </Button>
+            </div>
+          </div>
+          <div className="flex flex-1 flex-col gap-4">
+            <FeaturedProject />
+            <FeaturedProject />
+          </div>
         </div>
       </section>
       <section className="mb-20 md:mb-32">
