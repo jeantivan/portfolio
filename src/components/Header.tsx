@@ -9,7 +9,7 @@ import { mc } from "@/utils/helpers";
 
 const IsExpandedContext = createContext({
   isExpanded: false,
-  toggle: () => {},
+  toggle: () => {}
 });
 
 export const useIsExpanded = () => useContext(IsExpandedContext);
@@ -25,7 +25,7 @@ function Header() {
     <IsExpandedContext.Provider value={{ isExpanded, toggle }}>
       <header
         className={mc(
-          "w-full backdrop-blur-sm fixed top-0 z-10 transition duration-75",
+          "w-full backdrop-blur-sm sticky top-0 z-10 transition duration-75",
           "bg-background-1"
         )}
       >
