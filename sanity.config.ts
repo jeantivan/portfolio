@@ -1,5 +1,5 @@
 import { defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
+import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 
 import { apiVersion, dataset, projectId } from "@/sanity/env";
@@ -13,5 +13,5 @@ export default defineConfig({
   dataset,
   apiVersion,
   schema,
-  plugins: [deskTool(), visionTool()],
+  plugins: [structureTool(), visionTool()]
 });
