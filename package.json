@@ -24,6 +24,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@sanity/client": "^6.11.1",
     "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "^3.25.0",
     "classnames": "^2.5.1",
     "cookies-next": "^4.1.0",
     "next": "^14.0.4",
