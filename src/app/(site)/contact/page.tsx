@@ -1,13 +1,11 @@
 import Heading from "@/components/Heading";
 
-import Button from "@/components/common/Button";
 import Container from "@/components/common/Container";
 import Text from "@/components/common/Text";
-import Input from "@/components/common/Input";
 
 export const metadata = {
-  title: "Contact | JeanTivan.dev",
-  description: "Let's connect and work together!",
+  title: "Contact",
+  description: "Let's connect and work together!"
 };
 
 function Contact() {
@@ -42,40 +40,6 @@ function Contact() {
           </a>
         </Text>
       </section>
-      {/* <section>
-        <Text Component="h2" variant="body2" className="uppercase mb-6">
-          Also you can sent me a message using the next form
-        </Text>
-        <div className="flex flex-wrap gap-4">
-          <div className="flex-1 md:w-1/2">
-            <Input
-              label="Full name"
-              name="fullName"
-              placeholder="Enter your name"
-            />
-          </div>
-          <div className="flex-1 md:w-1/2">
-            <Input
-              label="Email"
-              name="email"
-              type="email"
-              placeholder="youremail@example.com"
-            />
-          </div>
-          <div className="w-full">
-            <Input
-              label="Message"
-              name="message"
-              textarea
-              type="email"
-              placeholder="Start typing your message here..."
-            />
-          </div>
-          <div className="flex-1">
-            <Button className="w-full">Send message</Button>
-          </div>
-        </div>
-      </section> */}
     </Container>
   );
 }
