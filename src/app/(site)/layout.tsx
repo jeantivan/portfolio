@@ -1,5 +1,5 @@
 import "@/styles/global.css";
-import { Space_Grotesk } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 
 import Header from "@/components/Header";
 import Providers from "@/components/Providers";
@@ -12,6 +12,19 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--space-grotesk"
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--inter"
+});
+
+export const metadata = {
+  title: {
+    default: "JeanTivan",
+    template: "%s | JeanTivan"
+  }
+};
+
 export default function RootLayout({
   children
 }: {
@@ -21,7 +34,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={mc(
-          spaceGrotesk.className,
+          inter.className,
           "bg-background-1 min-h-screen",
           "grid grid-rows-[min-content_1fr_min-content]"
         )}
