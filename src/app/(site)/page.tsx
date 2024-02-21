@@ -7,14 +7,20 @@ import Button from "@/components/common/Button";
 
 import Heading from "@/components/Heading";
 import FeaturedProject from "@/src/components/FeaturedProject";
+import { getProjects } from "@/src/sanity/queries";
 
 export const metadata = {
-  title: "About | JeanTivan.dev",
+  title: "About",
   description:
     "Welcome to my portfolio, my name is Jean Tivan a self-taught frontend developer passionate for react and next.js"
 };
 
-function Home() {
+async function Home() {
+  const projects = await getProjects();
+
+  const featuredProjects = projects
+    .filter((project) => project.isFeatured)
+    .slice(2);
   return (
     <Container className="my-8 md:my-16">
       <section className="md:text-center mb-14">
@@ -77,8 +83,9 @@ function Home() {
             </div>
           </div>
           <div className="flex flex-1 flex-col gap-4">
-            <FeaturedProject />
-            <FeaturedProject />
+            {featuredProjects.map((project) => (
+              <FeaturedProject key={project._id} project={project} />
+            ))}
           </div>
         </div>
       </section>
