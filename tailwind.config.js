@@ -5,7 +5,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
 
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   darkMode: "class",
   theme: {
@@ -23,7 +23,7 @@ module.exports = {
           9: "hsl(var(--background-9) / <alpha-value>)",
           10: "hsl(var(--background-10) / <alpha-value>)",
           11: "hsl(var(--background-11) / <alpha-value>)",
-          12: "hsl(var(--background-12) / <alpha-value>)",
+          12: "hsl(var(--background-12) / <alpha-value>)"
         },
         primary: {
           1: "hsl(var(--primary-1) / <alpha-value>)",
@@ -37,13 +37,13 @@ module.exports = {
           9: "hsl(var(--primary-9) / <alpha-value>)",
           10: "hsl(var(--primary-10) / <alpha-value>)",
           11: "hsl(var(--primary-11) / <alpha-value>)",
-          12: "hsl(var(--primary-12) / <alpha-value>)",
-        },
+          12: "hsl(var(--primary-12) / <alpha-value>)"
+        }
       },
       fontFamily: {
-        sans: ["var(--space-grotesk)"],
-      },
-    },
+        sans: ["var(--inter)"]
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };
