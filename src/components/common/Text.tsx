@@ -24,24 +24,24 @@ const colorClasses = {
   default: "text-background-12",
   error: "text-red-600",
   danger: "text-yellow-600",
-  success: "text-green-600",
+  success: "text-green-600"
 };
 
 const weightClasses = {
   light: "font-light",
   normal: "font-normal",
   medium: "font-medium",
-  bold: "font-bold",
+  bold: "font-bold"
 };
 
 const variantClasses = {
-  main: "text-8xl md:text-9xl font-light",
+  main: "text-8xl md:text-9xl",
   title: "text-6xl md:text-7xl",
   heading: "text-4xl md:text-5xl",
   subheading: "text-2xl md:text-3xl",
-  body2: "text-xl md:text-2xl",
+  body2: "text-lg md:text-xl",
   body1: "text-base md:text-lg",
-  subtitle: "text-sm md:text-base",
+  subtitle: "text-sm md:text-base"
 };
 
 function getTextColor(color: Colors) {
