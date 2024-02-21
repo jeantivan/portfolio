@@ -1,3 +1,8 @@
+import {
+  SanityImageObject,
+  SanityImageSource
+} from "@sanity/image-url/lib/types/types";
+import { PortableTextBlock } from "@portabletext/types";
 import { COLORS } from "./constants";
 
 export type TColors = (typeof COLORS)[number];
@@ -10,10 +15,14 @@ type ObjectFromList<T extends ReadonlyArray<string>, V = string> = {
   [K in T extends ReadonlyArray<infer U> ? U : never]: V;
 };
 
+type Slug = {
+  current: string;
+};
+
 export type TSkill = {
   name: string;
-  slug: string;
-  image: string;
+  slug: Slug;
+  image?: string;
 };
 
 export type TProjectType = {
@@ -22,17 +31,17 @@ export type TProjectType = {
 };
 
 export type TProject = {
-  id?: string;
-  slug: string;
-  name: string;
-  githubLink: string;
-  liveLink: string;
-  skills: TSkill[];
-  type: TProjectType;
+  _id: string;
+  title: string;
+  slug: Slug;
+  githubRepo: string;
+  website: string;
+  builtWith: TSkill[];
+  mainImage: SanityImageSource | { alt: string };
+  isFeatured: boolean;
   finishDate: Date | string;
   description: string;
-  coverImage?: string;
-  code?: string;
+  content: PortableTextBlock[];
 };
 
 export type TContactFormValues = {
