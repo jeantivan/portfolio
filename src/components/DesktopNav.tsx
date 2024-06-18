@@ -20,7 +20,7 @@ function NavLink({ href, isActive, ...props }: NavLinkProps) {
       {...props}
       href={href}
       className={mc(
-        "uppercase text-base py-2 px-5",
+        "uppercase text-base leading-none py-2 px-5",
         "relative z-0 text-background-12 hover:text-primary-11",
         isActive && "text-primary-9 hover:text-primary-9"
       )}
@@ -32,11 +32,11 @@ function NavLink({ href, isActive, ...props }: NavLinkProps) {
 
 function Logo() {
   return (
-    <div className="flex-1 md:flex-initial text-3xl md:text-2xl text-gold-12">
+    <div className="flex-1 md:flex-initial">
       <Link href="/">
-        <Text className="text-xl leading-[1.25rem] uppercase" display>
+        <p className="text-[1.875rem] leading-none uppercase font-display">
           JeanTivan
-        </Text>
+        </p>
       </Link>
     </div>
   );
@@ -46,9 +46,9 @@ function DesktopNav() {
   const pathname = usePathname();
 
   return (
-    <div className="hidden md:flex items-center py-3">
+    <div className="hidden md:flex items-center">
       {pathname !== "/" ? <Logo /> : null}
-      <nav className="hidden md:flex flex-1 justify-end gap-4">
+      <nav className="hidden md:flex flex-1 justify-end items-center gap-4">
         <NavLink href="/" isActive={pathname === "/"}>
           About
         </NavLink>
@@ -60,11 +60,12 @@ function DesktopNav() {
         </NavLink>
         <Button as="a">
           Descargar CV{" "}
-          <span className="inline-flex ml-2.5">
+          <span className="inline-flex">
             <DownloadIcon />
           </span>
         </Button>
         <div className="flex gap-2">
+          {/* TODO: Implementar cambio de Modo Oscuro */}
           <Tooltip content="Switch color mode">
             <IconButton label="Switch color mode" icon={MoonIcon} />
           </Tooltip>
