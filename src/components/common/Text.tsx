@@ -35,10 +35,10 @@ const weightClasses = {
 };
 
 const variantClasses = {
-  main: "text-8xl md:text-9xl",
-  title: "text-6xl md:text-7xl",
-  heading: "text-4xl md:text-5xl",
-  subheading: "text-2xl md:text-3xl",
+  main: "font-display text-[11rem] leading-[11rem] md:text-[14rem] md:leading-[14rem] font-extrabold",
+  title: "text-5xl md:text-7xl", // h1
+  heading: "text-4xl md:text-5xl", // h2
+  subheading: "text-2xl md:text-3xl", // h3
   body2: "text-lg md:text-xl",
   body1: "text-base md:text-lg",
   subtitle: "text-sm md:text-base"
@@ -62,6 +62,7 @@ export type TextProps = {
   weight?: Weights;
   Component?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
   className?: string;
+  display?: true;
 };
 
 function Text({
@@ -70,6 +71,7 @@ function Text({
   color = "default",
   variant = "body1",
   weight = "normal",
+  display,
   className,
   ...rest
 }: TextProps) {
@@ -77,10 +79,11 @@ function Text({
     <Component
       {...rest}
       className={cx(
+        className,
         getTextVariant(variant),
         getTextColor(color),
-        variant !== "main" && getTextWeight(weight),
-        className
+        display ? "font-display" : undefined,
+        variant !== "main" && getTextWeight(weight)
       )}
     >
       {children}
