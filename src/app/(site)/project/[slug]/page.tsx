@@ -42,19 +42,19 @@ async function Project({ params }: { params: { slug: string } }) {
   const image = imageFor(mainImage);
 
   return (
-    <Container className="py-6 grid grid-cols-10 gap-4">
+    <Container className="pt-2 pb-8 md:py-6 grid grid-cols-10 gap-4">
       <section
         className={mc(
           "backdrop-blur-sm bg-background-1",
           "col-span-10 md:col-span-3 md:order-2",
-          "grid grid-cols-2 gap-4",
-          "sticky top-0 py-4 md:py-0"
+          "grid grid-cols-2 md:grid-cols-1 content-start gap-2 md:gap-4",
+          "sticky top-0 py-2 md:py-0"
         )}
       >
         <Button>Github</Button>
         <Button>Website</Button>
       </section>
-      <section className="mb-10 col-span-10 md:col-span-7">
+      <section className="col-span-10 md:col-span-7">
         <div className="mb-6">
           <div className="w-full">
             <Image
@@ -66,76 +66,39 @@ async function Project({ params }: { params: { slug: string } }) {
             />
           </div>
         </div>
-        <Heading text={title} variant="heading" className="mb-6" />
+        <Heading text={title} variant="heading" className="mb-3 md:mb-6" />
         <PortableText
           value={content}
           components={{
             block: {
               normal: ({ children }) => (
-                <Text color="secondary" variant="body1" className="mb-6">
+                <Text
+                  color="secondary"
+                  variant="body1"
+                  className="mb-6 last:mb-0"
+                >
                   {children}
                 </Text>
               )
             }
           }}
         />
-      </section>
-      {/* <div className="self-end mt-auto">
-          <Text variant="subtitle" color="secondary">
+        <div className="col-span-10">
+          <Text variant="subtitle" weight="bold" color="secondary">
             Built with
           </Text>
           <div className="flex gap-3">
             {builtWith.map((skill) => {
-              return <Text key={skill.slug.current}>#{skill.name}</Text>;
+              return (
+                <Text weight="light" key={skill.slug.current}>
+                  <span className="text-primary-8 ">#</span>
+                  {skill.name}
+                </Text>
+              );
             })}
           </div>
-        </div> */}
-
-      {/*
-      <section className="mb-10">
-        <div className="w-full flex flex-wrap gap-x-8 gap-y-6">
-          <Button className="w-full md:flex-1">Live Preview</Button>
-          <Button className="w-full md:flex-1">See on Github</Button>
         </div>
       </section>
-      <section className="mb-10">
-        <Heading text="Gallery." className="mb-6" />
-
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-          <ProjectImage alt="Image caption" src={chat_me} />
-          <ProjectImage alt="Image caption" src={chat_me} />
-          <ProjectImage alt="Image caption" src={chat_me} />
-          <ProjectImage alt="Image caption" src={chat_me} />
-          <ProjectImage alt="Image caption" src={chat_me} />
-        </div>
-      </section>
-      <section className="mb-10">
-        <Heading text="Built with." className="mb-6" />
-
-        <div className="flex gap-4 flex-wrap">
-          <div className="inline-flex items-center gap-2">
-            <FrameIcon className="text-primary-9" />
-            <Text>React.js</Text>
-          </div>
-          <div className="inline-flex items-center gap-2">
-            <FrameIcon className="text-primary-9" />
-            <Text>React.js</Text>
-          </div>
-          <div className="inline-flex items-center gap-2">
-            <FrameIcon className="text-primary-9" />
-            <Text>React.js</Text>
-          </div>
-          <div className="inline-flex items-center gap-2">
-            <FrameIcon className="text-primary-9" />
-            <Text>React.js</Text>
-          </div>
-        </div>
-      </section>
-      <section>
-        <Text color="secondary" variant="subtitle">
-          Created at: 10 Jun 2020
-        </Text>
-      </section> */}
     </Container>
   );
 }

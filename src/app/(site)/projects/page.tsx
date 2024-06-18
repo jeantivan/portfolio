@@ -4,53 +4,60 @@ import Text from "@/components/common/Text";
 import SmallProject from "@/components/SmallProject";
 import FeaturedProject from "@/components/FeaturedProject";
 import Heading from "@/components/Heading";
+import { getProjects } from "@/src/sanity/queries";
 
 export const metadata = {
-  title: "Projects | JeanTivan.dev",
+  title: "Projects",
   description: "Collection of projects that I've built"
 };
 
-function Projects() {
+async function Projects() {
+  const projects = await getProjects();
+
+  const featuredProjects = projects.filter((p) => p.isFeatured);
+  const smallProjects = projects.filter((p) => !p.isFeatured);
+
   return (
-    <Container className="my-8 md:my-16">
-      <section className="mb-16 md:mb-20">
-        <div className="mb-10">
+    <Container className="grid gap-8 pt-4 py-6 md:pt-8">
+      <section className="">
+        <Heading
+          text="The projects I've built so far."
+          Component="h1"
+          variant="title"
+          className="mb-3 md:mb-6"
+        />
+        <Text color="secondary" variant="body2">
+          Lorem ipsum dolor sit amet consectetur. Sed sit enim aliquam pharetra
+          metus at lectus aliquet aliquam. Nibh aliquam nunc pellentesque
+          mollis. Nisl at nisi quis amet non diam felis felis purus.
+        </Text>
+        <div className="grid gap-2 grid-cols-1 lg:grid-cols-2">
+          {featuredProjects.map((project) => (
+            <FeaturedProject key={project._id} project={project} />
+          ))}
+        </div>
+      </section>
+
+      <section className="grid gap-6">
+        <div>
           <Heading
-            text="The projects I've built so far."
-            Component="h1"
-            variant="title"
-            className="uppercase mb-6 md:w-11/12"
+            text="Other small projects."
+            Component="h2"
+            variant="heading"
+            className="mb-3 md:mb-6"
           />
-          <Text color="secondary">
+          <Text color="secondary" variant="body1">
             Lorem ipsum dolor sit amet consectetur. Sed sit enim aliquam
             pharetra metus at lectus aliquet aliquam. Nibh aliquam nunc
             pellentesque mollis. Nisl at nisi quis amet non diam felis felis
             purus.
           </Text>
         </div>
-        <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
-          <FeaturedProject />
-          <FeaturedProject />
-          <FeaturedProject />
-          <FeaturedProject />
-        </div>
-      </section>
 
-      <section className="mb-14">
-        <Heading
-          text="Other small projects."
-          Component="h2"
-          variant="heading"
-          className="mb-8"
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <SmallProject />
-          <SmallProject />
-          <SmallProject />
-          <SmallProject />
-          <SmallProject />
-          <SmallProject />
+        <div className="grid gap-2">
+          {smallProjects.map((project) => (
+            <SmallProject key={project._id} project={project} />
+          ))}
         </div>
       </section>
       <section>
