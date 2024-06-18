@@ -35,8 +35,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={mc(
-          inter.className,
-          anton.className,
+          inter.variable,
+          anton.variable,
           "bg-background-1 min-h-screen",
           "grid grid-rows-[min-content_1fr_min-content]"
         )}
