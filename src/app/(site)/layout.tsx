@@ -1,15 +1,16 @@
 import "@/styles/global.css";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Inter, Anton } from "next/font/google";
 
 import Header from "@/components/Header";
 import Providers from "@/components/Providers";
 import Footer from "@/components/Footer";
 import { mc } from "@/utils/helpers";
 
-const spaceGrotesk = Space_Grotesk({
+const anton = Anton({
   subsets: ["latin"],
   display: "swap",
-  variable: "--space-grotesk"
+  variable: "--anton",
+  weight: "400"
 });
 
 const inter = Inter({
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body
         className={mc(
           inter.className,
+          anton.className,
           "bg-background-1 min-h-screen",
           "grid grid-rows-[min-content_1fr_min-content]"
         )}

@@ -41,7 +41,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ["var(--inter)"]
+        sans: ["var(--inter)"],
+        display: ["var(--anton)"]
       }
     }
   },
