@@ -4,23 +4,25 @@ import AccesibleIcon from "./AccesibleIcon";
 
 import {
   PolymorphicComponentPropsWithRef,
-  PolymorphicRef,
+  PolymorphicRef
 } from "@/utils/types";
 
 // Estilos
 type Size = "large" | "medium" | "small";
-type Variant = "text" | "outlined";
+type Variant = "text" | "outlined" | "filled";
 type Color = "primary" | "secondary" | "default";
 
 const buttonSizes: Record<Size, string> = {
-  small: "p-1.5 w-7 h-7",
+  small: "p-1.5 w-6 h-6",
   medium: "p-2 w-9 h-9",
-  large: "p-2.5 w-10 h-10",
+  large: "p-2.5 w-12 h-12"
 };
 
 const variantClassNames: Record<Variant, string> = {
   text: "bg-transparent border-transparent",
-  outlined: "border",
+  outlined: "border border-background-6",
+  filled:
+    "border border-primary-9 bg-primary-9 hover:border-primary-10 hover:bg-primary-10 text-background-1"
 };
 
 const colorClassNames: Record<Color, string> = {
@@ -29,7 +31,7 @@ const colorClassNames: Record<Color, string> = {
   primary:
     "border-primary-7 hover:border-primary-8 hover:bg-primary-4 active:bg-primary-5 text-primary-9 data-[state=open]:bg-primary-5",
   secondary:
-    "border-background-7 hover:border-background-8 hover:bg-background-4 active:bg-background-5 text-background-9 data-[state=open]:bg-background-5",
+    "border-background-7 hover:border-background-8 hover:bg-background-4 active:bg-background-5 text-background-9 data-[state=open]:bg-background-5"
 };
 
 // Del código fuente de @radix-ui
@@ -66,7 +68,7 @@ const IconButton: IconButtonComponent = forwardRef(function ForwardIconButton<
     children,
     className,
     size = "medium",
-    variant = "text",
+    variant = "outlined",
     color = "default",
     label,
     icon,
@@ -82,7 +84,7 @@ const IconButton: IconButtonComponent = forwardRef(function ForwardIconButton<
     buttonSizes[size],
     variantClassNames[variant],
     colorClassNames[color],
-    "transition duration-75 rounded",
+    "transition duration-75 rounded-lg",
     className
   );
 
