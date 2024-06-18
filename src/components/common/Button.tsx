@@ -18,8 +18,8 @@ const variantClassNames: Record<Variant, string> = {
   text: "border-transparent text-primary-9 border-transparent hover:bg-primary-4 hover:border-primary-4 hover:text-primary-10"
 };
 const sizeClassNames: Record<Size, string> = {
-  small: "px-6 py-1.5 text-sm h-8",
-  medium: "px-8 py-3 text-base h-10",
+  small: "px-6 py-1.5 text-sm h-6",
+  medium: "px-8 py-3 text-base h-9",
   large: "px-10 py-4 text-lg h-12"
 };
 
@@ -55,7 +55,7 @@ const Button: ButtonComponent = forwardRef(function ForwardButton<
     sizeClassNames[size],
     "inline-flex justify-center items-center gap-3",
     "tracking-wider uppercase font-medium leading-none text-center",
-    "border rounded",
+    "border rounded-lg",
     "transition duration-75",
     className
   );
