@@ -3,22 +3,24 @@ import cx from "classnames";
 
 import {
   PolymorphicComponentPropsWithRef,
-  PolymorphicRef,
+  PolymorphicRef
 } from "@/utils/types";
 
 // Estilos
-type Variant = "outlined" | "text";
+type Variant = "filled" | "outlined" | "text";
 type Size = "large" | "medium" | "small";
 
 const variantClassNames: Record<Variant, string> = {
+  filled:
+    "border-primary-9 bg-primary-9 text-background-1 hover:bg-primary-10 hover:border-primary-10",
   outlined:
     "border-primary-7 bg-transparent text-primary-9 border-primary-7 hover:bg-primary-9 hover:text-primary-1",
-  text: "border-transparent text-primary-9 border-transparent hover:bg-primary-4 hover:border-primary-4 hover:text-primary-10",
+  text: "border-transparent text-primary-9 border-transparent hover:bg-primary-4 hover:border-primary-4 hover:text-primary-10"
 };
 const sizeClassNames: Record<Size, string> = {
   small: "px-6 py-1.5 text-sm h-8",
   medium: "px-8 py-3 text-base h-10",
-  large: "px-12 py-4 text-lg h-12",
+  large: "px-10 py-4 text-lg h-12"
 };
 
 type ButtonProps<C extends React.ElementType> =
@@ -42,7 +44,7 @@ const Button: ButtonComponent = forwardRef(function ForwardButton<
     children,
     className,
     size = "medium",
-    variant = "outlined",
+    variant = "filled",
     ...rest
   } = props;
 
@@ -53,7 +55,7 @@ const Button: ButtonComponent = forwardRef(function ForwardButton<
     sizeClassNames[size],
     "inline-flex justify-center items-center gap-3",
     "tracking-wider uppercase font-medium leading-none text-center",
-    "border rounded-sm",
+    "border rounded",
     "transition duration-75",
     className
   );
