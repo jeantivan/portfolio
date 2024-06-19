@@ -54,6 +54,9 @@ function DesktopNav() {
         <NavLink href="/projects" isActive={pathname === "/projects"}>
           Projects
         </NavLink>
+        <NavLink href="/skills" isActive={pathname === "/skills"}>
+          Skills
+        </NavLink>
         <NavLink href="/contact" isActive={pathname === "/contact"}>
           Contact
         </NavLink>
