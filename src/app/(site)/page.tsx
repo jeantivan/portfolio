@@ -14,7 +14,7 @@ import Skill from "@/src/components/Skill";
 import Card from "@/src/components/common/Card";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About | JeanTivan",
   description:
     "Welcome to my portfolio, my name is Jean Tivan a self-taught frontend developer passionate for react and next.js"
 };
