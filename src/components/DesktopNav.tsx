@@ -2,13 +2,12 @@ import { ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { DownloadIcon, GitHubLogoIcon, MoonIcon } from "@radix-ui/react-icons";
+import { DownloadIcon, MoonIcon } from "@radix-ui/react-icons";
 
 import { mc } from "@/utils/helpers";
 
 import IconButton from "./common/IconButton";
 import { Tooltip } from "./common/Tooltip";
-import Text from "./common/Text";
 import Button from "./common/Button";
 
 type NavLinkProps = ComponentPropsWithoutRef<typeof Link> & {
@@ -20,9 +19,9 @@ function NavLink({ href, isActive, ...props }: NavLinkProps) {
       {...props}
       href={href}
       className={mc(
-        "uppercase text-base leading-none py-2 px-5",
-        "relative z-0 text-background-12 hover:text-primary-11",
-        isActive && "text-primary-9 hover:text-primary-9"
+        "text-base leading-none py-2 px-5 font-medium",
+        "relative z-0 text-background-11 hover:text-background-12 underline decoration-transparent underline-offset-8",
+        isActive && "text-background-12 decoration-primary-9"
       )}
     >
       <span className="bg-inherit">{props.children}</span>
@@ -34,7 +33,7 @@ function Logo() {
   return (
     <div className="flex-1 md:flex-initial">
       <Link href="/">
-        <p className="text-[1.875rem] leading-none uppercase font-display">
+        <p className="text-2xl leading-none uppercase font-display">
           JeanTivan
         </p>
       </Link>
