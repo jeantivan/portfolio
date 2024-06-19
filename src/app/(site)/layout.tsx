@@ -1,4 +1,5 @@
 import "@/styles/global.css";
+import { Metadata } from "next";
 import { Inter, Anton } from "next/font/google";
 
 import Header from "@/components/Header";
@@ -19,10 +20,10 @@ const inter = Inter({
   variable: "--inter"
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
-    default: "JeanTivan",
-    template: "%s | JeanTivan"
+    template: "%s | JeanTivan",
+    default: "JeanTivan"
   }
 };
 
