@@ -12,7 +12,7 @@ const Card = <C extends React.ElementType>({
 }: CardProps<C>) => {
   const Component = as || "div";
   return (
-    <Component className={cx("bg-gold-3 rounded", className)} {...rest}>
+    <Component className={cx("bg-gold-3 rounded-xl", className)} {...rest}>
       {children}
     </Component>
   );
