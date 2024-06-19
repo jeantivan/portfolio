@@ -35,7 +35,7 @@ const weightClasses = {
 };
 
 const variantClasses = {
-  main: "font-display text-[11rem] leading-[11rem] md:text-[14rem] md:leading-[14rem] font-extrabold",
+  main: "font-display text-[11rem] leading-[11rem] md:text-[13rem] md:leading-[13rem] font-extrabold",
   title: "text-5xl md:text-7xl", // h1
   heading: "text-4xl md:text-5xl", // h2
   subheading: "text-2xl md:text-3xl", // h3
