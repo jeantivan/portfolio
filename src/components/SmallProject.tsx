@@ -1,38 +1,33 @@
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Card from "./common/Card";
 import Text from "./common/Text";
-import IconButton from "./common/IconButton";
-import Button from "./common/Button";
+import { TProject } from "@/utils/types";
 
-type SmallProjectProps = {};
-function SmallProject(props: SmallProjectProps) {
+type SmallProjectProps = {
+  project: TProject;
+};
+function SmallProject({ project }: SmallProjectProps) {
+  const { title, description } = project;
   return (
-    <Card as="article" className="p-4">
-      <Text
-        Component="h3"
-        variant="body2"
-        weight="medium"
-        className="mb-2 md_mb-4"
-      >
-        Example Project Name
-      </Text>
-
-      <Text color="secondary" variant="subtitle" className="mb-6">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
-        voluptates?
-      </Text>
-      <footer className="w-full flex justify-between items-center">
-        <IconButton
-          label="Github Logo"
-          color="secondary"
-          size="small"
-          variant="outlined"
-          icon={GitHubLogoIcon}
-        />
-        <Button size="small" color="primary" variant="outlined">
-          View more
-        </Button>
-      </footer>
+    <Card
+      as="article"
+      className="p-2 bg-background-2 flex items-center rounded-lg group"
+    >
+      <div className="flex-1">
+        <Text
+          Component="h3"
+          variant="body1"
+          className="flex-1 group-hover:underline decoration-primary-9 underline-offset-2 transition-all"
+        >
+          {title}
+        </Text>
+        <Text color="secondary" variant="subtitle" className="line-clamp-1">
+          {description}
+        </Text>
+      </div>
+      <span className="text-primary-9 w-10 inline-flex justify-end mr-1">
+        <ArrowRightIcon className="w-5 h-5 md:group-hover:translate-x-1 transition-all" />
+      </span>
     </Card>
   );
 }
