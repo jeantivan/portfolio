@@ -20,31 +20,35 @@ async function Projects() {
   return (
     <Container className="grid gap-8 pt-4 py-6 md:pt-8">
       <section className="">
-        <Heading
-          text="The projects I've built so far."
-          Component="h1"
-          variant="title"
-          className="mb-3 md:mb-6"
-        />
-        <Text color="secondary" variant="body2">
-          Lorem ipsum dolor sit amet consectetur. Sed sit enim aliquam pharetra
-          metus at lectus aliquet aliquam. Nibh aliquam nunc pellentesque
-          mollis. Nisl at nisi quis amet non diam felis felis purus.
-        </Text>
-        <div className="grid gap-2 grid-cols-1 lg:grid-cols-2">
+        <div className="mb-6 md:mb-8">
+          <Heading
+            text="All the Projects that I've built."
+            Component="h1"
+            variant="title"
+            className="mb-4"
+            display
+          />
+          <Text color="secondary" variant="body2">
+            Lorem ipsum dolor sit amet consectetur. Sed sit enim aliquam
+            pharetra metus at lectus aliquet aliquam. Nibh aliquam nunc
+            pellentesque mollis. Nisl at nisi quis amet non diam felis felis
+            purus.
+          </Text>
+        </div>
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
           {featuredProjects.map((project) => (
             <FeaturedProject key={project._id} project={project} />
           ))}
         </div>
       </section>
-
       <section className="grid gap-6">
-        <div>
+        <div className="">
           <Heading
             text="Other small projects."
             Component="h2"
             variant="heading"
-            className="mb-3 md:mb-6"
+            className="mb-4"
+            display
           />
           <Text color="secondary" variant="body1">
             Lorem ipsum dolor sit amet consectetur. Sed sit enim aliquam
@@ -54,14 +58,17 @@ async function Projects() {
           </Text>
         </div>
 
-        <div className="grid gap-2">
+        <div className="flex flex-wrap justify-center gap-4">
           {smallProjects.map((project) => (
-            <SmallProject key={project._id} project={project} />
+            <FeaturedProject key={project._id} project={project} />
+          ))}
+          {smallProjects.map((project) => (
+            <FeaturedProject key={project._id} project={project} />
           ))}
         </div>
       </section>
       <section>
-        <Text>
+        <Text color="secondary">
           Lorem ipsum dolor sit amet consectetur. At orci at purus cras mi
           nascetur. Risus at cras diam non. Varius aliquam orci sit quis nec sed
           hendrerit porta consectetur. Dignissim lacus maecenas ultricies netus
