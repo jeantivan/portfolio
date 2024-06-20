@@ -1,8 +1,7 @@
 import Container from "@/components/common/Container";
 import Text from "@/components/common/Text";
 
-import SmallProject from "@/components/SmallProject";
-import FeaturedProject from "@/components/FeaturedProject";
+import ProjectItem from "@/src/components/ProjectItem";
 import Heading from "@/components/Heading";
 import { getProjects } from "@/src/sanity/queries";
 
@@ -37,7 +36,7 @@ async function Projects() {
         </div>
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
           {featuredProjects.map((project) => (
-            <FeaturedProject key={project._id} project={project} />
+            <ProjectItem key={project._id} project={project} />
           ))}
         </div>
       </section>
@@ -60,10 +59,10 @@ async function Projects() {
 
         <div className="flex flex-wrap justify-center gap-4">
           {smallProjects.map((project) => (
-            <FeaturedProject key={project._id} project={project} />
+            <ProjectItem key={project._id} project={project} />
           ))}
           {smallProjects.map((project) => (
-            <FeaturedProject key={project._id} project={project} />
+            <ProjectItem key={project._id} project={project} />
           ))}
         </div>
       </section>

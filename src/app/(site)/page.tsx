@@ -7,7 +7,7 @@ import Text from "@/components/common/Text";
 import Button from "@/components/common/Button";
 
 import Heading from "@/components/Heading";
-import FeaturedProject from "@/src/components/FeaturedProject";
+import ProjectItem from "@/src/components/ProjectItem";
 import { getProjects } from "@/src/sanity/queries";
 
 import Skill from "@/src/components/Skill";
@@ -65,7 +65,7 @@ async function Home() {
         />
         <div className="flex flex-wrap justify-center gap-3">
           {featuredProjects.map((project, index) => (
-            <FeaturedProject key={project._id} project={project} />
+            <ProjectItem key={project._id} project={project} />
           ))}
         </div>
         <div className="flex justify-center">
