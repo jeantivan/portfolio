@@ -1,20 +1,17 @@
 import { notFound } from "next/navigation";
-import { FrameIcon } from "@radix-ui/react-icons";
 import { PortableText } from "@portabletext/react";
 import { getImageDimensions } from "@sanity/asset-utils";
 
 import Text from "@/components/common/Text";
 import Container from "@/components/common/Container";
 import Button from "@/components/common/Button";
-import Card from "@/components/common/Card";
 import Heading from "@/components/Heading";
-import ProjectImage from "@/components/ProjectImage";
+
 import { getProjectBySlug, getProjectsSlug } from "@/src/sanity/queries";
 
 // Imagen de ejemplo
-import chat_me from "@/assets/images/chat-me.png";
 import Image from "next/image";
-import { imageFor } from "@/src/sanity/utils";
+import { urlForImage } from "@/src/sanity/utils";
 import { mc } from "@/src/utils/helpers";
 
 export async function generateStaticParams() {
@@ -39,7 +36,7 @@ async function Project({ params }: { params: { slug: string } }) {
 
   const { title, content, builtWith, mainImage } = project;
 
-  const image = imageFor(mainImage);
+  const imageUrl = urlForImage(mainImage)?.height(768).width(1366).url() ?? "";
 
   return (
     <Container className="pt-2 pb-8 md:py-6 grid grid-cols-10 gap-4">
@@ -58,11 +55,11 @@ async function Project({ params }: { params: { slug: string } }) {
         <div className="mb-6">
           <div className="w-full">
             <Image
-              alt={mainImage.alt || `Main image of: ${title}`}
-              src={image.url()}
-              width={getImageDimensions(mainImage).width}
-              height={getImageDimensions(mainImage).height}
-              className="rounded"
+              alt={(mainImage.alt as string) || `Main image of: ${title}`}
+              src={imageUrl}
+              width={1366}
+              height={768}
+              className="rounded-xl"
             />
           </div>
         </div>
