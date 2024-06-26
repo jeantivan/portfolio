@@ -4,7 +4,7 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 import Card from "./common/Card";
 
-import { imageFor } from "@/sanity/utils";
+import { urlForImage } from "@/sanity/utils";
 import { TProject } from "@/utils/types";
 import { mc } from "@/utils/helpers";
 
@@ -14,18 +14,25 @@ type ProjectItemProps = {
 function ProjectItem(props: ProjectItemProps) {
   const { title, slug, mainImage, isFeatured } = props.project;
 
-  const image = imageFor(mainImage);
+  const imageUrl = mainImage && urlForImage(mainImage)?.url();
+
   return (
-    <Link href={`/project/${slug.current}`}>
+    <Link
+      href={`/project/${slug.current}`}
+      className={mc(isFeatured ? "lg:w-[472px] isFeatured" : "w-[195px]")}
+    >
       <Card
         as="article"
         className={mc(
-          "shrink-0 w-full group bg-background-2 rounded-lg overflow-hidden",
-          isFeatured ? "lg:w-[472px]" : "w-[195px]"
+          "shrink-0 w-full group bg-background-2 rounded-lg overflow-hidden"
         )}
       >
         <div className="relative aspect-video">
-          <Image alt={mainImage.alt} fill src={image.url()} />
+          <Image
+            alt={(mainImage.alt as string) || `Main image of: ${title}`}
+            fill
+            src={imageUrl!}
+          />
         </div>
         <header className="w-full flex space-between items-center p-2">
           <p
