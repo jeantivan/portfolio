@@ -1,7 +1,4 @@
-import {
-  SanityImageObject,
-  SanityImageSource
-} from "@sanity/image-url/lib/types/types";
+import type { Image as SanityImage } from "sanity";
 import { PortableTextBlock } from "@portabletext/types";
 import { COLORS } from "./constants";
 
@@ -37,7 +34,7 @@ export type TProject = {
   githubRepo: string;
   website: string;
   builtWith: TSkill[];
-  mainImage: SanityImageSource | { alt: string };
+  mainImage: SanityImage;
   isFeatured: boolean;
   finishDate: Date | string;
   description: string;
