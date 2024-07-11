@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ReactNode, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Cross1Icon,
   DownloadIcon,
@@ -17,12 +17,17 @@ import Button from "./common/Button";
 import { Tooltip } from "./common/Tooltip";
 import { mc } from "../utils/helpers";
 
-type NavLinkProps = ComponentPropsWithoutRef<typeof Link> & {
+type NavLinkProps = {
+  closeNav: () => void;
   isActive?: boolean;
+  href: string;
+  children: ReactNode;
 };
-function NavLink({ href, isActive, ...props }: NavLinkProps) {
+function NavLink({ href, isActive, closeNav, ...props }: NavLinkProps) {
+  const router = useRouter();
+
   return (
-    <Link
+    <a
       className={mc(
         "w-full inline-flex justify-center py-4",
         "text-4xl font-display text-background-11",
@@ -30,19 +35,26 @@ function NavLink({ href, isActive, ...props }: NavLinkProps) {
         isActive && "border-primary-9 text-background-12"
       )}
       href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        closeNav();
+        router.push(href);
+      }}
       {...props}
     >
       {props.children}
-    </Link>
+    </a>
   );
 }
 
 function Nav({
-  isExpanded,
-  toggle
+  //isExpanded,
+  toggle,
+  closeNav
 }: {
-  isExpanded: boolean;
+  //isExpanded: boolean;
   toggle: () => void;
+  closeNav: () => void;
 }) {
   const pathname = usePathname();
 
@@ -50,27 +62,34 @@ function Nav({
     <div className="fixed inset-0 z-50">
       <div className="bg-background-2 p-3 w-full h-full grid grid-rows-[min-content_1fr_min-content]">
         <header className="flex gap-6 items-center justify-between py-2">
-          <IconButton
-            onClick={toggle}
-            label={isExpanded ? "Cerrar nav" : "Abrir navbar"}
-            data-state={isExpanded ? "open" : "closed"}
-            icon={isExpanded ? Cross1Icon : HamburgerMenuIcon}
-          />
+          <IconButton onClick={toggle} label="Cerrar nav" icon={Cross1Icon} />
           <Tooltip content="Switch color mode">
             <IconButton label="Switch color mode" icon={MoonIcon} />
           </Tooltip>
         </header>
         <nav className="flex flex-col justify-center items-center w-full gap-8">
-          <NavLink href="/" isActive={pathname === "/"}>
+          <NavLink href="/" isActive={pathname === "/"} closeNav={closeNav}>
             About
           </NavLink>
-          <NavLink href="/projects" isActive={pathname === "/projects"}>
+          <NavLink
+            href="/projects"
+            isActive={pathname === "/projects"}
+            closeNav={closeNav}
+          >
             Projects
           </NavLink>
-          <NavLink href="/skills" isActive={pathname === "/skills"}>
+          <NavLink
+            href="/skills"
+            isActive={pathname === "/skills"}
+            closeNav={closeNav}
+          >
             Skills
           </NavLink>
-          <NavLink href="/contact" isActive={pathname === "/contact"}>
+          <NavLink
+            href="/contact"
+            isActive={pathname === "/contact"}
+            closeNav={closeNav}
+          >
             Contact
           </NavLink>
         </nav>
@@ -96,17 +115,20 @@ function Logo() {
 }
 
 function MobileNav() {
-  const { isExpanded, toggle } = useIsExpanded();
+  const [showNav, setShowNav] = useState<boolean>(false);
+
+  const toggle = () => setShowNav(!showNav);
+
+  const closeNav = () => setShowNav(false);
 
   return (
     <div className="md:hidden">
       <div className="flex gap-6 items-center py-2">
         <IconButton
           onClick={toggle}
-          label={isExpanded ? "Cerrar nav" : "Abrir navbar"}
-          color={isExpanded ? "primary" : "secondary"}
-          data-state={isExpanded ? "open" : "closed"}
-          icon={isExpanded ? Cross1Icon : HamburgerMenuIcon}
+          label="Abrir navbar"
+          color="secondary"
+          icon={HamburgerMenuIcon}
         />
         <Logo />
         <Button as="a">
@@ -116,7 +138,7 @@ function MobileNav() {
           </span>
         </Button>
       </div>
-      {isExpanded && <Nav isExpanded={isExpanded} toggle={toggle} />}
+      {showNav && <Nav closeNav={closeNav} toggle={toggle} />}
     </div>
   );
 }
