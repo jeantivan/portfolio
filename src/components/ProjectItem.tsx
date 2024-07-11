@@ -19,7 +19,9 @@ function ProjectItem(props: ProjectItemProps) {
   return (
     <Link
       href={`/project/${slug.current}`}
-      className={mc(isFeatured ? "lg:w-[472px] isFeatured" : "w-[195px]")}
+      className={mc(
+        isFeatured ? "lg:w-[472px] w-[406px] isFeatured" : "w-[195px]"
+      )}
     >
       <Card
         as="article"
