@@ -2,13 +2,12 @@ import { ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { DownloadIcon, MoonIcon } from "@radix-ui/react-icons";
+import { DownloadIcon } from "@radix-ui/react-icons";
 
 import { mc } from "@/utils/helpers";
 
-import IconButton from "./common/IconButton";
-import { Tooltip } from "./common/Tooltip";
 import Button from "./common/Button";
+import DarkMode from "./DarkMode";
 
 type NavLinkProps = ComponentPropsWithoutRef<typeof Link> & {
   isActive?: boolean;
@@ -67,10 +66,7 @@ function DesktopNav() {
           </span>
         </Button>
         <div className="flex gap-2">
-          {/* TODO: Implementar cambio de Modo Oscuro */}
-          <Tooltip content="Switch color mode">
-            <IconButton label="Switch color mode" icon={MoonIcon} />
-          </Tooltip>
+          <DarkMode />
         </div>
       </nav>
     </div>
