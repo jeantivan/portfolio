@@ -17,9 +17,11 @@ type Slug = {
 };
 
 export type TSkill = {
+  _id: string;
   name: string;
   slug: Slug;
-  image?: string;
+  image: SanityImage;
+  group: string;
 };
 
 export type TProjectType = {
