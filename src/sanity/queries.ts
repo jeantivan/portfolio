@@ -56,3 +56,18 @@ export const getProjectBySlug = async (slug: string) => {
     `
   );
 };
+
+export const getTechSkills = async () => {
+  return client.fetch(
+    groq`
+      *[_type == 'techSkills']{
+        _id,
+        name,
+        slug { current },
+        group,
+        image, 
+        order
+      } | order(order asc)
+    `
+  );
+};
