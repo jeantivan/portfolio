@@ -16,6 +16,7 @@ import { useIsExpanded } from "./Header";
 import Button from "./common/Button";
 import { Tooltip } from "./common/Tooltip";
 import { mc } from "../utils/helpers";
+import DarkMode from "./DarkMode";
 
 type NavLinkProps = {
   closeNav: () => void;
@@ -63,9 +64,7 @@ function Nav({
       <div className="bg-background-2 p-3 w-full h-full grid grid-rows-[min-content_1fr_min-content]">
         <header className="flex gap-6 items-center justify-between py-2">
           <IconButton onClick={toggle} label="Cerrar nav" icon={Cross1Icon} />
-          <Tooltip content="Switch color mode">
-            <IconButton label="Switch color mode" icon={MoonIcon} />
-          </Tooltip>
+          <DarkMode />
         </header>
         <nav className="flex flex-col justify-center items-center w-full gap-8">
           <NavLink href="/" isActive={pathname === "/"} closeNav={closeNav}>
