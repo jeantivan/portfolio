@@ -13,7 +13,10 @@ const Card = <C extends React.ElementType>({
   const Component = as || "div";
   return (
     <Component
-      className={cx("bg-background-2 rounded-xl", className)}
+      className={cx(
+        "bg-background-1 dark:bg-background-2 rounded-xl shadow border border-background-4",
+        className
+      )}
       {...rest}
     >
       {children}

@@ -38,13 +38,15 @@ export default function RootLayout({
         className={mc(
           inter.variable,
           anton.variable,
-          "bg-background-1 min-h-screen",
+          "bg-background-3 dark:bg-background-1 min-h-screen",
           "grid grid-rows-[min-content_1fr_min-content]"
         )}
       >
         <Providers>
           <Header />
-          <main className="bg-background-1">{children}</main>
+          <main className="bg-background-2 dark:bg-background-1">
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>

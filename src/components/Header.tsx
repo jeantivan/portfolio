@@ -24,7 +24,10 @@ function Header() {
   return (
     <IsExpandedContext.Provider value={{ isExpanded, toggle }}>
       <header
-        className={mc("w-full transition duration-75", "bg-background-1")}
+        className={mc(
+          "w-full transition duration-75",
+          "bg-background-2 dark:bg-background-1"
+        )}
       >
         <Container>
           <DesktopNav />
