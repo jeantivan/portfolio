@@ -8,7 +8,7 @@ import Button from "@/components/common/Button";
 
 import Heading from "@/components/Heading";
 import ProjectItem from "@/src/components/ProjectItem";
-import { getProjects } from "@/src/sanity/queries";
+import { getProjects, getTechSkills } from "@/src/sanity/queries";
 
 import Skill from "@/src/components/Skill";
 import Card from "@/src/components/common/Card";
@@ -22,9 +22,15 @@ export const metadata: Metadata = {
 async function Home() {
   const projects = await getProjects();
 
+  const skills = await getTechSkills();
+
   const featuredProjects = projects
     .filter((project) => project.isFeatured)
     .slice(0, 3);
+
+  const mainStackSkills = skills.filter(
+    (skill) => skill.group === "main-stack"
+  );
   return (
     <Container className="px-3 py-6 lg:py-10 grid gap-16 md:gap-24">
       <section className="">
@@ -86,30 +92,14 @@ async function Home() {
           display
         />
         <div className="grid grid-cols-2 md:grid-cols-4 justify-between gap-3">
-          <Card className="max-w-60 bg-background-2 px-8 py-4">
-            <Skill
-              showName
-              skill={{ name: "Next.js", slug: { current: "" } }}
-            />
-          </Card>
-          <Card className="max-w-60 bg-background-2 px-8 py-4">
-            <Skill
-              showName
-              skill={{ name: "React.js", slug: { current: "" } }}
-            />
-          </Card>
-          <Card className="max-w-60 bg-background-2 px-8 py-4">
-            <Skill
-              showName
-              skill={{ name: "TypeScript", slug: { current: "" } }}
-            />
-          </Card>
-          <Card className="max-w-60 bg-background-2 px-8 py-4">
-            <Skill
-              showName
-              skill={{ name: "Tailwind", slug: { current: "" } }}
-            />
-          </Card>
+          {mainStackSkills.map((skill) => (
+            <Card
+              key={skill._id}
+              className="max-w-60 bg-background-2 px-8 py-4"
+            >
+              <Skill showName skill={skill} />
+            </Card>
+          ))}
         </div>
         <div className="flex justify-end">
           <Button
