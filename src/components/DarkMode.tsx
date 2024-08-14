@@ -19,7 +19,7 @@ function DarkMode() {
         }}
       >
         <IconButton
-          label="Switch color mode"
+          label={`Cambiar a modo ${theme === "dark" ? "claro" : "oscuro"}`}
           icon={theme === "dark" ? SunIcon : MoonIcon}
         />
       </Toggle.Root>

@@ -69,28 +69,28 @@ function Nav({
         </header>
         <nav className="flex flex-col justify-center items-center w-full gap-8">
           <NavLink href="/" isActive={pathname === "/"} closeNav={closeNav}>
-            About
+            Sobre mi
           </NavLink>
           <NavLink
             href="/projects"
             isActive={pathname === "/projects"}
             closeNav={closeNav}
           >
-            Projects
+            Proyectos
           </NavLink>
           <NavLink
             href="/skills"
             isActive={pathname === "/skills"}
             closeNav={closeNav}
           >
-            Skills
+            Habilidades
           </NavLink>
           <NavLink
             href="/contact"
             isActive={pathname === "/contact"}
             closeNav={closeNav}
           >
-            Contact
+            Contacto
           </NavLink>
         </nav>
         <footer className="flex gap-6 justify-center py-3">

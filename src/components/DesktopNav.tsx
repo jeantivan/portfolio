@@ -18,7 +18,7 @@ function NavLink({ href, isActive, ...props }: NavLinkProps) {
       {...props}
       href={href}
       className={mc(
-        "text-base leading-none py-2 px-5 font-medium",
+        "text-base leading-none p-2 font-medium",
         "relative z-0 text-background-11 hover:text-background-12 underline decoration-transparent underline-offset-8",
         isActive && "text-background-12 decoration-primary-9"
       )}
@@ -48,16 +48,16 @@ function DesktopNav() {
       {pathname !== "/" ? <Logo /> : null}
       <nav className="hidden md:flex flex-1 justify-end items-center gap-4">
         <NavLink href="/" isActive={pathname === "/"}>
-          About
+          Sobre mi
         </NavLink>
         <NavLink href="/projects" isActive={pathname === "/projects"}>
-          Projects
+          Proyectos
         </NavLink>
         <NavLink href="/skills" isActive={pathname === "/skills"}>
-          Skills
+          Habilidades
         </NavLink>
         <NavLink href="/contact" isActive={pathname === "/contact"}>
-          Contact
+          Contacto
         </NavLink>
         <Button as="a">
           Descargar CV{" "}
