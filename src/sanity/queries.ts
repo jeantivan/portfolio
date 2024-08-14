@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-import { TProject } from "@/utils/types";
+import { TProject, TSkill } from "@/utils/types";
 
 import { client } from "./client";
 
@@ -58,7 +58,7 @@ export const getProjectBySlug = async (slug: string) => {
 };
 
 export const getTechSkills = async () => {
-  return client.fetch(
+  return client.fetch<TSkill[]>(
     groq`
       *[_type == 'techSkills']{
         _id,
