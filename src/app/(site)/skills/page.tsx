@@ -38,7 +38,7 @@ const SkillsImage = ({
     <Tooltip content={name}>
       <div
         className={mc(
-          "w-28 h-28 p-3 rounded-lg bg-background-8 grid place-items-center",
+          "w-28 h-28 p-3 rounded-lg bg-background-3 dark:bg-background-8 grid place-items-center",
           small && "p-2 lg:w-[72px] lg:h-[72px]"
         )}
       >
