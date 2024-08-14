@@ -1,5 +1,4 @@
-import { group } from "console";
-import { defineType, defineField, defineArrayMember } from "sanity";
+import { defineType, defineField } from "sanity";
 
 const mainFields = [
   defineField({
@@ -8,9 +7,9 @@ const mainFields = [
     name: "title",
     validation: (Rule) => [
       Rule.required().warning("Project must have a title"),
-      Rule.min(5).warning("The title must contain at least 5 characters"),
+      Rule.min(5).warning("The title must contain at least 5 characters")
     ],
-    group: "main",
+    group: "main"
   }),
   defineField({
     type: "slug",
@@ -18,32 +17,32 @@ const mainFields = [
     title: "Slug",
     options: {
       source: "title",
-      maxLength: 200,
+      maxLength: 200
     },
     validation: (Rule) => [
-      Rule.required().warning("Please create or generate a slug."),
+      Rule.required().warning("Please create or generate a slug.")
     ],
-    group: "main",
+    group: "main"
   }),
   defineField({
     type: "boolean",
     name: "isFeatured",
     title: "Featured project",
     initialValue: false,
-    group: "main",
+    group: "main"
   }),
   defineField({
     name: "githubRepo",
     type: "url",
     title: "Github repository",
-    group: "main",
+    group: "main"
   }),
   defineField({
     name: "website",
     type: "url",
     title: "Website",
-    group: "main",
-  }),
+    group: "main"
+  })
 ];
 
 const contentFields = [
@@ -56,9 +55,9 @@ const contentFields = [
       Rule.required().warning(
         "Please provide a short description for the project"
       ),
-      Rule.max(150).warning("Max 150 characters."),
+      Rule.max(150).warning("Max 150 characters.")
     ],
-    group: ["main", "content", "seo"],
+    group: ["main", "content"]
   }),
   defineField({
     name: "content",
@@ -66,7 +65,7 @@ const contentFields = [
     type: "array",
     of: [{ type: "block" }],
     //validation: (Rule) => [Rule.]
-    group: "content",
+    group: "content"
   }),
   defineField({
     name: "builtWith",
@@ -74,60 +73,43 @@ const contentFields = [
     title: "Built with",
     description: "Select the libs you used to create the project",
     of: [
-      defineArrayMember({
+      {
         type: "reference",
-        to: [{ type: "techSkills" }],
-      }),
+        to: [{ type: "techSkills" }]
+      }
     ],
-    group: "content",
-  }),
+    group: "content"
+  })
 ];
 
 const mediaFields = [
   defineField({
-    type: "imageWithCaption",
+    type: "image",
     name: "mainImage",
     title: "Main image",
     group: ["main", "media"],
-  }),
-  defineField({
-    type: "array",
-    name: "gallery",
-    title: "Gallery",
-    of: [
-      defineArrayMember({
-        name: "image",
-        type: "image",
-        title: "Image",
-        options: {
-          hotspot: true,
-        },
-        fields: [
-          defineField({
-            name: "caption",
-            type: "string",
-            title: "Caption",
-            hidden: ({ parent }) => !parent?.asset,
-            validation: (Rule) =>
-              Rule.required().warning("An alt must be given"),
-          }),
-        ],
-      }),
-    ],
-    options: {
-      layout: "grid",
-    },
-    group: "media",
-  }),
+    fields: [
+      defineField({
+        type: "string",
+        name: "alt",
+        title: "Alternative text",
+        description: "Used for accessibility",
+        hidden: ({ parent }) => !parent?.asset,
+        validation: (Rule) =>
+          Rule.required().min(0).warning("An alt must be given")
+      })
+    ]
+  })
 ];
 
 const seoFields = [
-  defineField({
-    type: "boolean",
-    name: "shouldUseTechSkillsAsKeywords",
-    title: "Use "
-  })
-]
+  {
+    title: "SEO",
+    name: "seo",
+    group: "seo",
+    type: "seoMetaFields"
+  }
+];
 
 export const projectsSchema = defineType({
   type: "document",
@@ -137,7 +119,7 @@ export const projectsSchema = defineType({
     { title: "Main", name: "main" },
     { title: "Content", name: "content" },
     { title: "Media", name: "media" },
-    { title: "SEO", name: "seo" },
+    { title: "SEO", name: "seo" }
   ],
-  fields: [...mainFields, ...contentFields, ...mediaFields],
+  fields: [...mainFields, ...contentFields, ...mediaFields, ...seoFields]
 });
