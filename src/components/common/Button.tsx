@@ -12,9 +12,9 @@ type Size = "large" | "medium" | "small";
 
 const variantClassNames: Record<Variant, string> = {
   filled:
-    "border-primary-9 bg-primary-9 text-background-1 hover:bg-primary-10 hover:border-primary-10",
+    "border-primary-9 bg-primary-9 text-background-12 dark:text-background-1 hover:bg-primary-10 hover:border-primary-10",
   outlined:
-    "border-primary-7 bg-transparent text-primary-9 border-primary-7 hover:bg-primary-9 hover:text-primary-1",
+    "border-primary-7 bg-transparent text-primary-11 border-primary-7 hover:bg-primary-9 hover:text-primary-1",
   text: "border-transparent text-primary-9 border-transparent hover:bg-primary-4 hover:border-primary-4 hover:text-primary-10"
 };
 const sizeClassNames: Record<Size, string> = {
