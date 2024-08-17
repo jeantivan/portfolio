@@ -17,6 +17,7 @@ import Button from "./common/Button";
 import { Tooltip } from "./common/Tooltip";
 import { mc } from "../utils/helpers";
 import DarkMode from "./DarkMode";
+import Logo from "./Logo";
 
 type NavLinkProps = {
   closeNav: () => void;
@@ -103,18 +104,6 @@ function Nav({
   );
 }
 
-function Logo() {
-  return (
-    <div className="flex-1 md:flex-initial">
-      <Link href="/">
-        <p className="text-[1.875rem] leading-none uppercase font-display">
-          JT
-        </p>
-      </Link>
-    </div>
-  );
-}
-
 function MobileNav({ lng }: { lng: string }) {
   const [showNav, setShowNav] = useState<boolean>(false);
 
@@ -131,7 +120,7 @@ function MobileNav({ lng }: { lng: string }) {
           color="secondary"
           icon={HamburgerMenuIcon}
         />
-        <Logo />
+        <Logo lng={lng} mobile />
         <Button as="a">
           Descargar CV{" "}
           <span className="inline-flex">

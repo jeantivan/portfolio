@@ -9,6 +9,7 @@ import { useTranslation } from "@/src/app/i18n";
 
 import Button from "./common/Button";
 import DarkMode from "./DarkMode";
+import Logo from "./Logo";
 
 type NavLinkProps = ComponentPropsWithoutRef<typeof Link> & {
   isActive?: boolean;
@@ -29,18 +30,6 @@ function NavLink({ href, isActive, ...props }: NavLinkProps) {
   );
 }
 
-function Logo() {
-  return (
-    <div className="flex-1 md:flex-initial">
-      <Link href="/">
-        <p className="text-2xl leading-none uppercase font-display">
-          JeanTivan
-        </p>
-      </Link>
-    </div>
-  );
-}
-
 async function DesktopNav({ lng }: { lng: string }) {
   const pathname = usePathname();
 
@@ -48,18 +37,27 @@ async function DesktopNav({ lng }: { lng: string }) {
 
   return (
     <div className="hidden md:flex items-center">
-      {pathname !== "/" ? <Logo /> : null}
+      {pathname !== "/" ? <Logo lng={lng} /> : null}
       <nav className="hidden md:flex flex-1 justify-end items-center gap-4">
-        <NavLink href="/" isActive={pathname === "/"}>
+        <NavLink href={t(`/${lng}`)} isActive={pathname === `/${lng}`}>
           {t("navbar.links.about-me")}
         </NavLink>
-        <NavLink href="/projects" isActive={pathname === "/projects"}>
+        <NavLink
+          href={t(`/${lng}/projects`)}
+          isActive={pathname === `/${lng}/projects`}
+        >
           {t("navbar.links.projects")}
         </NavLink>
-        <NavLink href="/skills" isActive={pathname === "/skills"}>
+        <NavLink
+          href={t(`/${lng}/skills`)}
+          isActive={pathname === `/${lng}/skills`}
+        >
           {t("navbar.links.skills")}
         </NavLink>
-        <NavLink href="/contact" isActive={pathname === "/contact"}>
+        <NavLink
+          href={t(`/${lng}/contact`)}
+          isActive={pathname === `/${lng}/contact`}
+        >
           {t("navbar.links.contact")}
         </NavLink>
         <Button as="a">

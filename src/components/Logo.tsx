@@ -1,12 +1,18 @@
 import Link from "next/link";
 
-function Logo() {
+type LogoProps = {
+  lng: string;
+  mobile?: boolean;
+};
+function Logo({ lng, mobile = false }: LogoProps) {
+  const text = mobile ? "JT" : "JeanTivan";
+
   return (
-    <div className="flex-1 md:flex-initial text-3xl md:text-2xl text-gold-12">
-      <Link href="/">
-        JeanTivan
-        <span className="text-primary-9">.</span>
-        dev
+    <div className="flex-1 md:flex-initial">
+      <Link href={`/${lng}`}>
+        <p className="text-[1.875rem] md:text-2xl leading-none uppercase font-display">
+          {text}
+        </p>
       </Link>
     </div>
   );
