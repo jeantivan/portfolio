@@ -12,6 +12,7 @@ import { getProjects, getTechSkills } from "@/src/sanity/queries";
 
 import Skill from "@/src/components/Skill";
 import Card from "@/src/components/common/Card";
+import { useTranslation } from "../../i18n";
 
 export const metadata: Metadata = {
   title: "About | JeanTivan",
@@ -19,7 +20,13 @@ export const metadata: Metadata = {
     "Welcome to my portfolio, my name is Jean Tivan a self-taught frontend developer passionate for react and next.js"
 };
 
-async function Home() {
+type PageProps = {
+  params: {
+    lng: string;
+  };
+};
+async function Home({ params: { lng } }: PageProps) {
+  const { t } = await useTranslation(lng, "about-me");
   const projects = await getProjects();
 
   const skills = await getTechSkills();
@@ -54,17 +61,17 @@ async function Home() {
               className="uppercase"
               display
             >
-              Frontend Developer
+              {t("main.title")}
             </Text>
           </div>
         </div>
         <Text variant="subheading" weight="light" color="secondary">
-          Lorem ipsum dolor sit amet consectetur. Eget sed sed quam sit nisl.
+          {t("main.motto")}
         </Text>
       </section>
       <section className="grid gap-6 md:gap-8">
         <Heading
-          text="The latest projects that I've build."
+          text={t("projects.title")}
           Component="h3"
           variant="title"
           className="flex-1 text-center"
@@ -79,18 +86,14 @@ async function Home() {
             className="w-full max-w-lg"
             variant="outlined"
             as={Link}
-            href="/projects"
+            href={`/${lng}/projects`}
           >
-            Checkout all my projects <ArrowRightIcon className="w-4 h-4" />
+            {t("projects.cta")} <ArrowRightIcon className="w-4 h-4" />
           </Button>
         </div>
       </section>
       <section className="grid gap-6 md:gap-8">
-        <Heading
-          text="My favorites tech to build experiences."
-          variant="heading"
-          display
-        />
+        <Heading text={t("skills.title")} variant="heading" display />
         <div className="grid grid-cols-2 md:grid-cols-4 justify-between gap-3">
           {mainStackSkills.map((skill) => (
             <Card
@@ -106,27 +109,20 @@ async function Home() {
             className="w-full max-w-lg"
             variant="outlined"
             as={Link}
-            href="/skills"
+            href={`/${lng}/skills`}
           >
-            Checkout all my skills <ArrowRightIcon className="w-4 h-4" />
+            {t("skills.cta")} <ArrowRightIcon className="w-4 h-4" />
           </Button>
         </div>
       </section>
       <section className="grid gap-6 md:gap-8">
-        <Heading text="About me." variant="heading" display />
+        <Heading text={t("about-me.title")} variant="heading" display />
         <Text variant="body2" color="secondary">
-          Lorem ipsum dolor sit amet consectetur. Morbi blandit morbi enim sit
-          sed. Arcu non hac enim turpis ullamcorper quam eget turpis. Proin est
-          turpis ut in sit. Semper elit ut vel fermentum volutpat lacus mattis
-          aliquam et. Pretium diam ultrices tincidunt cursus nunc et congue
-          nibh. Fames non libero turpis augue ultrices. Molestie imperdiet id at
-          nisi nisl. Fringilla congue adipiscing quam etiam sodales curabitur
-          purus in. Leo sed amet senectus vel dui id vulputate cursus. Sit in
-          molestie enim commodo adipiscing purus.
+          {t("about-me.content")}
         </Text>
         <div className="flex justify-end">
-          <Button as={Link} href="/contact">
-            Get in touch with me
+          <Button as={Link} href={`/${lng}/contact`}>
+            {t("about-me.cta")}
           </Button>
         </div>
       </section>

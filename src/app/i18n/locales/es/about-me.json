@@ -1,0 +1,19 @@
+{
+  "main": {
+    "title": "Desarrollador Frontend",
+    "motto": "El mejor desarrollador conocerás."
+  },
+  "projects": {
+    "title": "Los últimos proyectos que he construido.",
+    "cta": "Observa todos mis proyectos"
+  },
+  "skills": {
+    "title": "Mis tecnologías favoritas para crear experiencias.",
+    "cta": "Conoce todas mis habilidades"
+  },
+  "about-me": {
+    "title": "Sobre mi.",
+    "content": "Lorem ipsum dolor sit amet consectetur. Morbi blandit morbi enim sit sed. Arcu non hac enim turpis ullamcorper quam eget turpis. Proin est turpis ut in sit. Semper elit ut vel fermentum volutpat lacus mattis aliquam et. Pretium diam ultrices tincidunt cursus nunc et congue nibh. Fames non libero turpis augue ultrices. Molestie imperdiet id at nisi nisl. Fringilla congue adipiscing quam etiam sodales curabitur purus in. Leo sed amet senectus vel dui id vulputate cursus. Sit in molestie enim commodo adipiscing purus.",
+    "cta": "Contacta conmigo"
+  }
+}
