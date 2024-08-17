@@ -2,6 +2,9 @@ import "@/styles/global.css";
 import { Metadata } from "next";
 import { Inter, Anton } from "next/font/google";
 
+import { dir } from "i18next";
+import { languages } from "@/src/app/i18n/settings";
+
 import Header from "@/components/Header";
 import Providers from "@/components/Providers";
 import Footer from "@/components/Footer";
@@ -27,13 +30,21 @@ export const metadata: Metadata = {
   }
 };
 
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
+
 export default function RootLayout({
-  children
+  children,
+  params: { lng }
 }: {
   children: React.ReactNode;
+  params: {
+    lng: string;
+  };
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
       <body
         className={mc(
           inter.variable,
@@ -43,7 +54,7 @@ export default function RootLayout({
         )}
       >
         <Providers>
-          <Header />
+          <Header lng={lng} />
           <main className="bg-background-2 dark:bg-background-1">
             {children}
           </main>

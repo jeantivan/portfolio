@@ -51,9 +51,11 @@ function NavLink({ href, isActive, closeNav, ...props }: NavLinkProps) {
 function Nav({
   //isExpanded,
   toggle,
-  closeNav
+  closeNav,
+  lng
 }: {
   //isExpanded: boolean;
+  lng: string;
   toggle: () => void;
   closeNav: () => void;
 }) {
@@ -113,7 +115,7 @@ function Logo() {
   );
 }
 
-function MobileNav() {
+function MobileNav({ lng }: { lng: string }) {
   const [showNav, setShowNav] = useState<boolean>(false);
 
   const toggle = () => setShowNav(!showNav);
@@ -137,7 +139,7 @@ function MobileNav() {
           </span>
         </Button>
       </div>
-      {showNav && <Nav closeNav={closeNav} toggle={toggle} />}
+      {showNav && <Nav lng={lng} closeNav={closeNav} toggle={toggle} />}
     </div>
   );
 }

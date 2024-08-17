@@ -14,7 +14,7 @@ const IsExpandedContext = createContext({
 
 export const useIsExpanded = () => useContext(IsExpandedContext);
 
-function Header() {
+function Header({ lng }: { lng: string }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggle = () => {
@@ -30,8 +30,8 @@ function Header() {
         )}
       >
         <Container>
-          <DesktopNav />
-          <MobileNav />
+          <DesktopNav lng={lng} />
+          <MobileNav lng={lng} />
         </Container>
       </header>
     </IsExpandedContext.Provider>

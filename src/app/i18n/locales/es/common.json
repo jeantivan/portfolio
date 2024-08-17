@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "links": {
+      "about-me": "Sobre mi",
+      "projects": "Proyectos",
+      "skills": "Habilidades",
+      "contact": "Contacto"
+    },
+    "cv": "Descargar cv"
+  },
+  "dark-mode": {
+    "switch": {
+      "dark": "Cambiar a modo oscuro",
+      "light": "Cambiar a modo claro"
+    }
+  }
+}

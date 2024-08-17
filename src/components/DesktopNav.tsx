@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { DownloadIcon } from "@radix-ui/react-icons";
 
 import { mc } from "@/utils/helpers";
+import { useTranslation } from "@/src/app/i18n";
 
 import Button from "./common/Button";
 import DarkMode from "./DarkMode";
@@ -40,27 +41,29 @@ function Logo() {
   );
 }
 
-function DesktopNav() {
+async function DesktopNav({ lng }: { lng: string }) {
   const pathname = usePathname();
+
+  const { t } = await useTranslation(lng, "common");
 
   return (
     <div className="hidden md:flex items-center">
       {pathname !== "/" ? <Logo /> : null}
       <nav className="hidden md:flex flex-1 justify-end items-center gap-4">
         <NavLink href="/" isActive={pathname === "/"}>
-          Sobre mi
+          {t("navbar.links.about-me")}
         </NavLink>
         <NavLink href="/projects" isActive={pathname === "/projects"}>
-          Proyectos
+          {t("navbar.links.projects")}
         </NavLink>
         <NavLink href="/skills" isActive={pathname === "/skills"}>
-          Habilidades
+          {t("navbar.links.skills")}
         </NavLink>
         <NavLink href="/contact" isActive={pathname === "/contact"}>
-          Contacto
+          {t("navbar.links.contact")}
         </NavLink>
         <Button as="a">
-          Descargar CV{" "}
+          {t("navbar.cv")}
           <span className="inline-flex">
             <DownloadIcon />
           </span>
