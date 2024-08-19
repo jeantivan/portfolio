@@ -1,7 +1,5 @@
 import { DownloadIcon } from "@radix-ui/react-icons";
 
-import { mc } from "@/utils/helpers";
-
 import Button from "./common/Button";
 import DarkMode from "./DarkMode";
 import Logo from "./Logo";
