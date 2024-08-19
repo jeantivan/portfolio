@@ -66,7 +66,7 @@ function MobileNav() {
 
   return (
     <div className="md:hidden">
-      <div className="flex justify-end md:justify-betweenW gap-6 items-center py-2">
+      <div className="flex justify-between gap-6 items-center py-2">
         <IconButton
           onClick={toggle}
           label={t("mobile.open")}
