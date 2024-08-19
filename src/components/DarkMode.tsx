@@ -4,14 +4,17 @@ import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
 import { useTheme } from "next-themes";
 
+import { useTranslations } from "next-intl";
+
 import { Tooltip } from "./common/Tooltip";
 import IconButton from "./common/IconButton";
-import { useClientTranslation } from "../app/i18n/client";
+
 import { useEffect, useState } from "react";
 
-function DarkMode({ lng }: { lng: string }) {
+function DarkMode() {
   const { theme, setTheme } = useTheme();
-  const { t } = useClientTranslation(lng, "common");
+
+  const t = useTranslations("DarkMode");
 
   const [mounted, setMounted] = useState(false);
 
@@ -24,11 +27,7 @@ function DarkMode({ lng }: { lng: string }) {
     return null; // O renderiza un loader si lo prefieres
   }
   return (
-    <Tooltip
-      content={t(
-        theme === "dark" ? "dark-mode.switch.light" : "dark-mode.switch.dark"
-      )}
-    >
+    <Tooltip content={t(theme === "dark" ? "switch.light" : "switch.dark")}>
       <Toggle.Root
         asChild
         onPressedChange={() => {
@@ -37,11 +36,7 @@ function DarkMode({ lng }: { lng: string }) {
         }}
       >
         <IconButton
-          label={t(
-            theme === "dark"
-              ? "dark-mode.switch.light"
-              : "dark-mode.switch.dark"
-          )}
+          label={t(theme === "dark" ? "switch.light" : "switch.dark")}
           icon={theme === "dark" ? SunIcon : MoonIcon}
         />
       </Toggle.Root>
@@ -49,10 +44,10 @@ function DarkMode({ lng }: { lng: string }) {
   );
 }
 
-function DarkModeWrapper({ lng }: { lng: string }) {
+function DarkModeWrapper() {
   return (
     <div className="min-w-9">
-      <DarkMode lng={lng} />
+      <DarkMode />
     </div>
   );
 }
