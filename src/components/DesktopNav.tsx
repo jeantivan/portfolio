@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { DownloadIcon } from "@radix-ui/react-icons";
 
 import { mc } from "@/utils/helpers";
-import { useTranslation } from "@/src/app/i18n";
+import { useClientTranslation } from "@/src/app/i18n/client";
 
 import Button from "./common/Button";
 import DarkMode from "./DarkMode";
@@ -30,10 +30,10 @@ function NavLink({ href, isActive, ...props }: NavLinkProps) {
   );
 }
 
-async function DesktopNav({ lng }: { lng: string }) {
+function DesktopNav({ lng }: { lng: string }) {
   const pathname = usePathname();
 
-  const { t } = await useTranslation(lng, "common");
+  const { t } = useClientTranslation(lng, "common");
 
   return (
     <div className="hidden md:flex items-center">
@@ -67,7 +67,7 @@ async function DesktopNav({ lng }: { lng: string }) {
           </span>
         </Button>
         <div className="flex gap-2">
-          <DarkMode />
+          <DarkMode lng={lng} />
         </div>
       </nav>
     </div>
