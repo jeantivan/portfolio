@@ -1,15 +1,17 @@
-import Link from "next/link";
+import { usePathname, Link } from "@/src/navigation";
 
 type LogoProps = {
-  lng: string;
   mobile?: boolean;
 };
-function Logo({ lng, mobile = false }: LogoProps) {
+function Logo({ mobile = false }: LogoProps) {
+  const pathname = usePathname();
   const text = mobile ? "JT" : "JeanTivan";
+
+  if (pathname === "/") return null;
 
   return (
     <div className="flex-1 md:flex-initial">
-      <Link href={`/${lng}`}>
+      <Link href={`/`}>
         <p className="text-[1.875rem] md:text-2xl leading-none uppercase font-display">
           {text}
         </p>
