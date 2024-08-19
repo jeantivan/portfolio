@@ -6,11 +6,29 @@ import { useTheme } from "next-themes";
 
 import { Tooltip } from "./common/Tooltip";
 import IconButton from "./common/IconButton";
+import { useClientTranslation } from "../app/i18n/client";
+import { useEffect, useState } from "react";
 
-function DarkMode() {
+function DarkMode({ lng }: { lng: string }) {
   const { theme, setTheme } = useTheme();
+  const { t } = useClientTranslation(lng, "common");
+
+  const [mounted, setMounted] = useState(false);
+
+  // Asegúrate de que solo interactuamos con el tema después de montar el componente en el cliente
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // O renderiza un loader si lo prefieres
+  }
   return (
-    <Tooltip content="Switch color mode">
+    <Tooltip
+      content={t(
+        theme === "dark" ? "dark-mode.switch.light" : "dark-mode.switch.dark"
+      )}
+    >
       <Toggle.Root
         asChild
         onPressedChange={() => {
@@ -19,7 +37,11 @@ function DarkMode() {
         }}
       >
         <IconButton
-          label={`Cambiar a modo ${theme === "dark" ? "claro" : "oscuro"}`}
+          label={t(
+            theme === "dark"
+              ? "dark-mode.switch.light"
+              : "dark-mode.switch.dark"
+          )}
           icon={theme === "dark" ? SunIcon : MoonIcon}
         />
       </Toggle.Root>
@@ -27,4 +49,12 @@ function DarkMode() {
   );
 }
 
-export default DarkMode;
+function DarkModeWrapper({ lng }: { lng: string }) {
+  return (
+    <div className="min-w-9">
+      <DarkMode lng={lng} />
+    </div>
+  );
+}
+
+export default DarkModeWrapper;
