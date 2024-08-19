@@ -1,28 +1,32 @@
 "use client";
 import { useState, useContext, createContext } from "react";
-import cx from "classnames";
 
 import Container from "./common/Container";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import { mc } from "@/utils/helpers";
 
-const IsExpandedContext = createContext({
-  isExpanded: false,
-  toggle: () => {}
+const ShowNavContext = createContext({
+  showNav: false,
+  toggle: () => {},
+  closeNav: () => {}
 });
 
-export const useIsExpanded = () => useContext(IsExpandedContext);
+export const useShowNav = () => useContext(ShowNavContext);
 
-function Header({ lng }: { lng: string }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+function Header() {
+  const [showNav, setShowNav] = useState(false);
 
   const toggle = () => {
-    setIsExpanded(!isExpanded);
+    setShowNav(!showNav);
+  };
+
+  const closeNav = () => {
+    setShowNav(false);
   };
 
   return (
-    <IsExpandedContext.Provider value={{ isExpanded, toggle }}>
+    <ShowNavContext.Provider value={{ showNav, toggle, closeNav }}>
       <header
         className={mc(
           "w-full transition duration-75",
@@ -30,11 +34,11 @@ function Header({ lng }: { lng: string }) {
         )}
       >
         <Container>
-          <DesktopNav lng={lng} />
-          <MobileNav lng={lng} />
+          <DesktopNav />
+          <MobileNav />
         </Container>
       </header>
-    </IsExpandedContext.Provider>
+    </ShowNavContext.Provider>
   );
 }
 export default Header;
