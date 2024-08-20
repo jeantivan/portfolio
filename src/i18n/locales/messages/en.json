@@ -23,7 +23,7 @@
   "AboutMePage": {
     "main": {
       "title": "Frontend Developer",
-      "motto": "Building the Future, One Line of Code at a Time: Efficiency and Creativity in Every Web Project"
+      "content": "Building the Future, One Line of Code at a Time: Efficiency and Creativity in Every Web Project"
     },
     "projects": {
       "title": "The latest projects I have built.",
@@ -59,6 +59,19 @@
       "description": "You can learn more about my work and professional background on my",
       "or": "or",
       "end": " profiles."
+    }
+  },
+  "SkillsPage": {
+    "main": {
+      "title": "My favorites tech to build experiences."
+    },
+    "skills": {
+      "main-stack": "The main stack",
+      "basics": "The fundations.",
+      "styling": "Styling & design.",
+      "animations": "Animations.",
+      "version-control": "Version control",
+      "others": "More tools."
     }
   }
 }

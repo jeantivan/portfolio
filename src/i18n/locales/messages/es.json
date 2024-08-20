@@ -60,5 +60,22 @@
       "or": "o",
       "end": "."
     }
+  },
+  "SkillsPage": {
+    "main": {
+      "title": "Mis tecnologías favoritas para crear experiencias.",
+      "content": "Estas herramientas me permiten construir aplicaciones web robustas, escalables y de alto rendimiento, enfocadas en la experiencia del usuario."
+    },
+    "skills": {
+      "main-stack": "Las tecnologías principales.",
+      "basics": "Las bases.",
+      "styling": "Diseño y estilos.",
+      "animations": "Animaciones",
+      "version-control": "Control de versiones.",
+      "others": "Mas herramientas."
+    },
+    "extra": {
+      "content": "Si bien tengo un conjunto de tecnologías favoritas que utilizo para crear experiencias excepcionales, mi enfoque no se limita a ellas. Estoy siempre abierto a aprender y adaptarme a nuevas herramientas y frameworks que se alineen mejor con los objetivos del proyecto. La capacidad de aprender rápidamente y adoptar nuevas tecnologías me permite ofrecer soluciones flexibles y personalizadas, asegurando que cada proyecto utilice las mejores herramientas disponibles para alcanzar su máximo potencial."
+    }
   }
 }
