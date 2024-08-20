@@ -29,7 +29,7 @@ function Contact({ params: { locale } }: PageProps) {
           className="uppercase mb-4 text-center"
         />
 
-        <Text variant="body2" color="secondary" className="mb-6 text-center">
+        <Text variant="body3" color="secondary" className="mb-6 text-center">
           {t("subtitle")}
         </Text>
         <Heading

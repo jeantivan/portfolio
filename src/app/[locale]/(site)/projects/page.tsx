@@ -34,7 +34,7 @@ async function Projects({ params: { locale } }: PageProps) {
             className="mb-4"
             display
           />
-          <Text color="secondary" variant="body2">
+          <Text color="secondary" variant="body3">
             {t("main.content")}
           </Text>
         </div>
