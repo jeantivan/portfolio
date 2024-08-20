@@ -16,6 +16,7 @@ type Variants =
   | "subheading"
   | "body1"
   | "body2" // El tamaño de fuente de esta variante es ligeramente mas grande que el anterior
+  | "body3"
   | "subtitle";
 
 const colorClasses = {
@@ -39,6 +40,7 @@ const variantClasses = {
   title: "text-5xl md:text-7xl", // h1
   heading: "text-4xl md:text-5xl", // h2
   subheading: "text-2xl md:text-3xl", // h3
+  body3: "text-xl md:text-2xl",
   body2: "text-lg md:text-xl",
   body1: "text-base md:text-lg",
   subtitle: "text-sm md:text-base"
