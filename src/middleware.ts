@@ -1,14 +1,25 @@
 import createMiddleware from "next-intl/middleware";
 
 import { localePrefix, defaultLocale, locales, pathnames } from "./i18n/config";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
-export default createMiddleware({
+const intlMiddleware = createMiddleware({
   defaultLocale,
   locales,
   localePrefix,
   pathnames
 });
 
+export default function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (pathname.startsWith("/admin")) {
+    return NextResponse.next();
+  }
+
+  return intlMiddleware(request);
+}
 export const config = {
   // Match only internationalized pathnames
   matcher: [
