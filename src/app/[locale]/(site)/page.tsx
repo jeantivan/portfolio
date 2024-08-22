@@ -43,15 +43,15 @@ async function Home({ params: { lng } }: PageProps) {
   return (
     <Container className="px-3 py-6 lg:py-10 grid gap-16 md:gap-24">
       <section className="">
-        <div className="mb-4 flex flex-col md:flex-row gap-6 justify-end">
+        <div className="mb-4 flex flex-col md:flex-row gap-6">
           {/* TODO: Implementar imagen
           <Card className="bg-background-11 w-full rounded-xl mb-5 md:mb-0 lg:h-full aspect-video md:aspect-[2/3]"></Card> */}
-          <div className="shrink-0 flex flex-col justify-end">
+          <div className="shrink-0 flex flex-col">
             <Text
               Component="h1"
               variant="main"
               weight="bold"
-              className="uppercase mb-2.5 text-end"
+              className="uppercase mb-2.5"
             >
               Jean <br></br>Tivan
             </Text>
@@ -67,8 +67,13 @@ async function Home({ params: { lng } }: PageProps) {
             </Text>
           </div>
         </div>
-        <Text variant="subheading" weight="light" color="secondary">
-          {t("main.motto")}
+        <Text
+          variant="subheading"
+          weight="light"
+          color="secondary"
+          className=""
+        >
+          {t("main.content")}
         </Text>
       </section>
       <section className="grid gap-6 md:gap-8">
@@ -123,7 +128,7 @@ async function Home({ params: { lng } }: PageProps) {
           {t("about-me.content")}
         </Text>
         <div className="flex justify-end">
-          <Button as={Link} href="/${lng}/contact">
+          <Button as={Link} href="/contact">
             {t("about-me.cta")}
           </Button>
         </div>
