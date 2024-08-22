@@ -24,6 +24,7 @@
     "@radix-ui/react-tooltip": "^1.1.1",
     "@sanity/client": "^6.20.1",
     "@sanity/image-url": "^1.0.2",
+    "@sanity/language-filter": "^4.0.2",
     "@sanity/react-loader": "^1.10.3",
     "@sanity/vision": "^3.48.0",
     "accept-language": "^3.0.20",
