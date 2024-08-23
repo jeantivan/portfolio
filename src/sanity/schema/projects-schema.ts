@@ -121,5 +121,15 @@ export const projectsSchema = defineType({
     { title: "Media", name: "media" },
     { title: "SEO", name: "seo" }
   ],
-  fields: [...mainFields, ...contentFields, ...mediaFields, ...seoFields]
+  fields: [
+    ...mainFields,
+    ...contentFields,
+    ...mediaFields,
+    ...seoFields,
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true
+    })
+  ]
 });
