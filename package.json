@@ -46,6 +46,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.0",
     "react-i18next": "^15.0.1",
+    "sanity": "^3.55.0",
     "sanity-plugin-graph-view": "^2.0.1",
     "sanity-plugin-internationalized-array": "^3.0.0",
     "sanity-plugin-media": "^2.2.5",
