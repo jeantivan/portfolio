@@ -1,18 +1,8 @@
 import { groq } from "next-sanity";
 
-import { TProject, TSkill } from "@/utils/types";
+import { TProject, TSkill, TSkillGroup } from "@/utils/types";
 
 import { client } from "./client";
-
-type Project = {
-  _id: string;
-  title: string;
-  slug: {
-    current: string;
-  };
-  mainImage: unknown;
-  isFeatured: boolean;
-};
 
 export const getProjects = async () => {
   return client.fetch<TProject[]>(
@@ -70,4 +60,16 @@ export const getTechSkills = async () => {
       } | order(order asc)
     `
   );
+};
+
+export const getSkillsGroups = async () => {
+  return client.fetch<TSkillGroup[]>(groq`
+    *[_type == 'skillGroups']{
+        _id,
+        title,
+        slug{ current },
+        content,
+        techs[]->{_id, name, slug, image }
+      } 
+    `);
 };
