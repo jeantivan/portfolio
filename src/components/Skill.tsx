@@ -1,4 +1,3 @@
-import Card from "./common/Card";
 import Image from "next/image";
 
 import { TSkill } from "@/utils/types";
