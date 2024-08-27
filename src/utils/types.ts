@@ -21,7 +21,15 @@ export type TSkill = {
   name: string;
   slug: Slug;
   image: SanityImage;
-  group: string;
+};
+
+export type TSkillGroup = {
+  _id: string;
+  title: string;
+  slug: Slug;
+  content: string;
+  techs?: Array<TSkill>;
+  language: string;
 };
 
 export type TProjectType = {
