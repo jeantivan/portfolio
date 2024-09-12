@@ -16,6 +16,9 @@ type Slug = {
   current: string;
 };
 
+export type LocalizedSlug = Record<"es" | "en", Slug>;
+export type LocalizedString = Record<"es" | "en", string>;
+
 export type TSkill = {
   _id: string;
   name: string;
@@ -25,10 +28,10 @@ export type TSkill = {
 
 export type TSkillGroup = {
   _id: string;
-  title: string;
-  slug: Slug;
+  title: LocalizedString;
+  slug: LocalizedSlug;
   content: string;
-  techs?: Array<TSkill>;
+  techs: Array<TSkill>;
   language: string;
 };
 
