@@ -63,7 +63,8 @@
   },
   "SkillsPage": {
     "main": {
-      "title": "My favorites tech to build experiences."
+      "title": "My favorites tech to build experiences.",
+      "content": "These tools allow me to build robust, scalable, and high-performance web applications, focused on the user experience."
     },
     "skills": {
       "main-stack": "The main stack",
