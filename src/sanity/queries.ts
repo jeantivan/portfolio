@@ -66,10 +66,13 @@ export const getSkillsGroups = async () => {
   return client.fetch<TSkillGroup[]>(groq`
     *[_type == 'skillGroups']{
         _id,
-        title,
-        slug{ current },
+        "title": {
+          "es": title[_key == "es"][0].value,
+          "en": title[_key == "en"][0].value
+        },
+        slug,
         content,
         techs[]->{_id, name, slug, image }
-      } 
+      }
     `);
 };
