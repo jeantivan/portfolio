@@ -10,7 +10,11 @@ import { Link } from "@/src/navigation";
 
 import Heading from "@/components/Heading";
 import ProjectItem from "@/src/components/ProjectItem";
-import { getProjects, getTechSkills } from "@/src/sanity/queries";
+import {
+  getProjects,
+  getSkillsGroups,
+  getTechSkills
+} from "@/src/sanity/queries";
 
 import Skill from "@/src/components/Skill";
 import Card from "@/src/components/common/Card";
@@ -32,13 +36,14 @@ async function Home({ params: { lng } }: PageProps) {
   const projects = await getProjects();
 
   const skills = await getTechSkills();
+  const skillsGroups = await getSkillsGroups();
 
   const featuredProjects = projects
     .filter((project) => project.isFeatured)
     .slice(0, 3);
 
-  const mainStackSkills = skills.filter(
-    (skill) => skill.group === "main-stack"
+  const mainStackSkills = skillsGroups.find(
+    (skillGroup) => skillGroup.slug.en.current === "the-main-stack"
   );
   return (
     <Container className="px-3 py-6 lg:py-10 grid gap-16 md:gap-24">
@@ -58,9 +63,8 @@ async function Home({ params: { lng } }: PageProps) {
             <Text
               Component="h2"
               variant="title"
-              color="primary"
               weight="medium"
-              className="uppercase"
+              className="uppercase text-primary-11 dark:text-primary-9"
               display
             >
               {t("main.title")}
@@ -102,7 +106,7 @@ async function Home({ params: { lng } }: PageProps) {
       <section className="grid gap-6 md:gap-8">
         <Heading text={t("skills.title")} variant="heading" display />
         <div className="grid grid-cols-2 md:grid-cols-4 justify-between gap-3">
-          {mainStackSkills.map((skill) => (
+          {mainStackSkills?.techs.map((skill) => (
             <Card
               key={skill._id}
               className="max-w-60 bg-background-2 px-8 py-4"
