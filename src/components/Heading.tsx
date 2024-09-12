@@ -11,7 +11,7 @@ function Heading({ text, variant = "subheading", ...rest }: HeadingProps) {
   const textToRender = splitEspecialChar(text).map((str, i) => {
     if (str.search(EspecialCharRgx) >= 0) {
       return (
-        <span key={`sing-${i}`} className="text-primary-9">
+        <span key={`sing-${i}`} className="text-primary-11 dark:text-primary-9">
           {str}
         </span>
       );
