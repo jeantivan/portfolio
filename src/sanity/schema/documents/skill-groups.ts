@@ -6,22 +6,19 @@ export const skillGroupsSchema = defineType({
   title: "Skill Group",
   fields: [
     defineField({
-      type: "string",
+      type: "internationalizedArrayString",
       title: "Title",
       name: "title"
     }),
     defineField({
-      type: "slug",
+      type: "localizedSlug",
       name: "slug",
-      title: "Slug",
-      options: {
-        source: "title"
-      }
+      title: "Slug"
     }),
     defineField({
-      type: "portableText",
-      name: "content",
-      title: "Content"
+      type: "internationalizedArrayPortableText",
+      title: "Content",
+      name: "content"
     }),
     defineField({
       type: "array",
@@ -33,11 +30,19 @@ export const skillGroupsSchema = defineType({
           to: [{ type: "techSkills" }]
         }
       ]
-    }),
-    defineField({
-      name: "language",
-      type: "string",
-      readOnly: true
     })
-  ]
+  ],
+  preview: {
+    select: {
+      slug: "slug"
+    },
+    prepare({ slug }) {
+      const title = slug?.es.current;
+      const subtitle = slug?.en.current;
+      return {
+        title: title ?? "No title yet, please add one.",
+        subtitle: subtitle ?? "No translation yet."
+      };
+    }
+  }
 });
