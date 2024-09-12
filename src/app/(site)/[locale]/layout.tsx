@@ -47,7 +47,7 @@ export default async function LocaleLayout({
         className={mc(
           inter.variable,
           anton.variable,
-          "bg-background-3 dark:bg-background-1 min-h-screen",
+          "bg-background-2 dark:bg-background-1 min-h-screen",
           "grid grid-rows-[min-content_1fr_min-content]"
         )}
       >
