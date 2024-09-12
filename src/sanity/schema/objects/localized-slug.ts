@@ -13,14 +13,14 @@ export const localizedSlug = defineType({
       options: { collapsible: true, collapsed: false }
     }
   ],
-  fields: supportedLanguages.map((lang) =>
+  fields: supportedLanguages.map((lang, index) =>
     defineField({
       name: lang.id,
       title: lang.title,
       type: "slug",
       fieldset: lang.isDefault ? undefined : "translations",
       options: {
-        source: `title.${lang.id}`
+        source: `title[${index}].value`
       }
     })
   )
