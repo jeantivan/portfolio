@@ -46,12 +46,12 @@ export default defineConfig({
     seoMetaFields(),
     documentInternationalization({
       supportedLanguages: supportedLanguages,
-      schemaTypes: ["project", "skillGroups"]
+      schemaTypes: ["project"]
     }),
     internationalizedArray({
       languages: supportedLanguages,
       defaultLanguages: [defaultLanguage!.id],
-      fieldTypes: ["string", "text"]
+      fieldTypes: ["string", "text", "slug", "portableText"]
     })
     /* languageFilter({
       supportedLanguages: supportedLanguages,
