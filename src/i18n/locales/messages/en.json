@@ -73,6 +73,9 @@
       "animations": "Animations.",
       "version-control": "Version control",
       "others": "More tools."
+    },
+    "extra": {
+      "content": "While I have a set of favorite technologies that I use to create exceptional experiences, my approach is not limited to them. I am always open to learning and adapting to new tools and frameworks that better align with the project's goals. The ability to quickly learn and adopt new technologies allows me to offer flexible and customized solutions, ensuring that each project uses the best tools available to reach its full potential."
     }
   }
 }
