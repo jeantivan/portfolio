@@ -1,11 +1,11 @@
-import { forwardRef } from "react";
+import React, {
+  ComponentPropsWithRef,
+  ElementType,
+  ForwardedRef,
+  forwardRef
+} from "react";
 import cx from "classnames";
 import AccesibleIcon from "./AccesibleIcon";
-
-import {
-  PolymorphicComponentPropsWithRef,
-  PolymorphicRef
-} from "@/utils/types";
 
 // Estilos
 type Size = "large" | "medium" | "small";
@@ -43,29 +43,48 @@ type IconProps = React.ForwardRefExoticComponent<
   RadixIconProps & React.RefAttributes<SVGSVGElement>
 >;
 
-type IconButtonProps<C extends React.ElementType> =
-  PolymorphicComponentPropsWithRef<
-    C,
-    {
-      color?: Color;
-      size?: Size;
-      variant?: Variant;
-      label: string;
-      icon: IconProps;
-      iconClassName?: string;
-    }
-  >;
+interface IconButtonProps {
+  color?: Color;
+  size?: Size;
+  variant?: Variant;
+  label: string;
+  icon: IconProps;
+  iconClassName?: string;
+}
 
-type IconButtonComponent = <C extends React.ElementType = "button">(
-  props: IconButtonProps<C>
-) => React.ReactElement | null;
+/**
+ * How to Pass a Component as a Prop in React
+ * autor: Matt Pocock
+ *
+ * source: https://www.totaltypescript.com/pass-component-as-prop-react
+ */
+type FixedForwardRef = <T, P = {}>(
+  render: (props: P, ref: React.Ref<T>) => React.ReactNode
+) => (props: P & React.RefAttributes<T>) => React.ReactNode;
 
-const IconButton: IconButtonComponent = forwardRef(function ForwardIconButton<
-  C extends React.ElementType = "button"
->(props: IconButtonProps<C>, ref?: PolymorphicRef<C>) {
+const fixedForwardRef = forwardRef as FixedForwardRef;
+
+type DistributiveOmit<T, TOmitted extends PropertyKey> = T extends any
+  ? Omit<T, TOmitted>
+  : never;
+
+export const UnwrappedAnyComponent = <TAs extends ElementType>(
+  props: {
+    as?: TAs;
+    color?: Color;
+    size?: Size;
+    variant?: Variant;
+    label: string;
+    icon: IconProps;
+    iconClassName?: string;
+  } & DistributiveOmit<
+    ComponentPropsWithRef<ElementType extends TAs ? "button" : TAs>,
+    "as"
+  >,
+  ref: ForwardedRef<any>
+) => {
   const {
-    as,
-    children,
+    as: Comp = "button",
     className,
     size = "medium",
     variant = "outlined",
@@ -76,8 +95,6 @@ const IconButton: IconButtonComponent = forwardRef(function ForwardIconButton<
     ...rest
   } = props;
 
-  const Component = as || "button";
-
   // Todas las classNames juntas
   const classNames = cx(
     "inline-flex justify-center align-center outline-none",
@@ -87,12 +104,13 @@ const IconButton: IconButtonComponent = forwardRef(function ForwardIconButton<
     "transition duration-75 rounded-lg",
     className
   );
-
   return (
-    <Component {...rest} className={classNames} ref={ref}>
+    <Comp className={classNames} {...rest} ref={ref}>
       <AccesibleIcon icon={icon} label={label} iconClassName={className} />
-    </Component>
+    </Comp>
   );
-});
+};
+
+const IconButton = fixedForwardRef(UnwrappedAnyComponent);
 
 export default IconButton;
