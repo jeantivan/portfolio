@@ -1,81 +1,84 @@
 {
-  "NavBar": {
-    "links": {
-      "about-me": "About me",
-      "projects": "Projects",
-      "skills": "Skills",
-      "contact": "Contact"
-    },
-    "cv": "Download CV",
-    "mobile": {
-      "github-btn": "Github profile",
-      "linkedin-btn": "LinkedIn profile",
-      "close": "Close navbar",
-      "open": "Open navbar"
-    }
-  },
-  "DarkMode": {
-    "switch": {
-      "dark": "Switch to dark mode",
-      "light": "Switch to light mode"
-    }
-  },
-  "AboutMePage": {
-    "main": {
-      "title": "Frontend Developer",
-      "content": "Building the Future, One Line of Code at a Time: Efficiency and Creativity in Every Web Project"
-    },
-    "projects": {
-      "title": "The latest projects I have built.",
-      "cta": "Check out all my projects"
-    },
-    "skills": {
-      "title": "My favorites tech to build experiences.",
-      "cta": "Check out all my skills"
-    },
-    "about-me": {
-      "title": "About me.",
-      "content": "Lorem ipsum dolor sit amet consectetur. Morbi blandit morbi enim sit sed. Arcu non hac enim turpis ullamcorper quam eget turpis. Proin est turpis ut in sit. Semper elit ut vel fermentum volutpat lacus mattis aliquam et. Pretium diam ultrices tincidunt cursus nunc et congue nibh. Fames non libero turpis augue ultrices. Molestie imperdiet id at nisi nisl. Fringilla congue adipiscing quam etiam sodales curabitur purus in. Leo sed amet senectus vel dui id vulputate cursus. Sit in molestie enim commodo adipiscing purus.",
-      "cta": "Get in touch with me"
-    }
-  },
-  "ProjectsPage": {
-    "main": {
-      "title": "All the projects that I've built.",
-      "content": "Lorem ipsum dolor sit amet consectetur. Sed sit enim aliquam pharetra metus at lectus aliquet aliquam. Nibh aliquam nunc pellentesque mollis. Nisl at nisi quis amet non diam felis felis purus."
-    },
-    "small-projects": {
-      "title": "Others small projects.",
-      "content": "Lorem ipsum dolor sit amet consectetur. Sed sit enim aliquam pharetra metus at lectus aliquet aliquam. Nibh aliquam nunc pellentesque mollis. Nisl at nisi quis amet non diam felis purus."
-    },
-    "extra": {
-      "content": "Lorem ipsum dolor sit amet consectetur. At orci at purus cras mi nascetur. Risus at cras diam non. Varius aliquam orci sit quis nec sed hendrerit porta consectetur. Dignissim lacus maecenas ultricies netus at. Enim interdum ornare vulputate semper ac."
-    }
-  },
-  "ContactPage": {
-    "title": "Let's connect & work together!",
-    "subtitle": "If you're looking for a passionate and experienced web developer to take your ideas to the next level, don't hesitate to contact me.",
-    "social-cta": {
-      "description": "You can learn more about my work and professional background on my",
-      "or": "or",
-      "end": " profiles."
-    }
-  },
-  "SkillsPage": {
-    "main": {
-      "title": "My favorites tech to build experiences.",
-      "content": "These tools allow me to build robust, scalable, and high-performance web applications, focused on the user experience."
-    },
-    "skills": {
-      "main-stack": "The main stack",
-      "basics": "The fundations.",
-      "styling": "Styling & design.",
-      "animations": "Animations.",
-      "version-control": "Version control",
-      "others": "More tools."
-    },
-    "extra": {
-      "content": "While I have a set of favorite technologies that I use to create exceptional experiences, my approach is not limited to them. I am always open to learning and adapting to new tools and frameworks that better align with the project's goals. The ability to quickly learn and adopt new technologies allows me to offer flexible and customized solutions, ensuring that each project uses the best tools available to reach its full potential."
-    }
-  }
+	"NavBar": {
+		"links": {
+			"about-me": "About me",
+			"projects": "Projects",
+			"skills": "Skills",
+			"contact": "Contact"
+		},
+		"cv": "Download CV",
+		"mobile": {
+			"github-btn": "Github profile",
+			"linkedin-btn": "LinkedIn profile",
+			"close": "Close navbar",
+			"open": "Open navbar"
+		}
+	},
+	"DarkMode": {
+		"switch": {
+			"dark": "Switch to dark mode",
+			"light": "Switch to light mode"
+		}
+	},
+	"AboutMePage": {
+		"main": {
+			"title": "Frontend Developer",
+			"content": "Building the Future, One Line of Code at a Time: Efficiency and Creativity in Every Web Project"
+		},
+		"projects": {
+			"title": "The latest projects I have built.",
+			"cta": "Check out all my projects"
+		},
+		"skills": {
+			"title": "My favorites tech to build experiences.",
+			"cta": "Check out all my skills"
+		},
+		"about-me": {
+			"title": "About me.",
+			"content": "Lorem ipsum dolor sit amet consectetur. Morbi blandit morbi enim sit sed. Arcu non hac enim turpis ullamcorper quam eget turpis. Proin est turpis ut in sit. Semper elit ut vel fermentum volutpat lacus mattis aliquam et. Pretium diam ultrices tincidunt cursus nunc et congue nibh. Fames non libero turpis augue ultrices. Molestie imperdiet id at nisi nisl. Fringilla congue adipiscing quam etiam sodales curabitur purus in. Leo sed amet senectus vel dui id vulputate cursus. Sit in molestie enim commodo adipiscing purus.",
+			"cta": "Get in touch with me"
+		}
+	},
+	"ProjectsPage": {
+		"main": {
+			"title": "All the projects that I've built.",
+			"content": "Lorem ipsum dolor sit amet consectetur. Sed sit enim aliquam pharetra metus at lectus aliquet aliquam. Nibh aliquam nunc pellentesque mollis. Nisl at nisi quis amet non diam felis felis purus."
+		},
+		"small-projects": {
+			"title": "Others small projects.",
+			"content": "Lorem ipsum dolor sit amet consectetur. Sed sit enim aliquam pharetra metus at lectus aliquet aliquam. Nibh aliquam nunc pellentesque mollis. Nisl at nisi quis amet non diam felis purus."
+		},
+		"extra": {
+			"content": "Lorem ipsum dolor sit amet consectetur. At orci at purus cras mi nascetur. Risus at cras diam non. Varius aliquam orci sit quis nec sed hendrerit porta consectetur. Dignissim lacus maecenas ultricies netus at. Enim interdum ornare vulputate semper ac."
+		}
+	},
+	"ContactPage": {
+		"title": "Let's connect & work together!",
+		"subtitle": "If you're looking for a passionate and experienced web developer to take your ideas to the next level, don't hesitate to contact me.",
+		"social-cta": {
+			"description": "You can learn more about my work and professional background on my",
+			"or": "or",
+			"end": " profiles."
+		}
+	},
+	"SkillsPage": {
+		"main": {
+			"title": "My favorites tech to build experiences.",
+			"content": "These tools allow me to build robust, scalable, and high-performance web applications, focused on the user experience."
+		},
+		"skills": {
+			"main-stack": "The main stack",
+			"basics": "The fundations.",
+			"styling": "Styling & design.",
+			"animations": "Animations.",
+			"version-control": "Version control",
+			"others": "More tools."
+		},
+		"extra": {
+			"content": "While I have a set of favorite technologies that I use to create exceptional experiences, my approach is not limited to them. I am always open to learning and adapting to new tools and frameworks that better align with the project's goals. The ability to quickly learn and adopt new technologies allows me to offer flexible and customized solutions, ensuring that each project uses the best tools available to reach its full potential."
+		}
+	},
+	"ProjectPage": {
+		"builtWith": "Built with"
+	}
 }
