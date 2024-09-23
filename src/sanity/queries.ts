@@ -77,7 +77,7 @@ export const getSkillsGroups = async () => {
     `);
 };
 
-export const siteSettings = async () => {
+export const getSiteSettings = async () => {
   return client.fetch<TSiteSettings>(groq`*[_type == 'siteSettings']{
     authorName,
     authorEmail,
