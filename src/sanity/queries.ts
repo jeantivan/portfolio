@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-import { TProject, TSkill, TSkillGroup } from "@/utils/types";
+import { TProject, TSiteSettings, TSkill, TSkillGroup } from "@/utils/types";
 
 import { client } from "./client";
 
@@ -75,4 +75,16 @@ export const getSkillsGroups = async () => {
         techs[]->{_id, name, slug, image }
       }
     `);
+};
+
+export const siteSettings = async () => {
+  return client.fetch<TSiteSettings>(groq`*[_type == 'siteSettings']{
+    authorName,
+    authorEmail,
+    github,
+    linkedin,
+    CV{
+      "asset": asset->url
+    }
+}[0]`);
 };
