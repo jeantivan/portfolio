@@ -2,8 +2,9 @@ import Heading from "@/components/Heading";
 
 import Container from "@/components/common/Container";
 import Text from "@/components/common/Text";
+import { getSiteSettings } from "@/src/sanity/queries";
 
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 export const metadata = {
   title: "Contact",
@@ -15,9 +16,10 @@ type PageProps = {
     locale: string;
   };
 };
-function Contact({ params: { locale } }: PageProps) {
-  const t = useTranslations("ContactPage");
+async function Contact({ params: { locale } }: PageProps) {
+  const t = await getTranslations("ContactPage");
 
+  const { authorEmail, github, linkedin } = await getSiteSettings();
   return (
     <Container className="my-8 md:my-16">
       <section className="">
@@ -33,23 +35,17 @@ function Contact({ params: { locale } }: PageProps) {
           {t("subtitle")}
         </Text>
         <Heading
-          text="jptivan52@gmail.com"
+          text={authorEmail}
           variant="title"
           className="mb-8 text-center"
         />
         <Text variant="body2" color="secondary" className="text-center">
           {t("social-cta.description")}{" "}
-          <a
-            className="text-primary-9 hover:underline"
-            href="https://www.linkedin.com/"
-          >
+          <a className="text-primary-9 hover:underline" href={linkedin}>
             LinkedIn
           </a>{" "}
           {t("social-cta.or")}{" "}
-          <a
-            className="text-primary-9 hover:underline"
-            href="https://github.com/"
-          >
+          <a className="text-primary-9 hover:underline" href={github}>
             Github
           </a>
           {t("social-cta.end")}
