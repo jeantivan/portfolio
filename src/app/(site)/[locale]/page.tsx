@@ -6,18 +6,16 @@ import { getTranslations } from "next-intl/server";
 import Container from "@/components/common/Container";
 import Text from "@/components/common/Text";
 import Button from "@/components/common/Button";
-import { Link } from "@/src/navigation";
-
 import Heading from "@/components/Heading";
-import ProjectItem from "@/src/components/ProjectItem";
+import ProjectItem from "@/components/ProjectItem";
 import {
   getProjects,
   getSkillsGroups,
   getTechSkills
 } from "@/src/sanity/queries";
-
 import Skill from "@/src/components/Skill";
 import Card from "@/src/components/common/Card";
+import { Link } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "About | JeanTivan",
