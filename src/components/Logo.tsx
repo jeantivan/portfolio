@@ -1,4 +1,4 @@
-import { usePathname, Link } from "@/src/navigation";
+import { usePathname, Link } from "@/src/i18n/routing";
 
 type LogoProps = {
   mobile?: boolean;
