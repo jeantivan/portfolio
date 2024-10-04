@@ -1,7 +1,7 @@
 "use client";
 import { ComponentPropsWithoutRef } from "react";
 
-import { Link, usePathname, useRouter } from "@/src/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { mc } from "@/utils/helpers";
 
 type NavLinkProps = ComponentPropsWithoutRef<"a"> & {
