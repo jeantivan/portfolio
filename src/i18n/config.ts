@@ -39,6 +39,14 @@ export const pathnames: Pathnames<typeof locales> = {
   "/contact": {
     es: "/contacto",
     en: "/contact"
+  },
+  "/project/[slug]": {
+    es: "/proyecto/[slug]",
+    en: "/project/[slug]"
+  },
+  "/skills/[group]": {
+    es: "/habilidades/[group]",
+    en: "/skills/[group]"
   }
 };
 
