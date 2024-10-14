@@ -28,5 +28,13 @@ export const pagesSchema = defineType({
   type: "document",
   name: "pages",
   title: "Pages",
-  fields: [...mainFields, ...seoFields]
+  fields: [
+    ...mainFields,
+    ...seoFields,
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true
+    })
+  ]
 });
