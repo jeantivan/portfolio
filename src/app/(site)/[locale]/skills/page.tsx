@@ -60,10 +60,15 @@ const ReactEcosystemTechs = ({ techs }: { techs: TSkill[] }) => {
   );
 };
 
-export const metadata = {
-  title: "Contact",
-  description: "Let's connect and work together!"
-};
+export async function generateMetadata({
+  params
+}: {
+  params: { locale: string };
+}) {
+  return {
+    title: params.locale === "es" ? "Habilidades" : "Skills"
+  };
+}
 
 type PageProps = {
   params: {
