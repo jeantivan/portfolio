@@ -77,6 +77,29 @@ export const getSkillsGroups = async () => {
     `);
 };
 
+export const getSkillGroupBySlug = async ({
+  slug,
+  locale
+}: {
+  slug: string;
+  locale: string;
+}) => {
+  return client.fetch<TSkillGroup>(
+    groq`
+    *[_type == 'skillGroups' && slug[$locale].current == $slug]{
+      _id,
+      "title": {
+        "es": title[_key == "es"][0].value,
+        "en": title[_key == "en"][0].value
+      },
+      slug,
+      content,
+      techs[]->{_id, name, slug, image }
+    }`,
+    { locale, slug }
+  );
+};
+
 export const getSiteSettings = async () => {
   return client.fetch<TSiteSettings>(groq`*[_type == 'siteSettings']{
     authorName,
