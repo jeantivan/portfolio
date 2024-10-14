@@ -2,7 +2,7 @@ import {
   StructureResolver,
   DefaultDocumentNodeResolver
 } from "sanity/structure";
-import { CogIcon } from "@sanity/icons";
+import { GearIcon } from "@radix-ui/react-icons";
 
 const structure: StructureResolver = (S) =>
   S.list()
@@ -10,7 +10,7 @@ const structure: StructureResolver = (S) =>
     .items([
       S.listItem()
         .title("Site Settings")
-        .icon(CogIcon)
+        .icon(GearIcon)
         .child(
           S.document().schemaType("siteSettings").documentId("siteSettings")
         ),
