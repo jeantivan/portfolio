@@ -46,7 +46,7 @@ export default defineConfig({
     seoMetaFields(),
     documentInternationalization({
       supportedLanguages: supportedLanguages,
-      schemaTypes: ["project"]
+      schemaTypes: ["project", "pages"]
     }),
     internationalizedArray({
       languages: supportedLanguages,
