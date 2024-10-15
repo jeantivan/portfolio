@@ -7,12 +7,12 @@ import { internationalizedArray } from "sanity-plugin-internationalized-array";
 import { documentInternationalization } from "@sanity/document-internationalization";
 //import { languageFilter } from "@sanity/language-filter";
 
-import { apiVersion, dataset, projectId } from "@/sanity/env";
+import { apiVersion, dataset, projectId } from "./src/sanity/env";
 
-import schema from "@/sanity/schema";
-import structure from "@/sanity/structure";
+import schema from "./src/sanity/schema";
+import structure from "./src/sanity/structure";
 
-import { supportedLanguages, defaultLanguage } from "@/i18n/config";
+import { supportedLanguages, defaultLanguage } from "./src/i18n/config";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"]);
@@ -21,7 +21,7 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"]);
 const singletonTypes = new Set(["siteSettings"]);
 
 // Configuración para sanity.io
-export default defineConfig({
+export const config = defineConfig({
   basePath: "/admin",
   projectId,
   dataset,

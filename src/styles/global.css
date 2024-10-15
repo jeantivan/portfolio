@@ -1,0 +1,63 @@
+:root {
+  /* Olive */
+  --background-1: 120 20% 99%;
+  --background-2: 120 17% 98%;
+  --background-3: 120 7% 94%;
+  --background-4: 120 4% 91%;
+  --background-5: 120 5% 88%;
+  --background-6: 120 4% 85%;
+  --background-7: 120 3% 81%;
+  --background-8: 105 3% 73%;
+  --background-9: 103 3% 54%;
+  --background-10: 103 3% 50%;
+  --background-11: 110 3% 38%;
+  --background-12: 108 8% 12%;
+
+  /* Lime */
+  --primary-1: 80 43% 99%;
+  --primary-2: 77 41% 97%;
+  --primary-3: 75 64% 90%;
+  --primary-4: 76 63% 84%;
+  --primary-5: 78 58% 78%;
+  --primary-6: 80 50% 71%;
+  --primary-7: 82 43% 63%;
+  --primary-8: 85 40% 52%;
+  --primary-9: 81 80% 66%;
+  --primary-10: 81 75% 60%;
+  --primary-11: 85 45% 34%;
+  --primary-12: 75 39% 18%;
+}
+
+.dark {
+  /* Olive Dark */
+  --background-1: 90 6% 7%;
+  --background-2: 90 4% 9%;
+  --background-3: 90 3% 13%;
+  --background-4: 100 4% 16%;
+  --background-5: 100 3% 19%;
+  --background-6: 90 4% 22%;
+  --background-7: 96 4% 27%;
+  --background-8: 111 4% 37%;
+  --background-9: 108 5% 42%;
+  --background-10: 107 4% 47%;
+  --background-11: 105 5% 69%;
+  --background-12: 120 6% 93%;
+
+  /* Lime Dark */
+  --primary-1: 77 23% 6%;
+  --primary-2: 90 24% 8%;
+  --primary-3: 93 28% 13%;
+  --primary-4: 92 31% 16%;
+  --primary-5: 91 32% 20%;
+  --primary-6: 92 32% 24%;
+  --primary-7: 91 33% 29%;
+  --primary-8: 90 35% 34%;
+  --primary-9: 81 80% 66%;
+  --primary-10: 78 100% 72%;
+  --primary-11: 80 70% 66%;
+  --primary-12: 80 79% 85%;
+}
+
+body {
+  font-family: var(--inter);
+}
