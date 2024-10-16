@@ -3,10 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/sanity/*": ["./src/sanity/*"],
       "@/assets/*": ["./src/assets/*"],
       "@/config/*": ["./src/config/*"],
       "@/components/*": ["./src/components/*"],
+      "@/layouts/*": ["./src/layouts/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/i18n/*": ["./src/i18n/*"]
@@ -14,7 +14,7 @@
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
-      },
-    ],
+      }
+    ]
   }
 }
