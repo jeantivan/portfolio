@@ -1,7 +1,9 @@
+import defaultTheme from "tailwindcss/defaultTheme";
+
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	darkMode: "class",
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -35,10 +37,10 @@ export default {
         }
       },
       fontFamily: {
-        sans: ["var(--inter)"],
+        sans: ["var(--inter)", ...defaultTheme.fontFamily.sans],
         display: ["var(--anton)"]
       }
     }
   },
-	plugins: []
-}
+  plugins: []
+};
