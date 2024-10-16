@@ -6,6 +6,8 @@ import "@/styles/global.css"
 import antonWoff2 from '@fontsource/anton/files/anton-latin-400-normal.woff2?url'
 import interWoff2 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url'
 
+import { languageTag } from "../paraglide/runtime";
+
 import MainHead from '@/components/MainHead.astro'
 import Header from '@/components/Header.astro'
 import Footer from '@/components/Footer.astro'
@@ -17,7 +19,7 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<html lang="en">
+<html lang={languageTag()} dir={Astro.locals.paraglide.dir}>
 	<head>
 		<MainHead title={title} description={description} />
 		<link rel="preload" as="font" type="font/woff2" href={antonWoff2} crossorigin="anonymous" />
