@@ -1,4 +1,7 @@
 :root {
+  --anton: "Anton", ui-sans-serif;
+  --inter: "Inter";
+
   /* Olive */
   --background-1: 120 20% 99%;
   --background-2: 120 17% 98%;
