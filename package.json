@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "paraglide": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide",
+    "paraglide": "paraglide-js compile --watch --project ./project.inlang --outdir ./src/paraglide",
     "build": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -15,7 +15,6 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.2",
-    "@astrojs/ts-plugin": "^1.10.2",
     "@fontsource/anton": "^5.1.0",
     "@fontsource/inter": "^5.1.0",
     "@inlang/paraglide-astro": "^0.2.2",
