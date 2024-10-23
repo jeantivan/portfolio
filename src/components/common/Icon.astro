@@ -1,0 +1,56 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { iconPaths } from './IconPaths';
+
+interface Props {
+	icon: keyof typeof iconPaths;
+	label: string;
+	color?: string;
+	size?: string;
+	class?: string;
+}
+
+const { color = 'currentcolor', icon, size, label, class: className,...rest } = Astro.props;
+const iconPath = iconPaths[icon];
+
+const attrs: HTMLAttributes<'svg'> = {};
+if (size) attrs.style = { '--size': size };
+
+---
+<span class:list={["inline-flex", className]} {...rest}>
+	<svg
+	xmlns="http://www.w3.org/2000/svg"
+	width="40"
+	height="40"
+	viewBox="0 0 256 256"
+	aria-hidden="true"
+	stroke={color}
+	fill={color}
+	{...attrs}
+	
+>
+	<g set:html={iconPath} />
+</svg>
+	<span class="screen-reader">{label}</span>
+</span>
+
+
+<style>
+	svg {
+		vertical-align: middle;
+		width: var(--size, 1em);
+		height: var(--size, 1em);
+	}
+	.screen-reader{
+		position: absolute;
+		border: 0;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		whiteSpace: nowrap;
+		wordWrap: normal;
+	}
+</style>
