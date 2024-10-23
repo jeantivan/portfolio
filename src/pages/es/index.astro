@@ -1,8 +1,104 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from '@/components/common/Container.astro'
+import Text from "@/components/common/Text.astro";
+import Heading from '@/components/Heading.astro'
+import Button from '@/components/common/Button.astro'
 
 import * as m from "../../paraglide/messages.js";
+import Icon from "@/components/common/Icon.astro";
+
 ---
 <BaseLayout title="Sobre mi" description="Portafolío personal de un developer en Madrid!">
-<h1>{m.hello({name: "Jean"})}</h1>
+  <Container class="px-3 py-6 lg:py-10 grid gap-16 md:gap-24">
+      <section class="">
+        <div class="mb-4 flex flex-col md:flex-row gap-6">
+          {/* TODO: Implementar imagen
+          <Card class="bg-background-11 w-full rounded-xl mb-5 md:mb-0 lg:h-full aspect-video md:aspect-[2/3]"></Card> */}
+          <div class="shrink-0 flex flex-col">
+            <Text
+              as="h1"
+              variant="main"
+              weight="bold"
+              class="uppercase mb-2.5"
+            >Jean <br />Tivan</Text>
+            <Text
+              as="h2"
+              variant="title"
+              weight="medium"
+              class="uppercase text-primary-11 dark:text-primary-9"
+              display
+            >
+              {m.AboutMePage_main_title()}
+            </Text>
+          </div>
+        </div>
+        <Text
+          variant="subheading"
+          weight="light"
+          color="secondary"
+          class=""
+        >
+         {m.AboutMePage_main_content()}
+        </Text>
+      </section>
+      <section class="grid gap-6 md:gap-8">
+        <Heading
+          text={m.AboutMePage_projects_title()}
+          as="h3"
+          variant="title"
+          class="flex-1 text-center"
+        />
+        <div class="flex flex-wrap justify-center gap-3">
+          <!-- {featuredProjects.map((project, index) => (
+            <ProjectItem key={project._id} project={project} />
+          ))} -->
+        </div>
+        <div class="flex justify-center">
+          <Button
+            as="a"
+            class="w-full max-w-lg"
+            variant="outlined"
+            href="/projects"
+          >
+            {m.AboutMePage_projects_cta()} <Icon icon="arrow-right" size="20px" />
+          </Button>
+        </div>
+      </section>
+      <section class="grid gap-6 md:gap-8">
+        <Heading text={m.AboutMePage_skills_title()} variant="heading" display />
+        <div class="grid grid-cols-2 md:grid-cols-4 justify-between gap-3">
+          <!-- {mainStackSkills?.techs.map((skill) => (
+            <Card
+              key={skill._id}
+              class="max-w-60 bg-background-2 px-8 py-4"
+            >
+              <Skill showName skill={skill} />
+            </Card> 
+          ))}-->
+        </div>
+        <div class="flex justify-end">
+          <Button
+          as="a"
+          variant="outlined"
+          href="/skills"
+          class="w-full max-w-lg"
+          >
+            {m.AboutMePage_skills_cta()} <Icon label="Arrow right icon" icon="arrow-right" size="20px" />
+          </Button>
+        </div>
+      </section>
+      <section class="grid gap-6 md:gap-8">
+        <Heading text={m.AboutMePage_aboutMe_title()} variant="heading" display />
+        <Text variant="body2" color="secondary">
+          {m.AboutMePage_aboutMe_content()}
+        </Text>
+
+        <div class="flex justify-end">
+          <Button as="a" href="/contact">
+            {m.AboutMePage_aboutMe_cta()}
+          </Button> 
+        </div>
+      </section>
+    </Container>
 </BaseLayout>

@@ -1,0 +1,19 @@
+---
+import Container from "@/components/common/Container.astro"
+import Heading from "@/components/Heading.astro"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+
+import * as m from "../../paraglide/messages.js";
+---
+<BaseLayout title="Contacto" description="Conectemos y trabajemos juntos!">
+  <Container className="my-8 md:my-16">
+    <section>
+      <Heading 
+          text={m.ContactPage_title()}
+          as="h1"
+          variant="title"
+          display
+          class="uppercase mb-4 text-center" />
+    </section>
+  </Container>
+</BaseLayout> 
