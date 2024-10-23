@@ -1,0 +1,77 @@
+---
+type Colors =
+	| "primary"
+	| "secondary"
+	| "error"
+	| "success"
+	| "danger"
+	| "default";
+type Weights = "light" | "normal" | "medium" | "bold";
+type Variants =
+	| "main"
+	| "title"
+	| "heading"
+	| "subheading"
+	| "body1"
+	| "body2" // El tamaño de fuente de esta variante es ligeramente mas grande que el anterior
+	| "body3"
+	| "subtitle";
+
+const colorClasses: Record<Colors, string> = {
+	primary: "text-primary-9",
+	secondary: "text-background-11",
+	default: "text-background-12",
+	error: "text-red-600",
+	danger: "text-yellow-600",
+	success: "text-green-600"
+};
+
+const weightClasses: Record<Weights, string> = {
+	light: "font-light",
+	normal: "font-normal",
+	medium: "font-medium",
+	bold: "font-bold"
+};
+
+const variantClasses: Record<Variants, string> = {
+	main: "font-display text-[10rem] leading-[10rem] md:text-[13rem] md:leading-[13rem] font-extrabold",
+	title: "text-5xl md:text-7xl", // h1
+	heading: "text-4xl md:text-5xl", // h2
+	subheading: "text-2xl md:text-3xl", // h3
+	body3: "text-xl md:text-2xl",
+	body2: "text-lg md:text-xl",
+	body1: "text-base md:text-lg",
+	subtitle: "text-sm md:text-base"
+}
+
+type ValidTags =  "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
+
+export type TextProps = { 
+  as?: ValidTags, 
+  variant?: Variants,
+  color?: Colors,
+  weight?: Weights,
+  class?: string,
+  display?: boolean,
+ }
+
+interface Props extends TextProps {}
+
+const { 
+	as: Tag = "p", 
+	variant = "body1", 
+	color = "default", 
+	weight = "normal", 
+	class: className, 
+	display = false, 
+	...props }: Props = Astro.props;
+
+---
+<Tag {...props} class:list={[
+  className, 
+  variantClasses[variant], 
+  colorClasses[color], 
+  display ? 'font-display' : undefined,
+  variant !== 'main' && weightClasses[weight]]} >
+  <slot />
+</Tag>
