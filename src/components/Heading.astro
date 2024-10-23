@@ -1,0 +1,25 @@
+---
+import Text from './common/Text.astro'
+import type {TextProps} from "./common/Text.astro"
+
+import {splitEspecialChar, EspecialCharRgx} from '@/utils/splitEspecialChar' 
+
+type HeadingProps = Omit<TextProps, "variant"> & {
+  text: string;
+  variant?: "title" | "heading" | "subheading";
+}
+
+interface Props extends HeadingProps {}
+
+const {text, variant, ...props}: Props = Astro.props;
+
+const textToRender: Array<string | JSX.Element> = splitEspecialChar(text).map((str, i) => {
+    if (str.search(EspecialCharRgx) >= 0) {
+      return `<span class="text-primary-11 dark:text-primary-9">${str}</span>`
+    }
+    return str;
+  });
+---
+<Text variant={variant} {...props}>
+  <Fragment set:html={textToRender} />
+</Text>
