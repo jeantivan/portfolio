@@ -1,0 +1,18 @@
+---
+interface Props {
+  href: string
+}
+const {href} = Astro.props;
+
+const isActive = Astro.url.pathname === href;
+---
+
+<a
+  href={href}
+  class:list={[
+    "text-base leading-none p-2 font-medium",
+    "relative z-0 text-background-11 hover:text-background-12 underline decoration-transparent underline-offset-8",
+    isActive && "text-background-12 decoration-primary-9"]}
+  >
+  <span class="bg-inherit"><slot /></span>
+</a>
