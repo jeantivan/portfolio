@@ -1,0 +1,16 @@
+---
+import Container from './common/Container.astro'
+import DesktopNav from './DesktopNav.astro'
+import MobileNav from './MobileNav.astro'
+---
+<header
+  class:list={[
+    "w-full transition duration-75",
+    "bg-background-2 dark:bg-background-1"
+  ]}>
+  <Container>
+
+    <DesktopNav />
+    <MobileNav />
+  </Container>
+</header>
