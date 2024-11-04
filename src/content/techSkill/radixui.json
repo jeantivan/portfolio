@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "Radix UI",
+  "image": {
+    "alt": "Radix UI logo",
+    "src": {
+      "dark": "../../images/techSkills/radixui_dark.svg",
+      "light": "../../images/techSkills/radixui_light.svg"
+    }
+  }
+}

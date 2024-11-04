@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "GSAP",
+  "image": {
+    "alt": "GSAP logo",
+    "src": {
+      "dark": "../../images/techSkills/gsap.svg",
+      "light": "../../images/techSkills/gsap.svg"
+    }
+  }
+}

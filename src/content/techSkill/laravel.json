@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "Laravel",
+  "image": {
+    "alt": "Laravel logo",
+    "src": {
+      "dark": "../../images/techSkills/laravel.svg",
+      "light": "../../images/techSkills/laravel.svg"
+    }
+  }
+}

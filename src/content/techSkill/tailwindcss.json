@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "TailwindCSS",
+  "image": {
+    "alt": "TailwindCSS logo",
+    "src": {
+      "dark": "../../images/techSkills/tailwindcss.svg",
+      "light": "../../images/techSkills/tailwindcss.svg"
+    }
+  }
+}

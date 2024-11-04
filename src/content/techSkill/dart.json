@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "Dart",
+  "image": {
+    "alt": "Dart logo",
+    "src": {
+      "dark": "../../images/techSkills/dart.svg",
+      "light": "../../images/techSkills/dart.svg"
+    }
+  }
+}

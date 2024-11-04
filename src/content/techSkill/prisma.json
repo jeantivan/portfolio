@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "Prisma",
+  "image": {
+    "alt": "Prisma logo",
+    "src": {
+      "dark": "../../images/techSkills/Prisma_dark.svg",
+      "light": "../../images/techSkills/Prisma_light.svg"
+    }
+  }
+}

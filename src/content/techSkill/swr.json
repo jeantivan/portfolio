@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "SWR",
+  "image": {
+    "alt": "SWR logo",
+    "src": {
+      "dark": "../../images/techSkills/SWR_dark.svg",
+      "light": "../../images/techSkills/SWR_light.svg"
+    }
+  }
+}

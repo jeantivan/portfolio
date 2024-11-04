@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "Material UI",
+  "image": {
+    "alt": "Material UI logo",
+    "src": {
+      "dark": "../../images/techSkills/materialui.svg",
+      "light": "../../images/techSkills/materialui.svg"
+    }
+  }
+}
