@@ -25,17 +25,19 @@ const {skill, showName = false, size = "medium", class: className} = Astro.props
 const { name, image } = skill.data;
 
 ---
-  <div
-    class:list={[
-      "w-full h-full rounded-lg",
-      "bg-background-3/50 dark:bg-transparent",
-      "grid grid-rows-[1fr_auto] justify-center gap-3",
-    ]}>
-      <Image 
-        alt={image.alt} 
-        format="webp" 
-        src={image.src.dark} 
-        class:list={[sizes[size],"aspect-square rounded-xl object-contain hidden dark:block"]} />
-      <Image alt={image.alt} format="webp" src={image.src.light} class="w-full rounded-xl object-contain block dark:hidden"/>
-       {showName && <Text variant="body2" class='text-center'>{name}</Text>}
-  </div>
+<div
+  class:list={[
+    "w-full h-full rounded-lg",
+    "bg-background-3/50 dark:bg-transparent",
+    "grid justify-center gap-3",
+    showName ? "grid-rows-[1fr_auto]" : "grid-rows-1",
+    className
+  ]}>
+    <Image 
+      alt={image.alt} 
+      format="webp" 
+      src={image.src.dark} 
+      class:list={[sizes[size],"aspect-square rounded-xl object-contain hidden dark:block"]} />
+    <Image alt={image.alt} format="webp" src={image.src.light} class="w-full rounded-xl object-contain block dark:hidden"/>
+      {showName && <Text variant="body2" class='text-center'>{name}</Text>}
+</div>
