@@ -1,0 +1,32 @@
+---
+import type { Size, Variant, Color} from './types'
+import { buttonSizes, variantClassNames, colorClassNames} from './IconButton.astro'
+
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  size?: Size;
+  variant?: Variant;
+  color?: Color,
+  label: string;
+}
+const { 
+  size = "medium",
+  variant = "outlined",
+  color = "default",
+  class: className,
+  label,
+  ...rest
+} = Astro.props
+
+const classNames = [
+ "inline-flex justify-center align-center outline-none",
+ "transition duration-75 rounded-lg",
+  buttonSizes[size],
+  variantClassNames[variant],
+  colorClassNames[color],
+  className
+]
+   
+---
+<a class:list={classNames} {...rest}>
+  <slot />
+</a>
