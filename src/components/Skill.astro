@@ -6,11 +6,11 @@ import Text from './common/Text.astro';
 type Size = "large" | "big" | "medium" | "small" | "auto";
 
 const sizes: Record<Size, string> = {
-  large: "w-[112px]",
-  big: "w-24",
-  medium: "w-[88px]",
-  small: "w-[66px]",
-  auto: "w-auto max-w-[112px]"
+  large: "w-24",
+  big: "w-20",
+  medium: "w-16",
+  small: "w-14",
+  auto: "w-auto max-w-[96px]"
 };
 
 interface Props {
@@ -37,7 +37,13 @@ const { name, image } = skill.data;
       alt={image.alt} 
       format="webp" 
       src={image.src.dark} 
+      title={image.alt}
       class:list={[sizes[size],"aspect-square rounded-xl object-contain hidden dark:block"]} />
-    <Image alt={image.alt} format="webp" src={image.src.light} class="w-full rounded-xl object-contain block dark:hidden"/>
+    <Image 
+      alt={image.alt} 
+      format="webp" 
+      src={image.src.light}
+      title={image.alt}
+      class:list={[sizes[size],"aspect-square rounded-xl object-contain block dark:hidden"]}/>
       {showName && <Text variant="body2" class='text-center'>{name}</Text>}
 </div>
