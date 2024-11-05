@@ -1,15 +1,55 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, reference, z } from "astro:content";
+
+const techSkill = defineCollection({
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      image: z.object({
+        src: z.object({
+          dark: image(),
+          light: image()
+        }),
+        alt: z.string()
+      })
+    })
+});
+
+const language = z.enum(["es", "en"]);
+
+const skillGroup = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    techs: z.array(reference("techSkill")),
+    language: language.readonly()
+  })
+});
+
+const authorInfo = defineCollection({
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      language: language.readonly(),
+      name: z.string(),
+      profession: z.string(),
+      social: z.object({
+        email: z.string().email(),
+        linkedIn: z.string().url(),
+        github: z.string().url()
+      }),
+      cv: z.string(),
+      picture: z
+        .object({
+          alt: z.string(),
+          src: image()
+        })
+        .optional()
+    })
+});
 
 export const collections = {
-	work: defineCollection({
-		type: 'content',
-		schema: z.object({
-			title: z.string(),
-			description: z.string(),
-			publishDate: z.coerce.date(),
-			tags: z.array(z.string()),
-			img: z.string(),
-			img_alt: z.string().optional(),
-		}),
-	}),
+  techSkill,
+  skillGroup,
+  authorInfo
 };
