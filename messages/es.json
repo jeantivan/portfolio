@@ -28,7 +28,7 @@
   "ProjectsPage_extra_content": "Lorem ipsum dolor sit amet consectetur...",
   "ContactPage_title": "¡Conectemos y trabajemos juntos!",
   "ContactPage_subtitle": "Si buscas un desarrollador web apasionado y con experiencia...",
-  "ContactPage_socialCta": "Puedes aprender más sobre mi trabajo y trayectoria profesional en mi <a href={linkedinUrl}>LinkedIn</a> o en mi <a href={githubUrl}>Github</a>",
+  "ContactPage_socialCta": "Puedes aprender más sobre mi trabajo y trayectoria profesional en mi <a class='link' href={linkedinUrl}>LinkedIn</a> o en mi <a class='link' href={githubUrl}>Github</a>",
   "SkillsPage_main_title": "Mis tecnologías favoritas para crear experiencias.",
   "SkillsPage_main_content": "Estas herramientas me permiten crear aplicaciones web robustas, escalables y de alto rendimiento...",
   "SkillsPage_skills_mainStack": "El stack principal",
