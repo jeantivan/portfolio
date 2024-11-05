@@ -43,43 +43,46 @@
       "fo fo fo fo fo an an an vc vc vc vc"
       "fo fo fo fo fo an an an vc vc vc vc"
       "ds ds ds ds ds an an an he he he he"
-      "ds ds ds ds ds mt mt mt mt mt mt su"
-      "ds ds ds ds ds mt mt mt mt mt mt su";
+      "ds ds ds ds ds mt mt mt mt mt mt mt"
+      "ds ds ds ds ds mt mt mt mt mt mt mt";
   }
 }
 
-.the-main-stack {
+.the-main-stack,
+.las-tecnologias-principales {
   grid-area: ms;
 }
 
-.the-foundations {
+.the-foundations,
+.las-bases {
   grid-area: fo;
 }
 
-.react-ecosystem {
+.react-ecosystem,
+.ecosistema-react {
   grid-area: re;
 }
 
-.animations {
+.animations,
+.animaciones {
   grid-area: an;
 }
 
-.version-control {
+.version-control,
+.control-de-versiones {
   grid-area: vc;
 }
 
-.design-and-styling {
+.design-and-styling,
+.diseno-y-estilos {
   grid-area: ds;
 }
 
-.more-technologies {
+.more-tools,
+.mas-herramientas {
   grid-area: mt;
 }
 
 .helper {
   grid-area: he;
-}
-
-.suspense {
-  grid-area: su;
 }
