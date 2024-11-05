@@ -48,8 +48,23 @@ const authorInfo = defineCollection({
     })
 });
 
+const page = defineCollection({
+  type: "data",
+  schema: z.object({
+    title: z.string(),
+    description: z.string().min(40),
+    meta: z.object({
+      url: z.string().url(),
+      image: z.string().optional(),
+      keywords: z.array(z.string()),
+      language
+    })
+  })
+});
+
 export const collections = {
   techSkill,
   skillGroup,
-  authorInfo
+  authorInfo,
+  page
 };
