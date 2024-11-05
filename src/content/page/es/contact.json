@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../../.astro/collections/page.schema.json",
+  "title": "Contáctame",
+  "description": "Donec dictum ligula purus, viverra pulvinar nunc elementum nec. Morbi non erat dictum, interdum ligula in, volutpat ipsum. Donec felis.",
+  "meta": {
+    "url": "https://www.jeantivan.dev/es/contacto",
+    "language": "es",
+    "keywords": [
+      "desarrollador web",
+      "programación web",
+      "desarrollador en madrid",
+      "madrid",
+      "españa",
+      "contacto",
+      "Linked In",
+      "Github"
+    ]
+  }
+}

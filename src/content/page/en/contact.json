@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../../.astro/collections/page.schema.json",
+  "title": "Contact me",
+  "description": "Donec dictum ligula purus, viverra pulvinar nunc elementum nec. Morbi non erat dictum, interdum ligula in, volutpat ipsum. Donec felis.",
+  "meta": {
+    "url": "https://www.jeantivan.dev/en/contact",
+    "language": "en",
+    "keywords": [
+      "web developer",
+      "web programming",
+      "developer in madrid spain",
+      "frontend developer in madrid spain",
+      "full stack developer in madrid spain",
+      "spain",
+      "madrid",
+      "contact",
+      "Linked In",
+      "Github"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../../.astro/collections/page.schema.json",
+  "title": "My projects",
+  "description": "Donec dictum ligula purus, viverra pulvinar nunc elementum nec. Morbi non erat dictum, interdum ligula in, volutpat ipsum. Donec felis.",
+  "meta": {
+    "url": "https://www.jeantivan.dev/en/projects",
+    "language": "es",
+    "keywords": [
+      "web developer",
+      "web programming",
+      "developer in Madrid",
+      "Madrid",
+      "Spain",
+      "Projects",
+      "React",
+      "Next",
+      "html",
+      "css",
+      "frontend developer",
+      "full stack developer",
+      "nodejs"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../../.astro/collections/page.schema.json",
+  "title": "Mis habilidades",
+  "description": "Donec dictum ligula purus, viverra pulvinar nunc elementum nec. Morbi non erat dictum, interdum ligula in, volutpat ipsum. Donec felis.",
+  "meta": {
+    "url": "https://www.jeantivan.dev/es/habilidades",
+    "language": "es",
+    "keywords": [
+      "desarrollador web",
+      "programación web",
+      "desarrollador en madrid",
+      "madrid",
+      "españa",
+      "Proyectos",
+      "desarrollador frontend",
+      "desarrollador full stack",
+      "habilidades"
+    ]
+  }
+}
