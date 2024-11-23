@@ -23,6 +23,8 @@
   "AboutMePage_aboutMe_cta": "Ponte en contacto conmigo",
   "ProjectsPage_main_title": "Todos los proyectos que he creado.",
   "ProjectsPage_main_content": "Lorem ipsum dolor sit amet consectetur...",
+  "ProjectsPage_42_title": "42 Madrid (Fundación Telefónica)",
+  "ProjectsPage_42_content": "Estos que he ido haciendo mientras avanzo en 42 Madrid",
   "ProjectsPage_smallProjects_title": "Otros proyectos pequeños.",
   "ProjectsPage_smallProjects_content": "Lorem ipsum dolor sit amet consectetur...",
   "ProjectsPage_extra_content": "Lorem ipsum dolor sit amet consectetur...",
@@ -38,5 +40,12 @@
   "SkillsPage_skills_versionControl": "Control de versiones",
   "SkillsPage_skills_others": "Más herramientas.",
   "SkillsPage_extra_content": "Aunque tengo un conjunto de tecnologías favoritas que uso para crear experiencias excepcionales...",
-  "ProjectPage_builtWith": "Construido con"
+  "ProjectPage_builtWith": "Construido con",
+  "ProjectPage_links_github": "Github",
+  "ProjectPage_links_website": "Sitio web",
+  "ProjectPage_content_title": "Sobre este proyecto.",
+  "Footer_github_cta": "Echa un vistazo a mi <a class='link' href={githubUrl}>perfil de Github!</a>",
+  "Footer_switch_lang_text": "Idioma: ",
+  "Footer_switch_lang_English": "Inglés",
+  "Footer_switch_lang_Spanish": "Español"
 }
