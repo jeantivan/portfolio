@@ -8,29 +8,49 @@ const pathnames: Record<
 > = {
   "/": {
     en: "/en",
-    es: "/es"
+    es: "/es",
   },
   "/contact": {
     en: "/en/contact",
-    es: "/es/contacto"
+    es: "/es/contacto",
   },
   "/skills": {
     en: "/en/skills",
-    es: "/es/habilidades"
+    es: "/es/habilidades",
   },
   "/projects": {
     en: "/en/projects",
-    es: "/es/proyectos"
-  }
+    es: "/es/proyectos",
+  },
+  "/project": {
+    en: "/en/project",
+    es: "/es/proyecto",
+  },
+  "/contacto": {
+    en: "/en/contact",
+    es: "/es/contacto",
+  },
+  "/habilidades": {
+    en: "/en/skills",
+    es: "/es/habilidades",
+  },
+  "/proyectos": {
+    en: "/en/projects",
+    es: "/es/proyectos",
+  },
+  "/proyecto": {
+    en: "/en/project",
+    es: "/es/proyecto",
+  },
 };
 
 // src/linking.ts
 export function localizePathname(
   pathname: AbsolutePathname,
-  locale: AvailableLanguageTag
+  locale: AvailableLanguageTag,
 ) {
   if (pathnames[pathname]) {
     return pathnames[pathname][locale];
   }
-  return pathname;
+  return `/${locale}${pathname}`;
 }
