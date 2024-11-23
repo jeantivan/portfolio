@@ -1,6 +1,10 @@
 ---
 const { class: className, ...rest } = Astro.props;
 ---
-<div {...rest} class:list={["w-full mx-auto p-3 lg:px-0 lg:w-[960px]", className]}>
+
+<div
+  {...rest}
+  class:list={["w-full mx-auto p-3 lg:px-0 lg:w-[960px]", className]}
+>
   <slot />
 </div>

@@ -1,7 +1,7 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
-import Text from './common/Text.astro';
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import Text from "./common/Text.astro";
 
 type Size = "large" | "big" | "medium" | "small" | "auto";
 
@@ -10,40 +10,60 @@ const sizes: Record<Size, string> = {
   big: "w-20",
   medium: "w-16",
   small: "w-14",
-  auto: "w-auto max-w-[96px]"
+  auto: "w-auto max-w-[96px]",
 };
 
 interface Props {
-  skill: CollectionEntry<'techSkill'>;
+  skill: CollectionEntry<"techSkill">;
   showName?: boolean;
   size?: Size;
-  class?: string
-};
+  class?: string;
+}
 
-const {skill, showName = false, size = "medium", class: className} = Astro.props
+const {
+  skill,
+  showName = false,
+  size = "medium",
+  class: className,
+} = Astro.props;
 
 const { name, image } = skill.data;
-
 ---
+
 <div
   class:list={[
     "w-full h-full rounded-lg",
     "bg-background-3/50 dark:bg-transparent",
     "grid justify-center gap-3",
     showName ? "grid-rows-[1fr_auto]" : "grid-rows-1",
-    className
-  ]}>
-    <Image 
-      alt={image.alt} 
-      format="webp" 
-      src={image.src.dark} 
-      title={image.alt}
-      class:list={[sizes[size],"aspect-square rounded-xl object-contain hidden dark:block"]} />
-    <Image 
-      alt={image.alt} 
-      format="webp" 
-      src={image.src.light}
-      title={image.alt}
-      class:list={[sizes[size],"aspect-square rounded-xl object-contain block dark:hidden"]}/>
-      {showName && <Text variant="body2" class='text-center'>{name}</Text>}
+    className,
+  ]}
+>
+  <Image
+    alt={image.alt}
+    format="webp"
+    src={image.src.dark}
+    title={image.alt}
+    class:list={[
+      sizes[size],
+      "aspect-square rounded-xl object-contain hidden dark:block",
+    ]}
+  />
+  <Image
+    alt={image.alt}
+    format="webp"
+    src={image.src.light}
+    title={image.alt}
+    class:list={[
+      sizes[size],
+      "aspect-square rounded-xl object-contain block dark:hidden",
+    ]}
+  />
+  {
+    showName && (
+      <Text variant="body2" class="text-center">
+        {name}
+      </Text>
+    )
+  }
 </div>

@@ -1,48 +1,56 @@
 ---
-import IconButton from "./common/IconButton.astro"
-import Icon from './common/Icon.astro'
+import IconButton from "./common/IconButton.astro";
+import Icon from "./common/Icon.astro";
 
-import * as m from '@/paraglide/messages';
-
+import * as m from "@/paraglide/messages";
 ---
+
 <div class="min-w-9">
-  <IconButton as="button" id="themeToggle" title={m.DarkMode_label()} >
-    <Icon id="dark-mode-moon" class="moon" icon="moon" label={m.DarkMode_switch_dark()} size="18px"/>
-    <Icon id="dark-mode-sun" class="moon" icon="sun" label={m.DarkMode_switch_light()} size="18px"/>
-  </IconButtona>
+  <IconButton as="button" id="themeToggle" title={m.DarkMode_label()}>
+    <Icon
+      id="dark-mode-moon"
+      class="moon"
+      icon="moon"
+      label={m.DarkMode_switch_dark()}
+      size="18px"
+    />
+    <Icon
+      id="dark-mode-sun"
+      class="moon"
+      icon="sun"
+      label={m.DarkMode_switch_light()}
+      size="18px"
+    />
+  </IconButton>
 </div>
-
-
 
 <script is:inline>
   const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
     }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
     }
-      return 'light';
+    return "light";
   })();
 
   const sunElement = document.getElementById("dark-mode-sun");
   const moonElement = document.getElementById("dark-mode-moon");
 
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark');
+  if (theme === "light") {
+    document.documentElement.classList.remove("dark");
     sunElement.classList.add("hidden");
   } else {
-    document.documentElement.classList.add('dark');
-    moonElement.classList.add("hidden")
+    document.documentElement.classList.add("dark");
+    moonElement.classList.add("hidden");
   }
 
-  window.localStorage.setItem('theme', theme);
+  window.localStorage.setItem("theme", theme);
 
   const handleToggleClick = () => {
     const element = document.documentElement;
     element.classList.toggle("dark");
-
-    
 
     const isDark = element.classList.contains("dark");
 
@@ -54,15 +62,29 @@ import * as m from '@/paraglide/messages';
       moonElement.classList.remove("hidden");
     }
     localStorage.setItem("theme", isDark ? "dark" : "light");
-  }
+  };
 
-  document.getElementById("themeToggle").addEventListener("click", handleToggleClick);
+  document
+    .getElementById("themeToggle")
+    .addEventListener("click", handleToggleClick);
 </script>
 
 <style>
-  .sun { fill: currentColor; stroke: currentColor; }
-  .moon { fill: transparent; stroke: transparent; }
+  .sun {
+    fill: currentColor;
+    stroke: currentColor;
+  }
+  .moon {
+    fill: transparent;
+    stroke: transparent;
+  }
 
-  :global(.dark) .sun { fill: transparent; stroke: transparent; }
-  :global(.dark) .moon { fill: currentColor; stroke: currentColor; }
+  :global(.dark) .sun {
+    fill: transparent;
+    stroke: transparent;
+  }
+  :global(.dark) .moon {
+    fill: currentColor;
+    stroke: currentColor;
+  }
 </style>

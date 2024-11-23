@@ -1,40 +1,57 @@
 ---
-import "@fontsource/inter"
-import "@fontsource/anton"
-import "@/styles/global.css"
+import "@fontsource/inter";
+import "@fontsource/anton";
+import "@/styles/global.css";
 
-import antonWoff2 from '@fontsource/anton/files/anton-latin-400-normal.woff2?url'
-import interWoff2 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url'
+import antonWoff2 from "@fontsource/anton/files/anton-latin-400-normal.woff2?url";
+import interWoff2 from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
 
 import { languageTag } from "../paraglide/runtime";
 
-import MainHead from '@/components/MainHead.astro'
-import Header from '@/components/Header.astro'
-import Footer from '@/components/Footer.astro'
+import MainHead from "@/components/MainHead.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
 interface Props {
-	title?: string | undefined;
-	description?: string | undefined;
+  title?: string | undefined;
+  description?: string | undefined;
 }
 
 const { title, description } = Astro.props;
 ---
 
 <html lang={languageTag()} dir={Astro.locals.paraglide.dir}>
-	<head>
-		<MainHead title={title} description={description} />
-		<link rel="preload" as="font" type="font/woff2" href={antonWoff2} crossorigin="anonymous" />
-		<link rel="preload" as="font" type="font/woff2" href={interWoff2} crossorigin="anonymous" />
-	</head>
-	<body class:list={[
-		"text-background-12",
-		"bg-background-2 dark:bg-background-1 min-h-screen",
-    "grid grid-rows-[min-content_1fr_min-content]"]}>
-		<Header />
-		<slot />
-		<Footer />
-		<script>
-			// Add “loaded” class once the document has completely loaded.
-			addEventListener('load', () => document.documentElement.classList.add('loaded'));
-		</script>
-	</body>
+  <head>
+    <MainHead title={title} description={description} />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={antonWoff2}
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={interWoff2}
+      crossorigin="anonymous"
+    />
+  </head>
+  <body
+    class:list={[
+      "text-background-12",
+      "bg-background-2 dark:bg-background-1 min-h-screen",
+      "grid grid-rows-[min-content_1fr_min-content]",
+    ]}
+  >
+    <Header />
+    <slot />
+    <Footer />
+    <script>
+      // Add “loaded” class once the document has completely loaded.
+      addEventListener("load", () =>
+        document.documentElement.classList.add("loaded"),
+      );
+    </script>
+  </body>
 </html>

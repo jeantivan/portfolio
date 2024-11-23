@@ -1,13 +1,19 @@
 ---
-import type { Polymorphic, HTMLTag } from 'astro/types';
+import type { Polymorphic, HTMLTag } from "astro/types";
 
+type Props<Tag extends HTMLTag = "div"> = Polymorphic<{ as: Tag }> & {
+  class?: string;
+};
 
-type Props<Tag extends HTMLTag = "div"> = Polymorphic<{as: Tag}> & { class?: string };
-
-
-const {as: Tag = "div", class: className, ...rest} = Astro.props;
+const { as: Tag = "div", class: className, ...rest } = Astro.props;
 ---
 
-<Tag class:list={["bg-background-1 dark:bg-background-2 rounded-xl shadow border border-background-4", className]} {...rest}> 
+<Tag
+  class:list={[
+    "bg-background-1 dark:bg-background-2 rounded-xl shadow border border-background-4",
+    className,
+  ]}
+  {...rest}
+>
   <slot />
 </Tag>

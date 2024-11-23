@@ -2,30 +2,43 @@
 import { getEntry } from "astro:content";
 
 import * as m from "@/paraglide/messages";
-import { languageTag } from '@/paraglide/runtime'
-import { localizePathname } from '@/i18n/linking'
+import { languageTag } from "@/paraglide/runtime";
+import { localizePathname } from "@/i18n/linking";
 
 import ButtonLink from "./common/ButtonLink.astro";
 import Icon from "./common/Icon.astro";
-import Logo from './Logo.astro';
-import DarkMode from './DarkMode.astro'
-import DesktopNavLink from "./DesktopNavLink.astro"
+import Logo from "./Logo.astro";
+import DarkMode from "./DarkMode.astro";
+import DesktopNavLink from "./DesktopNavLink.astro";
 
-const author = await getEntry('authorInfo', `${languageTag()}/jeantivan`);
+const author = await getEntry("authorInfo", `${languageTag()}/jeantivan`);
 ---
+
 <div class="hidden flex-1 md:flex items-center">
   <Logo />
-    <nav class="hidden md:flex flex-1 justify-end items-center gap-4">
-      <DesktopNavLink href={localizePathname("/", languageTag())}>{m.NavBar_links_aboutMe()}</DesktopNavLink>
-      <DesktopNavLink href={localizePathname("/skills", languageTag())}>{m.NavBar_links_skills()}</DesktopNavLink>
-      <DesktopNavLink href={localizePathname("/projects", languageTag())}>{m.NavBar_links_projects()}</DesktopNavLink>
-      <DesktopNavLink href={localizePathname("/contact", languageTag())}>{m.NavBar_links_contact()}</DesktopNavLink>
-      <ButtonLink href={`${author.data.cv}?dl=`} target="_blank" rel="noopener noreferrer">
-        {m.NavBar_cv()}
-        <Icon label="Download" icon="download" />
-      </ButtonLink>
-      <div class="flex gap-2">
-         <DarkMode />
-      </div>
-    </nav>
+  <nav class="hidden md:flex flex-1 justify-end items-center gap-4">
+    <DesktopNavLink href={localizePathname("/", languageTag())}
+      >{m.NavBar_links_aboutMe()}</DesktopNavLink
+    >
+    <DesktopNavLink href={localizePathname("/skills", languageTag())}
+      >{m.NavBar_links_skills()}</DesktopNavLink
+    >
+    <DesktopNavLink href={localizePathname("/projects", languageTag())}
+      >{m.NavBar_links_projects()}</DesktopNavLink
+    >
+    <DesktopNavLink href={localizePathname("/contact", languageTag())}
+      >{m.NavBar_links_contact()}</DesktopNavLink
+    >
+    <ButtonLink
+      href={`${author.data.cv}?dl=`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {m.NavBar_cv()}
+      <Icon label="Download" icon="download" />
+    </ButtonLink>
+    <div class="flex gap-2">
+      <DarkMode />
+    </div>
+  </nav>
 </div>
