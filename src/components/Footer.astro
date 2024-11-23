@@ -1,13 +1,45 @@
 ---
+import { getEntry } from "astro:content";
+import * as m from "@/paraglide/messages.js";
+import { languageTag } from "@/paraglide/runtime.js";
+import Text from "./common/Text.astro";
+import Container from "./common/Container.astro";
+import { localizePathname } from "@/i18n/linking";
+
+const author = await getEntry("authorInfo", `${languageTag()}/jeantivan`);
+const lang = languageTag();
+
+function buildLocaleHref(locale: "es" | "en") {
+  const pathname = Astro.url.pathname;
+  const [, , route, ...params] = pathname.split("/");
+
+  const localizedRoute = localizePathname(`/${route}`, locale);
+  const newUrl = `${localizedRoute}/${params.join("/")}`;
+
+  return newUrl;
+}
+
+const esHref = buildLocaleHref("es");
+const enHref = buildLocaleHref("en");
 ---
-<div class="flex p-4 justify-center bg-background-2 dark:bg-background-1">
-  <p class="text-background-12">
-    Echa un vistazo a mi{" "}
-    <a
-      href="https://github.com/jeantivan"
-      class="text-primary-11 no-underline hover:underline underline-offset-2"
-    >
-      perfil de Github!
-    </a>
-  </p>
-</div>
+
+<Container
+  class="grid grid-cols-12 gap-6 pt-8 pb-4 justify-between bg-background-2 dark:bg-background-1"
+  as="footer"
+>
+  <Text
+    class="col-span-12 md:col-span-8 text-center md:text-left"
+    variant="subtitle"
+    set:html={m.Footer_github_cta({ githubUrl: author.data.social.github })}
+  />
+  <div class="flex justify-center md:justify-end col-span-12 md:col-span-4">
+    <Text variant="subtitle" color="secondary">
+      {m.Footer_switch_lang_text()}
+      <a href={esHref} class:list={[lang == "es" ? "text-primary-9" : null]}
+        >{m.Footer_switch_lang_Spanish}</a
+      > | <a href={enHref} class:list={[lang == "en" ? "text-primary-9" : null]}
+        >{m.Footer_switch_lang_English}</a
+      >
+    </Text>
+  </div>
+</Container>
