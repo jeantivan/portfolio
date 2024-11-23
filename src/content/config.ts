@@ -8,11 +8,11 @@ const techSkill = defineCollection({
       image: z.object({
         src: z.object({
           dark: image(),
-          light: image()
+          light: image(),
         }),
-        alt: z.string()
-      })
-    })
+        alt: z.string(),
+      }),
+    }),
 });
 
 const language = z.enum(["es", "en"]);
@@ -22,8 +22,8 @@ const skillGroup = defineCollection({
   schema: z.object({
     title: z.string(),
     techs: z.array(reference("techSkill")),
-    language: language.readonly()
-  })
+    language: language.readonly(),
+  }),
 });
 
 const authorInfo = defineCollection({
@@ -36,16 +36,16 @@ const authorInfo = defineCollection({
       social: z.object({
         email: z.string().email(),
         linkedIn: z.string().url(),
-        github: z.string().url()
+        github: z.string().url(),
       }),
       cv: z.string(),
       picture: z
         .object({
           alt: z.string(),
-          src: image()
+          src: image(),
         })
-        .optional()
-    })
+        .optional(),
+    }),
 });
 
 const page = defineCollection({
@@ -57,14 +57,42 @@ const page = defineCollection({
       url: z.string().url(),
       image: z.string().optional(),
       keywords: z.array(z.string()),
-      language
-    })
-  })
+      language,
+    }),
+  }),
+});
+
+const project = defineCollection({
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      language: language.readonly(),
+      featured: z.boolean(),
+      links: z.object({
+        github: z.string().url(),
+        website: z.string().url().optional(),
+      }),
+      description: z
+        .string()
+        .min(50, "Min 50 characters")
+        .max(150, "Max 150 characters"),
+      builtWith: z.array(reference("techSkill")),
+      type: z.enum(["42", "frontend", "backend", "fullstack", "mobile"]),
+      mainImage: z.object({
+        alt: z.string(),
+        src: z.object({
+          dark: image(),
+          light: image(),
+        }),
+      }),
+    }),
 });
 
 export const collections = {
   techSkill,
   skillGroup,
   authorInfo,
-  page
+  page,
+  project,
 };
