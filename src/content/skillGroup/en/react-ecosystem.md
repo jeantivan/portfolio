@@ -11,7 +11,7 @@ techs:
     "swr",
     "lexical",
     "framer",
-    "radixui"
+    "radixui",
   ]
 ---
 
