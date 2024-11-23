@@ -66,5 +66,5 @@ body {
 }
 
 .link {
-  @apply text-primary-10 dark:text-primary-9 hover:underline;
+  @apply text-primary-8 dark:text-primary-9 hover:underline;
 }
