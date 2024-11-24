@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "astro/types";
 import { iconPaths } from "./IconPaths";
 
-interface Props {
+interface Props extends astroHTML.JSX.BaseHTMLAttributes {
   icon: keyof typeof iconPaths;
   label: string;
   color?: string;
