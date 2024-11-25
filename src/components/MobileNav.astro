@@ -1,2 +1,113 @@
 ---
+import { getEntry } from "astro:content";
+
+import * as m from "@/paraglide/messages";
+import { languageTag } from "@/paraglide/runtime";
+import { localizePathname } from "@/i18n/linking";
+
+import IconButton from "./common/IconButton.astro";
+import Icon from "./common/Icon.astro";
+import ButtonLink from "./common/ButtonLink.astro";
+
+import DarkMode from "./DarkMode.astro";
+import MobileNavLink from "./MobileNavLink.astro";
+import Logo from "./Logo.astro";
+import IconButtonLink from "./common/IconButtonLink.astro";
+
+const author = await getEntry("authorInfo", `${languageTag()}/jeantivan`);
+
+const lang = languageTag();
 ---
+
+<div class="md:hidden">
+  <div class="flex justify-between gap-6 items-center py-2">
+    <IconButton id="open-nav" label={m.NavBar_mobile_open()}>
+      <Icon label="Icon" icon="list" />
+    </IconButton>
+    <Logo mobile />
+    <ButtonLink
+      href={`${author.data.cv}?dl=`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {m.NavBar_cv()}
+      <Icon label="Download" icon="download" />
+    </ButtonLink>
+  </div>
+  <div id="nav-container" class="hidden fixed inset-0 z-50">
+    <div
+      class="bg-background-2 p-3 w-full h-full grid grid-rows-[min-content_1fr_min-content]"
+    >
+      <header class="flex gap-6 items-center justify-between py-2">
+        <IconButton id="close-nav" label={m.NavBar_mobile_close()}>
+          <Icon
+            size="18px"
+            label={`${m.NavBar_mobile_close()} icon`}
+            icon="close"
+          />
+        </IconButton>
+        <DarkMode mobile />
+      </header>
+      <nav class="flex flex-col justify-center items-center w-full gap-8">
+        <MobileNavLink href={localizePathname("/", lang)}>
+          {m.NavBar_links_aboutMe()}
+        </MobileNavLink>
+        <MobileNavLink href={localizePathname("/skills", lang)}>
+          {m.NavBar_links_skills()}
+        </MobileNavLink>
+        <MobileNavLink href={localizePathname("/projects", lang)}>
+          {m.NavBar_links_projects()}
+        </MobileNavLink>
+
+        <MobileNavLink href={localizePathname("/contact", lang)}>
+          {m.NavBar_links_contact()}
+        </MobileNavLink>
+      </nav>
+      <footer class="flex gap-6 justify-center py-3">
+        <IconButtonLink label={m.NavBar_mobile_linkedin()}>
+          <Icon
+            size="18px"
+            icon="linkedin-logo"
+            label={m.NavBar_mobile_linkedin()}
+            href={author.data.social.linkedIn}
+          />
+        </IconButtonLink>
+        <IconButtonLink label={m.NavBar_mobile_github()}>
+          <Icon
+            size="18px"
+            icon="github-logo"
+            label={m.NavBar_mobile_github()}
+            href={author.data.social.github}
+          />
+        </IconButtonLink>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const openButton = document.getElementById("open-nav");
+  const closeButton = document.getElementById("close-nav");
+  const navContainer = document.getElementById("nav-container");
+  const body = document.body;
+  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+  openButton.addEventListener("click", (event) => {
+    navContainer.classList.remove("hidden");
+    body.classList.add("overflow-hidden");
+    closeButton.focus();
+  });
+
+  closeButton.addEventListener("click", (event) => {
+    navContainer.classList.add("hidden");
+    body.classList.remove("overflow-hidden");
+    openButton.focus();
+  });
+
+  mobileNavLinks.forEach((link) =>
+    link.addEventListener("click", () => {
+      navContainer.classList.add("hidden");
+      body.classList.remove("overflow-hidden");
+    }),
+  );
+</script>
