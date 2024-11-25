@@ -13,10 +13,12 @@ function buildLocaleHref(locale: "es" | "en") {
   const pathname = Astro.url.pathname;
   const [, , route, ...params] = pathname.split("/");
 
-  const localizedRoute = localizePathname(`/${route}`, locale);
-  const newUrl = `${localizedRoute}/${params.join("/")}`;
-
-  return newUrl;
+  if (route) {
+    const localizedRoute = localizePathname(`/${route}`, locale);
+    const newUrl = `${localizedRoute}/${params && params.join("/")}`;
+    return newUrl;
+  }
+  return `/${locale}`;
 }
 
 const esHref = buildLocaleHref("es");
