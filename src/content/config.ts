@@ -39,12 +39,10 @@ const authorInfo = defineCollection({
         github: z.string().url(),
       }),
       cv: z.string(),
-      picture: z
-        .object({
-          alt: z.string(),
-          src: image(),
-        })
-        .optional(),
+      picture: z.object({
+        alt: z.string(),
+        src: image(),
+      }),
     }),
 });
 
