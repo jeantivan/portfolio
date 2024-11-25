@@ -1,7 +1,86 @@
 ---
+import { getEntry, getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Heading from "@/components/Heading.astro";
+
+import * as m from "@/paraglide/messages";
+import { languageTag } from "@/paraglide/runtime";
+import Container from "@/components/common/Container.astro";
+import Text from "@/components/common/Text.astro";
+import Project from "@/components/Project.astro";
+
+const { data } = await getEntry("page", "es/projects");
+const featuredProjects = await getCollection(
+  "project",
+  ({ data, slug }) =>
+    slug.startsWith(languageTag()) && data.featured && data.type !== "42",
+);
+const projectsFrom42 = await getCollection(
+  "project",
+  ({ data, slug }) => slug.startsWith(languageTag()) && data.type === "42",
+);
+const otherProjects = await getCollection(
+  "project",
+  ({ data, slug }) => slug.startsWith(languageTag()) && !data.featured,
+);
 ---
-<BaseLayout>
-<Heading variant="title" text="Projects" />
+
+<BaseLayout title={data.title} description={data.description}>
+  <Container class="grid gap-8 pt-4 py-6 md:pt-8">
+    <section class="">
+      <div class="mb-6 md:mb-8">
+        <Heading
+          text={m.ProjectsPage_main_title()}
+          as="h1"
+          variant="title"
+          class="mb-4"
+          display
+        />
+        <Text color="secondary" variant="body3">
+          {m.ProjectsPage_main_content()}
+        </Text>
+      </div>
+      <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+        {featuredProjects.map((project) => <Project project={project} />)}
+      </div>
+    </section>
+    <section class="">
+      <div class="mb-6 md:mb-8">
+        <Heading
+          text={m.ProjectsPage_42_title()}
+          as="h1"
+          variant="subheading"
+          class="mb-4"
+          display
+        />
+        <Text color="secondary" variant="body3">
+          {m.ProjectsPage_42_content()}
+        </Text>
+      </div>
+      <div class="grid gap-4 grid-cols-1 md:grid-cols-3">
+        {projectsFrom42.map((project) => <Project project={project} />)}
+      </div>
+    </section>
+    <section class="grid gap-6">
+      <div class="">
+        <Heading
+          text={m.ProjectsPage_smallProjects_title()}
+          as="h2"
+          variant="heading"
+          class="mb-4"
+          display
+        />
+        <Text color="secondary" variant="body1">
+          {m.ProjectsPage_smallProjects_content()}
+        </Text>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        {otherProjects.map((project) => <Project project={project} />)}
+      </div>
+    </section>
+    <section>
+      <Text color="secondary">{m.ProjectsPage_extra_content()}</Text>
+    </section>
+  </Container>
 </BaseLayout>
