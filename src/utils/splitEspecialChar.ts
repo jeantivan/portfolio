@@ -15,7 +15,7 @@ export const EspecialCharRgx = /[^\w \xC0-\xFF]+/g;
 // str: string, rgx?: RegExp = EspecialCharRgx
 export const splitEspecialChar = (
   str: string,
-  rgx: RegExp = EspecialCharRgx
+  rgx: RegExp = EspecialCharRgx,
 ) => {
   // Acá se guardará el string dividido
   let splitStr = [];
