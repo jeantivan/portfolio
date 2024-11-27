@@ -29,7 +29,7 @@
   "ProjectsPage_smallProjects_content": "Lorem ipsum dolor sit amet consectetur...",
   "ProjectsPage_extra_content": "Lorem ipsum dolor sit amet consectetur...",
   "ContactPage_title": "¡Conectemos y trabajemos juntos!",
-  "ContactPage_subtitle": "Si buscas un desarrollador web apasionado y con experiencia...",
+  "ContactPage_subtitle": "Si buscas a alguien comprometido, curioso y dispuesto a crear soluciones digitales que marquen la diferencia, estaré encantado de conectar y explorar cómo puedo aportar a tu equipo.",
   "ContactPage_socialCta": "Puedes aprender más sobre mi trabajo y trayectoria profesional en mi <a class='link' href={linkedinUrl}>LinkedIn</a> o en mi <a class='link' href={githubUrl}>Github</a>",
   "SkillsPage_main_title": "Mis tecnologías favoritas para crear experiencias.",
   "SkillsPage_main_content": "Estas herramientas me permiten crear aplicaciones web robustas, escalables y de alto rendimiento...",
