@@ -8,39 +8,39 @@ const pathnames: Record<
 > = {
   "/": {
     en: "/en",
-    es: "/es",
+    es: "/",
   },
   "/contact": {
     en: "/en/contact",
-    es: "/es/contacto",
+    es: "/contacto",
   },
   "/skills": {
     en: "/en/skills",
-    es: "/es/habilidades",
+    es: "/habilidades",
   },
   "/projects": {
     en: "/en/projects",
-    es: "/es/proyectos",
+    es: "/proyectos",
   },
   "/project": {
     en: "/en/project",
-    es: "/es/proyecto",
+    es: "/proyecto",
   },
   "/contacto": {
     en: "/en/contact",
-    es: "/es/contacto",
+    es: "/contacto",
   },
   "/habilidades": {
     en: "/en/skills",
-    es: "/es/habilidades",
+    es: "/habilidades",
   },
   "/proyectos": {
     en: "/en/projects",
-    es: "/es/proyectos",
+    es: "/proyectos",
   },
   "/proyecto": {
     en: "/en/project",
-    es: "/es/proyecto",
+    es: "/proyecto",
   },
 };
 
