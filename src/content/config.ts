@@ -48,16 +48,17 @@ const authorInfo = defineCollection({
 
 const page = defineCollection({
   type: "data",
-  schema: z.object({
-    title: z.string(),
-    description: z.string().min(40),
-    meta: z.object({
-      url: z.string().url(),
-      image: z.string().optional(),
-      keywords: z.array(z.string()),
-      language,
+  schema: ({ image }) =>
+    z.object({
+      title: z.string().optional(),
+      description: z.string().min(40).optional(),
+      meta: z.object({
+        alternate: z.record(language, z.string().url()),
+        image: image().optional(),
+        keywords: z.array(z.string()),
+        language,
+      }),
     }),
-  }),
 });
 
 const project = defineCollection({
