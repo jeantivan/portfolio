@@ -64,20 +64,24 @@ const lang = languageTag();
         </MobileNavLink>
       </nav>
       <footer class="flex gap-6 justify-center py-3">
-        <IconButtonLink label={m.NavBar_mobile_linkedin()}>
+        <IconButtonLink
+          href={author.data.social.linkedIn}
+          label={m.NavBar_mobile_linkedin()}
+        >
           <Icon
             size="18px"
             icon="linkedin-logo"
             label={m.NavBar_mobile_linkedin()}
-            href={author.data.social.linkedIn}
           />
         </IconButtonLink>
-        <IconButtonLink label={m.NavBar_mobile_github()}>
+        <IconButtonLink
+          href={author.data.social.github}
+          label={m.NavBar_mobile_github()}
+        >
           <Icon
             size="18px"
             icon="github-logo"
             label={m.NavBar_mobile_github()}
-            href={author.data.social.github}
           />
         </IconButtonLink>
       </footer>
