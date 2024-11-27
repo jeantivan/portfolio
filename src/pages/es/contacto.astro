@@ -8,12 +8,16 @@ import * as m from "@/paraglide/messages.js";
 import Text from "@/components/common/Text.astro";
 import ButtonLink from "@/components/common/ButtonLink.astro";
 import Icon from "@/components/common/Icon.astro";
+import { languageTag } from "@/paraglide/runtime";
+
+const lang = languageTag();
 
 const author = await getEntry("authorInfo", "es/jeantivan");
 const { email, linkedIn, github } = author.data.social;
+const page = await getEntry("page", `${lang}/contact`);
 ---
 
-<BaseLayout title="Contacto" description="Conectemos y trabajemos juntos!">
+<BaseLayout page={page}>
   <Container class="my-8 md:my-16 overflow-x-hidden max-w-full break-words">
     <section>
       <Heading
@@ -23,7 +27,7 @@ const { email, linkedIn, github } = author.data.social;
         display
         class="uppercase mb-4 text-center"
       />
-      <Text variant="body3" color="secondary" class="mb-6 text-center"
+      <Text variant="body2" color="secondary" class="mb-6 text-center"
         >{m.ContactPage_subtitle()}</Text
       >
 
@@ -35,7 +39,7 @@ const { email, linkedIn, github } = author.data.social;
       </a>
 
       <Text
-        variant="body2"
+        variant="body3"
         color="secondary"
         class="text-center"
         set:html={m.ContactPage_socialCta({

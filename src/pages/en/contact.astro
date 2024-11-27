@@ -9,11 +9,13 @@ import Text from "@/components/common/Text.astro";
 import ButtonLink from "@/components/common/ButtonLink.astro";
 import Icon from "@/components/common/Icon.astro";
 
+const page = await getEntry("page", "en/contact");
+
 const author = await getEntry("authorInfo", "en/jeantivan");
 const { email, linkedIn, github } = author.data.social;
 ---
 
-<BaseLayout title="Contacto" description="Conectemos y trabajemos juntos!">
+<BaseLayout page={page}>
   <Container class="my-8 md:my-16 overflow-x-hidden max-w-full break-words">
     <section>
       <Heading
