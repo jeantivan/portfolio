@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../../.astro/collections/page.schema.json",
+  "meta": {
+    "alternate": {
+      "en": "https://www.jeantivan.dev/en/project",
+      "es": "https://www.jeantivan.dev/es/proyecto"
+    },
+    "language": "en",
+    "keywords": [
+      "web developer",
+      "web programming",
+      "developer in Madrid",
+      "Madrid",
+      "Spain",
+      "personal project",
+      "frontend developer",
+      "full stack developer"
+    ]
+  }
+}

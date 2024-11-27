@@ -3,7 +3,10 @@
   "title": "Sobre mi",
   "description": "Donec dictum ligula purus, viverra pulvinar nunc elementum nec. Morbi non erat dictum, interdum ligula in, volutpat ipsum. Donec felis.",
   "meta": {
-    "url": "https://www.jeantivan.dev/es/",
+    "alternate": {
+      "en": "https://www.jeantivan.dev/en",
+      "es": "https://www.jeantivan.dev/es"
+    },
     "language": "es",
     "keywords": [
       "desarrollador web",
