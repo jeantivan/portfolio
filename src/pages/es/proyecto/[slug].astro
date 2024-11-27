@@ -9,6 +9,9 @@ import Heading from "@/components/Heading.astro";
 import Text from "@/components/common/Text.astro";
 
 import * as m from "@/paraglide/messages";
+import { getEntry } from "astro:content";
+import { languageTag } from "@/paraglide/runtime";
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const projects = await getCollection(
@@ -25,19 +28,49 @@ export async function getStaticPaths() {
   return paths;
 }
 
+const lang = languageTag();
+
+const pageBase = await getEntry("page", `${lang}/project`);
 const { project } = Astro.props;
 const {
   links,
   mainImage,
   title,
+  description,
   builtWith: builtWithReferences,
 } = project.data;
 const builtWith = await getEntries(builtWithReferences);
 
 const { Content } = await project.render();
+
+const builtWithKeywords = builtWith.map(({ data }) => data.name);
+
+const alternate = Object.fromEntries(
+  Object.entries(pageBase.data.meta.alternate).map(([key, value]) => [
+    key,
+    `${value}/${Astro.params.slug}`,
+  ]),
+);
+
+console.log({ alternate });
+
+const page: CollectionEntry<"page"> = {
+  ...pageBase,
+  data: {
+    ...pageBase.data,
+    title,
+    description,
+    meta: {
+      ...pageBase.data.meta,
+      keywords: [...pageBase.data.meta.keywords, ...builtWithKeywords],
+      image: mainImage.src.dark,
+      alternate,
+    },
+  },
+};
 ---
 
-<BaseLayout title={title} description="Description project">
+<BaseLayout page={page}>
   <Container class="pt-2 pb-8 md:pt-4 md:pb-12 grid grid-cols-12">
     <div class="grid gap-4 md:gap-8 col-span-12 md:col-span-10">
       <section class="">
