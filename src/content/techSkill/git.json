@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "Git",
+  "image": {
+    "alt": "Git logo",
+    "src": {
+      "dark": "../../images/techSkills/git.svg",
+      "light": "../../images/techSkills/git.svg"
+    }
+  }
+}

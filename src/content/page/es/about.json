@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../../.astro/collections/page.schema.json",
+  "title": "Sobre mi",
+  "description": "Donec dictum ligula purus, viverra pulvinar nunc elementum nec. Morbi non erat dictum, interdum ligula in, volutpat ipsum. Donec felis.",
+  "meta": {
+    "alternate": {
+      "en": "https://www.jeantivan.dev/en",
+      "es": "https://www.jeantivan.dev/es"
+    },
+    "language": "es",
+    "keywords": [
+      "desarrollador web",
+      "programación web",
+      "desarrollador en madrid españa",
+      "desarrollador frontend en madrid españa",
+      "desarrollador full stack en madrid españa",
+      "españa",
+      "madrid"
+    ]
+  }
+}

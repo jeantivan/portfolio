@@ -1,8 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
+  --anton: "Anton", ui-sans-serif;
+  --inter: "Inter";
+
   /* Olive */
   --background-1: 120 20% 99%;
   --background-2: 120 17% 98%;
@@ -64,4 +63,8 @@
 
 body {
   font-family: var(--inter);
+}
+
+.link {
+  @apply text-primary-8 dark:text-primary-9 hover:underline;
 }

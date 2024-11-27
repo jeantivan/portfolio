@@ -1,0 +1,21 @@
+---
+import { localizePathname } from "@/i18n/linking";
+import { languageTag } from "@/paraglide/runtime";
+interface Props {
+  mobile?: boolean;
+}
+
+const { mobile = false } = Astro.props;
+
+const isHome = Astro.url.pathname === localizePathname("/", languageTag());
+
+const text = mobile ? "JT" : "JeanTivan";
+---
+
+<div class:list={[isHome ? "hidden" : "flex-1 md:flex-initial"]}>
+  <a href={localizePathname("/", languageTag())}>
+    <p class="text-3xl md:text-2xl uppercase font-display">
+      {text}
+    </p>
+  </a>
+</div>

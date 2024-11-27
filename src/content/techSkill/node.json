@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "Node.js",
+  "image": {
+    "alt": "Node.js logo",
+    "src": {
+      "dark": "../../images/techSkills/nodejs.svg",
+      "light": "../../images/techSkills/nodejs.svg"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+---
+import "@fontsource/inter";
+import "@fontsource/anton";
+import "@/styles/global.css";
+
+import { languageTag } from "../paraglide/runtime";
+
+import MainHead from "@/components/MainHead.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  page: CollectionEntry<"page">;
+}
+
+const lang = languageTag();
+
+const { page } = Astro.props;
+
+const { title, description, meta } = page.data;
+
+const keywords = meta.keywords.join(", ");
+console.log({ params: Astro.params });
+---
+
+<html lang={lang}>
+  <head>
+    <title>{title} | JeanTivan</title>
+    <meta name="description" property="og:description" content={description} />
+    <meta property="og:title" content={`${title} | JeanTivan`} />
+    <meta property="og:url" content={meta.alternate[lang]} />
+    {meta.image && <meta property="og:image" content={meta.image.src} />}
+    <meta name="keywords" content={keywords} />
+    {
+      Object.keys(meta.alternate).map((key) => (
+        <link
+          rel="alternate"
+          hreflang={key}
+          href={meta.alternate[key as keyof typeof meta.alternate]}
+        />
+      ))
+    }
+    <MainHead />
+  </head>
+  <body
+    class:list={[
+      "text-background-12",
+      "bg-background-2 dark:bg-background-1 min-h-screen",
+      "grid grid-rows-[min-content_1fr_min-content]",
+    ]}
+  >
+    <Header />
+    <slot />
+    <Footer />
+    <script>
+      // Add “loaded” class once the document has completely loaded.
+      addEventListener("load", () =>
+        document.documentElement.classList.add("loaded"),
+      );
+    </script>
+  </body>
+</html>

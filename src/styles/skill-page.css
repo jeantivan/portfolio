@@ -1,0 +1,88 @@
+.bento {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "ms ms"
+    "re re"
+    "fo fo"
+    "ds ds"
+    "vc an"
+    "he he"
+    "mt mt";
+}
+
+@media (min-width: 768px) {
+  .bento {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-areas:
+      "ms ms ms ms ms ms ms ms ms ms"
+      "ms ms ms ms ms ms ms ms ms ms"
+      "ms ms ms ms ms ms ms ms ms ms"
+      "re re re re re re re re re re"
+      "fo fo fo fo fo ds ds ds ds ds"
+      "fo fo fo fo fo ds ds ds ds ds"
+      "an an an an an vc vc vc vc vc"
+      "an an an an an vc vc vc vc vc"
+      "he he he he he he he he he he"
+      "mt mt mt mt mt mt mt mt mt mt";
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas:
+      "ms ms ms ms ms ms ms re re re re re"
+      "ms ms ms ms ms ms ms re re re re re"
+      "ms ms ms ms ms ms ms re re re re re"
+      "ms ms ms ms ms ms ms re re re re re"
+      "fo fo fo fo fo an an an vc vc vc vc"
+      "fo fo fo fo fo an an an vc vc vc vc"
+      "fo fo fo fo fo an an an vc vc vc vc"
+      "ds ds ds ds ds an an an he he he he"
+      "ds ds ds ds ds mt mt mt mt mt mt mt"
+      "ds ds ds ds ds mt mt mt mt mt mt mt";
+  }
+}
+
+.the-main-stack,
+.las-tecnologias-principales {
+  grid-area: ms;
+}
+
+.the-foundations,
+.las-bases {
+  grid-area: fo;
+}
+
+.react-ecosystem,
+.ecosistema-react {
+  grid-area: re;
+}
+
+.animations,
+.animaciones {
+  grid-area: an;
+}
+
+.version-control,
+.control-de-versiones {
+  grid-area: vc;
+}
+
+.design-and-styling,
+.diseno-y-estilos {
+  grid-area: ds;
+}
+
+.more-tools,
+.mas-herramientas {
+  grid-area: mt;
+}
+
+.helper {
+  grid-area: he;
+}

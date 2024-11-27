@@ -1,0 +1,59 @@
+---
+import IconButton from "./common/IconButton.astro";
+import Icon from "./common/Icon.astro";
+
+import * as m from "@/paraglide/messages";
+
+interface Props {
+  mobile?: boolean;
+}
+
+const { mobile = false } = Astro.props;
+---
+
+<div class="theme-toggle min-w-9" data-mobile={mobile}>
+  <IconButton label={m.DarkMode_label()} title={m.DarkMode_label()}>
+    <Icon
+      id="dark-mode-moon"
+      class="moon dark:hidden block"
+      icon="moon"
+      label={m.DarkMode_switch_dark()}
+      size="18px"
+    />
+    <Icon
+      id="dark-mode-sun"
+      class="moon dark:block hidden"
+      icon="sun"
+      label={m.DarkMode_switch_light()}
+      size="18px"
+    />
+  </IconButton>
+</div>
+
+<script>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })() as string;
+
+  const updateThemeUI = (isDark: boolean) => {
+    document.documentElement.classList.toggle("dark", isDark);
+  };
+
+  const handleToggleClick = () => {
+    const isDark = !document.documentElement.classList.contains("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    updateThemeUI(isDark);
+  };
+
+  document.querySelectorAll(".theme-toggle").forEach((toggle) => {
+    toggle.addEventListener("click", handleToggleClick);
+  });
+
+  updateThemeUI(theme === "dark");
+</script>

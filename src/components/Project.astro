@@ -1,0 +1,79 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Card from "./common/Card.astro";
+import Text from "./common/Text.astro";
+import Icon from "./common/Icon.astro";
+import { Image } from "astro:assets";
+import { localizePathname } from "@/i18n/linking";
+import { languageTag } from "@/paraglide/runtime";
+
+interface Props {
+  project: CollectionEntry<"project">;
+}
+
+const { project } = Astro.props;
+const { featured, title, description, mainImage } = project.data;
+const realSlug = project.slug.split("/")[1];
+
+const href = `${localizePathname("/project", languageTag())}/${realSlug}`;
+---
+
+{
+  !featured ? (
+    <a href={href} class="w-full">
+      <Card
+        as="article"
+        class={"shrink-0 w-full group bg-background-2 overflow-hidden p-2 flex"}
+      >
+        <header class="w-full">
+          <Text class="line-clamp-1 flex-1 text-base">{title}</Text>
+          <Text variant="subtitle" color="secondary" class="line-clamp-1">
+            {description}
+          </Text>
+        </header>
+        <div>
+          <span class="text-primary-9 w-10 inline-flex justify-end mr-1">
+            <Icon
+              label="Go to project"
+              icon="arrow-right"
+              size="24px"
+              class="md:group-hover:translate-x-1 transition-all"
+            />
+          </span>
+        </div>
+      </Card>
+    </a>
+  ) : (
+    <a href={href} class="lg:max-w-[472px] w-full isFeatured">
+      <Card
+        as="article"
+        class={
+          "shrink-0 w-full group bg-background-2 rounded-lg overflow-hidden"
+        }
+      >
+        <div class="relative aspect-video">
+          <Image
+            alt={mainImage.alt}
+            src={mainImage.src.dark}
+            class="object-contain hidden dark:block"
+          />
+          <Image
+            alt={mainImage.alt}
+            src={mainImage.src.light}
+            class="object-contain block dark:hidden"
+          />
+        </div>
+        <header class="w-full flex space-between items-center p-2">
+          <p class="line-clamp-1 font-medium flex-1 text-lg">{title}</p>
+          <span class="text-primary-9 w-10 inline-flex justify-end mr-1">
+            <Icon
+              label="Go to project"
+              icon="arrow-right"
+              class="md:group-hover:translate-x-1 transition-all"
+            />
+          </span>
+        </header>
+      </Card>
+    </a>
+  )
+}

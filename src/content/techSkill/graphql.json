@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "GraphQL",
+  "image": {
+    "alt": "GraphQL logo",
+    "src": {
+      "dark": "../../images/techSkills/graphql.svg",
+      "light": "../../images/techSkills/graphql.svg"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "Lexical",
+  "image": {
+    "alt": "Lexical logo",
+    "src": {
+      "dark": "../../images/techSkills/lexical-icon.svg",
+      "light": "../../images/techSkills/lexical-icon.svg"
+    }
+  }
+}

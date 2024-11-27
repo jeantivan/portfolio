@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../../.astro/collections/page.schema.json",
+  "title": "Mis proyectos",
+  "description": "Donec dictum ligula purus, viverra pulvinar nunc elementum nec. Morbi non erat dictum, interdum ligula in, volutpat ipsum. Donec felis.",
+  "meta": {
+    "alternate": {
+      "en": "https://www.jeantivan.dev/en/projects",
+      "es": "https://www.jeantivan.dev/es/proyectos"
+    },
+    "language": "es",
+    "keywords": [
+      "desarrollador web",
+      "programación web",
+      "desarrollador en madrid",
+      "madrid",
+      "españa",
+      "Proyectos",
+      "React",
+      "Next",
+      "html",
+      "css",
+      "desarrollador frontend",
+      "desarrollador full stack",
+      "nodejs"
+    ]
+  }
+}

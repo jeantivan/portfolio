@@ -1,0 +1,30 @@
+---
+import type { Variant, Size } from "./types";
+import { variantClassNames, sizeClassNames } from "./Button.astro";
+
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  size?: Size;
+  variant?: Variant;
+}
+
+const {
+  size = "medium",
+  variant = "filled",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const classNames = [
+  variantClassNames[variant],
+  sizeClassNames[size],
+  "inline-flex justify-center items-center gap-3",
+  "uppercase font-medium leading-none text-center",
+  "border rounded-lg",
+  "transition duration-75",
+  className,
+];
+---
+
+<a class:list={classNames} {...rest}>
+  <slot />
+</a>

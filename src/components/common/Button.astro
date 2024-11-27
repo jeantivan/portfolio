@@ -1,0 +1,41 @@
+---
+import type { Variant, Size } from "./types";
+
+export const variantClassNames: Record<Variant, string> = {
+  filled:
+    "border-primary-9 bg-primary-9 text-background-12 dark:text-background-1 hover:bg-primary-10 hover:border-primary-10",
+  outlined:
+    "border-primary-7 bg-transparent text-primary-11 border-primary-7 hover:bg-primary-9 hover:text-primary-1",
+  text: "border-transparent text-primary-9 border-transparent hover:bg-primary-4 hover:border-primary-4 hover:text-primary-10",
+};
+export const sizeClassNames: Record<Size, string> = {
+  small: "px-6 py-1.5 text-xs h-6",
+  medium: "px-8 py-3 text-sm h-9",
+  large: "px-10 py-4 text-base h-12",
+};
+interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
+  size?: Size;
+  variant?: Variant;
+}
+
+const {
+  size = "medium",
+  variant = "filled",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const classNames = [
+  variantClassNames[variant],
+  sizeClassNames[size],
+  "inline-flex justify-center items-center gap-3",
+  "uppercase font-medium leading-none text-center",
+  "border rounded-lg",
+  "transition duration-75",
+  className,
+];
+---
+
+<button class:list={classNames} {...rest}>
+  <slot />
+</button>

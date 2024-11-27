@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "React Router",
+  "image": {
+    "alt": "React Router logo",
+    "src": {
+      "dark": "../../images/techSkills/reactrouter.svg",
+      "light": "../../images/techSkills/reactrouter.svg"
+    }
+  }
+}

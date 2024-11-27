@@ -1,0 +1,59 @@
+---
+import { getEntry } from "astro:content";
+import Container from "@/components/common/Container.astro";
+import Heading from "@/components/Heading.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+import * as m from "@/paraglide/messages.js";
+import Text from "@/components/common/Text.astro";
+import ButtonLink from "@/components/common/ButtonLink.astro";
+import Icon from "@/components/common/Icon.astro";
+
+const page = await getEntry("page", "en/contact");
+
+const author = await getEntry("authorInfo", "en/jeantivan");
+const { email, linkedIn, github } = author.data.social;
+---
+
+<BaseLayout page={page}>
+  <Container class="my-8 md:my-16 overflow-x-hidden max-w-full break-words">
+    <section>
+      <Heading
+        text={m.ContactPage_title()}
+        as="h1"
+        variant="title"
+        display
+        class="uppercase mb-4 text-center"
+      />
+      <Text variant="body3" color="secondary" class="mb-6 text-center"
+        >{m.ContactPage_subtitle()}</Text
+      >
+      <a
+        class="hover:underline decoration-primary-8 underline-offset-4"
+        href={`mailto:${email}`}
+      >
+        <Heading text={email} variant="title" class="mb-8 text-center" />
+      </a>
+      <Text
+        variant="body2"
+        color="secondary"
+        class="text-center"
+        set:html={m.ContactPage_socialCta({
+          linkedinUrl: linkedIn,
+          githubUrl: github,
+        })}
+      />
+      <div class="flex justify-center mt-12">
+        <ButtonLink
+          size="large"
+          href={`${author.data.cv}?dl=`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {m.NavBar_cv()}
+          <Icon size="24px" label="Download" icon="download" />
+        </ButtonLink>
+      </div>
+    </section>
+  </Container>
+</BaseLayout>

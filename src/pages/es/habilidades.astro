@@ -1,0 +1,178 @@
+---
+import "@/styles/skill-page.css";
+import { getCollection, getEntries, getEntry } from "astro:content";
+
+import * as m from "@/paraglide/messages.js";
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Heading from "@/components/Heading.astro";
+import Skill from "@/components/Skill.astro";
+import Container from "@/components/common/Container.astro";
+import Card from "@/components/common/Card.astro";
+import Text from "@/components/common/Text.astro";
+import Icon from "@/components/common/Icon.astro";
+
+const page = await getEntry("page", "es/skills");
+
+const skillGroups = await getCollection(
+  "skillGroup",
+  ({ data }) => data.language === "en",
+);
+const backendGroup = await getEntry("skillGroup", `the-backend`);
+const backendGroupTechs = await getEntries(backendGroup.data.techs);
+---
+
+<BaseLayout page={page}>
+  <Container class="px-3 py-6 lg:py-10 grid gap-16 md:gap-20">
+    <section class="my-8 grid gap-6">
+      <div>
+        <Heading
+          text={m.SkillsPage_main_title()}
+          variant="title"
+          class="mb-4"
+          display
+        />
+        <Text variant="body3" color="secondary" class="">
+          {m.SkillsPage_main_content()}
+        </Text>
+      </div>
+      <div class="bento gap-4">
+        {
+          skillGroups.map(async (group) => {
+            const [, s] = group.id.split("/");
+            const [id] = s.split(".md");
+            const { title } = group.data;
+
+            const techs = await getEntries(group.data.techs);
+            switch (id) {
+              case "backend":
+                return null;
+              case "more-tools":
+                const allTechs = [...techs, ...backendGroupTechs].slice(0, 7);
+                return (
+                  <Fragment>
+                    <Card
+                      class:list={["helper", "p-5 flex items-center gap-6"]}
+                    >
+                      <Icon
+                        icon="arrow-down"
+                        label="Arrow down"
+                        size="32px"
+                        class="text-primary-9"
+                      />
+                      <Text class="lg:text-xl leading-none">{title}</Text>
+                    </Card>
+                    <Card
+                      class:list={[
+                        group.slug,
+                        "p-5 grid grid-rows-1 gap-5",
+                        "place-items-center grid-rows-auto",
+                      ]}
+                    >
+                      <div class="flex flex-wrap gap-4">
+                        {allTechs.map((tech) => (
+                          <div>
+                            <Skill size="small" skill={tech} />
+                          </div>
+                        ))}
+                      </div>
+                    </Card>
+                  </Fragment>
+                );
+              case "the-main-stack":
+                return (
+                  <Card
+                    class:list={[
+                      "p-5 grid grid-rows-[min-content_min-content] gap-5",
+                      group.slug,
+                    ]}
+                  >
+                    <Text display variant="subheading">
+                      {title}
+                    </Text>
+                    <div class="w-full flex flex-wrap justify-evenly md:justify-start gap-2 md:gap-8">
+                      {techs.map((tech) => (
+                        <div>
+                          <Skill size="large" skill={tech} />
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                );
+              case "version-control":
+                return (
+                  <Card
+                    class:list={[
+                      "p-5 grid grid-rows-[min-content_min-content] gap-5",
+                      group.slug,
+                    ]}
+                  >
+                    <Text variant="body2">{title}</Text>
+                    <div class="flex w-full flex-col md:flex-row gap-2 md:gap-8 justify-center items-center">
+                      {techs.map((skill) => (
+                        <div>
+                          <Skill size="big" skill={skill} />
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                );
+              case "animations":
+                return (
+                  <Card
+                    class:list={[
+                      "p-5 grid grid-rows-[min-content_min-content] gap-5",
+                      group.slug,
+                    ]}
+                  >
+                    <Text variant="body2">{title}</Text>
+                    <div class="flex w-full flex-col md:flex-row lg:flex-col gap-2 md:gap-8 justify-center items-center">
+                      {techs?.map((skill) => (
+                        <div>
+                          <Skill size="big" skill={skill} />
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                );
+              case "react-ecosystem":
+                return (
+                  <Card
+                    class:list={[
+                      "p-5 grid grid-rows-[min-content_min-content] gap-5",
+                      group.slug,
+                    ]}
+                  >
+                    <Text variant="body2">{title}</Text>
+                    <div class="grid grid-cols-4 flex-wrap gap-4 justify-evenly items-center">
+                      {techs.map((skill) => (
+                        <div>
+                          <Skill size="small" skill={skill} />
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                );
+              default:
+                return (
+                  <Card
+                    class:list={[
+                      "p-5 grid grid-rows-[min-content_min-content] gap-5",
+                      group.slug,
+                    ]}
+                  >
+                    <Text variant="body2">{title}</Text>
+                    <div class="flex justify-evenly gap-2 md:gap-8">
+                      {techs?.map((tech) => (
+                        <Skill size="big" skill={tech} />
+                      ))}
+                    </div>
+                  </Card>
+                );
+            }
+          })
+        }
+      </div>
+    </section>
+  </Container>
+</BaseLayout>

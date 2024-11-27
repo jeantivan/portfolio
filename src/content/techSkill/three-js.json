@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "Three.js",
+  "image": {
+    "alt": "Three.js logo",
+    "src": {
+      "dark": "../../images/techSkills/Threejs_dark.svg",
+      "light": "../../images/techSkills/Threejs_light.svg"
+    }
+  }
+}

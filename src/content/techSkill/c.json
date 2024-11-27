@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../.astro/collections/techSkill.schema.json",
+  "name": "C",
+  "image": {
+    "alt": "C logo",
+    "src": {
+      "dark": "../../images/techSkills/c.svg",
+      "light": "../../images/techSkills/c.svg"
+    }
+  }
+}

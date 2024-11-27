@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../../.astro/collections/page.schema.json",
+  "title": "My skills",
+  "description": "Donec dictum ligula purus, viverra pulvinar nunc elementum nec. Morbi non erat dictum, interdum ligula in, volutpat ipsum. Donec felis.",
+  "meta": {
+    "alternate": {
+      "en": "https://www.jeantivan.dev/en/skills",
+      "es": "https://www.jeantivan.dev/es/habilidades"
+    },
+    "language": "en",
+    "keywords": [
+      "web developer",
+      "web programming",
+      "developer in madrid spain",
+      "frontend developer in madrid spain",
+      "full stack developer in madrid spain",
+      "spain",
+      "madrid"
+    ]
+  }
+}
