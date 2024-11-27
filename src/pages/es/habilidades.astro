@@ -12,6 +12,8 @@ import Card from "@/components/common/Card.astro";
 import Text from "@/components/common/Text.astro";
 import Icon from "@/components/common/Icon.astro";
 
+const page = await getEntry("page", "es/skills");
+
 const skillGroups = await getCollection(
   "skillGroup",
   ({ data }) => data.language === "en",
@@ -20,7 +22,7 @@ const backendGroup = await getEntry("skillGroup", `the-backend`);
 const backendGroupTechs = await getEntries(backendGroup.data.techs);
 ---
 
-<BaseLayout>
+<BaseLayout page={page}>
   <Container class="px-3 py-6 lg:py-10 grid gap-16 md:gap-20">
     <section class="my-8 grid gap-6">
       <div>

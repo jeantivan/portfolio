@@ -9,7 +9,8 @@ import Container from "@/components/common/Container.astro";
 import Text from "@/components/common/Text.astro";
 import Project from "@/components/Project.astro";
 
-const { data } = await getEntry("page", "es/projects");
+const page = await getEntry("page", "en/projects");
+
 const featuredProjects = await getCollection(
   "project",
   ({ data, slug }) =>
@@ -25,7 +26,7 @@ const otherProjects = await getCollection(
 );
 ---
 
-<BaseLayout title={data.title} description={data.description}>
+<BaseLayout page={page}>
   <Container class="grid gap-8 pt-4 py-6 md:pt-8">
     <section class="">
       <div class="mb-6 md:mb-8">
