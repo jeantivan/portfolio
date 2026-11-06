@@ -23,7 +23,7 @@ export const educationSchema = z.object({
 
 export type Education = z.infer<typeof educationSchema>;
 
-export const createProfileSchema = <T extends z.ZodTypeAny = z.ZodTypeAny>({
+export const createProfileSchema = <T extends z.ZodType = z.ZodType>({
   image = () => z.any() as unknown as T,
 }: {
   image?: () => T;

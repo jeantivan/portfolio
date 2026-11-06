@@ -235,22 +235,32 @@ describe("Profile Domain Schema", () => {
       role: "Backend Engineer",
       company: "Acme Corp",
       startDate: "2022-01",
+      description: { es: "Lógica de backend sólo en español" },
     });
     expect(experienceItem.role).toEqual({
       es: "Backend Engineer",
       en: "Backend Engineer",
     });
     expect(experienceItem.company).toBe("Acme Corp");
+    expect(experienceItem.description).toEqual({
+      es: "Lógica de backend sólo en español",
+      en: "Lógica de backend sólo en español",
+    });
 
     const educationItem = educationSchema.parse({
       institution: "42 Madrid",
       program: "Common Core",
       startDate: "2021-09",
+      description: { es: "Metodología peer-to-peer" },
     });
     expect(educationItem.institution).toBe("42 Madrid");
     expect(educationItem.program).toEqual({
       es: "Common Core",
       en: "Common Core",
+    });
+    expect(educationItem.description).toEqual({
+      es: "Metodología peer-to-peer",
+      en: "Metodología peer-to-peer",
     });
   });
 
