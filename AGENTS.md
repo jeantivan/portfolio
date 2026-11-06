@@ -11,3 +11,11 @@ Five canonical triage labels (`needs-triage`, `needs-info`, `ready-for-agent`, `
 ### Domain docs
 
 Single-context repo layout (`GLOSSARY.md` and `docs/adr/` at the repo root). See `docs/agents/domain.md`.
+
+### Standards
+
+Repository coding standards and ubiquitous language rules. See `CODING_STANDARDS.md` and `GLOSSARY.md`.
+
+### Verification
+
+Automated checks run via `pnpm run typecheck` (`CI=true astro check`), `pnpm test` (`vitest run`), and `pnpm run build`.

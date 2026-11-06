@@ -7,7 +7,10 @@ describe("Static Build Output (dist/)", () => {
   const distDir = path.resolve(import.meta.dirname, "../dist");
 
   beforeAll(() => {
-    if (!fs.existsSync(distDir) || !fs.existsSync(path.join(distDir, "index.html"))) {
+    if (
+      !fs.existsSync(distDir) ||
+      !fs.existsSync(path.join(distDir, "index.html"))
+    ) {
       execSync("pnpm astro build", { stdio: "ignore" });
     }
   });
@@ -35,7 +38,10 @@ describe("Static Build Output (dist/)", () => {
     expect(esHtml).toMatch(/<link\s+rel="alternate"\s+hreflang="en"/);
     expect(esHtml).toMatch(/<link\s+rel="alternate"\s+hreflang="x-default"/);
 
-    const enHtml = fs.readFileSync(path.join(distDir, "en/index.html"), "utf-8");
+    const enHtml = fs.readFileSync(
+      path.join(distDir, "en/index.html"),
+      "utf-8",
+    );
     expect(enHtml).toMatch(/<link\s+rel="alternate"\s+hreflang="es"/);
     expect(enHtml).toMatch(/<link\s+rel="alternate"\s+hreflang="en"/);
   });
@@ -52,7 +58,10 @@ describe("Static Build Output (dist/)", () => {
 
     for (const route of requiredRoutes) {
       const fullPath = path.join(distDir, route);
-      expect(fs.existsSync(fullPath), `Expected ${route} to exist in dist`).toBe(true);
+      expect(
+        fs.existsSync(fullPath),
+        `Expected ${route} to exist in dist`,
+      ).toBe(true);
     }
   });
 });

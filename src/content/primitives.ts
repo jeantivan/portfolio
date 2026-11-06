@@ -29,7 +29,9 @@ export type ThemedImage<T = ImageMetadata> = {
   light: T;
 };
 
-export const createThemedImageSchema = <T extends z.ZodTypeAny>(imageSchema: T) =>
+export const createThemedImageSchema = <T extends z.ZodTypeAny>(
+  imageSchema: T,
+) =>
   z
     .union([
       imageSchema,
