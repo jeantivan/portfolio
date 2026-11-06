@@ -4,7 +4,7 @@ import { localizedTextSchema } from "./primitives";
 export const workExperienceSchema = z.object({
   role: localizedTextSchema,
   company: z.string().min(1),
-  companyUrl: z.string().url().optional(),
+  companyUrl: z.url().optional(),
   startDate: z.string().min(1),
   endDate: z.string().min(1).optional(),
   description: localizedTextSchema.optional(),
@@ -38,11 +38,12 @@ export const createProfileSchema = <T extends z.ZodType = z.ZodType>({
     }),
     cv: localizedTextSchema,
     social: z.object({
-      email: z.string().email(),
-      linkedIn: z.string().url(),
-      github: z.string().url(),
+      email: z.email(),
+      linkedIn: z.url(),
+      github: z.url(),
     }),
     experience: z.array(workExperienceSchema).optional(),
+    workExperience: z.array(workExperienceSchema).optional(),
     education: z.array(educationSchema).optional(),
   });
 

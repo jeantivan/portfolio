@@ -42,8 +42,8 @@ const project = defineCollection({
       language: language.readonly().optional(),
       featured: z.boolean(),
       links: z.object({
-        github: z.string().url(),
-        website: z.string().url().optional(),
+        github: z.url(),
+        website: z.url().optional(),
       }),
       description: z.string(),
       builtWith: z.array(reference("techSkill")),

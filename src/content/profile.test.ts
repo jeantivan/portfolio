@@ -181,6 +181,16 @@ describe("Profile Domain Schema", () => {
       es: "Ingeniería de Software y Sistemas",
       en: "Software Engineering & Systems",
     });
+
+    // Also supports canonical domain term workExperience
+    const withCanonicalDomainTerm = profileSchema.parse({
+      ...minimalRawProfile,
+      workExperience: rawWithFullDetails.experience,
+    });
+    expect(withCanonicalDomainTerm.workExperience).toHaveLength(1);
+    expect(withCanonicalDomainTerm.workExperience?.[0].company).toBe(
+      "Acme Corp",
+    );
   });
 
   it("fails validation when mandatory fields or valid formats are missing", () => {
