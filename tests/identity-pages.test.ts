@@ -1,19 +1,9 @@
-import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { beforeAll, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 
 describe("Identity Pages Rendering (/, /en, /contact, /en/contact)", () => {
   const distDir = path.resolve(import.meta.dirname, "../dist");
-
-  beforeAll(() => {
-    if (
-      !fs.existsSync(distDir) ||
-      !fs.existsSync(path.join(distDir, "index.html"))
-    ) {
-      execSync("pnpm astro build", { stdio: "ignore" });
-    }
-  });
 
   describe("Home page (/) and English home (/en)", () => {
     it("renders Profile data in Spanish home (/index.html)", () => {

@@ -1,19 +1,9 @@
-import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { beforeAll, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 
 describe("Static Build Output (dist/)", () => {
   const distDir = path.resolve(import.meta.dirname, "../dist");
-
-  beforeAll(() => {
-    if (
-      !fs.existsSync(distDir) ||
-      !fs.existsSync(path.join(distDir, "index.html"))
-    ) {
-      execSync("pnpm astro build", { stdio: "ignore" });
-    }
-  });
 
   it("serves Spanish home directly at /index.html without meta refresh redirect", () => {
     const indexPath = path.join(distDir, "index.html");
