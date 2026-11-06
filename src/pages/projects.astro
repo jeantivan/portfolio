@@ -1,77 +1,82 @@
 ---
-import { getEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Heading from "@/components/Heading.astro";
-
-import * as m from "@/paraglide/messages";
-import { languageTag } from "@/paraglide/runtime";
 import Container from "@/components/common/Container.astro";
 import Text from "@/components/common/Text.astro";
 import Project from "@/components/Project.astro";
+import { type Locale, getPageSeo, t } from "@/i18n";
 
-const page = await getEntry("page", "es/projects");
-const featuredProjects = await getCollection(
+const lang: Locale = "es";
+const seo = getPageSeo("projects", lang);
+
+const allProjects = await getCollection(
   "project",
-  ({ data, slug }) =>
-    slug.startsWith(languageTag()) && data.featured && data.type !== "42",
+  ({ id, data }) => id.startsWith("es/") || data.language === "es",
 );
-const projectsFrom42 = await getCollection(
-  "project",
-  ({ data, slug }) => slug.startsWith(languageTag()) && data.type === "42",
+
+const featuredProjects = allProjects.filter(
+  (p) => p.data.featured && p.data.type !== "42",
 );
-const otherProjects = await getCollection(
-  "project",
-  ({ data, slug }) => slug.startsWith(languageTag()) && !data.featured,
+const projectsFrom42 = allProjects.filter((p) => p.data.type === "42");
+const otherProjects = allProjects.filter(
+  (p) => !p.data.featured && p.data.type !== "42",
 );
 ---
 
-<BaseLayout page={page}>
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  keywords={seo.keywords}
+>
   <Container class="grid gap-8 pt-4 py-6 md:pt-8 overflow-x-hidden relative">
-    <section class="">
+    <section>
       <div class="mb-6 md:mb-8">
         <Heading
-          text={m.ProjectsPage_main_title()}
+          text={t("ProjectsPage_main_title", undefined, lang)}
           as="h1"
           variant="title"
           class="mb-4"
           display
         />
         <Text color="secondary" variant="body3">
-          {m.ProjectsPage_main_content()}
+          {t("ProjectsPage_main_content", undefined, lang)}
         </Text>
       </div>
       <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
         {featuredProjects.map((project) => <Project project={project} />)}
       </div>
     </section>
-    <section class="">
+
+    <section>
       <div class="mb-6 md:mb-8">
         <Heading
-          text={m.ProjectsPage_42_title()}
+          text={t("ProjectsPage_42_title", undefined, lang)}
           as="h1"
           variant="subheading"
           class="mb-4"
           display
         />
         <Text color="secondary" variant="body3">
-          {m.ProjectsPage_42_content()}
+          {t("ProjectsPage_42_content", undefined, lang)}
         </Text>
       </div>
       <div class="grid gap-4 grid-cols-2 md:grid-cols-3">
         {projectsFrom42.map((project) => <Project project={project} />)}
       </div>
     </section>
+
     <section class="grid gap-6">
-      <div class="">
+      <div>
         <Heading
-          text={m.ProjectsPage_smallProjects_title()}
+          text={t("ProjectsPage_smallProjects_title", undefined, lang)}
           as="h2"
           variant="heading"
           class="mb-4"
           display
         />
         <Text color="secondary" variant="body1">
-          {m.ProjectsPage_smallProjects_content()}
+          {t("ProjectsPage_smallProjects_content", undefined, lang)}
         </Text>
       </div>
 
@@ -79,8 +84,11 @@ const otherProjects = await getCollection(
         {otherProjects.map((project) => <Project project={project} />)}
       </div>
     </section>
+
     <section>
-      <Text color="secondary">{m.ProjectsPage_extra_content()}</Text>
+      <Text color="secondary"
+        >{t("ProjectsPage_extra_content", undefined, lang)}</Text
+      >
     </section>
   </Container>
 </BaseLayout>

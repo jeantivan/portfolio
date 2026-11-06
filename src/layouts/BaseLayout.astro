@@ -3,23 +3,31 @@ import "@fontsource/inter";
 import "@fontsource/anton";
 import "@/styles/global.css";
 
-import { languageTag } from "../paraglide/runtime";
-
 import MainHead from "@/components/MainHead.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import type { CollectionEntry } from "astro:content";
+import { type Locale, getAlternateLinks } from "@/i18n";
+
 interface Props {
-  page: CollectionEntry<"page">;
+  title?: string;
+  description?: string;
+  keywords?: string[];
+  image?: string;
 }
 
-const lang = languageTag();
+const lang = (Astro.currentLocale ?? "es") as Locale;
+const {
+  title = "Jean Tivan",
+  description = "Portfolio de Jean Tivan",
+  keywords = [],
+  image,
+} = Astro.props;
 
-const { page } = Astro.props;
-
-const { title, description, meta } = page.data;
-
-const keywords = meta.keywords.join(", ");
+const keywordsString = keywords.join(", ");
+const alternateLinks = getAlternateLinks(Astro.url.pathname);
+const canonicalUrl =
+  alternateLinks.find((l) => l.hreflang === lang)?.href ??
+  alternateLinks[0].href;
 ---
 
 <html lang={lang}>
@@ -27,16 +35,12 @@ const keywords = meta.keywords.join(", ");
     <title>{title} | JeanTivan</title>
     <meta name="description" property="og:description" content={description} />
     <meta property="og:title" content={`${title} | JeanTivan`} />
-    <meta property="og:url" content={meta.alternate[lang]} />
-    {meta.image && <meta property="og:image" content={meta.image.src} />}
-    <meta name="keywords" content={keywords} />
+    <meta property="og:url" content={canonicalUrl} />
+    {image && <meta property="og:image" content={image} />}
+    {keywordsString && <meta name="keywords" content={keywordsString} />}
     {
-      Object.keys(meta.alternate).map((key) => (
-        <link
-          rel="alternate"
-          hreflang={key}
-          href={meta.alternate[key as keyof typeof meta.alternate]}
-        />
+      alternateLinks.map((alt) => (
+        <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
       ))
     }
     <MainHead />
@@ -52,7 +56,6 @@ const keywords = meta.keywords.join(", ");
     <slot />
     <Footer />
     <script>
-      // Add “loaded” class once the document has completely loaded.
       addEventListener("load", () =>
         document.documentElement.classList.add("loaded"),
       );

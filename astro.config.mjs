@@ -1,11 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-
-import react from "@astrojs/react";
-import paraglide from "@inlang/paraglide-astro";
-import tailwind from "@astrojs/tailwind";
-
+import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
+import path from "node:path";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,17 +10,19 @@ export default defineConfig({
     locales: ["es", "en"],
     defaultLocale: "es",
     routing: {
-      prefixDefaultLocale: true,
+      prefixDefaultLocale: false,
     },
   },
-
-  integrations: [
-    react(),
-    tailwind(),
-    paraglide({
-      project: "./project.inlang",
-      outdir: "./src/paraglide",
-    }),
-    mdx(),
-  ],
+  image: {
+    dangerouslyProcessSVG: true,
+  },
+  vite: {
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        "@": path.resolve(import.meta.dirname, "./src"),
+      },
+    },
+  },
+  integrations: [mdx()],
 });

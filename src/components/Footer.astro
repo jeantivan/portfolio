@@ -1,28 +1,14 @@
 ---
 import { getEntry } from "astro:content";
-import * as m from "@/paraglide/messages.js";
-import { languageTag } from "@/paraglide/runtime.js";
+import { type Locale, localizePath, t } from "@/i18n";
 import Text from "./common/Text.astro";
 import Container from "./common/Container.astro";
-import { localizePathname } from "@/i18n/linking";
 
-const author = await getEntry("authorInfo", `${languageTag()}/jeantivan`);
-const lang = languageTag();
+const lang = (Astro.currentLocale ?? "es") as Locale;
+const author = await getEntry("authorInfo", `${lang}/jeantivan`);
 
-function buildLocaleHref(locale: "es" | "en") {
-  const pathname = Astro.url.pathname;
-  const [, , route, ...params] = pathname.split("/");
-
-  if (route) {
-    const localizedRoute = localizePathname(`/${route}`, locale);
-    const newUrl = `${localizedRoute}/${params && params.join("/")}`;
-    return newUrl;
-  }
-  return `/${locale}`;
-}
-
-const esHref = buildLocaleHref("es");
-const enHref = buildLocaleHref("en");
+const esHref = localizePath(Astro.url.pathname, "es");
+const enHref = localizePath(Astro.url.pathname, "en");
 ---
 
 <Container
@@ -32,15 +18,22 @@ const enHref = buildLocaleHref("en");
   <Text
     class="col-span-12 md:col-span-8 text-center md:text-left"
     variant="subtitle"
-    set:html={m.Footer_github_cta({ githubUrl: author.data.social.github })}
+    set:html={t(
+      "Footer_github_cta",
+      {
+        githubUrl:
+          author?.data?.social?.github ?? "https://github.com/jeantivan",
+      },
+      lang,
+    )}
   />
   <div class="flex justify-center md:justify-end col-span-12 md:col-span-4">
     <Text variant="subtitle" color="secondary">
-      {m.Footer_switch_lang_text()}
+      {t("Footer_switch_lang_text", undefined, lang)}
       <a href={esHref} class:list={[lang == "es" ? "text-primary-9" : null]}
-        >{m.Footer_switch_lang_Spanish}</a
+        >{t("Footer_switch_lang_Spanish", undefined, lang)}</a
       > | <a href={enHref} class:list={[lang == "en" ? "text-primary-9" : null]}
-        >{m.Footer_switch_lang_English}</a
+        >{t("Footer_switch_lang_English", undefined, lang)}</a
       >
     </Text>
   </div>

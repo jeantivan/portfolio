@@ -1,30 +1,33 @@
 ---
 import IconButton from "./common/IconButton.astro";
 import Icon from "./common/Icon.astro";
-
-import * as m from "@/paraglide/messages";
+import { type Locale, t } from "@/i18n";
 
 interface Props {
   mobile?: boolean;
 }
 
 const { mobile = false } = Astro.props;
+const lang = (Astro.currentLocale ?? "es") as Locale;
 ---
 
 <div class="theme-toggle min-w-9" data-mobile={mobile}>
-  <IconButton label={m.DarkMode_label()} title={m.DarkMode_label()}>
+  <IconButton
+    label={t("DarkMode_label", undefined, lang)}
+    title={t("DarkMode_label", undefined, lang)}
+  >
     <Icon
       id="dark-mode-moon"
       class="moon dark:hidden block"
       icon="moon"
-      label={m.DarkMode_switch_dark()}
+      label={t("DarkMode_switch_dark", undefined, lang)}
       size="18px"
     />
     <Icon
       id="dark-mode-sun"
       class="moon dark:block hidden"
       icon="sun"
-      label={m.DarkMode_switch_light()}
+      label={t("DarkMode_switch_light", undefined, lang)}
       size="18px"
     />
   </IconButton>

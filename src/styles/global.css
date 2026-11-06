@@ -1,3 +1,38 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background-1: hsl(var(--background-1));
+  --color-background-2: hsl(var(--background-2));
+  --color-background-3: hsl(var(--background-3));
+  --color-background-4: hsl(var(--background-4));
+  --color-background-5: hsl(var(--background-5));
+  --color-background-6: hsl(var(--background-6));
+  --color-background-7: hsl(var(--background-7));
+  --color-background-8: hsl(var(--background-8));
+  --color-background-9: hsl(var(--background-9));
+  --color-background-10: hsl(var(--background-10));
+  --color-background-11: hsl(var(--background-11));
+  --color-background-12: hsl(var(--background-12));
+
+  --color-primary-1: hsl(var(--primary-1));
+  --color-primary-2: hsl(var(--primary-2));
+  --color-primary-3: hsl(var(--primary-3));
+  --color-primary-4: hsl(var(--primary-4));
+  --color-primary-5: hsl(var(--primary-5));
+  --color-primary-6: hsl(var(--primary-6));
+  --color-primary-7: hsl(var(--primary-7));
+  --color-primary-8: hsl(var(--primary-8));
+  --color-primary-9: hsl(var(--primary-9));
+  --color-primary-10: hsl(var(--primary-10));
+  --color-primary-11: hsl(var(--primary-11));
+  --color-primary-12: hsl(var(--primary-12));
+
+  --font-sans: var(--inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--anton);
+}
+
 :root {
   --anton: "Anton", ui-sans-serif;
   --inter: "Inter";

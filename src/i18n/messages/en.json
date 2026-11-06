@@ -44,7 +44,7 @@
   "ProjectPage_links_github": "Github",
   "ProjectPage_links_website": "Website",
   "ProjectPage_content_title": "About this project.",
-  "Footer_github_cta": "Take a look to my <a class='link' href={githubUrl}>Github profile!</a>",
+  "Footer_github_cta": "Take a look to my <a class='link' href='{githubUrl}'>Github profile!</a>",
   "Footer_switch_lang_text": "Language: ",
   "Footer_switch_lang_English": "English",
   "Footer_switch_lang_Spanish": "Spanish"

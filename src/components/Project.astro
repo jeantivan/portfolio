@@ -4,18 +4,18 @@ import Card from "./common/Card.astro";
 import Text from "./common/Text.astro";
 import Icon from "./common/Icon.astro";
 import { Image } from "astro:assets";
-import { localizePathname } from "@/i18n/linking";
-import { languageTag } from "@/paraglide/runtime";
+import { type Locale, localizePath } from "@/i18n";
 
 interface Props {
   project: CollectionEntry<"project">;
 }
 
 const { project } = Astro.props;
+const lang = (Astro.currentLocale ?? "es") as Locale;
 const { featured, title, description, mainImage } = project.data;
-const realSlug = project.slug.split("/")[1];
+const realSlug = project.id.split("/").pop();
 
-const href = `${localizePathname("/project", languageTag())}/${realSlug}`;
+const href = localizePath(`/projects/${realSlug}`, lang);
 ---
 
 {
@@ -51,18 +51,20 @@ const href = `${localizePathname("/project", languageTag())}/${realSlug}`;
           "shrink-0 w-full group bg-background-2 rounded-lg overflow-hidden"
         }
       >
-        <div class="relative aspect-video">
-          <Image
-            alt={mainImage.alt}
-            src={mainImage.src.dark}
-            class="object-contain hidden dark:block"
-          />
-          <Image
-            alt={mainImage.alt}
-            src={mainImage.src.light}
-            class="object-contain block dark:hidden"
-          />
-        </div>
+        {mainImage && (
+          <div class="relative aspect-video">
+            <Image
+              alt={mainImage.alt}
+              src={mainImage.src.dark}
+              class="object-contain hidden dark:block"
+            />
+            <Image
+              alt={mainImage.alt}
+              src={mainImage.src.light}
+              class="object-contain block dark:hidden"
+            />
+          </div>
+        )}
         <header class="w-full flex space-between items-center p-2">
           <p class="line-clamp-1 font-medium flex-1 text-lg">{title}</p>
           <span class="text-primary-9 w-10 inline-flex justify-end mr-1">

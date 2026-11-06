@@ -1,7 +1,8 @@
 import { defineCollection, reference, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 const techSkill = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.json", base: "./src/content/techSkill" }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
@@ -18,19 +19,19 @@ const techSkill = defineCollection({
 const language = z.enum(["es", "en"]);
 
 const skillGroup = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/skillGroup" }),
   schema: z.object({
     title: z.string(),
     techs: z.array(reference("techSkill")),
-    language: language.readonly(),
+    language: language.readonly().optional(),
   }),
 });
 
 const authorInfo = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/authorInfo" }),
   schema: ({ image }) =>
     z.object({
-      language: language.readonly(),
+      language: language.readonly().optional(),
       name: z.string(),
       profession: z.string(),
       social: z.object({
@@ -46,45 +47,31 @@ const authorInfo = defineCollection({
     }),
 });
 
-const page = defineCollection({
-  type: "data",
-  schema: ({ image }) =>
-    z.object({
-      title: z.string().optional(),
-      description: z.string().min(40).optional(),
-      meta: z.object({
-        alternate: z.record(language, z.string().url()),
-        image: image().optional(),
-        keywords: z.array(z.string()),
-        language,
-      }),
-    }),
-});
-
 const project = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/project" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      language: language.readonly(),
+      language: language.readonly().optional(),
       featured: z.boolean(),
       links: z.object({
         github: z.string().url(),
         website: z.string().url().optional(),
       }),
-      description: z
-        .string()
-        .min(50, "Min 50 characters")
-        .max(150, "Max 150 characters"),
+      description: z.string(),
       builtWith: z.array(reference("techSkill")),
-      type: z.enum(["42", "frontend", "backend", "fullstack", "mobile"]),
-      mainImage: z.object({
-        alt: z.string(),
-        src: z.object({
-          dark: image(),
-          light: image(),
-        }),
-      }),
+      type: z
+        .enum(["42", "frontend", "backend", "fullstack", "mobile"])
+        .optional(),
+      mainImage: z
+        .object({
+          alt: z.string(),
+          src: z.object({
+            dark: image(),
+            light: image(),
+          }),
+        })
+        .optional(),
     }),
 });
 
@@ -92,6 +79,5 @@ export const collections = {
   techSkill,
   skillGroup,
   authorInfo,
-  page,
   project,
 };

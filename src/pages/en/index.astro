@@ -1,42 +1,69 @@
 ---
-import { getCollection, getEntries } from "astro:content";
-import * as m from "@/paraglide/messages.js";
-import { languageTag } from "@/paraglide/runtime";
-
-import { localizePathname } from "@/i18n/linking";
-
+import { getCollection, getEntries, getEntry, render } from "astro:content";
+import { Image } from "astro:assets";
+import { type Locale, getPageSeo, localizePath, t } from "@/i18n";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Container from "@/components/common/Container.astro";
 import Text from "@/components/common/Text.astro";
 import Icon from "@/components/common/Icon.astro";
 import Card from "@/components/common/Card.astro";
 import ButtonLink from "@/components/common/ButtonLink.astro";
-
 import Heading from "@/components/Heading.astro";
 import Skill from "@/components/Skill.astro";
 import Project from "@/components/Project.astro";
-import { getEntry } from "astro:content";
 
-const lang = languageTag();
+const lang: Locale = "en";
+const seo = getPageSeo("about", lang);
 
-const latestFeaturedProjects = await getCollection("project", ({ data }) => {
-  return data.language === lang && data.featured && data.type !== "42";
-});
+const latestFeaturedProjects = await getCollection(
+  "project",
+  ({ data, id }) => {
+    const isEnglish = id.startsWith("en/") || data.language === "en";
+    return isEnglish && data.featured && data.type !== "42";
+  },
+);
 
-const author = await getEntry("authorInfo", `${lang}/jeantivan`);
-const { Content } = await author.render();
+// Fallback to spanish projects if no english featured projects
+const projectsToShow =
+  latestFeaturedProjects.length > 0
+    ? latestFeaturedProjects
+    : await getCollection(
+        "project",
+        ({ data, id }) =>
+          (id.startsWith("es/") || data.language === "es") &&
+          data.featured &&
+          data.type !== "42",
+      );
 
-const mainStackGroup = await getCollection("skillGroup", ({ id }) => {
-  return id === `${lang}/the-main-stack.md`;
-});
-const mainStackTechs = await getEntries(mainStackGroup[0].data.techs);
+let author = await getEntry("authorInfo", "en/jeantivan");
+if (!author) {
+  author = await getEntry("authorInfo", "es/jeantivan");
+}
+const { Content } = author ? await render(author) : { Content: null };
 
-const page = await getEntry("page", `${lang}/about`);
+let skillGroups = await getCollection(
+  "skillGroup",
+  ({ id }) => id.includes("the-main-stack") && id.startsWith("en"),
+);
+if (skillGroups.length === 0) {
+  skillGroups = await getCollection(
+    "skillGroup",
+    ({ id }) => id.includes("the-main-stack") && id.startsWith("es"),
+  );
+}
+const mainStackGroup = skillGroups[0];
+const mainStackTechs = mainStackGroup
+  ? await getEntries(mainStackGroup.data.techs)
+  : [];
 ---
 
-<BaseLayout page={page}>
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  keywords={seo.keywords}
+>
   <Container class="px-3 py-6 lg:py-10 grid gap-16 md:gap-24">
-    <section class="">
+    <section>
       <div class="mb-4 flex flex-col md:flex-row gap-6">
         <div class="shrink-0 flex flex-col">
           <Text as="h1" variant="main" weight="bold" class="uppercase mb-2.5">
@@ -49,70 +76,91 @@ const page = await getEntry("page", `${lang}/about`);
             class="uppercase text-primary-11 dark:text-primary-9"
             display
           >
-            {m.AboutMePage_main_title()}
+            {t("AboutMePage_main_title", undefined, lang)}
           </Text>
         </div>
       </div>
-      <Text variant="subheading" weight="light" color="secondary" class="">
-        {m.AboutMePage_main_content()}
+      <Text variant="subheading" weight="light" color="secondary">
+        {t("AboutMePage_main_content", undefined, lang)}
       </Text>
     </section>
+
     <section class="grid gap-6 md:gap-8">
       <Heading
-        text={m.AboutMePage_projects_title()}
+        text={t("AboutMePage_projects_title", undefined, lang)}
         as="h3"
         variant="title"
         class="flex-1 text-center"
       />
       <div class="flex flex-wrap justify-center gap-3">
-        {latestFeaturedProjects.map((project) => <Project project={project} />)}
+        {projectsToShow.map((proj) => <Project project={proj} />)}
       </div>
       <div class="flex justify-center">
         <ButtonLink
           class="w-full max-w-lg"
           variant="outlined"
-          href={localizePathname("/projects", lang)}
+          href={localizePath("/projects", lang)}
         >
-          {m.AboutMePage_projects_cta()}
+          {t("AboutMePage_projects_cta", undefined, lang)}
           <Icon label="Go to" icon="arrow-right" size="20px" />
         </ButtonLink>
       </div>
     </section>
+
     <section class="grid gap-6 md:gap-8">
-      <Heading text={m.AboutMePage_skills_title()} variant="heading" display />
+      <Heading
+        text={t("AboutMePage_skills_title", undefined, lang)}
+        variant="heading"
+        display
+      />
       <div class="grid grid-cols-2 md:grid-cols-4 justify-between gap-3">
         {
-          mainStackTechs.map((skill) => {
-            return (
-              <Card class="max-w-60 bg-background-2 px-8 py-4">
-                <Skill size="auto" skill={skill} showName />
-              </Card>
-            );
-          })
+          mainStackTechs.map((skill) => (
+            <Card class="max-w-60 bg-background-2 px-8 py-4">
+              <Skill size="auto" skill={skill} showName />
+            </Card>
+          ))
         }
       </div>
       <div class="flex justify-end">
         <ButtonLink
           variant="outlined"
-          href={localizePathname("/skills", lang)}
+          href={localizePath("/skills", lang)}
           class="w-full max-w-lg"
         >
-          {m.AboutMePage_skills_cta()}
+          {t("AboutMePage_skills_cta", undefined, lang)}
           <Icon label="Arrow right icon" icon="arrow-right" size="20px" />
         </ButtonLink>
       </div>
     </section>
-    <section class="grid gap-6 md:gap-8">
-      <Heading text={m.AboutMePage_aboutMe_title()} variant="heading" display />
-      <Content
-        components={{
-          p: Text,
-        }}
-      />
 
-      <div class="flex justify-end">
-        <ButtonLink href={localizePathname("/contact", lang)}>
-          {m.AboutMePage_aboutMe_cta()}
+    <section class="grid grid-cols-11 gap-6 md:gap-10">
+      <Heading
+        class="col-span-11"
+        text={t("AboutMePage_aboutMe_title", undefined, lang)}
+        variant="heading"
+        display
+      />
+      <div class="col-span-11 md:col-span-7">
+        {Content && <Content components={{ p: Text }} />}
+      </div>
+      {
+        author && (
+          <div class="col-span-11 md:col-span-4 md:-mt-20">
+            <div class="bg-background-9 rounded-xl w-full overflow-hidden">
+              <Image
+                src={author.data.picture.src}
+                alt={author.data.picture.alt}
+                class="w-full aspect-[4/5]"
+              />
+            </div>
+          </div>
+        )
+      }
+
+      <div class="col-span-11 flex justify-end">
+        <ButtonLink href={localizePath("/contact", lang)}>
+          {t("AboutMePage_aboutMe_cta", undefined, lang)}
         </ButtonLink>
       </div>
     </section>
