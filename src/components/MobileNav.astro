@@ -1,6 +1,6 @@
 ---
-import { getEntry } from "astro:content";
 import { type Locale, localizePath, t } from "@/i18n";
+import { getProfile } from "@/content/profile";
 import IconButton from "./common/IconButton.astro";
 import Icon from "./common/Icon.astro";
 import ButtonLink from "./common/ButtonLink.astro";
@@ -10,7 +10,9 @@ import Logo from "./Logo.astro";
 import IconButtonLink from "./common/IconButtonLink.astro";
 
 const lang = (Astro.currentLocale ?? "es") as Locale;
-const author = await getEntry("authorInfo", `${lang}/jeantivan`);
+const profile = await getProfile();
+const cvUrl = profile.data.cv[lang];
+const social = profile.data.social;
 ---
 
 <div class="md:hidden">
@@ -20,7 +22,7 @@ const author = await getEntry("authorInfo", `${lang}/jeantivan`);
     </IconButton>
     <Logo mobile />
     <ButtonLink
-      href={author?.data?.cv ? `${author.data.cv}?dl=` : "#"}
+      href={cvUrl ? `${cvUrl}?dl=` : "#"}
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -61,7 +63,7 @@ const author = await getEntry("authorInfo", `${lang}/jeantivan`);
       </nav>
       <footer class="flex gap-6 justify-center py-3">
         <IconButtonLink
-          href={author?.data?.social?.linkedIn ?? "#"}
+          href={social.linkedIn}
           label={t("NavBar_mobile_linkedin", undefined, lang)}
         >
           <Icon
@@ -71,7 +73,7 @@ const author = await getEntry("authorInfo", `${lang}/jeantivan`);
           />
         </IconButtonLink>
         <IconButtonLink
-          href={author?.data?.social?.github ?? "#"}
+          href={social.github}
           label={t("NavBar_mobile_github", undefined, lang)}
         >
           <Icon

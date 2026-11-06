@@ -1,11 +1,11 @@
 ---
-import { getEntry } from "astro:content";
 import { type Locale, localizePath, t } from "@/i18n";
+import { getProfile } from "@/content/profile";
 import Text from "./common/Text.astro";
 import Container from "./common/Container.astro";
 
 const lang = (Astro.currentLocale ?? "es") as Locale;
-const author = await getEntry("authorInfo", `${lang}/jeantivan`);
+const profile = await getProfile();
 
 const esHref = localizePath(Astro.url.pathname, "es");
 const enHref = localizePath(Astro.url.pathname, "en");
@@ -21,8 +21,7 @@ const enHref = localizePath(Astro.url.pathname, "en");
     set:html={t(
       "Footer_github_cta",
       {
-        githubUrl:
-          author?.data?.social?.github ?? "https://github.com/jeantivan",
+        githubUrl: profile.data.social.github,
       },
       lang,
     )}

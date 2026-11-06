@@ -1,6 +1,6 @@
 ---
-import { getEntry } from "astro:content";
 import { type Locale, localizePath, t } from "@/i18n";
+import { getProfile } from "@/content/profile";
 import ButtonLink from "./common/ButtonLink.astro";
 import Icon from "./common/Icon.astro";
 import Logo from "./Logo.astro";
@@ -8,7 +8,8 @@ import DarkMode from "./DarkMode.astro";
 import DesktopNavLink from "./DesktopNavLink.astro";
 
 const lang = (Astro.currentLocale ?? "es") as Locale;
-const author = await getEntry("authorInfo", `${lang}/jeantivan`);
+const profile = await getProfile();
+const cvUrl = profile.data.cv[lang];
 ---
 
 <div class="hidden flex-1 md:flex items-center">
@@ -27,7 +28,7 @@ const author = await getEntry("authorInfo", `${lang}/jeantivan`);
       >{t("NavBar_links_contact", undefined, lang)}</DesktopNavLink
     >
     <ButtonLink
-      href={author?.data?.cv ? `${author.data.cv}?dl=` : "#"}
+      href={cvUrl ? `${cvUrl}?dl=` : "#"}
       target="_blank"
       rel="noopener noreferrer"
     >

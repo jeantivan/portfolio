@@ -1,5 +1,7 @@
-import { defineCollection, reference, z } from "astro:content";
+import { defineCollection, reference } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
+import { createProfileSchema } from "./content/profile";
 
 const techSkill = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/techSkill" }),
@@ -27,24 +29,9 @@ const skillGroup = defineCollection({
   }),
 });
 
-const authorInfo = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/authorInfo" }),
-  schema: ({ image }) =>
-    z.object({
-      language: language.readonly().optional(),
-      name: z.string(),
-      profession: z.string(),
-      social: z.object({
-        email: z.string().email(),
-        linkedIn: z.string().url(),
-        github: z.string().url(),
-      }),
-      cv: z.string(),
-      picture: z.object({
-        alt: z.string(),
-        src: image(),
-      }),
-    }),
+const profile = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/profile" }),
+  schema: ({ image }) => createProfileSchema({ image }),
 });
 
 const project = defineCollection({
@@ -78,6 +65,6 @@ const project = defineCollection({
 export const collections = {
   techSkill,
   skillGroup,
-  authorInfo,
+  profile,
   project,
 };
