@@ -2,32 +2,31 @@ import { defineCollection, reference } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 import { createProfileSchema } from "./content/profile";
+import {
+  createSoftSkillSchema,
+  createTechnicalSkillSchema,
+  createTechnologySchema,
+} from "./content/skills";
 
-const techSkill = defineCollection({
-  loader: glob({ pattern: "**/*.json", base: "./src/content/techSkill" }),
-  schema: ({ image }) =>
-    z.object({
-      name: z.string(),
-      image: z.object({
-        src: z.object({
-          dark: image(),
-          light: image(),
-        }),
-        alt: z.string(),
-      }),
+const technology = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/technology" }),
+  schema: ({ image }) => createTechnologySchema({ image }),
+});
+
+const technicalSkill = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/technicalSkill" }),
+  schema: () =>
+    createTechnicalSkillSchema({
+      technologyReference: reference("technology"),
     }),
 });
 
-const language = z.enum(["es", "en"]);
-
-const skillGroup = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/skillGroup" }),
-  schema: z.object({
-    title: z.string(),
-    techs: z.array(reference("techSkill")),
-    language: language.readonly().optional(),
-  }),
+const softSkill = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/softSkill" }),
+  schema: () => createSoftSkillSchema(),
 });
+
+const language = z.enum(["es", "en"]);
 
 const profile = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/profile" }),
@@ -46,7 +45,7 @@ const project = defineCollection({
         website: z.url().optional(),
       }),
       description: z.string(),
-      builtWith: z.array(reference("techSkill")),
+      builtWith: z.array(reference("technology")),
       type: z
         .enum(["42", "frontend", "backend", "fullstack", "mobile"])
         .optional(),
@@ -63,8 +62,9 @@ const project = defineCollection({
 });
 
 export const collections = {
-  techSkill,
-  skillGroup,
+  technology,
+  technicalSkill,
+  softSkill,
   profile,
   project,
 };

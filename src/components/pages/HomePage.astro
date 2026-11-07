@@ -1,8 +1,9 @@
 ---
-import { getCollection, getEntries } from "astro:content";
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import { type Locale, getPageSeo, localizePath, t } from "@/i18n";
 import { getProfile } from "@/content/profile";
+import { getFeaturedTechnologies } from "@/content/skills";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Container from "@/components/common/Container.astro";
 import Text from "@/components/common/Text.astro";
@@ -10,7 +11,7 @@ import Icon from "@/components/common/Icon.astro";
 import Card from "@/components/common/Card.astro";
 import ButtonLink from "@/components/common/ButtonLink.astro";
 import Heading from "@/components/Heading.astro";
-import Skill from "@/components/Skill.astro";
+import TechnologyIcon from "@/components/TechnologyIcon.astro";
 import Project from "@/components/Project.astro";
 
 interface Props {
@@ -45,20 +46,9 @@ const projectsToShow =
     ? projectsInLang
     : await getCollection("project", isFeaturedProjectForLocale("es"));
 
-let skillGroups = await getCollection(
-  "skillGroup",
-  ({ id }) => id.includes("the-main-stack") && id.startsWith(lang),
+const featuredTechnologies = getFeaturedTechnologies(
+  await getCollection("technology"),
 );
-if (skillGroups.length === 0) {
-  skillGroups = await getCollection(
-    "skillGroup",
-    ({ id }) => id.includes("the-main-stack") && id.startsWith("es"),
-  );
-}
-const mainStackGroup = skillGroups[0];
-const mainStackTechs = mainStackGroup
-  ? await getEntries(mainStackGroup.data.techs)
-  : [];
 
 const [firstName, ...restName] = profile.data.name.split(" ");
 const nameFormatted =
@@ -124,9 +114,9 @@ const bioParagraphs = profile.data.bio[lang].split("\n\n");
       />
       <div class="grid grid-cols-2 md:grid-cols-4 justify-between gap-3">
         {
-          mainStackTechs.map((technology) => (
+          featuredTechnologies.map((technology) => (
             <Card class="max-w-60 bg-background-2 px-8 py-4">
-              <Skill size="auto" skill={technology} showName />
+              <TechnologyIcon size="auto" technology={technology} showName />
             </Card>
           ))
         }

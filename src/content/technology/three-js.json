@@ -1,0 +1,7 @@
+{
+  "name": "Three.js",
+  "icon": {
+    "dark": "../../images/techSkills/Threejs_dark.svg",
+    "light": "../../images/techSkills/Threejs_light.svg"
+  }
+}

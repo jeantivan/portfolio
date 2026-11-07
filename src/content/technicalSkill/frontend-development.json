@@ -1,0 +1,20 @@
+{
+  "title": {
+    "es": "Desarrollo Frontend",
+    "en": "Frontend Development"
+  },
+  "description": {
+    "es": "Construcción de interfaces interactivas, responsivas y accesibles con frameworks modernos.",
+    "en": "Building interactive, responsive, and accessible interfaces with modern frameworks."
+  },
+  "technologies": [
+    "react-js",
+    "next-js",
+    "typescript",
+    "tailwindcss",
+    "html5",
+    "css",
+    "javascript"
+  ],
+  "order": 1
+}

@@ -1,0 +1,7 @@
+{
+  "name": "ShadCN UI",
+  "icon": {
+    "dark": "../../images/techSkills/shadcn_dark.svg",
+    "light": "../../images/techSkills/shadcn_light.svg"
+  }
+}

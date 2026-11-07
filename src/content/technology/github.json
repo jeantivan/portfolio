@@ -1,0 +1,7 @@
+{
+  "name": "Github",
+  "icon": {
+    "dark": "../../images/techSkills/Github_dark.svg",
+    "light": "../../images/techSkills/Github_light.svg"
+  }
+}

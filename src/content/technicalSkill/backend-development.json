@@ -1,0 +1,20 @@
+{
+  "title": {
+    "es": "Desarrollo Backend y APIs",
+    "en": "Backend & API Development"
+  },
+  "description": {
+    "es": "Diseño e implementación de servicios, APIs RESTful y modelos de datos relacionales.",
+    "en": "Design and implementation of server-side services, RESTful APIs, and relational data models."
+  },
+  "technologies": [
+    "node",
+    "php",
+    "laravel",
+    "postgresql",
+    "mysql",
+    "prisma",
+    "typeorm"
+  ],
+  "order": 2
+}

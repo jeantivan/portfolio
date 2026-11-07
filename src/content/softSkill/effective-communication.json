@@ -1,0 +1,11 @@
+{
+  "title": {
+    "es": "Comunicación efectiva y empatía",
+    "en": "Effective communication and empathy"
+  },
+  "description": {
+    "es": "Transmisión clara de ideas técnicas tanto a perfiles de ingeniería como a stakeholders de negocio.",
+    "en": "Clear transmission of technical ideas to both engineering peers and business stakeholders."
+  },
+  "order": 2
+}

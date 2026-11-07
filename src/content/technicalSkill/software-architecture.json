@@ -1,0 +1,12 @@
+{
+  "title": {
+    "es": "Arquitectura y Calidad de Software",
+    "en": "Software Architecture & Quality"
+  },
+  "description": {
+    "es": "Modelado de dominio, principios SOLID, diseño de componentes y tipado estricto.",
+    "en": "Domain modeling, SOLID principles, component architecture, and strict static typing."
+  },
+  "technologies": ["typescript", "zod", "git", "github"],
+  "order": 3
+}

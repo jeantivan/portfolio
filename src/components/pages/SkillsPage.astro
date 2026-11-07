@@ -1,0 +1,144 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/common/Container.astro";
+import Heading from "@/components/Heading.astro";
+import Card from "@/components/common/Card.astro";
+import Text from "@/components/common/Text.astro";
+import TechnologyIcon from "@/components/TechnologyIcon.astro";
+import { type Locale, getPageSeo, t } from "@/i18n";
+import { sortByOrder } from "@/content/skills";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const seo = getPageSeo("skills", lang);
+
+const technologies = sortByOrder(await getCollection("technology"));
+const techMap = new Map(technologies.map((item) => [item.id, item]));
+
+const technicalSkills = sortByOrder(await getCollection("technicalSkill"));
+const softSkills = sortByOrder(await getCollection("softSkill"));
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  keywords={seo.keywords}
+>
+  <Container class="px-3 py-6 lg:py-10 grid gap-16 md:gap-20">
+    <section class="grid gap-6">
+      <div>
+        <Heading
+          text={t("SkillsPage_main_title", undefined, lang)}
+          variant="title"
+          class="mb-4"
+          display
+        />
+        <Text variant="body3" color="secondary">
+          {t("SkillsPage_main_content", undefined, lang)}
+        </Text>
+      </div>
+    </section>
+
+    <!-- Technology section -->
+    <section class="grid gap-6">
+      <Heading
+        text={t("SkillsPage_technologies_title", undefined, lang)}
+        variant="heading"
+        as="h2"
+        display
+      />
+      <div
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4"
+      >
+        {
+          technologies.map((tech) => (
+            <Card class="p-4 flex flex-col items-center justify-center bg-background-1 dark:bg-background-2">
+              <TechnologyIcon size="auto" technology={tech} showName />
+            </Card>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Technical Skill section -->
+    <section class="grid gap-6">
+      <Heading
+        text={t("SkillsPage_technicalSkills_title", undefined, lang)}
+        variant="heading"
+        as="h2"
+        display
+      />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          technicalSkills.map((technicalSkill) => {
+            const title = technicalSkill.data.title[lang];
+            const description = technicalSkill.data.description?.[lang];
+            const relatedTechs = (technicalSkill.data.technologies ?? [])
+              .map((ref) => {
+                const id = typeof ref === "string" ? ref : ref.id;
+                return techMap.get(id);
+              })
+              .filter(Boolean);
+
+            return (
+              <Card class="p-6 grid gap-4 bg-background-1 dark:bg-background-2">
+                <Text display variant="subheading">
+                  {title}
+                </Text>
+                {description && (
+                  <Text variant="body2" color="secondary">
+                    {description}
+                  </Text>
+                )}
+                {relatedTechs.length > 0 && (
+                  <div class="flex flex-wrap gap-2 pt-2 border-t border-background-4">
+                    {relatedTechs.map((tech) => (
+                      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-background-3 text-background-12">
+                        {tech!.data.name}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </Card>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <!-- Soft Skill section -->
+    <section class="grid gap-6">
+      <Heading
+        text={t("SkillsPage_softSkills_title", undefined, lang)}
+        variant="heading"
+        as="h2"
+        display
+      />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          softSkills.map((softSkill) => {
+            const title = softSkill.data.title[lang];
+            const description = softSkill.data.description?.[lang];
+
+            return (
+              <Card class="p-6 grid gap-3 bg-background-1 dark:bg-background-2">
+                <Text display variant="subheading">
+                  {title}
+                </Text>
+                {description && (
+                  <Text variant="body2" color="secondary">
+                    {description}
+                  </Text>
+                )}
+              </Card>
+            );
+          })
+        }
+      </div>
+    </section>
+  </Container>
+</BaseLayout>

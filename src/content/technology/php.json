@@ -1,0 +1,7 @@
+{
+  "name": "PHP",
+  "icon": {
+    "dark": "../../images/techSkills/Php_dark.svg",
+    "light": "../../images/techSkills/Php_light.svg"
+  }
+}

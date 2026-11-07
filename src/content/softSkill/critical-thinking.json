@@ -1,0 +1,11 @@
+{
+  "title": {
+    "es": "Pensamiento crítico y resolución de problemas",
+    "en": "Critical thinking and problem solving"
+  },
+  "description": {
+    "es": "Análisis estructurado para descomponer retos complejos en soluciones escalables y mantenibles.",
+    "en": "Structured analysis to break down complex challenges into scalable, maintainable solutions."
+  },
+  "order": 4
+}

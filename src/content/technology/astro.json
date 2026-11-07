@@ -1,0 +1,7 @@
+{
+  "name": "Astro",
+  "icon": {
+    "dark": "../../images/techSkills/Astro_dark.svg",
+    "light": "../../images/techSkills/Astro_light.svg"
+  }
+}

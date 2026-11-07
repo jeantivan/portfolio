@@ -1,0 +1,12 @@
+{
+  "title": {
+    "es": "Programación de Sistemas",
+    "en": "Systems Programming"
+  },
+  "description": {
+    "es": "Desarrollo de bajo nivel en C en la escuela 42 Madrid, gestión manual de memoria y algoritmos.",
+    "en": "Low-level C programming at 42 Madrid, manual memory management, and algorithmic problem solving."
+  },
+  "technologies": ["c"],
+  "order": 4
+}
