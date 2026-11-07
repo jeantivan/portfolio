@@ -7,6 +7,8 @@ Documented standards and architectural conventions for the portfolio repository.
 All code, schemas, collections, components, and variables must strictly adhere to the domain terms defined in [GLOSSARY.md](GLOSSARY.md):
 
 - **Profile** (_Avoid: AuthorInfo, User, Account_): Professional identity of the author.
+- **Work Experience** (_Avoid: Job, CareerItem_): A professional role or position held by the author in an organization.
+- **Education** (_Avoid: School, Study_): An academic or intensive training milestone completed by the author.
 - **Technology** (_Avoid: TechSkill, Tool, Stack item_): A concrete programming language, framework, database, or tool.
 - **Technical Skill** (_Avoid: Hard skill, Tech group_): An engineering practice or discipline beyond a single tool.
 - **Soft Skill** (_Avoid: Non-technical skill, Personal trait_): An interpersonal or team capability.
@@ -26,6 +28,7 @@ All code, schemas, collections, components, and variables must strictly adhere t
 
 - **Localized Text**: Use `localizedTextSchema` from `@/content/primitives` for user-facing localized text fields, normalizing to `{ es: string, en: string }`.
 - **Themed Images**: Use `createThemedImageSchema` / `themedImageSchema` from `@/content/primitives` for assets with dark/light variants, normalizing to `{ dark: T, light: T }`.
+- **Zod v4 Formats & Types**: Use top-level format helpers (`z.url()`, `z.email()`, `z.ZodType`) from `astro/zod` directly instead of deprecated ZodString chaining methods (`z.string().url()`, `z.string().email()`, `z.ZodTypeAny`) to ensure clean zero-hint diagnostics during `astro check`.
 
 ## 4. Testing & Verification
 

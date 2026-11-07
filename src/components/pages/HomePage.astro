@@ -21,21 +21,29 @@ const { lang } = Astro.props;
 const seo = getPageSeo("about", lang);
 const profile = await getProfile();
 
-const projectsInLang = await getCollection("project", ({ data, id }) => {
-  const matchesLocale = id.startsWith(`${lang}/`) || data.language === lang;
-  return matchesLocale && data.featured && data.type !== "42";
-});
+const isFeaturedProjectForLocale =
+  (locale: Locale) =>
+  ({
+    data,
+    id,
+  }: {
+    data: { language?: string; featured: boolean; type?: string };
+    id: string;
+  }) => {
+    const matchesLocale =
+      id.startsWith(`${locale}/`) || data.language === locale;
+    return matchesLocale && data.featured && data.type !== "42";
+  };
+
+const projectsInLang = await getCollection(
+  "project",
+  isFeaturedProjectForLocale(lang),
+);
 
 const projectsToShow =
   projectsInLang.length > 0
     ? projectsInLang
-    : await getCollection(
-        "project",
-        ({ data, id }) =>
-          (id.startsWith("es/") || data.language === "es") &&
-          data.featured &&
-          data.type !== "42",
-      );
+    : await getCollection("project", isFeaturedProjectForLocale("es"));
 
 let skillGroups = await getCollection(
   "skillGroup",
