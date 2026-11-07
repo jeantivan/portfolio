@@ -16,6 +16,10 @@ Single-context repo layout (`GLOSSARY.md` and `docs/adr/` at the repo root). See
 
 Repository coding standards and ubiquitous language rules. See `CODING_STANDARDS.md` and `GLOSSARY.md`.
 
+### Design
+
+Base UI and visual designs on `DESIGN.md`. Ask the user for their opinion whenever encountering design doubts or ambiguities.
+
 ### Verification
 
 Automated checks run via `pnpm run typecheck` (`CI=true astro check`), `pnpm test` (`vitest run`), and `pnpm run build`.
