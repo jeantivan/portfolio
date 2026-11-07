@@ -4,31 +4,35 @@ import Card from "./common/Card.astro";
 import Text from "./common/Text.astro";
 import Icon from "./common/Icon.astro";
 import { Image } from "astro:assets";
-import { type Locale, localizePath } from "@/i18n";
+import { type Locale } from "@/i18n";
+import { getProjectHref, hasCaseStudy } from "@/content/project";
 
 interface Props {
   project: CollectionEntry<"project">;
+  lang?: Locale;
 }
 
-const { project } = Astro.props;
-const lang = (Astro.currentLocale ?? "es") as Locale;
+const { project, lang = (Astro.currentLocale ?? "es") as Locale } = Astro.props;
 const { featured, title, description, mainImage } = project.data;
-const realSlug = project.id.split("/").pop();
 
-const href = localizePath(`/projects/${realSlug}`, lang);
+const href = getProjectHref(project, lang);
+const isExternal = !hasCaseStudy(project);
+const linkProps = isExternal
+  ? { target: "_blank", rel: "noopener noreferrer" }
+  : {};
 ---
 
 {
   !featured ? (
-    <a href={href} class="w-full">
+    <a href={href} {...linkProps} class="w-full">
       <Card
         as="article"
         class={"shrink-0 w-full group bg-background-2 overflow-hidden p-2 flex"}
       >
         <header class="w-full">
-          <Text class="line-clamp-1 flex-1 text-base">{title}</Text>
+          <Text class="line-clamp-1 flex-1 text-base">{title[lang]}</Text>
           <Text variant="subtitle" color="secondary" class="line-clamp-1">
-            {description}
+            {description[lang]}
           </Text>
         </header>
         <div>
@@ -44,7 +48,7 @@ const href = localizePath(`/projects/${realSlug}`, lang);
       </Card>
     </a>
   ) : (
-    <a href={href} class="lg:max-w-[472px] w-full isFeatured">
+    <a href={href} {...linkProps} class="lg:max-w-[472px] w-full isFeatured">
       <Card
         as="article"
         class={
@@ -54,19 +58,19 @@ const href = localizePath(`/projects/${realSlug}`, lang);
         {mainImage && (
           <div class="relative aspect-video">
             <Image
-              alt={mainImage.alt}
+              alt={mainImage.alt[lang]}
               src={mainImage.src.dark}
               class="object-contain hidden dark:block"
             />
             <Image
-              alt={mainImage.alt}
+              alt={mainImage.alt[lang]}
               src={mainImage.src.light}
               class="object-contain block dark:hidden"
             />
           </div>
         )}
         <header class="w-full flex space-between items-center p-2">
-          <p class="line-clamp-1 font-medium flex-1 text-lg">{title}</p>
+          <p class="line-clamp-1 font-medium flex-1 text-lg">{title[lang]}</p>
           <span class="text-primary-9 w-10 inline-flex justify-end mr-1">
             <Icon
               label="Go to project"

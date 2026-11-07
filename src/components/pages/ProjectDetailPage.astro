@@ -1,0 +1,138 @@
+---
+import { type CollectionEntry, getEntries, render } from "astro:content";
+import { Image } from "astro:assets";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/common/Container.astro";
+import ButtonLink from "@/components/common/ButtonLink.astro";
+import Icon from "@/components/common/Icon.astro";
+import Heading from "@/components/Heading.astro";
+import Text from "@/components/common/Text.astro";
+import { type Locale, t } from "@/i18n";
+import { getProjectSlug } from "@/content/project";
+
+interface Props {
+  project: CollectionEntry<"project">;
+  lang: Locale;
+}
+
+const { project, lang } = Astro.props;
+const {
+  links,
+  mainImage,
+  title,
+  description,
+  builtWith: builtWithReferences,
+} = project.data;
+
+const builtWith = await getEntries(builtWithReferences);
+const builtWithKeywords = builtWith.map(({ data }) => data.name);
+const projectTitle = title[lang];
+const projectDescription = description[lang];
+
+const slug = getProjectSlug(project.id);
+const enCaseStudies = import.meta.glob<{
+  Content?: any;
+  default?: any;
+}>("/src/content/project/*.en.md");
+
+const enKey = `/src/content/project/${slug}.en.md`;
+let Content: any;
+
+if (lang === "en" && enKey in enCaseStudies) {
+  const mod = await enCaseStudies[enKey]();
+  Content = mod.Content ?? mod.default;
+} else {
+  const rendered = await render(project);
+  Content = rendered.Content;
+}
+---
+
+<BaseLayout
+  title={projectTitle}
+  description={projectDescription}
+  keywords={[
+    lang === "es" ? "proyectos" : "projects",
+    lang === "es" ? "desarrollo web" : "web development",
+    ...builtWithKeywords,
+  ]}
+  image={mainImage?.src.dark.src}
+>
+  <Container class="pt-2 pb-8 md:pt-4 md:pb-12 grid grid-cols-12">
+    <div class="grid gap-4 md:gap-8 col-span-12 md:col-span-10">
+      <section>
+        <Heading text={projectTitle} variant="title" />
+      </section>
+      {
+        mainImage && (
+          <section class="w-full aspect-video">
+            <Image
+              alt={mainImage.alt[lang]}
+              src={mainImage.src.dark}
+              class="rounded-xl object-contain hidden dark:block"
+            />
+            <Image
+              alt={mainImage.alt[lang]}
+              src={mainImage.src.light}
+              class="rounded-xl object-contain block dark:hidden"
+            />
+          </section>
+        )
+      }
+      <section class="grid grid-flow-col gap-2 md:gap-4">
+        <ButtonLink
+          href={links.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon
+            icon="github-logo"
+            label="Github"
+            size="20px"
+            class="inline-block mr-2.5"
+          />
+          {t("ProjectPage_links_github", undefined, lang)}
+        </ButtonLink>
+        {
+          links.website && (
+            <ButtonLink
+              href={links.website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon
+                icon="globe"
+                label="Website"
+                size="20px"
+                class="inline-block mr-2.5"
+              />
+              {t("ProjectPage_links_website", undefined, lang)}
+            </ButtonLink>
+          )
+        }
+      </section>
+      <section class="grid gap-4">
+        <Heading
+          variant="subheading"
+          display
+          text={t("ProjectPage_content_title", undefined, lang)}
+        />
+        {Content && <Content components={{ p: Text }} />}
+      </section>
+      <section>
+        <Text variant="subtitle" weight="bold" color="secondary" class="mb-2">
+          {t("ProjectPage_builtWith", undefined, lang)}
+        </Text>
+        <div class="flex gap-x-3 gap-y-1 flex-wrap">
+          {
+            builtWith.map((skill) => (
+              <Text weight="light" variant="subtitle">
+                <span class="text-primary-8">#</span>
+                {skill.data.name}
+              </Text>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+  </Container>
+</BaseLayout>

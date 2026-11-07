@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import { type Locale, getPageSeo, localizePath, t } from "@/i18n";
 import { getProfile } from "@/content/profile";
 import { getFeaturedTechnologies } from "@/content/skills";
+import { getFeaturedProjects } from "@/content/project";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Container from "@/components/common/Container.astro";
 import Text from "@/components/common/Text.astro";
@@ -22,29 +23,8 @@ const { lang } = Astro.props;
 const seo = getPageSeo("about", lang);
 const profile = await getProfile();
 
-const isFeaturedProjectForLocale =
-  (locale: Locale) =>
-  ({
-    data,
-    id,
-  }: {
-    data: { language?: string; featured: boolean; type?: string };
-    id: string;
-  }) => {
-    const matchesLocale =
-      id.startsWith(`${locale}/`) || data.language === locale;
-    return matchesLocale && data.featured && data.type !== "42";
-  };
-
-const projectsInLang = await getCollection(
-  "project",
-  isFeaturedProjectForLocale(lang),
-);
-
-const projectsToShow =
-  projectsInLang.length > 0
-    ? projectsInLang
-    : await getCollection("project", isFeaturedProjectForLocale("es"));
+const allProjects = await getCollection("project");
+const projectsToShow = getFeaturedProjects(allProjects);
 
 const featuredTechnologies = getFeaturedTechnologies(
   await getCollection("technology"),
@@ -92,7 +72,7 @@ const bioParagraphs = profile.data.bio[lang].split("\n\n");
         class="flex-1 text-center"
       />
       <div class="flex flex-wrap justify-center gap-3">
-        {projectsToShow.map((proj) => <Project project={proj} />)}
+        {projectsToShow.map((proj) => <Project project={proj} lang={lang} />)}
       </div>
       <div class="flex justify-center">
         <ButtonLink
